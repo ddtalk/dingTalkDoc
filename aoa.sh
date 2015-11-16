@@ -25,11 +25,11 @@ git add .
 
 git commit -m "gh-pages"
 
-git push
+git push -u origin gh-pages
 
 git checkout master
 
-git push
+git push -u origin master
 
 
 
