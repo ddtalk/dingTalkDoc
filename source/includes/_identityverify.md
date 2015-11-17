@@ -46,7 +46,7 @@ demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/mas
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
 
-##PC web调用调用免登
+##PC web调用免登
 
 敬请期待
 
@@ -105,7 +105,7 @@ sys_level | 级别，三种取值。0:非管理员 1：普通管理员 2：超�
 }
 ```
 
-##OA后台管理员调用免登
+##OA后台调用管理员免登
 
 本节的免登服务将在管理员访问微应用后台地址时调用
 
@@ -117,7 +117,7 @@ sys_level | 级别，三种取值。0:非管理员 1：普通管理员 2：超�
 
 ISV在[<font color=red>开发者后台</font>](http://console.d.aliyun.com)添加微应用配置如下
 
-![isvmicro](https://img.alicdn.com/tps/TB1YUZjKpXXXXXaXXXXXXXXXXXX-642-734.jpg)
+![isvmicro](https://img.alicdn.com/tps/TB1W23iKpXXXXXiXXXXXXXXXXXX-715-913.jpg)
 
 
 此免登服务，可以获取当前访问微应用后台地址的企业管理员身份及相关信息。
@@ -144,6 +144,7 @@ REDIRECT_URL为微应用后台地址，钉钉开放平台授权服务器如果�
 
 步骤四：[<font color=red >通过CODE和Token换取管理员身份</font>](#通过code换取管理员身份)
 
+demo查看:[https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet](https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet)
 
 ## 通过CODE换取管理员身份
 
@@ -153,7 +154,7 @@ REDIRECT_URL为微应用后台地址，钉钉开放平台授权服务器如果�
 
 Https请求方式: GET
 
-`https://oapi.dingtalk.com/user/sso/getuserinfo?access_token=ACCESS_TOKEN&code=CODE`
+`https://oapi.dingtalk.com/sso/getuserinfo?access_token=ACCESS_TOKEN&code=CODE`
 
 ###### 参数说明
 

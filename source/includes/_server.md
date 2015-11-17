@@ -82,7 +82,7 @@ b)错误的Json返回示例:
 
 ### 获取管理员免登Token
 
-本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>手机客户端管理员调用免登</font>](#手机客户端管理员调用免登)服务中使用。
+本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>oa后台调用管理员免登</font>](#oa后台调用管理员免登)服务中使用。
 
 ###### 请求说明
 
@@ -94,7 +94,7 @@ Https请求方式: GET
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
 corpid | String | 是 | 企业Id
-corpsecret | String | 是 | 企业应用的凭证密钥
+corpsecret | String | 是 | 这里的corpsecret必须填写专属的sso_corpsecret（暂未开放申请）
 
 ###### 返回说明
 

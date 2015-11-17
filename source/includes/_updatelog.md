@@ -1,5 +1,11 @@
 # 更新日志
 
+- 2015.11.13 [<font color=red >增加OA后台管理员免登</font>](#oa后台管理员调用免登)
+
+- 2015.11.12 [<font color=red >dd.biz.ding.post 增加参数</font>](#ding)
+
+- 2015.11.5 [<font color=red >通讯录接口增加参数</font>](#管理通讯录)
+
 - 2015.10.16 [<font color=red >更新客户端文档引入js文件版本</font>](#通用)
 
 - 2015.10.10 [<font color=red >创建部门和更新部门新增参数</font>](#创建部门)
