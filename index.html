@@ -1541,7 +1541,7 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
 
-<h2 id="pc-web调用调用免登">PC web调用调用免登</h2>
+<h2 id="pc-web调用免登">PC web调用免登</h2>
 
 <p>敬请期待</p>
 
@@ -1627,7 +1627,7 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="oa后台管理员调用免登">OA后台管理员调用免登</h2>
+<h2 id="oa后台调用管理员免登">OA后台调用管理员免登</h2>
 
 <p>本节的免登服务将在管理员访问微应用后台地址时调用</p>
 
@@ -1639,7 +1639,7 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 
 <p>ISV在<a href="http://console.d.aliyun.com"><font color=red>开发者后台</font></a>添加微应用配置如下</p>
 
-<p><img alt="isvmicro" src="https://img.alicdn.com/tps/TB1YUZjKpXXXXXaXXXXXXXXXXXX-642-734.jpg" /></p>
+<p><img alt="isvmicro" src="https://img.alicdn.com/tps/TB1W23iKpXXXXXiXXXXXXXXXXXX-715-913.jpg" /></p>
 
 <p>此免登服务，可以获取当前访问微应用后台地址的企业管理员身份及相关信息。</p>
 
@@ -1675,6 +1675,8 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 
 <p>步骤四：<a href="#通过code换取管理员身份"><font color=red >通过CODE和Token换取管理员身份</font></a></p>
 
+<p>demo查看:<a href="https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet">https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet</a></p>
+
 <h2 id="通过code换取管理员身份">通过CODE换取管理员身份</h2>
 
 <p>企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。</p>
@@ -1683,7 +1685,7 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 
 <p>Https请求方式: GET</p>
 
-<p><code class="prettyprint">https://oapi.dingtalk.com/user/sso/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</code></p>
+<p><code class="prettyprint">https://oapi.dingtalk.com/sso/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</code></p>
 
 <h6 id="参数说明">参数说明</h6>
 
@@ -1884,7 +1886,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 
 <h3 id="获取管理员免登token">获取管理员免登Token</h3>
 
-<p>本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在<a href="#手机客户端管理员调用免登"><font color=red>手机客户端管理员调用免登</font></a>服务中使用。</p>
+<p>本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在<a href="#oa后台调用管理员免登"><font color=red>oa后台调用管理员免登</font></a>服务中使用。</p>
 
 <h6 id="请求说明">请求说明</h6>
 
@@ -1911,7 +1913,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>corpsecret</td>
 <td>String</td>
 <td>是</td>
-<td>企业应用的凭证密钥</td>
+<td>这里的corpsecret必须填写专属的sso_corpsecret（暂未开放申请）</td>
 </tr>
 </tbody></table>
 
@@ -8235,7 +8237,7 @@ dd.biz.user.get({
 
 <p><a href="#上传图片（仅支持拍照上传）">biz.util.uploadImageFromCamera</a></p>
 
-          <h1 id="微应用体验优化hahaha">微应用体验优化hahaha</h1>
+          <h1 id="微应用体验优化">微应用体验优化</h1>
 
 <h2 id="ui规范">UI规范</h2>
 
@@ -8401,6 +8403,9 @@ new FileBody(file, ContentType.APPLICATION_OCTET_STREAM, file.getName())).build(
           <h1 id="更新日志">更新日志</h1>
 
 <ul>
+<li><p>2015.11.13 <a href="#oa后台管理员调用免登"><font color=red >增加OA后台管理员免登</font></a></p></li>
+<li><p>2015.11.12 <a href="#ding"><font color=red >dd.biz.ding.post 增加参数</font></a></p></li>
+<li><p>2015.11.5 <a href="#管理通讯录"><font color=red >通讯录接口增加参数</font></a></p></li>
 <li><p>2015.10.16 <a href="#通用"><font color=red >更新客户端文档引入js文件版本</font></a></p></li>
 <li><p>2015.10.10 <a href="#创建部门"><font color=red >创建部门和更新部门新增参数</font></a></p></li>
 <li><p>2015.9.25 <a href="#5-回调接口（分为五个回调类型）"><font color=red >增加验证回调URL有效性事件和套件信息更新事件</font></a></p></li>
