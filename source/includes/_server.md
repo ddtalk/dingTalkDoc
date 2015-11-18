@@ -686,6 +686,227 @@ extattr |  扩展属性
 mobile | 手机号码
 -->
 
+##群会话接口
+群会话接口仅限ISV接入使用
+
+### 创建会话
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/chat/create?access_token=ACCESS_TOKEN`
+
+###### 请求包结构体
+
+```
+{
+    "name": "群名称",
+    "owner": "zhangsan",
+    "useridlist": ["zhangsan","lisi"]
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----------| ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+name | String | 是 |  群名称。长度限制为1~20个字符
+owner | String | 是 | 群主userId，员工唯一标识ID；必须为该会话useridlist的成员之一
+useridlist  | String[] | 是 | 群成员列表，每次最多操作40人，群人数上限为1000
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok",
+    "chatid": "chatxxxxxxxxxxxxxxxxxxx"
+}
+```
+
+参数 | 说明
+----------  | ------
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+chatid | 群会话的标识ID
+
+### 修改会话
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/chat/update?access_token=ACCESS_TOKEN`
+
+###### 请求包结构体
+
+```
+{
+    "chatid": "chatxxxxxxxxxxxxxxxxxxx"
+    "name": "群名称",
+    "owner": "zhangsan",
+    "add_useridlist": ["lisi"],
+    "del_useridlist": ["wangwu"],
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----------| ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+chatid | String | 是 | 会话id
+name | String | 否 |  群名称。长度限制为1~20个字符，不传则不修改
+owner | String | 否 | 群主userId，员工唯一标识ID；必须为该会话成员之一；不传则不修改
+add_useridlist  | String[] | 否 | 添加成员列表，每次最多操作40人，群人数上限为1000
+del_useridlist  | String[] | 否 | 删除成员列表，每次最多操作40人，群人数上限为1000
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+
+参数 | 说明
+----------  | ------
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 获取会话
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/chat/get?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+chatid | String | 是 | 会话id
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok",
+    "chat_info":
+        {
+            "name": "群名称",
+            "owner": "zhangsan",
+            "useridlist": ["zhangsan",lisi"],
+            "agentidlist": ["12345"]
+        }
+}
+```
+
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+chat_info | 群会话信息
+name | 群名称
+owner | 群主userid
+useridlist | 群成员userId列表
+agentidlist | 群绑定的微应用agentId列表
+
+### 删除会话
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/chat/delete?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+chatid | String | 是 | 会话id
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 绑定微应用和群会话
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/chat/bind?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+chatid | String | 是 | 会话id
+agentid | String | 是 | 微应用agentId，每个群最多绑定5个微应用，一个群只能被一个ISV套件绑定一次
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 解绑微应用和群会话
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/chat/unbind?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+chatid | String | 是 | 会话id
+agentid | String | 是 | 微应用agentId
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
 
 ##通讯录变更事件回调接口
 
@@ -761,9 +982,27 @@ CorpId | 发生通讯录变更的企业
 
 ##### 返回说明
 
-服务提供商在收到此事件推送后务必返回包含经过加密的字符串"success"的json数据只有返回了对应的json数据，钉钉才会判断此事件推送成功，套件才能创建成功。```{  "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",  "timeStamp":"1783610513",  "nonce":"123456",  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl" 
- }```
-参数      | 说明-------   | -------------msg_signature  | 消息体签名timeStamp | 时间戳nonce  | 随机字符串encrypt  | "success"加密字符串
+服务提供商在收到此事件推送后务必返回包含经过加密的字符串"success"的json数据
+
+只有返回了对应的json数据，钉钉才会判断此事件推送成功，套件才能创建成功。
+
+```
+
+{
+  "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",
+  "timeStamp":"1783610513",
+  "nonce":"123456",
+  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl" 
+ }
+
+```
+
+参数      | 说明
+-------   | -------------
+msg_signature  | 消息体签名
+timeStamp | 时间戳
+nonce  | 随机字符串
+encrypt  | "success"加密字符串
 
 
 ###注册事件回调接口
@@ -1003,9 +1242,27 @@ EventType | "check_url"
 
 ##### 返回说明
 
-服务提供商在收到此事件推送后务必返回包含经过加密的字符串"success"的json数据只有返回了对应的json数据，钉钉才会判断此事件推送成功，套件才能创建成功。```{  "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",  "timeStamp":"1783610513",  "nonce":"123456",  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl" 
-  }```
-参数      | 说明-------   | -------------msg_signature  | 消息体签名timeStamp | 时间戳nonce  | 随机字符串encrypt  | "success"加密字符串
+服务提供商在收到此事件推送后务必返回包含经过加密的字符串"success"的json数据
+
+只有返回了对应的json数据，钉钉才会判断此事件推送成功，套件才能创建成功。
+
+```
+
+{
+  "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",
+  "timeStamp":"1783610513",
+  "nonce":"123456",
+  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl" 
+  }
+
+```
+
+参数      | 说明
+-------   | -------------
+msg_signature  | 消息体签名
+timeStamp | 时间戳
+nonce  | 随机字符串
+encrypt  | "success"加密字符串
 
 
 
@@ -1659,6 +1916,13 @@ JS-SDK 为H5页面提供了一系列调用原生用的UI控件或者服务的JS�
 48002 | Api禁用
 48003 | suitetoken无效
 48004 | 授权关系无效
+49000 | 缺少chatid
+49001 | 绑定的微应用超过个数限制
+49002 | 一个群只能被一个ISV套件绑定一次
+49003 | 操作者必须为群主
+49004 | 添加成员列表和删除成员列表不能有交集
+49005 | 群人数超过人数限制
+49006 | 群成员列表必须包含群主
 50001 | redirect_uri未授权
 50002 | 员工不在权限范围
 50003 | 应用已停用
