@@ -1,7 +1,5 @@
 # 更新日志
 
-- 2015.11.19 [<font color=red >增加群会话接口</font>](#群会话接口)
-
 - 2015.11.13 [<font color=red >增加OA后台管理员免登</font>](#oa后台管理员调用免登)
 
 - 2015.11.12 [<font color=red >dd.biz.ding.post 增加参数</font>](#ding)
