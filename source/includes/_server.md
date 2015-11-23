@@ -686,6 +686,7 @@ extattr |  扩展属性
 mobile | 手机号码
 -->
 
+
 ##群会话接口
 群会话接口仅限ISV接入使用
 
@@ -744,11 +745,11 @@ Https请求方式: POST
 
 ```
 {
-    "chatid": "chatxxxxxxxxxxxxxxxxxxx"
+    "chatid": "chatxxxxxxxxxxxxxxxxxxx",
     "name": "群名称",
     "owner": "zhangsan",
     "add_useridlist": ["lisi"],
-    "del_useridlist": ["wangwu"],
+    "del_useridlist": ["wangwu"]
 }
 ```
 
@@ -802,7 +803,7 @@ chatid | String | 是 | 会话id
         {
             "name": "群名称",
             "owner": "zhangsan",
-            "useridlist": ["zhangsan",lisi"],
+            "useridlist": ["zhangsan","lisi"],
             "agentidlist": ["12345"]
         }
 }
@@ -818,34 +819,6 @@ owner | 群主userid
 useridlist | 群成员userId列表
 agentidlist | 群绑定的微应用agentId列表
 
-### 删除会话
-
-###### 请求说明
-
-Https请求方式: GET
-
-`https://oapi.dingtalk.com/chat/delete?access_token=ACCESS_TOKEN`
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
----------- | ------- | ------- | ------
-access_token | String | 是 | 调用接口凭证
-chatid | String | 是 | 会话id
-
-###### 返回结果
-
-```
-{
-    "errcode": 0,
-    "errmsg": "ok"
-}
-```
-
-参数 | 说明
----- | -----
-errcode | 返回码
-errmsg | 对返回码的文本描述内容
 
 ### 绑定微应用和群会话
 
