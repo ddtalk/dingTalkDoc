@@ -131,7 +131,7 @@ ISV在[<font color=red>开发者后台</font>](http://console.d.aliyun.com)添�
 参数 | 说明
 ---------- | ------
 corpid | 开发此微应用的公司corpid
-redirect_url | 重定向地址
+redirect_url | 重定向地址(需要urlencode编码)
 
 
 REDIRECT_URL为微应用后台地址，钉钉开放平台授权服务器如果判断当前用户属于当前企业的管理员时，会再次通过HTTP 302跳转回微应用的后台地址(即REDIRECT_URL)，并在REDIRECT_URL后面追加参数code=CODE,即

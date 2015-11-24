@@ -89,12 +89,16 @@ b)错误的Json返回示例:
 Https请求方式: GET
 `https://oapi.dingtalk.com/sso/gettoken?corpid=id&corpsecret=secrect`
 
+企业在[<font color=red>OA后台</font>](https://oa.dingtalk.com/#/microApp/microAppSet)获取sso账号密码如下
+
+![normalcorp](https://gw.alicdn.com/tps/TB1OjLbKFXXXXcBXXXXXXXXXXXX-1084-621.png)
+
 ###### 参数说明
 
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
 corpid | String | 是 | 企业Id
-corpsecret | String | 是 | 这里的corpsecret必须填写专属的sso_corpsecret（暂未开放申请）
+corpsecret | String | 是 | 这里的corpsecret必须填写专属的sso_corpsecret
 
 ###### 返回说明
 
