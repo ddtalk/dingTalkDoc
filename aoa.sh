@@ -1,17 +1,3 @@
-#!/bin/sh
-
-
-# bundle exec middleman build --clean
-
-# git add .
-
-
-# cd build
-
-# cp -f -r . ../
-
-# git push 
-
 
 cp -f -r build/. tmp/
 
