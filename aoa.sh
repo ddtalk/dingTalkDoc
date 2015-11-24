@@ -7,6 +7,8 @@ cp -f -r tmp/. ./
 
 rm -rf tmp/
 
+git pull
+
 git add .
 
 git commit -m "gh-pages"
