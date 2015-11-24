@@ -2336,17 +2336,9 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dingtalk.com/abc.jpg"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"extattr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"attrs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"爱好"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"卡号"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"1234567234"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+                </span><span class="nt">"爱好"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"年龄"</span><span class="p">:</span><span class="s2">"24"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2402,7 +2394,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 </tr>
 <tr>
 <td>extattr</td>
-<td>扩展属性</td>
+<td>扩展属性，可以设置多种属性(但手机上最多只能显示10个扩展属性，具体显示哪些属性，请到OA管理后台-&gt;设置-&gt;通讯录信息设置和OA管理后台-&gt;设置-&gt;手机端显示信息设置)性</td>
 </tr>
 </tbody></table>
 
@@ -2427,17 +2419,9 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan@gzdev.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"extattr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"attrs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"爱好"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"卡号"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"1234567234"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+                </span><span class="nt">"爱好"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"年龄"</span><span class="p">:</span><span class="s2">"24"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2521,7 +2505,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>extattr</td>
 <td>JSONObject</td>
 <td>否</td>
-<td>扩展属性</td>
+<td>扩展属性，可以设置多种属性(但手机上最多只能显示10个扩展属性，具体显示哪些属性，请到OA管理后台-&gt;设置-&gt;通讯录信息设置和OA管理后台-&gt;设置-&gt;手机端显示信息设置)</td>
 </tr>
 </tbody></table>
 
@@ -2575,17 +2559,9 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan@gzdev.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"extattr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"attrs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"爱好"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"卡号"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"1234567234"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+                </span><span class="nt">"爱好"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"年龄"</span><span class="p">:</span><span class="s2">"24"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2675,7 +2651,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>extattr</td>
 <td>JSONObject</td>
 <td>否</td>
-<td>扩展属性</td>
+<td>扩展属性，可以设置多种属性(但手机上最多只能显示10个扩展属性，具体显示哪些属性，请到OA管理后台-&gt;设置-&gt;通讯录信息设置和OA管理后台-&gt;设置-&gt;手机端显示信息设置)</td>
 </tr>
 </tbody></table>
 
@@ -2950,17 +2926,9 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
             </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w">  </span><span class="s2">"./dingtalk/abc.jpg"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w"> 
             </span><span class="nt">"extattr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"attrs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"爱好"</span><span class="p">,</span><span class="w">
-                        </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"卡号"</span><span class="p">,</span><span class="w">
-                        </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"1234567234"</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+                </span><span class="nt">"爱好"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"年龄"</span><span class="p">:</span><span class="s2">"24"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3054,7 +3022,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 </tr>
 <tr>
 <td>extattr</td>
-<td>扩展属性</td>
+<td>扩展属性，可以设置多种属性(但手机上最多只能显示10个扩展属性，具体显示哪些属性，请到OA管理后台-&gt;设置-&gt;通讯录信息设置和OA管理后台-&gt;设置-&gt;手机端显示信息设置)</td>
 </tr>
 </tbody></table>
 
@@ -3161,7 +3129,6 @@ mobile | 手机号码
   </span><span class="nt">"timeStamp"</span><span class="p">:</span><span class="s2">"1783610513"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w"> 
-
  </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -3610,7 +3577,6 @@ mobile | 手机号码
   </span><span class="nt">"timeStamp"</span><span class="p">:</span><span class="s2">"1783610513"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w"> 
-
   </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -5064,6 +5030,34 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <td>授权关系无效</td>
 </tr>
 <tr>
+<td>49000</td>
+<td>缺少chatid</td>
+</tr>
+<tr>
+<td>49001</td>
+<td>绑定的微应用超过个数限制</td>
+</tr>
+<tr>
+<td>49002</td>
+<td>一个群只能被一个ISV套件绑定一次</td>
+</tr>
+<tr>
+<td>49003</td>
+<td>操作者必须为群主</td>
+</tr>
+<tr>
+<td>49004</td>
+<td>添加成员列表和删除成员列表不能有交集</td>
+</tr>
+<tr>
+<td>49005</td>
+<td>群人数超过人数限制</td>
+</tr>
+<tr>
+<td>49006</td>
+<td>群成员列表必须包含群主</td>
+</tr>
+<tr>
 <td>50001</td>
 <td>redirect_uri未授权</td>
 </tr>
@@ -5118,6 +5112,46 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <tr>
 <td>51009</td>
 <td>要跳转的地址不是标准url</td>
+</tr>
+<tr>
+<td>52010</td>
+<td>无效的corpid</td>
+</tr>
+<tr>
+<td>52011</td>
+<td>jsapi ticket 读取失败</td>
+</tr>
+<tr>
+<td>52012</td>
+<td>jsapi 签名生成失败</td>
+</tr>
+<tr>
+<td>52013</td>
+<td>签名校验失败</td>
+</tr>
+<tr>
+<td>52014</td>
+<td>无效的url参数</td>
+</tr>
+<tr>
+<td>52015</td>
+<td>无效的随机字符串参数</td>
+</tr>
+<tr>
+<td>52016</td>
+<td>无效的签名参数</td>
+</tr>
+<tr>
+<td>52017</td>
+<td>无效的jsapi列表参数</td>
+</tr>
+<tr>
+<td>52018</td>
+<td>无效的时间戳</td>
+</tr>
+<tr>
+<td>52019</td>
+<td>无效的agentid</td>
 </tr>
 <tr>
 <td>60001</td>
@@ -8406,7 +8440,7 @@ new FileBody(file, ContentType.APPLICATION_OCTET_STREAM, file.getName())).build(
 <li><p>2015.11.13 <a href="#oa后台管理员调用免登"><font color=red >增加OA后台管理员免登</font></a></p></li>
 <li><p>2015.11.12 <a href="#ding"><font color=red >dd.biz.ding.post 增加参数</font></a></p></li>
 <li><p>2015.11.5 <a href="#管理通讯录"><font color=red >通讯录接口增加参数</font></a></p></li>
-<li><p>2015.10.16 <a href="#通用"><font color=red >更新客户端文档引入js文件版本</font></a></p></li>
+<li><p>2015.10.16 <a href="#通用"><font color=red >更新客户端文档引入javascript文件版本</font></a></p></li>
 <li><p>2015.10.10 <a href="#创建部门"><font color=red >创建部门和更新部门新增参数</font></a></p></li>
 <li><p>2015.9.25 <a href="#5-回调接口（分为五个回调类型）"><font color=red >增加验证回调URL有效性事件和套件信息更新事件</font></a></p></li>
 <li><p>2015.9.11 <a href="#通讯录变更事件回调接口"><font color=red >增加通讯录事件回调接口</font></a></p></li>
