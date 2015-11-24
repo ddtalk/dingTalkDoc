@@ -1,6 +1,6 @@
 # 服务端开发文档
 
-欢迎你，钉钉微应用的开发者，我们很期待你成为钉钉微应用的开发者；
+欢迎您，钉钉微应用的开发者，我们很期待你成为钉钉微应用的开发者；
 
 微应用是 钉钉 为连接企业办公打造的移动入口，通过微应用你可以将企业的业务审批，内部系统，生成，协作，管理，上下游沟通连接到钉钉，更简单和低成本实现企业移动化； 结合钉钉的基础通信能力，让企业应用更活跃，员工更高效，移动化成本更低。
 
@@ -89,12 +89,16 @@ b)错误的Json返回示例:
 Https请求方式: GET
 `https://oapi.dingtalk.com/sso/gettoken?corpid=id&corpsecret=secrect`
 
+企业在[<font color=red>OA后台</font>](https://oa.dingtalk.com/#/microApp/microAppSet)获取sso账号密码如下
+
+![normalcorp](https://gw.alicdn.com/tps/TB1OjLbKFXXXXcBXXXXXXXXXXXX-1084-621.png)
+
 ###### 参数说明
 
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
 corpid | String | 是 | 企业Id
-corpsecret | String | 是 | 这里的corpsecret必须填写专属的sso_corpsecret（暂未开放申请）
+corpsecret | String | 是 | 这里的corpsecret必须填写专属的sso_corpsecret
 
 ###### 返回说明
 
@@ -321,24 +325,16 @@ userid | String |是 | 员工在企业内的UserID，企业用来唯一标识用
     "userid": "zhangsan",
     "name": "张三",
     "tel" : "010-123333",
-	"workPlace" :"",
-	"remark" : "",
+    "workPlace" :"",
+    "remark" : "",
     "department": [1, 2],
     "position": "工程师",
     "avatar": "dingtalk.com/abc.jpg",
     "jobnumber": "111111",
     "extattr": {
-        "attrs": [
-            {
-                "name":"爱好",
-                "value":"旅游"
-            },
-            {
-                "name":"卡号",
-                "value":"1234567234"
-            }
-        ]
-    }
+                "爱好":"旅游",
+                "年龄":"24"
+                }
 }
 ```
 
@@ -355,7 +351,7 @@ department | 成员所属部门id列表
 position | 职位信息
 avatar | 头像url
 jobnumber | 员工工号
-extattr | 扩展属性
+extattr | 扩展属性，可以设置多种属性(但手机上最多只能显示10个扩展属性，具体显示哪些属性，请到OA管理后台->设置->通讯录信息设置和OA管理后台->设置->手机端显示信息设置)性
 
 ### 创建成员
 
@@ -375,22 +371,14 @@ Https请求方式: POST
     "position": "产品经理",
     "mobile": "15913215421",
     "tel" : "010-123333",
-	"workPlace" :"",
-	"remark" : "",
+    "workPlace" :"",
+    "remark" : "",
     "email": "zhangsan@gzdev.com",
     "jobnumber": "111111",
     "extattr": {
-        "attrs": [
-            {
-                "name":"爱好",
-                "value":"旅游"
-            },
-            {
-                "name":"卡号",
-                "value":"1234567234"
-            }
-        ]
-    }
+                "爱好":"旅游",
+                "年龄":"24"
+                }
 }
 ```
 
@@ -409,7 +397,7 @@ workPlace | String| 否 | 办公地点，长度为0~50个字符
 remark | String| 否 | 备注，长度为0~1000个字符
 email | String| 否 | 邮箱。长度为0~64个字符。企业内必须唯一
 jobnumber | String | 否 | 员工工号。对应显示到OA后台和客户端个人资料的工号栏目。长度为0~64个字符
-extattr | JSONObject | 否 | 扩展属性
+extattr | JSONObject | 否 | 扩展属性，可以设置多种属性(但手机上最多只能显示10个扩展属性，具体显示哪些属性，请到OA管理后台->设置->通讯录信息设置和OA管理后台->设置->手机端显示信息设置)
 
 ###### 返回结果
 
@@ -446,22 +434,14 @@ Https请求方式: POST
     "position": "产品经理",
     "mobile": "15913215421",
     "tel" : "010-123333",
-	"workPlace" :"",
-	"remark" : "",
+    "workPlace" :"",
+    "remark" : "",
     "email": "zhangsan@gzdev.com",
     "jobnumber": "111111",
     "extattr": {
-        "attrs": [
-            {
-                "name":"爱好",
-                "value":"旅游"
-            },
-            {
-                "name":"卡号",
-                "value":"1234567234"
-            }
-        ]
-    }
+                "爱好":"旅游",
+                "年龄":"24"
+                }
 }
 ```
 
@@ -481,7 +461,7 @@ workPlace | String| 否 | 办公地点，长度为0~50个字符
 remark | String| 否 | 备注，长度为0~1000个字符
 email |String | 否 | 邮箱。长度为0~64个字符。企业内必须唯一
 jobnumber | String | 否 | 员工工号，对应显示到OA后台和客户端个人资料的工号栏目。长度为0~64个字符
-extattr |JSONObject | 否 | 扩展属性
+extattr |JSONObject | 否 | 扩展属性，可以设置多种属性(但手机上最多只能显示10个扩展属性，具体显示哪些属性，请到OA管理后台->设置->通讯录信息设置和OA管理后台->设置->手机端显示信息设置)
 
 ###### 返回结果
 
@@ -627,8 +607,8 @@ department_id | long | 是 | 获取的部门id
             "dingId": "dwdded",
             "mobile": "13122222222",
             "tel" : "010-123333",
-			"workPlace" :"",
-			"remark" : "",
+            "workPlace" :"",
+            "remark" : "",
             "order" : 1,
             "isAdmin": true,
             "isHide": true,
@@ -641,17 +621,9 @@ department_id | long | 是 | 获取的部门id
             "avatar":  "./dingtalk/abc.jpg",
             "jobnumber": "111111", 
             "extattr": {
-                "attrs": [
-                    {
-                        "name":"爱好",
-                        "value":"旅游"
-                    },
-                    {
-                        "name":"卡号",
-                        "value":"1234567234"
-                    }
-                ]
-            }
+                "爱好":"旅游",
+                "年龄":"24"
+                }
         }
     ]
 }
@@ -679,206 +651,12 @@ position |  职位信息
 email | 邮箱
 avatar  | 头像url
 jobnumber | 员工工号
-extattr |  扩展属性
+extattr |  扩展属性，可以设置多种属性(但手机上最多只能显示10个扩展属性，具体显示哪些属性，请到OA管理后台->设置->通讯录信息设置和OA管理后台->设置->手机端显示信息设置)
 
 <!--
 "mobile": "15913215421",
 mobile | 手机号码
 -->
-
-
-##群会话接口
-群会话接口仅限ISV接入使用
-
-### 创建会话
-
-###### 请求说明
-
-Https请求方式: POST
-
-`https://oapi.dingtalk.com/chat/create?access_token=ACCESS_TOKEN`
-
-###### 请求包结构体
-
-```
-{
-    "name": "群名称",
-    "owner": "zhangsan",
-    "useridlist": ["zhangsan","lisi"]
-}
-```
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
-----------| ------- | ------- | ------
-access_token | String | 是 | 调用接口凭证
-name | String | 是 |  群名称。长度限制为1~20个字符
-owner | String | 是 | 群主userId，员工唯一标识ID；必须为该会话useridlist的成员之一
-useridlist  | String[] | 是 | 群成员列表，每次最多操作40人，群人数上限为1000
-
-###### 返回结果
-
-```
-{
-    "errcode": 0,
-    "errmsg": "ok",
-    "chatid": "chatxxxxxxxxxxxxxxxxxxx"
-}
-```
-
-参数 | 说明
-----------  | ------
-errcode | 返回码
-errmsg | 对返回码的文本描述内容
-chatid | 群会话的标识ID
-
-### 修改会话
-
-###### 请求说明
-
-Https请求方式: POST
-
-`https://oapi.dingtalk.com/chat/update?access_token=ACCESS_TOKEN`
-
-###### 请求包结构体
-
-```
-{
-    "chatid": "chatxxxxxxxxxxxxxxxxxxx",
-    "name": "群名称",
-    "owner": "zhangsan",
-    "add_useridlist": ["lisi"],
-    "del_useridlist": ["wangwu"]
-}
-```
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
-----------| ------- | ------- | ------
-access_token | String | 是 | 调用接口凭证
-chatid | String | 是 | 会话id
-name | String | 否 |  群名称。长度限制为1~20个字符，不传则不修改
-owner | String | 否 | 群主userId，员工唯一标识ID；必须为该会话成员之一；不传则不修改
-add_useridlist  | String[] | 否 | 添加成员列表，每次最多操作40人，群人数上限为1000
-del_useridlist  | String[] | 否 | 删除成员列表，每次最多操作40人，群人数上限为1000
-
-###### 返回结果
-
-```
-{
-    "errcode": 0,
-    "errmsg": "ok"
-}
-```
-
-参数 | 说明
-----------  | ------
-errcode | 返回码
-errmsg | 对返回码的文本描述内容
-
-### 获取会话
-
-###### 请求说明
-
-Https请求方式: GET
-
-`https://oapi.dingtalk.com/chat/get?access_token=ACCESS_TOKEN`
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
----------- | ------- | ------- | ------
-access_token | String | 是 | 调用接口凭证
-chatid | String | 是 | 会话id
-
-###### 返回结果
-
-```
-{
-    "errcode": 0,
-    "errmsg": "ok",
-    "chat_info":
-        {
-            "name": "群名称",
-            "owner": "zhangsan",
-            "useridlist": ["zhangsan","lisi"],
-            "agentidlist": ["12345"]
-        }
-}
-```
-
-参数 | 说明
----- | -----
-errcode | 返回码
-errmsg | 对返回码的文本描述内容
-chat_info | 群会话信息
-name | 群名称
-owner | 群主userid
-useridlist | 群成员userId列表
-agentidlist | 群绑定的微应用agentId列表
-
-
-### 绑定微应用和群会话
-
-###### 请求说明
-
-Https请求方式: GET
-
-`https://oapi.dingtalk.com/chat/bind?access_token=ACCESS_TOKEN`
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
----------- | ------- | ------- | ------
-access_token | String | 是 | 调用接口凭证
-chatid | String | 是 | 会话id
-agentid | String | 是 | 微应用agentId，每个群最多绑定5个微应用，一个群只能被一个ISV套件绑定一次
-
-###### 返回结果
-
-```
-{
-    "errcode": 0,
-    "errmsg": "ok"
-}
-```
-
-参数 | 说明
----- | -----
-errcode | 返回码
-errmsg | 对返回码的文本描述内容
-
-### 解绑微应用和群会话
-
-###### 请求说明
-
-Https请求方式: GET
-
-`https://oapi.dingtalk.com/chat/unbind?access_token=ACCESS_TOKEN`
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
----------- | ------- | ------- | ------
-access_token | String | 是 | 调用接口凭证
-chatid | String | 是 | 会话id
-agentid | String | 是 | 微应用agentId
-
-###### 返回结果
-
-```
-{
-    "errcode": 0,
-    "errmsg": "ok"
-}
-```
-
-参数 | 说明
----- | -----
-errcode | 返回码
-errmsg | 对返回码的文本描述内容
 
 
 ##通讯录变更事件回调接口
@@ -1752,7 +1530,7 @@ expires_in | 票据过期时间
 
 ### JS-SDK
 
-JS-SDK 为H5页面提供了一系列调用原生用的UI控件或者服务的JS接口，文档地址如下：
+JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文档地址如下：
 
 [<font color=red >客户端开发文档</font>](#客户端开发文档)
 
@@ -1803,9 +1581,9 @@ JS-SDK 为H5页面提供了一系列调用原生用的UI控件或者服务的JS�
 40057 | 不合法的callbackurl
 40061 | 设置应用头像失败
 40062 | 不合法的应用模式
-40063 | 不合法的分机号	
-40064 | 不合法的工作地址	
-40065 | 不合法的备注	
+40063 | 不合法的分机号 
+40064 | 不合法的工作地址    
+40065 | 不合法的备注  
 40066 | 不合法的部门列表
 40067 | 标题长度不合法
 40073 | 不存在的openid
@@ -1910,6 +1688,16 @@ JS-SDK 为H5页面提供了一系列调用原生用的UI控件或者服务的JS�
 51007 | 跳转获取用户企业身份失败
 51008 | 跳转url解码失败
 51009 | 要跳转的地址不是标准url
+52010 | 无效的corpid 
+52011 | jsapi ticket 读取失败 
+52012 | jsapi 签名生成失败 
+52013 | 签名校验失败 
+52014 | 无效的url参数 
+52015 | 无效的随机字符串参数 
+52016 | 无效的签名参数 
+52017 | 无效的jsapi列表参数 
+52018 | 无效的时间戳 
+52019 | 无效的agentid 
 60001 | 不合法的部门名称
 60002 | 部门层级深度超过限制
 60003 | 部门不存在
@@ -2000,8 +1788,8 @@ JS-SDK 为H5页面提供了一系列调用原生用的UI控件或者服务的JS�
 ```javascript
  public class Env {
   public static final String OAPI_HOST = "https://oapi.dingtalk.com";
-	public static final String CORP_ID = "corpid";
-	public static final String SECRET = "secret";
+    public static final String CORP_ID = "corpid";
+    public static final String SECRET = "secret";
  }
 
 ```
