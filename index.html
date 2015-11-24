@@ -3031,6 +3031,438 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 mobile | 手机号码
 -->
 
+<h2 id="群会话接口">群会话接口</h2>
+
+<p>群会话接口仅限ISV接入使用</p>
+
+<h3 id="创建会话">创建会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/create?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="请求包结构体">请求包结构体</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"群名称"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="s2">"lisi"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>是</td>
+<td>群名称。长度限制为1~20个字符</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>String</td>
+<td>是</td>
+<td>群主userId，员工唯一标识ID；必须为该会话useridlist的成员之一</td>
+</tr>
+<tr>
+<td>useridlist</td>
+<td>String[]</td>
+<td>是</td>
+<td>群成员列表，每次最多操作40人，群人数上限为1000</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxxxxxxxxxxxx"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>群会话的标识ID</td>
+</tr>
+</tbody></table>
+
+<h3 id="修改会话">修改会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/update?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="请求包结构体">请求包结构体</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxxxxxxxxxxxx"</span><span class="w">
+    </span><span class="s2">"name"</span><span class="err">:</span><span class="w"> </span><span class="s2">"群名称"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"add_useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"lisi"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"del_useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"wangwu"</span><span class="p">],</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>否</td>
+<td>群名称。长度限制为1~20个字符，不传则不修改</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>String</td>
+<td>否</td>
+<td>群主userId，员工唯一标识ID；必须为该会话成员之一；不传则不修改</td>
+</tr>
+<tr>
+<td>add_useridlist</td>
+<td>String[]</td>
+<td>否</td>
+<td>添加成员列表，每次最多操作40人，群人数上限为1000</td>
+</tr>
+<tr>
+<td>del_useridlist</td>
+<td>String[]</td>
+<td>否</td>
+<td>删除成员列表，每次最多操作40人，群人数上限为1000</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+</tbody></table>
+
+<h3 id="获取会话">获取会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/get?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"chat_info"</span><span class="p">:</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"群名称"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="err">lisi</span><span class="s2">"],
+            "</span><span class="err">agentidlist</span><span class="s2">": ["</span><span class="mi">12345</span><span class="err">"</span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>chat_info</td>
+<td>群会话信息</td>
+</tr>
+<tr>
+<td>name</td>
+<td>群名称</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>群主userid</td>
+</tr>
+<tr>
+<td>useridlist</td>
+<td>群成员userId列表</td>
+</tr>
+<tr>
+<td>agentidlist</td>
+<td>群绑定的微应用agentId列表</td>
+</tr>
+</tbody></table>
+
+<h3 id="删除会话">删除会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/delete?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+</tbody></table>
+
+<h3 id="绑定微应用和群会话">绑定微应用和群会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/bind?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>agentid</td>
+<td>String</td>
+<td>是</td>
+<td>微应用agentId，每个群最多绑定5个微应用，一个群只能被一个ISV套件绑定一次</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+</tbody></table>
+
+<h3 id="解绑微应用和群会话">解绑微应用和群会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/unbind?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>agentid</td>
+<td>String</td>
+<td>是</td>
+<td>微应用agentId</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+</tbody></table>
+
 <h2 id="通讯录变更事件回调接口">通讯录变更事件回调接口</h2>
 
 <p>在使用回调接口之前您需要了解的是，</p>
