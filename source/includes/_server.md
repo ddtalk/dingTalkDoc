@@ -154,12 +154,16 @@ access_token | String | 是 | 调用接口凭证
         {
            "id": 2,
             "name": "来往事业部",
-            "parentid": 1
+            "parentid": 1,
+            "createDeptGroup": true,
+            "autoAddUser": true
         },
         {
             "id": 3,
             "name": "服务端开发组",
-            "parentid": 2
+            "parentid": 2,
+            "createDeptGroup": false
+            "autoAddUser": false
         }
     ]
 }
@@ -173,6 +177,59 @@ department | 部门列表数据。以部门的order字段从小到大排列
 id | 部门id
 name | 部门名称
 parentid | 父部门id，根部门为1
+createDeptGroup | 是否同步创建一个关联此部门的企业群, true表示是, false表示不是
+autoAddUser | 当群已经创建后，是否有新人加入部门会自动加入该群, true表示是, false表示不是
+
+
+### 获取部门详情
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/department/get?access_token=ACCESS_TOKEN&id=2`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+id | String | 是 | 部门id
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok",
+    "id": 2,
+    "name": "来往事业部",
+    "order" : 10,
+    "parentid": 1,
+    "createDeptGroup": true,
+    "autoAddUser": true,
+    "deptHiding" : true,
+    "deptPerimits" : "3|4",
+    "orgDeptOwner" : "manager1122",
+    "deptManagerUseridList" : "manager1122|manager3211"
+}
+```
+
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+id | 部门id
+name | 部门名称
+parentid | 父部门id，根部门为1
+order | 在父部门中的次序值
+createDeptGroup | 是否同步创建一个关联此部门的企业群, true表示是, false表示不是
+autoAddUser | 当群已经创建后，是否有新人加入部门会自动加入该群, true表示是, false表示不是
+deptHiding | 是否隐藏部门, true表示隐藏, false表示显示
+deptPerimits | 可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用' &#124; '符号进行分割
+orgDeptOwner | 企业群群主
+deptManagerUseridList | 部门的主管列表,取值为由主管的userid组成的字符串，不同的userid使用' &#124; '符号进行分割
+
 
 ### 创建部门
 
@@ -240,7 +297,8 @@ Https请求方式: POST
     "autoAddUser": true,
     "deptManagerUseridList": "manager1111|2222",
     "deptHiding": false,
-    "deptPerimits": "12|23"    
+    "deptPerimits": "12|23",
+    "orgDeptOwner": "manager1111",   
 }
 ```
 
@@ -252,12 +310,13 @@ access_token | string | 是 | 调用接口凭证
 name | String | 否 | 部门名称。长度限制为1~64个字符
 parentid | String | 否 | 父部门id。根部门id为1
 order | String | 否 | 在父部门中的次序值。order值小的排序靠前
-id | long | 是 | 部门ID
+id | long | 是 | 部门id
 createDeptGroup | Boolean | 否 | 是否创建一个关联此部门的企业群
 autoAddUser | Boolean | 否 | 如果有新人加入部门是否会自动加入部门群
 deptManagerUseridList | String | 否 | 部门的主管列表,取值为由主管的userid组成的字符串，不同的userid使用' &#124; '符号进行分割
 deptHiding | Boolean | 否 | 是否隐藏部门
-deptPerimits | String | 否 | 可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门ID组成的的字符串，使用' &#124; '符号进行分割
+deptPerimits | String | 否 | 可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用' &#124; '符号进行分割
+orgDeptOwner | String | 否 | 企业群群主
 
 
 ###### 返回结果
@@ -287,7 +346,7 @@ Https请求方式: GET
 参数 | 参数类型 | 必须 | 说明
 ----------| -------  | ------- | ------
 access_token | String | 是 | 调用接口凭证
-id | long | 是 | 部门ID。（注：不能删除根部门；不能删除含有子部门、成员的部门）
+id | long | 是 | 部门id。（注：不能删除根部门；不能删除含有子部门、成员的部门）
 
 ###### 返回结果
 
@@ -327,6 +386,14 @@ userid | String |是 | 员工在企业内的UserID，企业用来唯一标识用
     "tel" : "010-123333",
     "workPlace" :"",
     "remark" : "",
+    "mobile" : "13800000000",
+    "email" : "dingding@aliyun.com",
+    "active" : true,
+    "orderInDepts" : "{1:10, 2:20}",
+    "isAdmin" : false,
+    "dingId" : "WsUDaq7DCVIHc6z1GAsYDSA",
+    "isLeaderInDepts" : "{1:true, 2:false}",
+    "isHide" : false,
     "department": [1, 2],
     "position": "工程师",
     "avatar": "dingtalk.com/abc.jpg",
@@ -347,6 +414,14 @@ name | 成员名称
 tel  | 分机号（ISV不可见）
 workPlace | 办公地点（ISV不可见）
 remark | 备注（ISV不可见）
+mobile | 手机号码
+email | 电子邮箱
+active | 是否已经激活, true表示已激活, false表示未激活
+orderInDepts | 在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值
+isAdmin | 是否为企业的管理员, true表示是, false表示不是
+dingId | 钉钉Id
+isLeaderInDepts | 在对应的部门中是否为主管, Map结构的json字符串, key是部门的Id, value是人员在这个部门中是否为主管, true表示是, false表示不是
+isHide | 是否号码隐藏, true表示隐藏, false表示不隐藏
 department | 成员所属部门id列表
 position | 职位信息
 avatar | 头像url
@@ -367,6 +442,7 @@ Https请求方式: POST
 {
     "userid": "zhangsan",
     "name": "张三",
+    "orderInDepts" : "{1:10, 2:20}",
     "department": [1, 2],
     "position": "产品经理",
     "mobile": "15913215421",
@@ -389,6 +465,7 @@ Https请求方式: POST
 access_token |String | 是 | 调用接口凭证
 userid | String| 否 | 员工唯一标识ID（不可修改），企业内必须唯一。长度为1~64个字符，如果不传，服务器将自动生成一个userid
 name | String | 是 | 成员名称。长度为1~64个字符
+orderInDepts | 在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值
 department | List | 是 |数组类型，数组里面值为整型，成员所属部门id列表
 position |String | 否 | 职位信息。长度为0~64个字符
 mobile | String| 是 | 手机号码。企业内必须唯一
@@ -430,7 +507,7 @@ Https请求方式: POST
     "userid": "zhangsan",
     "name": "张三",
     "department": [1, 2],
-    "orderInDepts": "{1:1}", 
+    "orderInDepts": "{1:10}", 
     "position": "产品经理",
     "mobile": "15913215421",
     "tel" : "010-123333",
@@ -453,7 +530,7 @@ access_token |String | 是 | 调用接口凭证
 userid |String | 是 | 员工唯一标识ID（不可修改），企业内必须唯一。长度为1~64个字符
 name |String | 是 | 成员名称。长度为1~64个字符
 department |List | 否 | 成员所属部门id列表
-orderInDepts | JSONObject | 否 | 实际是Map的序列化字符串，Map的Key是deptId，表示部门ID，Map的Value是order，表示排序的值，列表是按order的倒序排列输出的，即从大到小排列输出的
+orderInDepts | JSONObject | 否 | 实际是Map的序列化字符串，Map的Key是deptId，表示部门id，Map的Value是order，表示排序的值，列表是按order的倒序排列输出的，即从大到小排列输出的
 position | String| 否 | 职位信息。长度为0~64个字符
 mobile |String | 否 | 手机号码。企业内必须唯一
 tel  | String| 否 | 分机号，长度为0~50个字符
@@ -657,6 +734,58 @@ extattr |  扩展属性，可以设置多种属性(但手机上最多只能显�
 "mobile": "15913215421",
 mobile | 手机号码
 -->
+
+## 管理微应用
+
+### 创建微应用
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/microapp/create?access_token=ACCESS_TOKEN`
+
+###### 请求包结构体
+
+```
+{
+    "appIcon": "@HIdsabikkhjsdsas",
+    "appName": "测试微应用",
+    "appDesc": "测试使用的微应用",
+    "homepageUrl": "http://oa.dingtalk.com/?h5",
+    "pcHomepageUrl": "http://oa.dingtalk.com/?pc",
+    "ompLink": ""
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----------| ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+appIcon | String | 是 |  微应用的图标。需要调用上传接口将图标上传到钉钉服务器后获取到的mediaId
+appName | String | 是 | 微应用的名称。长度限制为1~10个字符
+appDesc  | String | 是 | 微应用的描述。长度限制为1~20个字符
+homepageUrl | String | 是 | 微应用的移动端主页，必须以http开头或https开头
+pcHomepageUrl | String | 否 | 微应用的PC端主页，必须以http开头或https开头，如果不为空则必须与homepageUrl的域名一致
+ompUrl | String | 否 | 微应用的OA后台管理主页，必须以http开头或https开头
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "created",
+    "id": 2
+}
+```
+
+参数 | 说明
+----------  | ------
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+id | 创建的部门id
+
 
 
 ##群会话接口
@@ -1275,7 +1404,7 @@ access_token |String | 是 | 调用接口凭证
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
 touser |String | 否 | 员工ID列表（消息接收者，多个接收者用' &#124; '分隔）。特殊情况：指定为@all，则向该企业应用的全部成员发送
-toparty |String | 否 | 部门ID列表，多个接收者用' &#124; '分隔。当touser为@all时忽略本参数 <font color=red >touser或者toparty 二者有一个必填</font>
+toparty |String | 否 | 部门id列表，多个接收者用' &#124; '分隔。当touser为@all时忽略本参数 <font color=red >touser或者toparty 二者有一个必填</font>
 agentid | String | 是 |企业应用id，这个值代表以哪个应用的名义发送消息
 
 企业会话消息样例：
