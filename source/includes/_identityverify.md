@@ -46,9 +46,6 @@ demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/mas
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
 
-##PC web调用免登
-
-敬请期待
 
 ##钉钉PC版调用免登
 
@@ -56,73 +53,22 @@ demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/mas
 
 
 
-## 通过CODE换取用户身份
-
-企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的用户信息。
-
-###### 请求说明
-
-Https请求方式: GET
-
-`https://oapi.dingtalk.com/user/getuserinfo?access_token=ACCESS_TOKEN&code=CODE`
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
----------- | ------- | ------- | ------
-access_token | String | 是 | 调用接口凭证
-code | String | 是 | 通过Oauth认证会给URL带上CODE
-
-###### 返回结果
-
-正确时返回示例如下：
-
-```
-{
-    "errcode": 40029,
-    "errmsg": "invalid code",
-    "userid": "USERID",
-    "deviceId":"DEVICEID",
-    "is_sys": "true",
-    "sys_level": 0|1|2
-}
-```
-
-参数 | 说明
----------- | ------
-userid | 员工在企业内的UserID
-deviceId | 手机设备号,由钉钉在安装时随机产生
-is_sys | 是否是管理员
-sys_level | 级别，三种取值。0:非管理员 1：普通管理员 2：超级管理员
-
-
-出错时返回示例如下：
-
-```
-{
-    "errcode": 40029,
-    "errmsg": "invalid code"
-}
-```
-
 ##OA后台调用管理员免登
+**前置条件** 
 
-本节的免登服务将在管理员访问微应用后台地址时调用
+**本节描述的免登服务将在管理员访问微应用后台地址时调用**
 
-所以需要您先配置微应用后台地址
+在此之前需要您先配置微应用后台地址
 
-普通企业在[<font color=red>OA后台</font>](https://oa.dingtalk.com/#/microApp/microAppList)添加微应用配置如下
+普通企业在[<font color=red>OA后台</font>](https://oa.dingtalk.com/#/microApp/microAppList)添加微应用配置如左图，ISV在[<font color=red>开发者后台</font>](http://console.d.aliyun.com)添加微应用配置如右图
 
-![normalcorp](https://img.alicdn.com/tps/TB1YUZjKpXXXXXaXXXXXXXXXXXX-642-734.jpg)
+![oaback](https://img.alicdn.com/tps/TB15zWTKFXXXXcEXVXXXXXXXXXX-642-367.jpg)
 
-ISV在[<font color=red>开发者后台</font>](http://console.d.aliyun.com)添加微应用配置如下
+此免登服务，可以**获取当前访问微应用后台地址的企业管理员身份及相关信息。**
 
-![isvmicro](https://img.alicdn.com/tps/TB1W23iKpXXXXXiXXXXXXXXXXXX-715-913.jpg)
+使用场景：希望管理员登录到后台地址的时候获取相关管理员信息。
 
-
-此免登服务，可以获取当前访问微应用后台地址的企业管理员身份及相关信息。
-
-使用场景：希望后台地址只有企业管理员才有权限访问，则调用这个免登接口。
+**使用方法** 
 
 步骤一：在管理员访问后台地址的时候，企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:
 
@@ -146,62 +92,4 @@ REDIRECT_URL为微应用后台地址，钉钉开放平台授权服务器如果�
 
 demo查看:[https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet](https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet)
 
-## 通过CODE换取管理员身份
-
-企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。
-
-###### 请求说明
-
-Https请求方式: GET
-
-`https://oapi.dingtalk.com/sso/getuserinfo?access_token=ACCESS_TOKEN&code=CODE`
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
----------- | ------- | ------- | ------
-access_token | String | 是 | [<font color=red >获取微应用管理员免登需要的Token</font>](#获取管理员免登token)
-code | String | 是 | 通过Oauth认证给URL带上的CODE
-
-###### 返回结果
-
-正确时返回示例如下：
-
-```
-{
-    "corp_info": {
-        "corp_name": "一家公司",
-        "corpid": "dingxxxxxx"
-    },
-    "errcode": 0,
-    "errmsg": "ok",
-    "is_sys": true,
-    "user_info": {
-        "avatar": "http://xxxxxxx.jpg",
-        "email": "123456@aliyun.com",
-        "name": "名称",
-        "userid": "0571"
-    }
-}
-```
-
-参数 | 说明
----------- | ------
-corp_name | 公司名字
-corpid | 公司corpid
-is_sys | 是否是管理员（在这里是true）
-avatar | 头像地址
-email | email地址",
-name | 用户名字,
-userid | 员工在企业内的UserID
-
-
-出错时返回示例如下：
-
-```
-{
-    "errcode": 40029,
-    "errmsg": "invalid code"
-}
-```
 

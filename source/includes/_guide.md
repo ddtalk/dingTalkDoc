@@ -827,7 +827,8 @@ https请求方式: POST
 
 https://oapi.dingtalk.com/service/get_auth_info?suite_access_token=xxxx
 
-POST数据示例
+//注意，是suite_access_token，不是授权方（企业）的access_token
+POST数据示例
 
 ```
 {
@@ -1065,12 +1066,12 @@ demo地址：[https://github.com/ian-cuc/suite-demo-c-/blob/master/receive.ashx.
 ###调试工具
 
 回调接口本地调试方案：由于回调接口需要在外网环境接收钉钉服务器的推送，假如开发者暂时没有外网地址，需要在本地调试回调接口的加解密方案，可以在本地环境构造推送。具体构造参数示例：
+
 URL后面带的参数：signature=5a65ceeef9aab2d149439f82dc191dd6c5cbe2c0&timestamp=1445827045067&nonce=nEXhMP4r
 Post参数：{"encrypt":"1a3NBxmCFwkCJvfoQ7WhJHB+iX3qHPsc9JbaDznE1i03peOk1LaOQoRz3+nlyGNhwmwJ3vDMG+OzrHMeiZI7gTRWVdUBmfxjZ8Ej23JVYa9VrYeJ5as7XM/ZpulX8NEQis44w53h1qAgnC3PRzM7Zc/D6Ibr0rgUathB6zRHP8PYrfgnNOS9PhSBdHlegK+AGGanfwjXuQ9+0pZcy0w9lQ=="
 }
 Token：123456
 数据加密密钥(ENCODING_AES_KEY)：4g5j64qlyl3zvetqxz5jiocdr586fn2zvjpa8zls3ij
-
 suitekey：suite4xxxxxxxxxxxxxxx
 
 

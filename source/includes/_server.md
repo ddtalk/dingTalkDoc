@@ -35,6 +35,23 @@ CorpID及CorpSecret可以在钉钉为企业提供的管理后台中找到，由�
 POST请求请在HTTP Header中设置 Content-Type:application/json，否则接口调用失败
 </aside>
 
+### 主动调用的频率限制
+
+当你获取到AccessToken时，你的微应用后台就可以成功调用钉钉后台所提供的各种接口或访问相应企业的资源或给成员发消息。
+
+为了防止微应用的程序错误而引发钉钉服务器负载异常，默认情况下，每个服务端调用接口都有一定的频率限制，当超过此限制时，调用对应接口会收到相应错误码。
+
+以下是当前默认的频率限制，钉钉后台可能会根据运营情况调整此阈值：
+
+- 每个企业调用单个接口的频率不可超过1500次/分
+
+- 每个ISV（应用提供商）调用单个接口的频率不可超过2000次/分
+
+- 每个ISV（应用提供商）调用单个企业的单个接口频率不可超过1500次/分
+
+- 每个套件调用单个企业的单个接口频率不可超过1000次/分
+
+
 #### 获取AccessToken
 
 AccessToken是企业访问钉钉开放平台接口的全局唯一票据，调用接口时需携带AccessToken。
@@ -1722,6 +1739,115 @@ b)错误时返回（这里省略了HTTP首部）：
 免登接口是关于用户无需登录，微应用就能拿到用户信息的一个接口。
 
 详细信息请查看[<font color=red >免登服务流程</font>](#免登服务)
+
+### 通过CODE换取用户身份
+
+企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的用户信息。**此接口只用于免登服务中用来换取用户信息**
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/user/getuserinfo?access_token=ACCESS_TOKEN&code=CODE`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+code | String | 是 | 通过Oauth认证会给URL带上CODE
+
+###### 返回结果
+
+正确时返回示例如下：
+
+```
+{
+    "errcode": 40029,
+    "errmsg": "invalid code",
+    "userid": "USERID",
+    "deviceId":"DEVICEID",
+    "is_sys": "true",
+    "sys_level": 0|1|2
+}
+```
+
+参数 | 说明
+---------- | ------
+userid | 员工在企业内的UserID
+deviceId | 手机设备号,由钉钉在安装时随机产生
+is_sys | 是否是管理员
+sys_level | 级别，三种取值。0:非管理员 1：普通管理员 2：超级管理员
+
+
+出错时返回示例如下：
+
+```
+{
+    "errcode": 40029,
+    "errmsg": "invalid code"
+}
+```
+
+### 通过CODE换取管理员身份
+
+企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。**此接口只用于OA后台调用管理员免登中用来换取管理员信息**
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/sso/getuserinfo?access_token=ACCESS_TOKEN&code=CODE`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 再次强调，此token不同于一般的accesstoken，需要调用[<font color=red >获取微应用管理员免登需要的Token</font>](#获取管理员免登token)
+code | String | 是 | 通过Oauth认证给URL带上的CODE
+
+###### 返回结果
+
+正确时返回示例如下：
+
+```
+{
+    "corp_info": {
+        "corp_name": "一家公司",
+        "corpid": "dingxxxxxx"
+    },
+    "errcode": 0,
+    "errmsg": "ok",
+    "is_sys": true,
+    "user_info": {
+        "avatar": "http://xxxxxxx.jpg",
+        "email": "123456@aliyun.com",
+        "name": "名称",
+        "userid": "0571"
+    }
+}
+```
+
+参数 | 说明
+---------- | ------
+corp_name | 公司名字
+corpid | 公司corpid
+is_sys | 是否是管理员（在这里是true）
+avatar | 头像地址
+email | email地址",
+name | 用户名字,
+userid | 员工在企业内的UserID
+
+
+出错时返回示例如下：
+
+```
+{
+    "errcode": 40029,
+    "errmsg": "invalid code"
+}
+```
+
 
 <!-- ### 通过CODE换取用户身份
 
