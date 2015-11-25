@@ -1175,6 +1175,7 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
       </span><span class="nt">"corp_logo_url"</span><span class="p">:</span><span class="s2">"http://xxxx.png"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="s2">"corpid"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"corpid"</span><span class="p">:</span><span class="s2">"auth_corpid_value"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"industry"</span><span class="p">:</span><span class="s2">"互联网"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"invite_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"auth_user_info"</span><span class="p">:</span><span class="w">
@@ -1219,6 +1220,10 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 <tr>
 <td>invite_code</td>
 <td>表示邀请码，只有填写过且是ISV自己邀请码的数据才会返回,否则值为空字符串</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>表示企业所属行业</td>
 </tr>
 <tr>
 <td>corp_name</td>
@@ -1480,19 +1485,11 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 
 <p>回调接口本地调试方案：由于回调接口需要在外网环境接收钉钉服务器的推送，假如开发者暂时没有外网地址，需要在本地调试回调接口的加解密方案，可以在本地环境构造推送。具体构造参数示例：</p>
 
-<p>URL后面带的参数：signature=5a65ceeef9aab2d149439f82dc191dd6c5cbe2c0&amp;timestamp=1445827045067&amp;nonce=nEXhMP4r</p>
-
-<p>Post参数：{&quot;encrypt&rdquo;:&ldquo;1a3NBxmCFwkCJvfoQ7W
-hJHB+iX3qHPsc9JbaDznE1i03peOk
-1LaOQoRz3+nlyGNhwmwJ3v
-DMG+OzrHMeiZI7gTRWVdUBmfxjZ8Ej23JVYa9VrYeJ5as7XM/Zpu
-lX8NEQis44w53h1qAgnC3PRzM7Zc/D6Ibr0rgUathB6zRHP
-8PYrfgnNOS9PhSBdHlegK+AGGanfwjXuQ9+0pZcy0w9lQ==&rdquo;
-}</p>
-
-<p>Token：123456</p>
-
-<p>数据加密密钥(ENCODING_AES_KEY)：4g5j64qlyl3zvetqxz5jiocdr586fn2zvjpa8zls3ij
+<p>URL后面带的参数：signature=5a65ceeef9aab2d149439f82dc191dd6c5cbe2c0&amp;timestamp=1445827045067&amp;nonce=nEXhMP4r
+Post参数：{&quot;encrypt&rdquo;:&ldquo;1a3NBxmCFwkCJvfoQ7WhJHB+iX3qHPsc9JbaDznE1i03peOk1LaOQoRz3+nlyGNhwmwJ3vDMG+OzrHMeiZI7gTRWVdUBmfxjZ8Ej23JVYa9VrYeJ5as7XM/ZpulX8NEQis44w53h1qAgnC3PRzM7Zc/D6Ibr0rgUathB6zRHP8PYrfgnNOS9PhSBdHlegK+AGGanfwjXuQ9+0pZcy0w9lQ==&rdquo;
+}
+Token：123456
+数据加密密钥(ENCODING_AES_KEY)：4g5j64qlyl3zvetqxz5jiocdr586fn2zvjpa8zls3ij
 suitekey：suite4xxxxxxxxxxxxxxx</p>
 
 <p>ISV接入相关接口调试：<a href="https://debug.dingtalk.com/isv.html"><font color=red >ISV接入调试工具</font></a></p>
@@ -1836,12 +1833,16 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
         </span><span class="p">{</span><span class="w">
            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"来往事业部"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"服务端开发组"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="s2">"autoAddUser"</span><span class="err">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1876,6 +1877,119 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <tr>
 <td>parentid</td>
 <td>父部门id，根部门为1</td>
+</tr>
+<tr>
+<td>createDeptGroup</td>
+<td>是否同步创建一个关联此部门的企业群, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>autoAddUser</td>
+<td>当群已经创建后，是否有新人加入部门会自动加入该群, true表示是, false表示不是</td>
+</tr>
+</tbody></table>
+
+<h3 id="获取部门详情">获取部门详情</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/department/get?access_token=ACCESS_TOKEN&amp;id=2</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>是</td>
+<td>部门id</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"来往事业部"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"order"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptHiding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3|4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orgDeptOwner"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptManagerUseridList"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122|manager3211"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>id</td>
+<td>部门id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>部门名称</td>
+</tr>
+<tr>
+<td>parentid</td>
+<td>父部门id，根部门为1</td>
+</tr>
+<tr>
+<td>order</td>
+<td>在父部门中的次序值</td>
+</tr>
+<tr>
+<td>createDeptGroup</td>
+<td>是否同步创建一个关联此部门的企业群, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>autoAddUser</td>
+<td>当群已经创建后，是否有新人加入部门会自动加入该群, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>deptHiding</td>
+<td>是否隐藏部门, true表示隐藏, false表示显示</td>
+</tr>
+<tr>
+<td>deptPerimits</td>
+<td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用&rsquo; &#124; &lsquo;符号进行分割</td>
+</tr>
+<tr>
+<td>orgDeptOwner</td>
+<td>企业群群主</td>
+</tr>
+<tr>
+<td>deptManagerUseridList</td>
+<td>部门的主管列表,取值为由主管的userid组成的字符串，不同的userid使用&rsquo; &#124; &#39;符号进行分割</td>
 </tr>
 </tbody></table>
 
@@ -1984,8 +2098,9 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptManagerUseridList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1111|2222"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptHiding"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deptPerimits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12|23"</span><span class="w">    
-</span><span class="p">}</span><span class="w">
+    </span><span class="nt">"deptPerimits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12|23"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orgDeptOwner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1111"</span><span class="p">,</span><span class="w">   
+</span><span class="err">}</span><span class="w">
 </span></code></pre>
 
 <h6 id="参数说明">参数说明</h6>
@@ -2026,7 +2141,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>id</td>
 <td>long</td>
 <td>是</td>
-<td>部门ID</td>
+<td>部门id</td>
 </tr>
 <tr>
 <td>createDeptGroup</td>
@@ -2044,7 +2159,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>deptManagerUseridList</td>
 <td>String</td>
 <td>否</td>
-<td>部门的主管列表,取值为由主管的userid组成的字符串，不同的userid使用&rsquo; &#124; &lsquo;符号进行分割</td>
+<td>部门的主管列表,取值为由主管的userid组成的字符串，不同的userid使用&rsquo; &#124; &#39;符号进行分割</td>
 </tr>
 <tr>
 <td>deptHiding</td>
@@ -2056,7 +2171,13 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>deptPerimits</td>
 <td>String</td>
 <td>否</td>
-<td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门ID组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+<td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>orgDeptOwner</td>
+<td>String</td>
+<td>否</td>
+<td>企业群群主</td>
 </tr>
 </tbody></table>
 
@@ -2111,7 +2232,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>id</td>
 <td>long</td>
 <td>是</td>
-<td>部门ID。（注：不能删除根部门；不能删除含有子部门、成员的部门）</td>
+<td>部门id。（注：不能删除根部门；不能删除含有子部门、成员的部门）</td>
 </tr>
 </tbody></table>
 
@@ -2177,6 +2298,14 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"tel"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"010-123333"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"workPlace"</span><span class="w"> </span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"remark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13800000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"dingding@aliyun.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderInDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:10, 2:20}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isAdmin"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dingId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WsUDaq7DCVIHc6z1GAsYDSA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isLeaderInDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:true, 2:false}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isHide"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w">
     </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"工程师"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dingtalk.com/abc.jpg"</span><span class="p">,</span><span class="w">
@@ -2223,6 +2352,38 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>备注（ISV不可见）</td>
 </tr>
 <tr>
+<td>mobile</td>
+<td>手机号码</td>
+</tr>
+<tr>
+<td>email</td>
+<td>电子邮箱</td>
+</tr>
+<tr>
+<td>active</td>
+<td>是否已经激活, true表示已激活, false表示未激活</td>
+</tr>
+<tr>
+<td>orderInDepts</td>
+<td>在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值</td>
+</tr>
+<tr>
+<td>isAdmin</td>
+<td>是否为企业的管理员, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>dingId</td>
+<td>钉钉Id</td>
+</tr>
+<tr>
+<td>isLeaderInDepts</td>
+<td>在对应的部门中是否为主管, Map结构的json字符串, key是部门的Id, value是人员在这个部门中是否为主管, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>isHide</td>
+<td>是否号码隐藏, true表示隐藏, false表示不隐藏</td>
+</tr>
+<tr>
 <td>department</td>
 <td>成员所属部门id列表</td>
 </tr>
@@ -2256,6 +2417,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderInDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:10, 2:20}"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w">
     </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"产品经理"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15913215421"</span><span class="p">,</span><span class="w">
@@ -2298,6 +2460,12 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>String</td>
 <td>是</td>
 <td>成员名称。长度为1~64个字符</td>
+</tr>
+<tr>
+<td>orderInDepts</td>
+<td>在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>department</td>
@@ -2396,7 +2564,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w">
-    </span><span class="nt">"orderInDepts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:1}"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"orderInDepts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:10}"</span><span class="p">,</span><span class="w"> 
     </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"产品经理"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15913215421"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"tel"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"010-123333"</span><span class="p">,</span><span class="w">
@@ -2449,7 +2617,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>orderInDepts</td>
 <td>JSONObject</td>
 <td>否</td>
-<td>实际是Map的序列化字符串，Map的Key是deptId，表示部门ID，Map的Value是order，表示排序的值，列表是按order的倒序排列输出的，即从大到小排列输出的</td>
+<td>实际是Map的序列化字符串，Map的Key是deptId，表示部门id，Map的Value是order，表示排序的值，列表是按order的倒序排列输出的，即从大到小排列输出的</td>
 </tr>
 <tr>
 <td>position</td>
@@ -2876,6 +3044,109 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 "mobile": "15913215421",
 mobile | 手机号码
 -->
+
+<h2 id="管理微应用">管理微应用</h2>
+
+<h3 id="创建微应用">创建微应用</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/microapp/create?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="请求包结构体">请求包结构体</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"appIcon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@HIdsabikkhjsdsas"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"appName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试微应用"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"appDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试使用的微应用"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"homepageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://oa.dingtalk.com/?h5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pcHomepageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://oa.dingtalk.com/?pc"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ompLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>appIcon</td>
+<td>String</td>
+<td>是</td>
+<td>微应用的图标。需要调用上传接口将图标上传到钉钉服务器后获取到的mediaId</td>
+</tr>
+<tr>
+<td>appName</td>
+<td>String</td>
+<td>是</td>
+<td>微应用的名称。长度限制为1~10个字符</td>
+</tr>
+<tr>
+<td>appDesc</td>
+<td>String</td>
+<td>是</td>
+<td>微应用的描述。长度限制为1~20个字符</td>
+</tr>
+<tr>
+<td>homepageUrl</td>
+<td>String</td>
+<td>是</td>
+<td>微应用的移动端主页，必须以http开头或https开头</td>
+</tr>
+<tr>
+<td>pcHomepageUrl</td>
+<td>String</td>
+<td>否</td>
+<td>微应用的PC端主页，必须以http开头或https开头，如果不为空则必须与homepageUrl的域名一致</td>
+</tr>
+<tr>
+<td>ompUrl</td>
+<td>String</td>
+<td>否</td>
+<td>微应用的OA后台管理主页，必须以http开头或https开头</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>id</td>
+<td>创建的部门id</td>
+</tr>
+</tbody></table>
 
 <h2 id="群会话接口">群会话接口</h2>
 
@@ -3935,7 +4206,7 @@ mobile | 手机号码
 <td>toparty</td>
 <td>String</td>
 <td>否</td>
-<td>部门ID列表，多个接收者用&rsquo; &#124; &#39;分隔。当touser为@all时忽略本参数 <font color=red >touser或者toparty 二者有一个必填</font></td>
+<td>部门id列表，多个接收者用&rsquo; &#124; &#39;分隔。当touser为@all时忽略本参数 <font color=red >touser或者toparty 二者有一个必填</font></td>
 </tr>
 <tr>
 <td>agentid</td>
