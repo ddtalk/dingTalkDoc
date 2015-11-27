@@ -379,7 +379,7 @@ id | long | 是 | 部门id。（注：不能删除根部门；不能删除含有
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
 
-### 获取成员
+### 获取成员详情
 
 ###### 请求说明
 
@@ -408,6 +408,7 @@ userid | String |是 | 员工在企业内的UserID，企业用来唯一标识用
     "active" : true,
     "orderInDepts" : "{1:10, 2:20}",
     "isAdmin" : false,
+    "isBoss" : false,
     "dingId" : "WsUDaq7DCVIHc6z1GAsYDSA",
     "isLeaderInDepts" : "{1:true, 2:false}",
     "isHide" : false,
@@ -436,6 +437,7 @@ email | 电子邮箱
 active | 是否已经激活, true表示已激活, false表示未激活
 orderInDepts | 在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值
 isAdmin | 是否为企业的管理员, true表示是, false表示不是
+isBoss | 是否为企业的老板, true表示是, false表示不是
 dingId | 钉钉Id
 isLeaderInDepts | 在对应的部门中是否为主管, Map结构的json字符串, key是部门的Id, value是人员在这个部门中是否为主管, true表示是, false表示不是
 isHide | 是否号码隐藏, true表示隐藏, false表示不隐藏
@@ -705,6 +707,7 @@ department_id | long | 是 | 获取的部门id
             "remark" : "",
             "order" : 1,
             "isAdmin": true,
+            "isBoss": false,
             "isHide": true,
             "isLeader": true,
             "name": "张三",
@@ -735,9 +738,10 @@ mobile | 手机号（ISV不可见）
 tel  | 分机号（ISV不可见）
 workPlace | 办公地点（ISV不可见）
 remark | 备注（ISV不可见）
-isAdmin | 是否是管理员
-isHide | 是否隐藏号码
-isLeader | 是否是主管
+isAdmin | 是否是企业的管理员, true表示是, false表示不是
+isBoss | 是否为企业的老板, true表示是, false表示不是
+isHide | 是否隐藏号码, true表示是, false表示不是
+isLeader | 是否是部门的主管, true表示是, false表示不是
 name | 成员名称
 active | 表示该用户是否激活了钉钉
 department | 成员所属部门id列表
@@ -997,6 +1001,266 @@ agentid | String | 是 | 微应用agentId
 ---- | -----
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
+
+### 发送消息到群会话
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/chat/send?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token |String | 是 | 调用接口凭证
+
+###### 返回说明
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+#### 消息类型及数据格式
+
+##### text消息
+
+```
+{
+	"chatid": "chatxxxxxxxxx",
+	"sender": "manager1122",
+    "msgtype": "text",
+    "text": {
+        "content": "张三的请假申请"
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype |String | 是 | 消息类型，此时固定为：text
+
+###### text消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+text.content |String | 是 | 消息内容
+
+##### image消息
+
+```
+{
+	"chatid": "chatxxxxxxxxx",
+	"sender": "manager1122",
+    "msgtype": "image",
+    "image": {
+        "media_id": "MEDIA_ID"
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype |String | 是 | 消息类型，此时固定为：image
+
+###### image消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+image.media_id | String | 是 | 图片媒体文件id，可以调用上传媒体文件接口获取。建议宽600像素 x 400像素，宽高比3：2
+
+##### voice消息
+
+```
+{
+	"chatid": "chatxxxxxxxxx",
+	"sender": "manager1122",
+    "msgtype": "voice",
+    "voice": {
+       "media_id": "MEDIA_ID"
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype |String | 是 | 消息类型，此时固定为：voice
+
+###### voice消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+voice.media_id |String | 是 | 语音媒体文件id，可以调用上传媒体文件接口获取。2MB，播放长度不超过60s，AMR格式
+
+##### file消息
+
+```
+{
+	"chatid": "chatxxxxxxxxx",
+	"sender": "manager1122",
+    "msgtype": "file",
+    "file": {
+       "media_id": "MEDIA_ID"
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype | String| 是 | 消息类型，此时固定为：file
+
+###### file消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+file.media_id |String | 是 | 媒体文件id，可以调用上传媒体文件接口获取。10MB
+
+
+##### link消息
+
+```
+{
+	"chatid": "chatxxxxxxxxx",
+	"sender": "manager1122",
+    "msgtype": "link",
+    "link": {
+        "title": "测试",
+        "text": "测试"
+        "picUrl":"@lALOACZwe2Rk",
+        "messageUrl": "http://s.dingtalk.com/market/dingtalk/error_code.php",
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype | String | 是 | 消息类型，此时固定为：link
+
+###### link消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+link.title | String | 是 | 消息标题
+link.text | String | 是 | 消息描述
+link.pic_url | String | 是 | 图片媒体文件id，可以调用上传媒体文件接口获取
+link.message_url | String | 是 | 消息点击链接地址
+
+##### OA消息
+
+```
+{
+	 "chatid": "chatxxxxxxxxx",
+	 "sender": "manager1122",
+	 "msgtype": "oa",
+     "oa": {
+        "message_url": "https://www.dingtalk.com",
+        "pc_message_url": "https://oa.dingtalk.com",
+        "head": {
+            "bgcolor": "FFBBBBBB",
+            "text": "头部标题"
+        },
+        "body": {
+            "title": "正文标题",
+            "form": [
+                {
+                    "key": "姓名:",
+                    "value": "张三"
+                },
+                {
+                    "key": "年龄:",
+                    "value": "20"
+                },
+                {
+                    "key": "身高:",
+                    "value": "1.8米"
+                },
+                {
+                    "key": "体重:",
+                    "value": "130斤"
+                },
+                {
+                    "key": "学历:",
+                    "value": "本科"
+                },
+                {
+                    "key": "爱好:",
+                    "value": "打球、听音乐"
+                }
+            ],
+            "rich": {
+                "num": "15.6",
+                "unit": "元"
+            },
+            "content": "大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本",
+            "image": "@lADOADmaWMzazQKA",
+            "file_count": "3",
+            "author": "李四 "
+        }
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype |String | 是 | 消息类型，此时固定为：oa
+
+###### OA消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+------ | ------- | ------- | ------
+oa.message_url| String | 是 | 客户端点击消息时跳转到的H5地址
+oa.pc_message_url| String | 否 | PC端点击消息时跳转到的URL地址
+oa.head | String | 是 | 消息头部内容
+oa.head.bgcolor | String | 是 | 消息头部的背景颜色。长度限制为8个英文字符，其中前2为表示透明度，后6位表示颜色值。不要添加0x
+oa.head.text | String | 是 | 消息的头部标题
+oa.body | Array[JSON Object] | 是 | 消息体
+oa.body.title | String | 否 | 消息体的标题
+oa.body.form | Array[JSON Object] | 否 | 消息体的表单，最多显示6个，超过会被隐藏
+oa.body.form.key | String | 否 | 消息体的关键字
+oa.body.form.value | String | 否 | 消息体的关键字对应的值
+oa.body.rich | Array[JSON Object] | 否 | 单行富文本信息
+oa.body.rich.num | String | 否 | 单行富文本信息的数目
+oa.body.rich.unit | String | 否| 单行富文本信息的单位
+oa.body.content | String | 否 | 消息体的内容，最多显示3行
+oa.body.image | String | 否 | 消息体中的图片media_id
+oa.body.file_count | String | 否 | 自定义的附件数目。此数字仅供显示，钉钉不作验证
+oa.body.author | String | 否 | 自定义的作者名字
+
+#### OA消息截图
+
+![oames](https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg)
 
 
 ##通讯录变更事件回调接口
