@@ -1137,6 +1137,8 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 
 <p>https://oapi.dingtalk.com/service/get_auth_info?suite_access_token=xxxx</p>
 
+<p>//注意，是suite_access_token，不是授权方（企业）的access_token</p>
+
 <p>POST数据示例</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"auth_corpid"</span><span class="p">:</span><span class="s2">"auth_corpid_value"</span><span class="p">,</span><span class="w">
@@ -1173,6 +1175,7 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
       </span><span class="nt">"corp_logo_url"</span><span class="p">:</span><span class="s2">"http://xxxx.png"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="s2">"corpid"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"corpid"</span><span class="p">:</span><span class="s2">"auth_corpid_value"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"industry"</span><span class="p">:</span><span class="s2">"互联网"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"invite_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"auth_user_info"</span><span class="p">:</span><span class="w">
@@ -1217,6 +1220,10 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 <tr>
 <td>invite_code</td>
 <td>表示邀请码，只有填写过且是ISV自己邀请码的数据才会返回,否则值为空字符串</td>
+</tr>
+<tr>
+<td>industry</td>
+<td>表示企业所属行业</td>
 </tr>
 <tr>
 <td>corp_name</td>
@@ -1478,16 +1485,12 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 
 <p>回调接口本地调试方案：由于回调接口需要在外网环境接收钉钉服务器的推送，假如开发者暂时没有外网地址，需要在本地调试回调接口的加解密方案，可以在本地环境构造推送。具体构造参数示例：</p>
 
-<p>URL后面带的参数：signature=5a65ceeef9aab2d149439f82dc191dd6c5cbe2c0&amp;timestamp=1445827045067&amp;nonce=nEXhMP4r</p>
-
-<p>Post参数：{&quot;encrypt&rdquo;:&ldquo;1a3NBxmCFwkCJvfoQ7WhJHB+iX3qHPsc9JbaDznE1i03peOk1LaOQoRz3+nlyGNhwmwJ3vDMG+OzrHMeiZI7gTRWVdUBmfxjZ8Ej23JVYa9VrYeJ5as7XM/ZpulX8NEQis44w53h1qAgnC3PRzM7Zc/D6Ibr0rgUathB6zRHP8PYrfgnNOS9PhSBdHlegK+AGGanfwjXuQ9+0pZcy0w9lQ==&rdquo;
-}</p>
-
-<p>Token：123456</p>
-
-<p>数据加密密钥(ENCODING_AES_KEY)：4g5j64qlyl3zvetqxz5jiocdr586fn2zvjpa8zls3ij</p>
-
-<p>suitekey：suite4xxxxxxxxxxxxxxx</p>
+<p>URL后面带的参数：signature=5a65ceeef9aab2d149439f82dc191dd6c5cbe2c0&amp;timestamp=1445827045067&amp;nonce=nEXhMP4r
+Post参数：{&quot;encrypt&rdquo;:&ldquo;1a3NBxmCFwkCJvfoQ7WhJHB+iX3qHPsc9JbaDznE1i03peOk1LaOQoRz3+nlyGNhwmwJ3vDMG+OzrHMeiZI7gTRWVdUBmfxjZ8Ej23JVYa9VrYeJ5as7XM/ZpulX8NEQis44w53h1qAgnC3PRzM7Zc/D6Ibr0rgUathB6zRHP8PYrfgnNOS9PhSBdHlegK+AGGanfwjXuQ9+0pZcy0w9lQ==&rdquo;
+}
+Token：123456
+数据加密密钥(ENCODING_AES_KEY)：4g5j64qlyl3zvetqxz5jiocdr586fn2zvjpa8zls3ij
+suitekey：suite4xxxxxxxxxxxxxxx</p>
 
 <p>ISV接入相关接口调试：<a href="https://debug.dingtalk.com/isv.html"><font color=red >ISV接入调试工具</font></a></p>
 
@@ -1541,109 +1544,27 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
 
-<h2 id="pc-web调用免登">PC web调用免登</h2>
-
-<p>敬请期待</p>
-
 <h2 id="钉钉pc版调用免登">钉钉PC版调用免登</h2>
 
 <p>敬请期待</p>
 
-<h2 id="通过code换取用户身份">通过CODE换取用户身份</h2>
-
-<p>企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的用户信息。</p>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: GET</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/user/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</code></p>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>code</td>
-<td>String</td>
-<td>是</td>
-<td>通过Oauth认证会给URL带上CODE</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-
-<p>正确时返回示例如下：</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">40029</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid code"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USERID"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="s2">"DEVICEID"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"is_sys"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sys_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">|</span><span class="mi">1</span><span class="err">|</span><span class="mi">2</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>userid</td>
-<td>员工在企业内的UserID</td>
-</tr>
-<tr>
-<td>deviceId</td>
-<td>手机设备号,由钉钉在安装时随机产生</td>
-</tr>
-<tr>
-<td>is_sys</td>
-<td>是否是管理员</td>
-</tr>
-<tr>
-<td>sys_level</td>
-<td>级别，三种取值。0:非管理员 1：普通管理员 2：超级管理员</td>
-</tr>
-</tbody></table>
-
-<p>出错时返回示例如下：</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">40029</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid code"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
 <h2 id="oa后台调用管理员免登">OA后台调用管理员免登</h2>
 
-<p>本节的免登服务将在管理员访问微应用后台地址时调用</p>
+<p><strong>前置条件</strong> </p>
 
-<p>所以需要您先配置微应用后台地址</p>
+<p><strong>本节描述的免登服务将在管理员访问微应用后台地址时调用</strong></p>
 
-<p>普通企业在<a href="https://oa.dingtalk.com/#/microApp/microAppList"><font color=red>OA后台</font></a>添加微应用配置如下</p>
+<p>在此之前需要您先配置微应用后台地址</p>
 
-<p><img alt="normalcorp" src="https://img.alicdn.com/tps/TB1YUZjKpXXXXXaXXXXXXXXXXXX-642-734.jpg" /></p>
+<p>普通企业在<a href="https://oa.dingtalk.com/#/microApp/microAppList"><font color=red>OA后台</font></a>添加微应用配置如左图，ISV在<a href="http://console.d.aliyun.com"><font color=red>开发者后台</font></a>添加微应用配置如右图</p>
 
-<p>ISV在<a href="http://console.d.aliyun.com"><font color=red>开发者后台</font></a>添加微应用配置如下</p>
+<p><img alt="oaback" src="https://img.alicdn.com/tps/TB15zWTKFXXXXcEXVXXXXXXXXXX-642-367.jpg" /></p>
 
-<p><img alt="isvmicro" src="https://img.alicdn.com/tps/TB1W23iKpXXXXXiXXXXXXXXXXXX-715-913.jpg" /></p>
+<p>此免登服务，可以<strong>获取当前访问微应用后台地址的企业管理员身份及相关信息。</strong></p>
 
-<p>此免登服务，可以获取当前访问微应用后台地址的企业管理员身份及相关信息。</p>
+<p>使用场景：希望管理员登录到后台地址的时候获取相关管理员信息。</p>
 
-<p>使用场景：希望后台地址只有企业管理员才有权限访问，则调用这个免登接口。</p>
+<p><strong>使用方法</strong> </p>
 
 <p>步骤一：在管理员访问后台地址的时候，企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:</p>
 
@@ -1661,7 +1582,7 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 </tr>
 <tr>
 <td>redirect_url</td>
-<td>重定向地址</td>
+<td>重定向地址(需要urlencode编码)</td>
 </tr>
 </tbody></table>
 
@@ -1677,106 +1598,9 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 
 <p>demo查看:<a href="https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet">https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet</a></p>
 
-<h2 id="通过code换取管理员身份">通过CODE换取管理员身份</h2>
-
-<p>企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。</p>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: GET</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/sso/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</code></p>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td><a href="#获取管理员免登token"><font color=red >获取微应用管理员免登需要的Token</font></a></td>
-</tr>
-<tr>
-<td>code</td>
-<td>String</td>
-<td>是</td>
-<td>通过Oauth认证给URL带上的CODE</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-
-<p>正确时返回示例如下：</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"corp_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"一家公司"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"corpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dingxxxxxx"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"is_sys"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://xxxxxxx.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456@aliyun.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"名称"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0571"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>corp_name</td>
-<td>公司名字</td>
-</tr>
-<tr>
-<td>corpid</td>
-<td>公司corpid</td>
-</tr>
-<tr>
-<td>is_sys</td>
-<td>是否是管理员（在这里是true）</td>
-</tr>
-<tr>
-<td>avatar</td>
-<td>头像地址</td>
-</tr>
-<tr>
-<td>email</td>
-<td>email地址&quot;,</td>
-</tr>
-<tr>
-<td>name</td>
-<td>用户名字,</td>
-</tr>
-<tr>
-<td>userid</td>
-<td>员工在企业内的UserID</td>
-</tr>
-</tbody></table>
-
-<p>出错时返回示例如下：</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">40029</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid code"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
           <h1 id="服务端开发文档">服务端开发文档</h1>
 
-<p>欢迎你，钉钉微应用的开发者，我们很期待你成为钉钉微应用的开发者；</p>
+<p>欢迎您，钉钉微应用的开发者，我们很期待你成为钉钉微应用的开发者；</p>
 
 <p>微应用是 钉钉 为连接企业办公打造的移动入口，通过微应用你可以将企业的业务审批，内部系统，生成，协作，管理，上下游沟通连接到钉钉，更简单和低成本实现企业移动化； 结合钉钉的基础通信能力，让企业应用更活跃，员工更高效，移动化成本更低。</p>
 
@@ -1811,6 +1635,21 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 <aside class="notice">
 POST请求请在HTTP Header中设置 Content-Type:application/json，否则接口调用失败
 </aside>
+
+<h3 id="主动调用的频率限制">主动调用的频率限制</h3>
+
+<p>当你获取到AccessToken时，你的微应用后台就可以成功调用钉钉后台所提供的各种接口或访问相应企业的资源或给成员发消息。</p>
+
+<p>为了防止微应用的程序错误而引发钉钉服务器负载异常，默认情况下，每个服务端调用接口都有一定的频率限制，当超过此限制时，调用对应接口会收到相应错误码。</p>
+
+<p>以下是当前默认的频率限制，钉钉后台可能会根据运营情况调整此阈值：</p>
+
+<ul>
+<li><p>每个企业调用单个接口的频率不可超过1500次/分</p></li>
+<li><p>每个ISV（应用提供商）调用单个接口的频率不可超过2000次/分</p></li>
+<li><p>每个ISV（应用提供商）调用单个企业的单个接口频率不可超过1500次/分</p></li>
+<li><p>每个套件调用单个企业的单个接口频率不可超过1000次/分</p></li>
+</ul>
 
 <h4 id="获取accesstoken">获取AccessToken</h4>
 
@@ -1893,6 +1732,10 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <p>Https请求方式: GET
 <code class="prettyprint">https://oapi.dingtalk.com/sso/gettoken?corpid=id&amp;corpsecret=secrect</code></p>
 
+<p>企业在<a href="https://oa.dingtalk.com/#/microApp/microAppSet"><font color=red>OA后台</font></a>获取sso账号密码如下</p>
+
+<p><img alt="normalcorp" src="https://gw.alicdn.com/tps/TB1OjLbKFXXXXcBXXXXXXXXXXXX-1084-621.png" /></p>
+
 <h6 id="参数说明">参数说明</h6>
 
 <table><thead>
@@ -1913,7 +1756,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>corpsecret</td>
 <td>String</td>
 <td>是</td>
-<td>这里的corpsecret必须填写专属的sso_corpsecret（暂未开放申请）</td>
+<td>这里的corpsecret必须填写专属的sso_corpsecret</td>
 </tr>
 </tbody></table>
 
@@ -1990,12 +1833,16 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
         </span><span class="p">{</span><span class="w">
            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"来往事业部"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"服务端开发组"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="s2">"autoAddUser"</span><span class="err">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2030,6 +1877,119 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <tr>
 <td>parentid</td>
 <td>父部门id，根部门为1</td>
+</tr>
+<tr>
+<td>createDeptGroup</td>
+<td>是否同步创建一个关联此部门的企业群, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>autoAddUser</td>
+<td>当群已经创建后，是否有新人加入部门会自动加入该群, true表示是, false表示不是</td>
+</tr>
+</tbody></table>
+
+<h3 id="获取部门详情">获取部门详情</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/department/get?access_token=ACCESS_TOKEN&amp;id=2</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>是</td>
+<td>部门id</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"来往事业部"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"order"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptHiding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3|4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orgDeptOwner"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptManagerUseridList"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122|manager3211"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>id</td>
+<td>部门id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>部门名称</td>
+</tr>
+<tr>
+<td>parentid</td>
+<td>父部门id，根部门为1</td>
+</tr>
+<tr>
+<td>order</td>
+<td>在父部门中的次序值</td>
+</tr>
+<tr>
+<td>createDeptGroup</td>
+<td>是否同步创建一个关联此部门的企业群, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>autoAddUser</td>
+<td>当群已经创建后，是否有新人加入部门会自动加入该群, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>deptHiding</td>
+<td>是否隐藏部门, true表示隐藏, false表示显示</td>
+</tr>
+<tr>
+<td>deptPerimits</td>
+<td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用&rsquo; &#124; &lsquo;符号进行分割</td>
+</tr>
+<tr>
+<td>orgDeptOwner</td>
+<td>企业群群主</td>
+</tr>
+<tr>
+<td>deptManagerUseridList</td>
+<td>部门的主管列表,取值为由主管的userid组成的字符串，不同的userid使用&rsquo; &#124; &#39;符号进行分割</td>
 </tr>
 </tbody></table>
 
@@ -2138,8 +2098,9 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptManagerUseridList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1111|2222"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptHiding"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deptPerimits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12|23"</span><span class="w">    
-</span><span class="p">}</span><span class="w">
+    </span><span class="nt">"deptPerimits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12|23"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orgDeptOwner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1111"</span><span class="p">,</span><span class="w">   
+</span><span class="err">}</span><span class="w">
 </span></code></pre>
 
 <h6 id="参数说明">参数说明</h6>
@@ -2180,7 +2141,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>id</td>
 <td>long</td>
 <td>是</td>
-<td>部门ID</td>
+<td>部门id</td>
 </tr>
 <tr>
 <td>createDeptGroup</td>
@@ -2198,7 +2159,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>deptManagerUseridList</td>
 <td>String</td>
 <td>否</td>
-<td>部门的主管列表,取值为由主管的userid组成的字符串，不同的userid使用&rsquo; &#124; &lsquo;符号进行分割</td>
+<td>部门的主管列表,取值为由主管的userid组成的字符串，不同的userid使用&rsquo; &#124; &#39;符号进行分割</td>
 </tr>
 <tr>
 <td>deptHiding</td>
@@ -2210,7 +2171,13 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>deptPerimits</td>
 <td>String</td>
 <td>否</td>
-<td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门ID组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+<td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>orgDeptOwner</td>
+<td>String</td>
+<td>否</td>
+<td>企业群群主</td>
 </tr>
 </tbody></table>
 
@@ -2265,7 +2232,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>id</td>
 <td>long</td>
 <td>是</td>
-<td>部门ID。（注：不能删除根部门；不能删除含有子部门、成员的部门）</td>
+<td>部门id。（注：不能删除根部门；不能删除含有子部门、成员的部门）</td>
 </tr>
 </tbody></table>
 
@@ -2292,7 +2259,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 </tr>
 </tbody></table>
 
-<h3 id="获取成员">获取成员</h3>
+<h3 id="获取成员详情">获取成员详情</h3>
 
 <h6 id="请求说明">请求说明</h6>
 
@@ -2331,6 +2298,15 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"tel"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"010-123333"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"workPlace"</span><span class="w"> </span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"remark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"13800000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"dingding@aliyun.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderInDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:10, 2:20}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isAdmin"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isBoss"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dingId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WsUDaq7DCVIHc6z1GAsYDSA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isLeaderInDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:true, 2:false}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isHide"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w">
     </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"工程师"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dingtalk.com/abc.jpg"</span><span class="p">,</span><span class="w">
@@ -2377,6 +2353,42 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>备注（ISV不可见）</td>
 </tr>
 <tr>
+<td>mobile</td>
+<td>手机号码</td>
+</tr>
+<tr>
+<td>email</td>
+<td>电子邮箱</td>
+</tr>
+<tr>
+<td>active</td>
+<td>是否已经激活, true表示已激活, false表示未激活</td>
+</tr>
+<tr>
+<td>orderInDepts</td>
+<td>在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值</td>
+</tr>
+<tr>
+<td>isAdmin</td>
+<td>是否为企业的管理员, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>isBoss</td>
+<td>是否为企业的老板, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>dingId</td>
+<td>钉钉Id</td>
+</tr>
+<tr>
+<td>isLeaderInDepts</td>
+<td>在对应的部门中是否为主管, Map结构的json字符串, key是部门的Id, value是人员在这个部门中是否为主管, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>isHide</td>
+<td>是否号码隐藏, true表示隐藏, false表示不隐藏</td>
+</tr>
+<tr>
 <td>department</td>
 <td>成员所属部门id列表</td>
 </tr>
@@ -2410,6 +2422,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"orderInDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:10, 2:20}"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w">
     </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"产品经理"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15913215421"</span><span class="p">,</span><span class="w">
@@ -2452,6 +2465,12 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>String</td>
 <td>是</td>
 <td>成员名称。长度为1~64个字符</td>
+</tr>
+<tr>
+<td>orderInDepts</td>
+<td>在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>department</td>
@@ -2550,7 +2569,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w">
-    </span><span class="nt">"orderInDepts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:1}"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"orderInDepts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:10}"</span><span class="p">,</span><span class="w"> 
     </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"产品经理"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15913215421"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"tel"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"010-123333"</span><span class="p">,</span><span class="w">
@@ -2603,7 +2622,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>orderInDepts</td>
 <td>JSONObject</td>
 <td>否</td>
-<td>实际是Map的序列化字符串，Map的Key是deptId，表示部门ID，Map的Value是order，表示排序的值，列表是按order的倒序排列输出的，即从大到小排列输出的</td>
+<td>实际是Map的序列化字符串，Map的Key是deptId，表示部门id，Map的Value是order，表示排序的值，列表是按order的倒序排列输出的，即从大到小排列输出的</td>
 </tr>
 <tr>
 <td>position</td>
@@ -2916,6 +2935,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
             </span><span class="nt">"remark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="nt">"order"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="nt">"isAdmin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"isBoss"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nt">"isHide"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nt">"isLeader"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w">
@@ -2982,15 +3002,19 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 </tr>
 <tr>
 <td>isAdmin</td>
-<td>是否是管理员</td>
+<td>是否是企业的管理员, true表示是, false表示不是</td>
+</tr>
+<tr>
+<td>isBoss</td>
+<td>是否为企业的老板, true表示是, false表示不是</td>
 </tr>
 <tr>
 <td>isHide</td>
-<td>是否隐藏号码</td>
+<td>是否隐藏号码, true表示是, false表示不是</td>
 </tr>
 <tr>
 <td>isLeader</td>
-<td>是否是主管</td>
+<td>是否是部门的主管, true表示是, false表示不是</td>
 </tr>
 <tr>
 <td>name</td>
@@ -3030,6 +3054,1054 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 "mobile": "15913215421",
 mobile | 手机号码
 -->
+
+<h2 id="管理微应用">管理微应用</h2>
+
+<h3 id="创建微应用">创建微应用</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/microapp/create?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="请求包结构体">请求包结构体</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"appIcon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@HIdsabikkhjsdsas"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"appName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试微应用"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"appDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试使用的微应用"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"homepageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://oa.dingtalk.com/?h5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pcHomepageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://oa.dingtalk.com/?pc"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ompLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>appIcon</td>
+<td>String</td>
+<td>是</td>
+<td>微应用的图标。需要调用上传接口将图标上传到钉钉服务器后获取到的mediaId</td>
+</tr>
+<tr>
+<td>appName</td>
+<td>String</td>
+<td>是</td>
+<td>微应用的名称。长度限制为1~10个字符</td>
+</tr>
+<tr>
+<td>appDesc</td>
+<td>String</td>
+<td>是</td>
+<td>微应用的描述。长度限制为1~20个字符</td>
+</tr>
+<tr>
+<td>homepageUrl</td>
+<td>String</td>
+<td>是</td>
+<td>微应用的移动端主页，必须以http开头或https开头</td>
+</tr>
+<tr>
+<td>pcHomepageUrl</td>
+<td>String</td>
+<td>否</td>
+<td>微应用的PC端主页，必须以http开头或https开头，如果不为空则必须与homepageUrl的域名一致</td>
+</tr>
+<tr>
+<td>ompUrl</td>
+<td>String</td>
+<td>否</td>
+<td>微应用的OA后台管理主页，必须以http开头或https开头</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>id</td>
+<td>创建的部门id</td>
+</tr>
+</tbody></table>
+
+<h2 id="群会话接口（暂未开放）">群会话接口（暂未开放）</h2>
+
+<p>群会话接口仅限ISV接入使用</p>
+
+<h3 id="创建会话">创建会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/create?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="请求包结构体">请求包结构体</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"群名称"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="s2">"lisi"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>是</td>
+<td>群名称。长度限制为1~20个字符</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>String</td>
+<td>是</td>
+<td>群主userId，员工唯一标识ID；必须为该会话useridlist的成员之一</td>
+</tr>
+<tr>
+<td>useridlist</td>
+<td>String[]</td>
+<td>是</td>
+<td>群成员列表，每次最多操作40人，群人数上限为1000</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxxxxxxxxxxxx"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>群会话的标识ID</td>
+</tr>
+</tbody></table>
+
+<h3 id="修改会话">修改会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/update?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="请求包结构体">请求包结构体</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"群名称"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"add_useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"lisi"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"del_useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"wangwu"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>否</td>
+<td>群名称。长度限制为1~20个字符，不传则不修改</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>String</td>
+<td>否</td>
+<td>群主userId，员工唯一标识ID；必须为该会话成员之一；不传则不修改</td>
+</tr>
+<tr>
+<td>add_useridlist</td>
+<td>String[]</td>
+<td>否</td>
+<td>添加成员列表，每次最多操作40人，群人数上限为1000</td>
+</tr>
+<tr>
+<td>del_useridlist</td>
+<td>String[]</td>
+<td>否</td>
+<td>删除成员列表，每次最多操作40人，群人数上限为1000</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+</tbody></table>
+
+<h3 id="获取会话">获取会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/get?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"chat_info"</span><span class="p">:</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"群名称"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="s2">"lisi"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"agentidlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"12345"</span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>chat_info</td>
+<td>群会话信息</td>
+</tr>
+<tr>
+<td>name</td>
+<td>群名称</td>
+</tr>
+<tr>
+<td>owner</td>
+<td>群主userid</td>
+</tr>
+<tr>
+<td>useridlist</td>
+<td>群成员userId列表</td>
+</tr>
+<tr>
+<td>agentidlist</td>
+<td>群绑定的微应用agentId列表</td>
+</tr>
+</tbody></table>
+
+<h3 id="绑定微应用和群会话">绑定微应用和群会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/bind?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>agentid</td>
+<td>String</td>
+<td>是</td>
+<td>微应用agentId，每个群最多绑定5个微应用，一个群只能被一个ISV套件绑定一次</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+</tbody></table>
+
+<h3 id="解绑微应用和群会话">解绑微应用和群会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/unbind?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>agentid</td>
+<td>String</td>
+<td>是</td>
+<td>微应用agentId</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+</tbody></table>
+
+<h3 id="发送消息到群会话">发送消息到群会话</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/chat/send?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回说明">返回说明</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+</tbody></table>
+
+<h4 id="消息类型及数据格式">消息类型及数据格式</h4>
+
+<h5 id="text消息">text消息</h5>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三的请假申请"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>String</td>
+<td>是</td>
+<td>发送者的userid</td>
+</tr>
+<tr>
+<td>msgtype</td>
+<td>String</td>
+<td>是</td>
+<td>消息类型，此时固定为：text</td>
+</tr>
+</tbody></table>
+
+<h6 id="text消息体格式">text消息体格式</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text.content</td>
+<td>String</td>
+<td>是</td>
+<td>消息内容</td>
+</tr>
+</tbody></table>
+
+<h5 id="image消息">image消息</h5>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>String</td>
+<td>是</td>
+<td>发送者的userid</td>
+</tr>
+<tr>
+<td>msgtype</td>
+<td>String</td>
+<td>是</td>
+<td>消息类型，此时固定为：image</td>
+</tr>
+</tbody></table>
+
+<h6 id="image消息体格式">image消息体格式</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>image.media_id</td>
+<td>String</td>
+<td>是</td>
+<td>图片媒体文件id，可以调用上传媒体文件接口获取。建议宽600像素 x 400像素，宽高比3：2</td>
+</tr>
+</tbody></table>
+
+<h5 id="voice消息">voice消息</h5>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"voice"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"voice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>String</td>
+<td>是</td>
+<td>发送者的userid</td>
+</tr>
+<tr>
+<td>msgtype</td>
+<td>String</td>
+<td>是</td>
+<td>消息类型，此时固定为：voice</td>
+</tr>
+</tbody></table>
+
+<h6 id="voice消息体格式">voice消息体格式</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>voice.media_id</td>
+<td>String</td>
+<td>是</td>
+<td>语音媒体文件id，可以调用上传媒体文件接口获取。2MB，播放长度不超过60s，AMR格式</td>
+</tr>
+</tbody></table>
+
+<h5 id="file消息">file消息</h5>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>String</td>
+<td>是</td>
+<td>发送者的userid</td>
+</tr>
+<tr>
+<td>msgtype</td>
+<td>String</td>
+<td>是</td>
+<td>消息类型，此时固定为：file</td>
+</tr>
+</tbody></table>
+
+<h6 id="file消息体格式">file消息体格式</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file.media_id</td>
+<td>String</td>
+<td>是</td>
+<td>媒体文件id，可以调用上传媒体文件接口获取。10MB</td>
+</tr>
+</tbody></table>
+
+<h5 id="link消息">link消息</h5>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试"</span><span class="w">
+        </span><span class="s2">"picUrl"</span><span class="err">:</span><span class="s2">"@lALOACZwe2Rk"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"messageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s.dingtalk.com/market/dingtalk/error_code.php"</span><span class="p">,</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>String</td>
+<td>是</td>
+<td>发送者的userid</td>
+</tr>
+<tr>
+<td>msgtype</td>
+<td>String</td>
+<td>是</td>
+<td>消息类型，此时固定为：link</td>
+</tr>
+</tbody></table>
+
+<h6 id="link消息体格式">link消息体格式</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>link.title</td>
+<td>String</td>
+<td>是</td>
+<td>消息标题</td>
+</tr>
+<tr>
+<td>link.text</td>
+<td>String</td>
+<td>是</td>
+<td>消息描述</td>
+</tr>
+<tr>
+<td>link.pic_url</td>
+<td>String</td>
+<td>是</td>
+<td>图片媒体文件id，可以调用上传媒体文件接口获取</td>
+</tr>
+<tr>
+<td>link.message_url</td>
+<td>String</td>
+<td>是</td>
+<td>消息点击链接地址</td>
+</tr>
+</tbody></table>
+
+<h5 id="oa消息">OA消息</h5>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+     </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oa"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"oa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"message_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.dingtalk.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pc_message_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://oa.dingtalk.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"head"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"bgcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FFBBBBBB"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"头部标题"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"正文标题"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"form"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"姓名:"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"年龄:"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"身高:"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.8米"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"体重:"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"130斤"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学历:"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"本科"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"爱好:"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"打球、听音乐"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"rich"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.6"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"元"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@lADOADmaWMzazQKA"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"file_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"李四 "</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatid</td>
+<td>String</td>
+<td>是</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>String</td>
+<td>是</td>
+<td>发送者的userid</td>
+</tr>
+<tr>
+<td>msgtype</td>
+<td>String</td>
+<td>是</td>
+<td>消息类型，此时固定为：oa</td>
+</tr>
+</tbody></table>
+
+<h6 id="oa消息体格式">OA消息体格式</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>oa.message_url</td>
+<td>String</td>
+<td>是</td>
+<td>客户端点击消息时跳转到的H5地址</td>
+</tr>
+<tr>
+<td>oa.pc_message_url</td>
+<td>String</td>
+<td>否</td>
+<td>PC端点击消息时跳转到的URL地址</td>
+</tr>
+<tr>
+<td>oa.head</td>
+<td>String</td>
+<td>是</td>
+<td>消息头部内容</td>
+</tr>
+<tr>
+<td>oa.head.bgcolor</td>
+<td>String</td>
+<td>是</td>
+<td>消息头部的背景颜色。长度限制为8个英文字符，其中前2为表示透明度，后6位表示颜色值。不要添加0x</td>
+</tr>
+<tr>
+<td>oa.head.text</td>
+<td>String</td>
+<td>是</td>
+<td>消息的头部标题</td>
+</tr>
+<tr>
+<td>oa.body</td>
+<td>Array[JSON Object]</td>
+<td>是</td>
+<td>消息体</td>
+</tr>
+<tr>
+<td>oa.body.title</td>
+<td>String</td>
+<td>否</td>
+<td>消息体的标题</td>
+</tr>
+<tr>
+<td>oa.body.form</td>
+<td>Array[JSON Object]</td>
+<td>否</td>
+<td>消息体的表单，最多显示6个，超过会被隐藏</td>
+</tr>
+<tr>
+<td>oa.body.form.key</td>
+<td>String</td>
+<td>否</td>
+<td>消息体的关键字</td>
+</tr>
+<tr>
+<td>oa.body.form.value</td>
+<td>String</td>
+<td>否</td>
+<td>消息体的关键字对应的值</td>
+</tr>
+<tr>
+<td>oa.body.rich</td>
+<td>Array[JSON Object]</td>
+<td>否</td>
+<td>单行富文本信息</td>
+</tr>
+<tr>
+<td>oa.body.rich.num</td>
+<td>String</td>
+<td>否</td>
+<td>单行富文本信息的数目</td>
+</tr>
+<tr>
+<td>oa.body.rich.unit</td>
+<td>String</td>
+<td>否</td>
+<td>单行富文本信息的单位</td>
+</tr>
+<tr>
+<td>oa.body.content</td>
+<td>String</td>
+<td>否</td>
+<td>消息体的内容，最多显示3行</td>
+</tr>
+<tr>
+<td>oa.body.image</td>
+<td>String</td>
+<td>否</td>
+<td>消息体中的图片media_id</td>
+</tr>
+<tr>
+<td>oa.body.file_count</td>
+<td>String</td>
+<td>否</td>
+<td>自定义的附件数目。此数字仅供显示，钉钉不作验证</td>
+</tr>
+<tr>
+<td>oa.body.author</td>
+<td>String</td>
+<td>否</td>
+<td>自定义的作者名字</td>
+</tr>
+</tbody></table>
+
+<h4 id="oa消息截图">OA消息截图</h4>
+
+<p><img alt="oames" src="https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg" /></p>
 
 <h2 id="通讯录变更事件回调接口">通讯录变更事件回调接口</h2>
 
@@ -3712,7 +4784,7 @@ mobile | 手机号码
 <td>toparty</td>
 <td>String</td>
 <td>否</td>
-<td>部门ID列表，多个接收者用&rsquo; &#124; &#39;分隔。当touser为@all时忽略本参数 <font color=red >touser或者toparty 二者有一个必填</font></td>
+<td>部门id列表，多个接收者用&rsquo; &#124; &#39;分隔。当touser为@all时忽略本参数 <font color=red >touser或者toparty 二者有一个必填</font></td>
 </tr>
 <tr>
 <td>agentid</td>
@@ -4296,6 +5368,181 @@ mobile | 手机号码
 
 <p>详细信息请查看<a href="#免登服务"><font color=red >免登服务流程</font></a></p>
 
+<h3 id="通过code换取用户身份">通过CODE换取用户身份</h3>
+
+<p>企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的用户信息。<strong>此接口只用于免登服务中用来换取用户信息</strong></p>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/user/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>是</td>
+<td>通过Oauth认证会给URL带上CODE</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+
+<p>正确时返回示例如下：</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">40029</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid code"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USERID"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="s2">"DEVICEID"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_sys"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sys_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">|</span><span class="mi">1</span><span class="err">|</span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userid</td>
+<td>员工在企业内的UserID</td>
+</tr>
+<tr>
+<td>deviceId</td>
+<td>手机设备号,由钉钉在安装时随机产生</td>
+</tr>
+<tr>
+<td>is_sys</td>
+<td>是否是管理员</td>
+</tr>
+<tr>
+<td>sys_level</td>
+<td>级别，三种取值。0:非管理员 1：普通管理员 2：超级管理员</td>
+</tr>
+</tbody></table>
+
+<p>出错时返回示例如下：</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">40029</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid code"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="通过code换取管理员身份">通过CODE换取管理员身份</h3>
+
+<p>企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。<strong>此接口只用于OA后台调用管理员免登中用来换取管理员信息</strong></p>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/sso/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>再次强调，此token不同于一般的accesstoken，需要调用<a href="#获取管理员免登token"><font color=red >获取微应用管理员免登需要的Token</font></a></td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>是</td>
+<td>通过Oauth认证给URL带上的CODE</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+
+<p>正确时返回示例如下：</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"corp_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"一家公司"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"corpid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dingxxxxxx"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_sys"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://xxxxxxx.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456@aliyun.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"名称"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0571"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corp_name</td>
+<td>公司名字</td>
+</tr>
+<tr>
+<td>corpid</td>
+<td>公司corpid</td>
+</tr>
+<tr>
+<td>is_sys</td>
+<td>是否是管理员（在这里是true）</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>头像地址</td>
+</tr>
+<tr>
+<td>email</td>
+<td>email地址&rdquo;,</td>
+</tr>
+<tr>
+<td>name</td>
+<td>用户名字,</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>员工在企业内的UserID</td>
+</tr>
+</tbody></table>
+
+<p>出错时返回示例如下：</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">40029</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid code"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <!-- ### 通过CODE换取用户身份
 
 企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的用户信息。
@@ -4515,7 +5762,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <h3 id="js-sdk">JS-SDK</h3>
 
-<p>JS-SDK 为H5页面提供了一系列调用原生用的UI控件或者服务的JS接口，文档地址如下：</p>
+<p>JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文档地址如下：</p>
 
 <p><a href="#客户端开发文档"><font color=red >客户端开发文档</font></a></p>
 
@@ -5517,7 +6764,9 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <p><a href="http://wsdebug.dingtalk.com/"><font color=red >调试工具</font></a>:<a href="http://wsdebug.dingtalk.com">http://wsdebug.dingtalk.com</a>
 打开左边的超链接后，手机扫描二维码，然后在PC页面上配置jsapi参数，点击执行手机就会给予相应反馈</p>
 
-<p><a href="http://h5.m.laiwang.com/home/ding.html"><font color=red >Demo地址</font></a>:<a href="http://h5.m.laiwang.com/home/ding.html">http://h5.m.laiwang.com/home/ding.html</a></p>
+<p><a href="http://h5.m.laiwang.com/home/ding.html"><font color=red >jsapi使用样例地址</font></a>:<a href="http://h5.m.laiwang.com/home/ding.html">http://h5.m.laiwang.com/home/ding.html</a></p>
+
+<p><a href="https://github.com/outlookxie/app-todolist"><font color=red >微应用Demo地址</font></a>:<a href="https://github.com/outlookxie/app-todolist">https://github.com/outlookxie/app-todolist</a></p>
 
 <h2 id="通用">通用</h2>
 
@@ -8284,6 +9533,22 @@ dd.biz.user.get({
 
 <p>对于一个H5的产品，功能无疑很重要，但是性能同样是用户体验中不可或缺的一环。原本H5的渲染性能就不及native的app，如果不把性能优化做起来，将极大地影响用户使用产品的积极性。所以我们提供了一份H5性能优化的方案，<a href="http://ddtalk.github.io/blog/2015/09/07/dingding-first/"><font color=red>地址</font></a>。</p>
 
+<h2 id="微应用性能评测">微应用性能评测</h2>
+
+<p>目前微应用性能评测流程还在优化阶段。<br></p>
+
+<p>微应用的性能测验主要是对微应用的整体性能进行评分，这其中包括但不仅限于首屏打开时间等指标。<br></p>
+
+<p>大概流程如下：<br></p>
+
+<p>1、微应用进行性能评测前首先需要确保我们的测试帐号被加入到将要测验的企业里。目前的测试帐号有以下几个：<font color=blue > 13291824394, 15210137915，15810497158。 </font> <br></p>
+
+<p>2、<a href="http://mqc.aliyun.com/hfive.htm?from=dingtalk">点击打开测验页面</a> <br></p>
+
+<p>3、然后，按照提示，输入要测试的H5应用地址，下一步选择手机即可开始测验。<br></p>
+
+<p>4、测验完成之后，就可以看到测试报告了。测试报告会给出被测试的微应用的整体打分。这个打分机制我们还在不断优化，后续会根据大家的case制定出一套完善的评分机制。测试报告同时会给出被测验的微应用需要优化的地方，开发者可以根据测试报告的优化建议进行相关优化，待优化完成可以再次发起测验流程，并查看报告。<br></p>
+
 <h2 id="cdn">CDN</h2>
 
 <p>钉钉开放平台为常用的js库提供了CDN加速服务，这样做不仅可以为您节省流量，还可以获得更快的访问速度。</p>
@@ -8437,6 +9702,7 @@ new FileBody(file, ContentType.APPLICATION_OCTET_STREAM, file.getName())).build(
           <h1 id="更新日志">更新日志</h1>
 
 <ul>
+<li><p>2015.11.19 <a href="#群会话接口（暂未开放）"><font color=red >增加群会话接口</font></a></p></li>
 <li><p>2015.11.13 <a href="#oa后台管理员调用免登"><font color=red >增加OA后台管理员免登</font></a></p></li>
 <li><p>2015.11.12 <a href="#ding"><font color=red >dd.biz.ding.post 增加参数</font></a></p></li>
 <li><p>2015.11.5 <a href="#管理通讯录"><font color=red >通讯录接口增加参数</font></a></p></li>

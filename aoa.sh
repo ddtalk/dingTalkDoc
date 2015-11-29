@@ -3,11 +3,12 @@ cp -f -r build/. tmp/
 
 git checkout gh-pages
 
+git pull
+
 cp -f -r tmp/. ./
 
 rm -rf tmp/
 
-git pull
 
 git add .
 
