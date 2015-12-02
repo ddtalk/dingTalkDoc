@@ -1,14 +1,14 @@
 # 服务端开发文档
 
-欢迎您，钉钉微应用的开发者，我们很期待你成为钉钉微应用的开发者；
+欢迎您，钉钉的开发者，我们很期待你成为钉钉开放平台的开发者。
 
-微应用是 钉钉 为连接企业办公打造的移动入口，通过微应用你可以将企业的业务审批，内部系统，生成，协作，管理，上下游沟通连接到钉钉，更简单和低成本实现企业移动化； 结合钉钉的基础通信能力，让企业应用更活跃，员工更高效，移动化成本更低。
+微应用是钉钉为连接企业办公打造的移动入口，通过微应用你可以将企业的业务审批，内部OA，CRM，协作，上下游沟通连接到钉钉，更简单和低成本实现企业移动化； 结合钉钉的基础通信能力，让企业应用更活跃，员工更高效，移动化成本更低。
 
 此文档很适合于:
 
 1. 企业的IT部，了解钉钉如何连接你所在企业的办公；
 
-2. 软件开发服务商，了解如何通过钉钉为您的客户提供定制的企业办公软件，提升你的服务价值。
+2. 服务提供商（ISV），了解如何通过钉钉为您的客户提供定制的企业办公软件，提升你的服务价值。
 
 ## 建立连接
 
@@ -16,7 +16,7 @@
 
 1. 企业应用服务器调用钉钉开放平台提供的接口，以钉钉微应用的身份给企业用户的钉钉账号推送消息，以下称 **主动调用模式**。
 
-2. 钉钉用户在使用企业提供的微应用H5页面时，该页面可以调用钉钉提供的原生接口，使用钉钉开放的终端能力，以下称 **JSAPI模式**。
+2. 钉钉用户在使用企业提供的微应用H5页面时，该页面可以调用钉钉提供的JS接口，使用钉钉开放的终端能力和业务能力，以下称 **JSAPI模式**。
 
 3. 钉钉服务器把用户发送的消息或用户触发的事件推送给企业应用，由企业应用处理，以下称 **回调模式**。
 
@@ -97,25 +97,27 @@ b)错误的Json返回示例:
 }
 ```
 
-### 获取管理员免登Token
+### 获取微应用后台管理Token
+本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>微应用后台管理免登</font>](#oa后台调用管理员免登)服务中使用。
+应用场景示例如下图：
 
-本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>oa后台调用管理员免登</font>](#oa后台调用管理员免登)服务中使用。
+![normalcorp](https://img.alicdn.com/tps/TB1iw.4KFXXXXXoXFXXXXXXXXXX-594-302.png)
 
 ###### 请求说明
 
 Https请求方式: GET
-`https://oapi.dingtalk.com/sso/gettoken?corpid=id&corpsecret=secrect`
+`https://oapi.dingtalk.com/sso/gettoken?corpid=id&corpsecret=ssosecret`
 
-企业在[<font color=red>OA后台</font>](https://oa.dingtalk.com/#/microApp/microAppSet)获取sso账号密码如下
+企业在[<font color=red>OA后台</font>](https://oa.dingtalk.com/#/microApp/microAppSet)获取SSOSecret的方法如下
 
-![normalcorp](https://gw.alicdn.com/tps/TB1OjLbKFXXXXcBXXXXXXXXXXXX-1084-621.png)
+![normalcorp](https://img.alicdn.com/tps/TB1y_xcKVXXXXa6XXXXXXXXXXXX-1084-621.jpg)
 
 ###### 参数说明
 
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
 corpid | String | 是 | 企业Id
-corpsecret | String | 是 | 这里的corpsecret必须填写专属的sso_corpsecret
+corpsecret | String | 是 | 这里必须填写专属的SSOSecret
 
 ###### 返回说明
 
@@ -170,7 +172,7 @@ access_token | String | 是 | 调用接口凭证
     "department": [
         {
            "id": 2,
-            "name": "来往事业部",
+            "name": "钉钉事业部",
             "parentid": 1,
             "createDeptGroup": true,
             "autoAddUser": true
@@ -220,7 +222,7 @@ id | String | 是 | 部门id
     "errcode": 0,
     "errmsg": "ok",
     "id": 2,
-    "name": "来往事业部",
+    "name": "钉钉事业部",
     "order" : 10,
     "parentid": 1,
     "createDeptGroup": true,
@@ -260,7 +262,7 @@ Https请求方式: POST
 
 ```
 {
-    "name": "来往事业部",
+    "name": "钉钉事业部",
     "parentid": "1",
     "order": "1",
     "createDeptGroup": true
@@ -306,7 +308,7 @@ Https请求方式: POST
 
 ```
 {
-    "name": "来往事业部",
+    "name": "钉钉事业部",
     "parentid": "1",
     "order": "1",
     "id": "1",
@@ -810,7 +812,7 @@ id | 创建的部门id
 
 
 ##群会话接口（暂未开放）
-群会话接口仅限ISV接入使用
+
 
 ### 创建会话
 
@@ -944,6 +946,8 @@ agentidlist | 群绑定的微应用agentId列表
 
 ### 绑定微应用和群会话
 
+此接口仅限ISV接入使用
+
 ###### 请求说明
 
 Https请求方式: GET
@@ -973,6 +977,8 @@ errcode | 返回码
 errmsg | 对返回码的文本描述内容
 
 ### 解绑微应用和群会话
+
+此接口仅限ISV接入使用
 
 ###### 请求说明
 
@@ -2000,7 +2006,7 @@ b)错误时返回（这里省略了HTTP首部）：
 
 ## 免登
 
-免登接口是关于用户无需登录，微应用就能拿到用户信息的一个接口。
+免登接口是关于用户无需输入用户名＋密码就可以实现登录，通过权限认证后获取用户身份的接口。
 
 详细信息请查看[<font color=red >免登服务流程</font>](#免登服务)
 
@@ -2053,9 +2059,9 @@ sys_level | 级别，三种取值。0:非管理员 1：普通管理员 2：超�
 }
 ```
 
-### 通过CODE换取管理员身份
+### 通过CODE换取微应用管理员的身份信息
 
-企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。**此接口只用于OA后台调用管理员免登中用来换取管理员信息**
+企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。**此接口只用于微应用后台管理员免登中用来换取管理员信息**
 
 ###### 请求说明
 
@@ -2067,7 +2073,7 @@ Https请求方式: GET
 
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
-access_token | String | 是 | 再次强调，此token不同于一般的accesstoken，需要调用[<font color=red >获取微应用管理员免登需要的Token</font>](#获取管理员免登token)
+access_token | String | 是 | 再次强调，此token不同于一般的accesstoken，需要调用[<font color=red >获取微应用管理员免登需要的AccessToken</font>](#获取管理员免登token)
 code | String | 是 | 通过Oauth认证给URL带上的CODE
 
 ###### 返回结果
