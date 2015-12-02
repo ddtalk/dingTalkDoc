@@ -86,7 +86,7 @@ demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/mas
 
 步骤二：通过[<font color=red >获取微应用后台管理Token</font>](#获取微应用后台管理Token)获取AccessToken
 
-步骤三：使用AccessToken[<font color=red >通过步骤一获取的CODE换取微应用管理员的身份信息</font>](#通过CODE换取微应用管理员的身份信息)
+步骤三：使用AccessToken[<font color=red >通过步骤一获取的CODE换取微应用管理员的身份信息</font>](#通过code换取微应用管理员的身份信息)
 
 
 **更多用法**
