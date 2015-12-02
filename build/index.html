@@ -75,7 +75,7 @@
 
 <p>钉钉开放平台提供了<strong>企业通讯录管理、文件管理、发送企业会话消息</strong>等功能，接口使用可以参考<a href="#服务端开发文档"><font color=red >服务端开发文档</font></a>；</p>
 
-<p>我们定制了微应用专用的运行容器，提供了一组可以调用<strong>钉钉的原生控件和业务逻辑</strong>的JS接口，开发者可以通过这些接口使用钉钉中定制的原生控件或者复用钉钉原有的业务逻辑，降低开发成本，提高微应用在移动客户端的体验。接口使用可以参考<a href="#客户端开发文档"><font color=red >客户端开发文档</font></a>。</p>
+<p>我们定制了微应用专用的运行容器，提供了一组可以调用<strong>钉钉的本地能力和业务逻辑</strong>的JS接口，开发者可以通过这些接口使用钉钉的本地能力或者钉钉的业务逻辑，降低开发成本，提高微应用在移动客户端的体验。接口使用可以参考<a href="#客户端开发文档"><font color=red >客户端开发文档</font></a>。</p>
 
 <p>该指南主要介绍了企业和ISV（服务提供商）如何接入钉钉开放平台，其中涉及到接入过程中使用的工具、与钉钉开放平台相关的概念和接入钉钉开放平台的一些实践方法，以帮助开发者快速开发自己的微应用。</p>
 
@@ -1600,15 +1600,15 @@ suitekey：suite4xxxxxxxxxxxxxxx</p>
 
           <h1 id="服务端开发文档">服务端开发文档</h1>
 
-<p>欢迎您，钉钉微应用的开发者，我们很期待你成为钉钉微应用的开发者；</p>
+<p>欢迎您，钉钉的开发者，我们很期待你成为钉钉开放平台的开发者。</p>
 
-<p>微应用是 钉钉 为连接企业办公打造的移动入口，通过微应用你可以将企业的业务审批，内部系统，生成，协作，管理，上下游沟通连接到钉钉，更简单和低成本实现企业移动化； 结合钉钉的基础通信能力，让企业应用更活跃，员工更高效，移动化成本更低。</p>
+<p>微应用是钉钉为连接企业办公打造的移动入口，通过微应用你可以将企业的业务审批，内部OA，CRM，协作，上下游沟通连接到钉钉，更简单和低成本实现企业移动化； 结合钉钉的基础通信能力，让企业应用更活跃，员工更高效，移动化成本更低。</p>
 
 <p>此文档很适合于:</p>
 
 <ol>
 <li><p>企业的IT部，了解钉钉如何连接你所在企业的办公；</p></li>
-<li><p>软件开发服务商，了解如何通过钉钉为您的客户提供定制的企业办公软件，提升你的服务价值。</p></li>
+<li><p>服务提供商（ISV），了解如何通过钉钉为您的客户提供定制的企业办公软件，提升你的服务价值。</p></li>
 </ol>
 
 <h2 id="建立连接">建立连接</h2>
@@ -1617,7 +1617,7 @@ suitekey：suite4xxxxxxxxxxxxxxx</p>
 
 <ol>
 <li><p>企业应用服务器调用钉钉开放平台提供的接口，以钉钉微应用的身份给企业用户的钉钉账号推送消息，以下称 <strong>主动调用模式</strong>。</p></li>
-<li><p>钉钉用户在使用企业提供的微应用H5页面时，该页面可以调用钉钉提供的原生接口，使用钉钉开放的终端能力，以下称 <strong>JSAPI模式</strong>。</p></li>
+<li><p>钉钉用户在使用企业提供的微应用H5页面时，该页面可以调用钉钉提供的JS接口，使用钉钉开放的终端能力和业务能力，以下称 <strong>JSAPI模式</strong>。</p></li>
 <li><p>钉钉服务器把用户发送的消息或用户触发的事件推送给企业应用，由企业应用处理，以下称 <strong>回调模式</strong>。</p></li>
 </ol>
 
@@ -1723,18 +1723,21 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="获取管理员免登token">获取管理员免登Token</h3>
+<h3 id="获取微应用后台管理token">获取微应用后台管理Token</h3>
 
-<p>本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在<a href="#oa后台调用管理员免登"><font color=red>oa后台调用管理员免登</font></a>服务中使用。</p>
+<p>本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在<a href="#oa后台调用管理员免登"><font color=red>微应用后台管理免登</font></a>服务中使用。
+应用场景示例如下图：</p>
+
+<p><img alt="normalcorp" src="https://img.alicdn.com/tps/TB1iw.4KFXXXXXoXFXXXXXXXXXX-594-302.png" /></p>
 
 <h6 id="请求说明">请求说明</h6>
 
 <p>Https请求方式: GET
-<code class="prettyprint">https://oapi.dingtalk.com/sso/gettoken?corpid=id&amp;corpsecret=secrect</code></p>
+<code class="prettyprint">https://oapi.dingtalk.com/sso/gettoken?corpid=id&amp;corpsecret=ssosecret</code></p>
 
-<p>企业在<a href="https://oa.dingtalk.com/#/microApp/microAppSet"><font color=red>OA后台</font></a>获取sso账号密码如下</p>
+<p>企业在<a href="https://oa.dingtalk.com/#/microApp/microAppSet"><font color=red>OA后台</font></a>获取SSOSecret的方法如下</p>
 
-<p><img alt="normalcorp" src="https://gw.alicdn.com/tps/TB1OjLbKFXXXXcBXXXXXXXXXXXX-1084-621.png" /></p>
+<p><img alt="normalcorp" src="https://img.alicdn.com/tps/TB1y_xcKVXXXXa6XXXXXXXXXXXX-1084-621.jpg" /></p>
 
 <h6 id="参数说明">参数说明</h6>
 
@@ -1756,7 +1759,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>corpsecret</td>
 <td>String</td>
 <td>是</td>
-<td>这里的corpsecret必须填写专属的sso_corpsecret</td>
+<td>这里必须填写专属的SSOSecret</td>
 </tr>
 </tbody></table>
 
@@ -1832,7 +1835,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"来往事业部"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"钉钉事业部"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -1925,7 +1928,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"来往事业部"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"钉钉事业部"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"order"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
     </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -2003,7 +2006,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 
 <h6 id="请求包结构体">请求包结构体</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"来往事业部"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"钉钉事业部"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -2090,7 +2093,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 
 <h6 id="请求包结构体">请求包结构体</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"来往事业部"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"钉钉事业部"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"parentid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -3160,8 +3163,6 @@ mobile | 手机号码
 
 <h2 id="群会话接口（暂未开放）">群会话接口（暂未开放）</h2>
 
-<p>群会话接口仅限ISV接入使用</p>
-
 <h3 id="创建会话">创建会话</h3>
 
 <h6 id="请求说明">请求说明</h6>
@@ -3415,6 +3416,8 @@ mobile | 手机号码
 
 <h3 id="绑定微应用和群会话">绑定微应用和群会话</h3>
 
+<p>此接口仅限ISV接入使用</p>
+
 <h6 id="请求说明">请求说明</h6>
 
 <p>Https请求方式: GET</p>
@@ -3475,6 +3478,8 @@ mobile | 手机号码
 </tbody></table>
 
 <h3 id="解绑微应用和群会话">解绑微应用和群会话</h3>
+
+<p>此接口仅限ISV接入使用</p>
 
 <h6 id="请求说明">请求说明</h6>
 
@@ -5364,7 +5369,7 @@ mobile | 手机号码
 
 <h2 id="免登">免登</h2>
 
-<p>免登接口是关于用户无需登录，微应用就能拿到用户信息的一个接口。</p>
+<p>免登接口是关于用户无需输入用户名＋密码就可以实现登录，通过权限认证后获取用户身份的接口。</p>
 
 <p>详细信息请查看<a href="#免登服务"><font color=red >免登服务流程</font></a></p>
 
@@ -5446,9 +5451,9 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="通过code换取管理员身份">通过CODE换取管理员身份</h3>
+<h3 id="通过code换取微应用管理员的身份信息">通过CODE换取微应用管理员的身份信息</h3>
 
-<p>企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。<strong>此接口只用于OA后台调用管理员免登中用来换取管理员信息</strong></p>
+<p>企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。<strong>此接口只用于微应用后台管理员免登中用来换取管理员信息</strong></p>
 
 <h6 id="请求说明">请求说明</h6>
 
@@ -5470,7 +5475,7 @@ mobile | 手机号码
 <td>access_token</td>
 <td>String</td>
 <td>是</td>
-<td>再次强调，此token不同于一般的accesstoken，需要调用<a href="#获取管理员免登token"><font color=red >获取微应用管理员免登需要的Token</font></a></td>
+<td>再次强调，此token不同于一般的accesstoken，需要调用<a href="#获取管理员免登token"><font color=red >获取微应用管理员免登需要的AccessToken</font></a></td>
 </tr>
 <tr>
 <td>code</td>
