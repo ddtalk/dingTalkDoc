@@ -70,6 +70,26 @@ A:请查看
 A:请检查编码格式，需要是UTF-8编码
 
 
+### Q:使用JSAPI返回签名或者Ticket获取失败
+A:JSAPI返回失败主要有两种错误
+
+[<font color=red >错误码:52011</font>] [jsapi ticket 读取失败]
+
+	1)确认agentId参数正确传入
+	
+	2)确认以传入agentId对应的企业身份获取过jsapi_ticket,也就是调用过get_jsapi_ticket方法
+	
+	3)确认agentId对应的企业身份获取的jsapi_ticket没有过期.即在两个小时的有效期之内
+	
+[<font color=red >错误码:52013</font>][签名校验失败]	
+
+	1)确认agentId参数正确传入
+	
+	2)确认获得的jsapi_ticket为最新的,没有其他服务同时调用get_jsapi_ticket方法,导致生成签名的jsapi_ticket过期
+	
+	3)确认生成jsapi签名正确,可以使用debug工具进行调试https://debug.dingtalk.com/		
+
+
 ### Q:开发遇到困难怎样反馈给你们?
 
 A:我们目前在阿里云开发者论坛开放了一个[<font color=red >钉钉开放平台</font>](http://bbs.aliyun.com/thread/276.html?spm=5176.7189909.0.0.bq46VP)模块，你可以按照以下格式发帖到这个模块，我们会定期搜集和解决。

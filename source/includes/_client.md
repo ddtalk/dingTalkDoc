@@ -61,7 +61,7 @@ js文件版本在添加升级功能时地址会变化，如有需要（比如要
 
 参数 | 参数类型 | 必须 | 说明
 ------ | ----- | ------| ------
-agentId | String |是 | 微应用ID
+agentId | String |是 | 微应用ID，普通企业可以通过OA后台的微应用－设置查看agentID，ISV需要通过调用授权成功后的get_auth_info获取授权方的agentid
 corpId | String |是 | 企业ID
 timeStamp | String |是 | 生成签名的时间戳
 nonceStr | String |是 | 生成签名的随机串
