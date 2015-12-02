@@ -97,7 +97,7 @@ b)错误的Json返回示例:
 }
 ```
 
-### 获取微应用后台管理Token
+#### 获取微应用后台管理Token
 本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>微应用后台管理免登</font>](#oa后台调用管理员免登)服务中使用。
 应用场景示例如下图：
 
