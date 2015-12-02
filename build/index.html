@@ -365,7 +365,7 @@
 
 <p><img alt="createtjbd" src="https://img.alicdn.com/tps/TB1Az_EJFXXXXb3XFXXXXXXXXXX-678-539.jpg" /></p>
 
-<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&quot;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
+<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&ldquo;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
 
 <h5 id="c-点击“确定”按钮进入套件列">c.点击“确定”按钮进入套件列</h5>
 
@@ -471,7 +471,7 @@
 
 <p>在使用回调接口之前您需要了解的是，</p>
 
-<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&ldquo;，</p>
+<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&quot;，</p>
 
 <ul>
 <li><p>回调URL:服务提供商接收推送请求的协议和地址</p></li>
@@ -1436,7 +1436,8 @@ AES加密的buf由16个字节的随机字符串、4个字节的msg长度、明�
 <li>$key对于普通企业开发，填写企业的Corpid</li>
 </ul>
 
-<h5 id="对应于加密方案，解密方案如下：">对应于加密方案，解密方案如下：
+<h5 id="对应于加密方案，解密方案如下：">对应于加密方案，解密方案如下：</h5>
+
 <ul>
 <li>取出返回的JSON中的encrypt字段。</li>
 <li>对密文BASE64解码：aes_msg=Base64_Decode(encrypt)</li>
@@ -4824,7 +4825,8 @@ mobile | 手机号码
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/message/send?access_token=ACCESS_TOKEN</code></p>
 
-<h6 id="参数说明">参数说明
+<h6 id="参数说明">参数说明</h6>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -4841,7 +4843,8 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h6 id="返回说明">返回说明
+<h6 id="返回说明">返回说明</h6>
+
 <p>如果收件人、部门或标签不存在，发送仍然执行，但返回无效的部分。</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4895,7 +4898,8 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h6 id="参数说明">参数说明
+<h6 id="参数说明">参数说明</h6>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -4996,7 +5000,7 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-参数说明&rdquo;>参数说明</h6>
+<h6 id="参数说明">参数说明</h6>
 
 <table><thead>
 <tr>
@@ -5228,7 +5232,8 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h4 id="oa消息截图">OA消息截图
+<h4 id="oa消息截图">OA消息截图</h4>
+
 <p><img alt="oames" src="https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg" /></p>
 
 <h2 id="管理多媒体文件">管理多媒体文件</h2>
@@ -5538,7 +5543,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>email</td>
-<td>email地址&quot;,</td>
+<td>email地址&rdquo;,</td>
 </tr>
 <tr>
 <td>name</td>
@@ -5601,8 +5606,9 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 }
 ``` -->
 
-<h2 id="统计数据">统计数据
-记录统计数据&quot;>记录统计数据</h3>
+<h2 id="统计数据">统计数据</h2>
+
+<h3 id="记录统计数据">记录统计数据</h3>
 
 <p>用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总，提供给开发者。</p>
 
@@ -5701,7 +5707,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <p>企业在使用微应用中的JS API时，需要先从钉钉开放平台接口获取jsapi_ticket生成签名数据，并将最终签名用的部分字段及签名结果返回到H5中，JS API底层将通过这些数据判断H5是否有权限使用JS API。</p>
 
-请求说明&quot;>请求说明</h6>
+<h6 id="请求说明">请求说明</h6>
 
 <p>Https请求方式：GET</p>
 
@@ -8893,7 +8899,7 @@ memberCount | 群聊成员总数
 <span class="p">})</span>
 </code></pre>
 
-收起下拉loading&quot;>收起下拉loading</h3>
+<h3 id="收起下拉loading">收起下拉loading</h3>
 
 <p>0.0.5</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">pullToRefresh</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span>
@@ -8917,7 +8923,7 @@ memberCount | 群聊成员总数
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">webViewBounce</span><span class="p">.</span><span class="nx">disable</span><span class="p">()</span>
 </code></pre>
 
-扫码&quot;>扫码</h2>
+<h2 id="扫码">扫码</h2>
 
 <p>dd.biz</p>
 
@@ -9089,7 +9095,8 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 <span class="p">});</span>
 </code></pre>
 
-<h5 id="参数说明">参数说明
+<h5 id="参数说明">参数说明</h5>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -9314,7 +9321,8 @@ dd.biz.user.get({
 <span class="p">});</span>
 </code></pre>
 
-<h5 id="参数说明">参数说明
+<h5 id="参数说明">参数说明</h5>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -9420,7 +9428,8 @@ dd.biz.user.get({
 </tr>
 </tbody></table>
 
-<h3 id="触发关闭">触发关闭<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">close</span><span class="p">({</span>
+<h3 id="触发关闭">触发关闭</h3>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">close</span><span class="p">({</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="cm">/*result结构
         {}
