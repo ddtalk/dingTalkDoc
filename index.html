@@ -365,7 +365,7 @@
 
 <p><img alt="createtjbd" src="https://img.alicdn.com/tps/TB1Az_EJFXXXXb3XFXXXXXXXXXX-678-539.jpg" /></p>
 
-<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&quot;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
+<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&ldquo;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
 
 <h5 id="c-点击“确定”按钮进入套件列">c.点击“确定”按钮进入套件列</h5>
 
@@ -471,7 +471,7 @@
 
 <p>在使用回调接口之前您需要了解的是，</p>
 
-<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&ldquo;，</p>
+<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&quot;，</p>
 
 <ul>
 <li><p>回调URL:服务提供商接收推送请求的协议和地址</p></li>
@@ -1436,7 +1436,8 @@ AES加密的buf由16个字节的随机字符串、4个字节的msg长度、明�
 <li>$key对于普通企业开发，填写企业的Corpid</li>
 </ul>
 
-<h5 id="对应于加密方案，解密方案如下：">对应于加密方案，解密方案如下：
+<h5 id="对应于加密方案，解密方案如下：">对应于加密方案，解密方案如下：</h5>
+
 <ul>
 <li>取出返回的JSON中的encrypt字段。</li>
 <li>对密文BASE64解码：aes_msg=Base64_Decode(encrypt)</li>
@@ -4824,7 +4825,8 @@ mobile | 手机号码
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/message/send?access_token=ACCESS_TOKEN</code></p>
 
-<h6 id="参数说明">参数说明
+<h6 id="参数说明">参数说明</h6>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -4841,7 +4843,8 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h6 id="返回说明">返回说明
+<h6 id="返回说明">返回说明</h6>
+
 <p>如果收件人、部门或标签不存在，发送仍然执行，但返回无效的部分。</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -4895,7 +4898,8 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h6 id="参数说明">参数说明
+<h6 id="参数说明">参数说明</h6>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -4996,7 +5000,7 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-参数说明&rdquo;>参数说明</h6>
+<h6 id="参数说明">参数说明</h6>
 
 <table><thead>
 <tr>
@@ -5228,7 +5232,8 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h4 id="oa消息截图">OA消息截图
+<h4 id="oa消息截图">OA消息截图</h4>
+
 <p><img alt="oames" src="https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg" /></p>
 
 <h2 id="管理多媒体文件">管理多媒体文件</h2>
@@ -5538,7 +5543,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>email</td>
-<td>email地址&quot;,</td>
+<td>email地址&rdquo;,</td>
 </tr>
 <tr>
 <td>name</td>
@@ -5601,8 +5606,9 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 }
 ``` -->
 
-<h2 id="统计数据">统计数据
-记录统计数据&quot;>记录统计数据</h3>
+<h2 id="统计数据">统计数据</h2>
+
+<h3 id="记录统计数据">记录统计数据</h3>
 
 <p>用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总，提供给开发者。</p>
 
@@ -5701,7 +5707,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <p>企业在使用微应用中的JS API时，需要先从钉钉开放平台接口获取jsapi_ticket生成签名数据，并将最终签名用的部分字段及签名结果返回到H5中，JS API底层将通过这些数据判断H5是否有权限使用JS API。</p>
 
-请求说明&quot;>请求说明</h6>
+<h6 id="请求说明">请求说明</h6>
 
 <p>Https请求方式：GET</p>
 
@@ -6834,7 +6840,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <td>agentId</td>
 <td>String</td>
 <td>是</td>
-<td>微应用ID，普通企业可以通过OA后台的微应用－设置查看agentID，ISV需要通过调用授权成功后的get_auth_info获取授权方的agentid</td>
+<td>微应用ID</td>
 </tr>
 <tr>
 <td>corpId</td>
@@ -8415,7 +8421,7 @@ text | 扫码的内容 -->
 </tr>
 </tbody></table>
 
-<h2 id="聊天">聊天</h2>
+<h2 id="会话">会话</h2>
 
 <p>dd.biz</p>
 
@@ -8468,6 +8474,87 @@ text | 扫码的内容 -->
 <td>会话标题</td>
 </tr>
 </tbody></table>
+
+<h3 id="根据corpid选择会话">根据corpid选择会话</h3>
+
+<p>0.0.11
+2.6版本新增</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">chooseConversationByCorpId</span><span class="p">({</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'xxx'</span><span class="p">,</span> <span class="c1">//企业id</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatId</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>会话标题</td>
+</tr>
+</tbody></table>
+
+<h3 id="根据chatid跳转到对应会话">根据chatid跳转到对应会话</h3>
+
+<p>0.0.11</p>
+
+<p>2.6版本新增</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">toConversation</span><span class="p">({</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'xxx'</span><span class="p">,</span> <span class="c1">//企业id</span>
+    <span class="na">chatId</span><span class="p">:</span><span class="s1">'xxx'</span><span class="p">,</span><span class="c1">//会话Id</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+<tr>
+<td>chatId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明（无）">返回说明（无）</h5>
 
 <!--### 发送消息
 
@@ -8812,7 +8899,7 @@ memberCount | 群聊成员总数
 <span class="p">})</span>
 </code></pre>
 
-收起下拉loading&quot;>收起下拉loading</h3>
+<h3 id="收起下拉loading">收起下拉loading</h3>
 
 <p>0.0.5</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">pullToRefresh</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span>
@@ -8836,7 +8923,7 @@ memberCount | 群聊成员总数
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">webViewBounce</span><span class="p">.</span><span class="nx">disable</span><span class="p">()</span>
 </code></pre>
 
-扫码&quot;>扫码</h2>
+<h2 id="扫码">扫码</h2>
 
 <p>dd.biz</p>
 
@@ -9008,7 +9095,8 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 <span class="p">});</span>
 </code></pre>
 
-<h5 id="参数说明">参数说明
+<h5 id="参数说明">参数说明</h5>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -9233,7 +9321,8 @@ dd.biz.user.get({
 <span class="p">});</span>
 </code></pre>
 
-<h5 id="参数说明">参数说明
+<h5 id="参数说明">参数说明</h5>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -9339,7 +9428,8 @@ dd.biz.user.get({
 </tr>
 </tbody></table>
 
-<h3 id="触发关闭">触发关闭<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">close</span><span class="p">({</span>
+<h3 id="触发关闭">触发关闭</h3>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">close</span><span class="p">({</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="cm">/*result结构
         {}
@@ -9530,6 +9620,12 @@ dd.biz.user.get({
 
 <p><a href="#上传图片（仅支持拍照上传）">biz.util.uploadImageFromCamera</a></p>
 
+<p>//0.0.11</p>
+
+<p><a href="#根据corpid选择会话">biz.chat.chooseConversationByCorpId</a></p>
+
+<p><a href="#根据chatid跳转到对应会话">biz.chat.toConversation</a></p>
+
           <h1 id="微应用体验优化">微应用体验优化</h1>
 
 <h2 id="ui规范">UI规范</h2>
@@ -9675,26 +9771,6 @@ new FileBody(file, ContentType.APPLICATION_OCTET_STREAM, file.getName())).build(
 
 <p>A:请检查编码格式，需要是UTF-8编码</p>
 
-<h3 id="q-使用jsapi返回签名或者ticket获取失败">Q:使用JSAPI返回签名或者Ticket获取失败</h3>
-
-<p>A:JSAPI返回失败主要有两种错误</p>
-
-<p>[<font color=red >错误码:52011</font>] [jsapi ticket 读取失败]</p>
-
-<p>1)确认agentId参数正确传入</p>
-
-<p>2)确认以传入agentId对应的企业身份获取过jsapi_ticket,也就是调用过get_jsapi_ticket方法</p>
-
-<p>3)确认agentId对应的企业身份获取的jsapi_ticket没有过期.即在两个小时的有效期之内</p>
-
-<p>[<font color=red >错误码:52013</font>][签名校验失败]   </p>
-
-<p>1)确认agentId参数正确传入</p>
-
-<p>2)确认获得的jsapi_ticket为最新的,没有其他服务同时调用get_jsapi_ticket方法,导致生成签名的jsapi_ticket过期</p>
-
-<p>3)确认生成jsapi签名正确,可以使用debug工具进行调试https://debug.dingtalk.com/      </p>
-
 <h3 id="q-开发遇到困难怎样反馈给你们">Q:开发遇到困难怎样反馈给你们?</h3>
 
 <p>A:我们目前在阿里云开发者论坛开放了一个<a href="http://bbs.aliyun.com/thread/276.html?spm=5176.7189909.0.0.bq46VP"><font color=red >钉钉开放平台</font></a>模块，你可以按照以下格式发帖到这个模块，我们会定期搜集和解决。</p>
@@ -9732,6 +9808,7 @@ new FileBody(file, ContentType.APPLICATION_OCTET_STREAM, file.getName())).build(
           <h1 id="更新日志">更新日志</h1>
 
 <ul>
+<li><p>2015.11.19 <a href="#根据corpid选择会话"><font color=red >增加会话JSAPI接口</font></a></p></li>
 <li><p>2015.11.19 <a href="#群会话接口（暂未开放）"><font color=red >增加群会话接口</font></a></p></li>
 <li><p>2015.11.13 <a href="#oa后台管理员调用免登"><font color=red >增加OA后台管理员免登</font></a></p></li>
 <li><p>2015.11.12 <a href="#ding"><font color=red >dd.biz.ding.post 增加参数</font></a></p></li>
