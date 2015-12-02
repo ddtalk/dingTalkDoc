@@ -6840,7 +6840,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <td>agentId</td>
 <td>String</td>
 <td>是</td>
-<td>微应用ID</td>
+<td>微应用ID，普通企业可以通过OA后台的微应用－设置查看agentID，ISV需要通过调用授权成功后的get_auth_info获取授权方的agentid</td>
 </tr>
 <tr>
 <td>corpId</td>
@@ -9770,6 +9770,26 @@ new FileBody(file, ContentType.APPLICATION_OCTET_STREAM, file.getName())).build(
 <h3 id="q-新增部门和员工信息为中文时，创建不成功">Q:新增部门和员工信息为中文时，创建不成功</h3>
 
 <p>A:请检查编码格式，需要是UTF-8编码</p>
+
+<h3 id="q-使用jsapi返回签名或者ticket获取失败">Q:使用JSAPI返回签名或者Ticket获取失败</h3>
+
+<p>A:JSAPI返回失败主要有两种错误</p>
+
+<p>[<font color=red >错误码:52011</font>] [jsapi ticket 读取失败]</p>
+
+<p>1)确认agentId参数正确传入</p>
+
+<p>2)确认以传入agentId对应的企业身份获取过jsapi_ticket,也就是调用过get_jsapi_ticket方法</p>
+
+<p>3)确认agentId对应的企业身份获取的jsapi_ticket没有过期.即在两个小时的有效期之内</p>
+
+<p>[<font color=red >错误码:52013</font>][签名校验失败]   </p>
+
+<p>1)确认agentId参数正确传入</p>
+
+<p>2)确认获得的jsapi_ticket为最新的,没有其他服务同时调用get_jsapi_ticket方法,导致生成签名的jsapi_ticket过期</p>
+
+<p>3)确认生成jsapi签名正确,可以使用debug工具进行调试https://debug.dingtalk.com/      </p>
 
 <h3 id="q-开发遇到困难怎样反馈给你们">Q:开发遇到困难怎样反馈给你们?</h3>
 
