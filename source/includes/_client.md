@@ -1164,7 +1164,7 @@ value | String | 文本对应的值
 key | 返回选择的文本
 value | 返回选择的值
 
-## 聊天
+## 会话
 
 dd.biz
 
@@ -1193,6 +1193,57 @@ isConfirm | Boolean | 是否弹出确认窗口，默认为true
 ----- | -----
 cid | 会话id
 title | 会话标题
+
+### 根据corpid选择会话
+
+0.0.11
+2.6版本新增
+
+```javascript
+dd.biz.chat.chooseConversationByCorpId({
+    corpId: 'xxx', //企业id
+    onSuccess : function() {},
+    onFail : function() {}
+})
+```
+##### 参数说明
+
+参数 | 参数类型 | 说明
+----- | ----- | -----
+corpId | String | 企业ID
+
+##### 返回说明
+参数 | 说明
+----- | -----
+chatId | 会话id
+title | 会话标题
+
+
+### 根据chatid跳转到对应会话
+
+0.0.11
+
+2.6版本新增
+
+```javascript
+dd.biz.chat.toConversation({
+    corpId: 'xxx', //企业id
+    chatId:'xxx',//会话Id
+    onSuccess : function() {},
+    onFail : function() {}
+})
+```
+##### 参数说明
+
+参数 | 参数类型 | 说明
+----- | ----- | -----
+corpId | String | 企业ID
+chatId | String | 企业ID
+
+##### 返回说明（无）
+
+
+
 <!--### 发送消息
 
 ```javascript
@@ -1994,6 +2045,12 @@ signature = sha1(str);
 [device.notification.modal](#modal)
 
 [biz.util.uploadImageFromCamera](#上传图片（仅支持拍照上传）)
+
+//0.0.11
+
+[biz.chat.chooseConversationByCorpId](#根据corpid选择会话)
+
+[biz.chat.toConversation](#根据chatid跳转到对应会话)
 
 
 

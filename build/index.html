@@ -8421,7 +8421,7 @@ text | 扫码的内容 -->
 </tr>
 </tbody></table>
 
-<h2 id="聊天">聊天</h2>
+<h2 id="会话">会话</h2>
 
 <p>dd.biz</p>
 
@@ -8474,6 +8474,87 @@ text | 扫码的内容 -->
 <td>会话标题</td>
 </tr>
 </tbody></table>
+
+<h3 id="根据corpid选择会话">根据corpid选择会话</h3>
+
+<p>0.0.11
+2.6版本新增</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">chooseConversationByCorpId</span><span class="p">({</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'xxx'</span><span class="p">,</span> <span class="c1">//企业id</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatId</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>会话标题</td>
+</tr>
+</tbody></table>
+
+<h3 id="根据chatid跳转到对应会话">根据chatid跳转到对应会话</h3>
+
+<p>0.0.11</p>
+
+<p>2.6版本新增</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">toConversation</span><span class="p">({</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'xxx'</span><span class="p">,</span> <span class="c1">//企业id</span>
+    <span class="na">chatId</span><span class="p">:</span><span class="s1">'xxx'</span><span class="p">,</span><span class="c1">//会话Id</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+<tr>
+<td>chatId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明（无）">返回说明（无）</h5>
 
 <!--### 发送消息
 
@@ -9539,6 +9620,12 @@ dd.biz.user.get({
 
 <p><a href="#上传图片（仅支持拍照上传）">biz.util.uploadImageFromCamera</a></p>
 
+<p>//0.0.11</p>
+
+<p><a href="#根据corpid选择会话">biz.chat.chooseConversationByCorpId</a></p>
+
+<p><a href="#根据chatid跳转到对应会话">biz.chat.toConversation</a></p>
+
           <h1 id="微应用体验优化">微应用体验优化</h1>
 
 <h2 id="ui规范">UI规范</h2>
@@ -9721,6 +9808,7 @@ new FileBody(file, ContentType.APPLICATION_OCTET_STREAM, file.getName())).build(
           <h1 id="更新日志">更新日志</h1>
 
 <ul>
+<li><p>2015.11.19 <a href="#根据corpid选择会话"><font color=red >增加会话JSAPI接口</font></a></p></li>
 <li><p>2015.11.19 <a href="#群会话接口（暂未开放）"><font color=red >增加群会话接口</font></a></p></li>
 <li><p>2015.11.13 <a href="#oa后台管理员调用免登"><font color=red >增加OA后台管理员免登</font></a></p></li>
 <li><p>2015.11.12 <a href="#ding"><font color=red >dd.biz.ding.post 增加参数</font></a></p></li>
