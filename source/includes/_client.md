@@ -1186,6 +1186,9 @@ dd.biz
 
 0.0.7
 
+corpid必须是用户所属的企业的corpid
+
+
 ```javascript
 dd.biz.chat.pickConversation({
     corpId: '', //企业id
@@ -1213,6 +1216,8 @@ title | 会话标题
 
 0.0.11
 
+corpid必须是用户所属的企业的corpid
+
 2.6版本新增
 
 ```javascript
@@ -1238,6 +1243,8 @@ title | 会话标题
 ### 根据chatid跳转到对应会话
 
 0.0.11
+
+corpid必须是用户所属的企业的corpid
 
 2.6版本新增
 
@@ -1572,6 +1579,8 @@ dd.biz
 ###选人
 0.0.6
 
+corpid必须是用户所属的企业的corpid
+
 此接口只能对用户进行选择，若要同时选择部门，请使用“选人，选部门”接口。
 
 ```javascript
@@ -1624,6 +1633,9 @@ emplId | 工号
 ###选人，选部门
 
 0.0.6
+
+corpid必须是用户所属的企业的corpid
+
 
 ```javascript
 dd.biz.contact.complexChoose({
@@ -1736,6 +1748,8 @@ avatar | 头像图片url，可能为空 -->
 ### 创建企业群聊天
 
 0.0.4
+
+corpid必须是用户所属的企业的corpid
 
 ```javascript
 dd.biz.contact.createGroup({
