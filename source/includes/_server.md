@@ -2037,7 +2037,7 @@ code | String | 是 | 通过Oauth认证会给URL带上CODE
     "errmsg": "invalid code",
     "userid": "USERID",
     "deviceId":"DEVICEID",
-    "is_sys": "true",
+    "is_sys": true,
     "sys_level": 0|1|2
 }
 ```
