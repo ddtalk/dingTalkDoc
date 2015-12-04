@@ -536,6 +536,9 @@ dd.device.notification.toast({
     onFail : function(err) {}
 })
 ```
+
+<img src="https://img.alicdn.com/tps/TB1jjdJKVXXXXXbXpXXXXXXXXXX-200-356.jpg" alt="图片名称" align=right />
+
 ##### 参数说明
 
 参数 | 参数类型 | 说明
@@ -905,6 +908,8 @@ dd.biz.util.share({
     onFail : function(err) {}
 })
 ```
+<img src="https://img.alicdn.com/tps/TB1L6RvKVXXXXa3XFXXXXXXXXXX-200-356.jpg" alt="图片名称" align=right />
+
 ##### 参数说明
 
 参数 | 参数类型 |  说明
@@ -967,6 +972,8 @@ dd.biz.util.uploadImage({
     onFail : function() {}
 })
 ```
+<img src="https://img.alicdn.com/tps/TB1FhFlKVXXXXbNXVXXXXXXXXXX-200-356.png" alt="图片名称" align=right />
+
 ##### 参数说明
 
 参数 | 参数类型 | 说明
@@ -976,7 +983,7 @@ max | Number | Number为正整数，最多可选个数
 
 
 ### 上传图片（仅支持拍照上传）
-只支持直接拍照上传
+只支持直接拍照上传，即调用这个API之后将直接调起相机界面
 
 ```javascript
 dd.biz.util.uploadImageFromCamera({
@@ -1000,6 +1007,8 @@ compression | Boolean | 图片地址列表
 
 ### 图片浏览器
 
+调用此api，将显示一个图片浏览器
+
 ```javascript
 dd.biz.util.previewImage({
     urls: [String],//图片地址列表
@@ -1010,6 +1019,9 @@ dd.biz.util.previewImage({
     onFail : function() {}
 })
 ```
+
+<img src="https://img.alicdn.com/tps/TB1UjhmKVXXXXboXVXXXXXXXXXX-200-356.jpg" alt="图片名称" align=right />
+
 ##### 参数说明
 
 参数 | 参数类型 |说明
@@ -1056,6 +1068,8 @@ dd.biz.util.datepicker({
     onFail : function() {}
 })
 ```
+<img src="https://img.alicdn.com/tps/TB1bcRLKVXXXXb8XXXXXXXXXXXX-200-356.png" width = "200" height = "355" alt="图片名称" align=right />
+
 ##### 参数说明
 
 参数 | 参数类型 | 说明
@@ -1180,6 +1194,7 @@ dd.biz.chat.pickConversation({
     onFail : function() {}
 })
 ```
+<img src="https://img.alicdn.com/tps/TB1cXJPKVXXXXXFXXXXXXXXXXXX-200-356.png" width = "200" height = "355" alt="图片名称" align=right />
 
 ##### 参数说明
 
@@ -1342,6 +1357,8 @@ dd.biz.ding.post({
     onFail : function() {}
 })
 ```
+<img src="https://img.alicdn.com/tps/TB1h_JtKVXXXXbNXFXXXXXXXXXX-200-356.png" alt="图片名称" align=right />
+
 ##### 参数说明
 
 参数 | 参数类型 | 说明
@@ -1434,6 +1451,8 @@ dd.ui.input.plain({
     }
 })
 ```
+<img src="https://img.alicdn.com/tps/TB1ju0BKVXXXXcrXpXXXXXXXXXX-200-356.png" width = "200" height = "355" alt="图片名称" align=right />
+
 ##### 参数说明
 
 参数 | 参数类型 | 说明
@@ -1576,6 +1595,8 @@ dd.biz.contact.choose({
   onFail : function(err) {}
 });
 ```
+<img src="https://img.alicdn.com/tps/TB1j_JPKVXXXXXbXXXXXXXXXXXX-200-356.png" width = "200" height = "355" alt="图片名称" align=right />
+
 
 ##### 参数说明
 
@@ -1633,6 +1654,10 @@ dd.biz.contact.complexChoose({
   onFail : function(err) {}
 });
 ```
+
+<img src="https://img.alicdn.com/tps/TB1QCXuKVXXXXbWXFXXXXXXXXXX-750-1334.jpg
+" width = "200" height = "355" alt="图片名称" align=right />
+
 
 ##### 参数说明
 
