@@ -67,7 +67,7 @@
 
 js文件版本在添加升级功能时地址会变化，如有需要（比如要使用新增的js-api）,请随时关注地址变更。但是旧版本js文件也将一直可用。
 
-`http://g.alicdn.com/dingding/dingtalk-pc-api/2.2.0/index.js`
+`http://g.alicdn.com/dingding/dingtalk-pc-api/2.3.0/index.js`
 
 
 
