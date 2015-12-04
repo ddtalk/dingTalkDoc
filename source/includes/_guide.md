@@ -1002,6 +1002,20 @@ permanent_code	| 永久授权码，从get_permanent_code接口中获取
 5. 钉钉服务器会把msg消息体明文编码成encrypt，encrypt = Base64_Encode(AES_Encrypt[random(16B) + msg_len(4B) + msg + $key])，是对明文消息msg加密处理后的Base64编码。其中random为16字节的随机字符串；msg_len为4字节的msg长度，网络字节序；msg为消息体明文；$key对于ISV开发来说，填写对应的suitekey，$key对于普通企业开发，填写企业的Corpid。
 最终传给回调者的是encrypt，字段名为encrypt。
 
+### 13: ISV套件上架流程
+
+
+- 云市场商品发布操作介绍文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b113k21o24lrv1kom4un5.pdf)
+
+云市场商品发布操作文档介绍了套件上架的流程。
+
+
+
+- 云市场ISV接入文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b01ron15tb3lm1pukcnh4.pdf)
+
+云市场ISV接入文档描述了第三方应用接入到阿里云市场所须实现的接口定义,服务商通过提供以下接口,即可获 得应用订购成功的信息,从而为购买者开通应用。
+
+
 
 ### 消息体签名
 
