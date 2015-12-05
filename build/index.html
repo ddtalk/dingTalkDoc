@@ -9071,7 +9071,7 @@ memberCount | 群聊成员总数
 <tr>
 <td>users</td>
 <td>Array[String]</td>
-<td>默认选中的用户列表，工号；成功回调中应包含该信息</td>
+<td>默认选中的用户列表，用户id；成功回调中应包含该信息</td>
 </tr>
 <tr>
 <td>corpId</td>
@@ -9108,7 +9108,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 </tr>
 <tr>
 <td>emplId</td>
-<td>工号</td>
+<td>用户id，<a href="#%B7%D6%10X%E6%C5"><font color=red>获取成员详情接口</font></a></td>
 </tr>
 </tbody></table>
 
@@ -9200,23 +9200,12 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 <td>users.avatar</td>
 <td>头像图片url，可能为空</td>
 </tr>
-<tr>
-<td>users.emplId</td>
-<td>工号</td>
-</tr>
-<tr>
-<td>department</td>
-<td>选取的部门</td>
-</tr>
-<tr>
-<td>department.id</td>
-<td>部门id</td>
-</tr>
-<tr>
-<td>department.name</td>
-<td>部门名称</td>
-</tr>
 </tbody></table>
+
+<p>users.emplId 用户id,<a href="#%B7%D6%10X%E6%C5"><font color=red>获取成员详情接口</font></a>
+department | 选取的部门
+department.id | 部门id
+department.name | 部门名称</p>
 
 <!-- ### 选取
 

@@ -1613,7 +1613,7 @@ dd.biz.contact.choose({
 ----- | ----- | -----
 startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
 multiple | Boolean | 是否多选： true多选，false单选； 默认true
-users | Array[String] | 默认选中的用户列表，工号；成功回调中应包含该信息
+users | Array[String] | 默认选中的用户列表，用户id；成功回调中应包含该信息
 corpId | String | 企业id
 max | Number | 人数限制，当multiple为true才生效，可选范围1-1500
 
@@ -1628,7 +1628,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 ------|------
 name | 姓名
 avatar | 头像图片url，可能为空
-emplId | 工号
+emplId | 用户id，[<font color=red>获取成员详情接口</font>](#%B7%D6%10X%E6%C5)
 
 ###选人，选部门
 
@@ -1691,7 +1691,7 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 users | 选取的用户
 users.name | 姓名
 users.avatar | 头像图片url，可能为空
-users.emplId | 工号
+users.emplId 用户id,[<font color=red>获取成员详情接口</font>](#%B7%D6%10X%E6%C5)
 department | 选取的部门
 department.id | 部门id
 department.name | 部门名称
