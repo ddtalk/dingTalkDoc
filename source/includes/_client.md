@@ -1819,6 +1819,19 @@ dd.biz.user.get({
 
 dd.biz
 
+### 设置导航栏颜色
+
+```html
+/**
+ * 设置导航栏颜色为FF5E97F6
+ */
+http://abc.xyz?dd_nav_bgcolor=FF5E97F6
+```
+
+##### 参数说明
+目前设置导航栏颜色是通过url参数进行配置, 其键为dd_nav_bgcolor，其值形式为AARRGGBB
+
+
 ### 设置左侧导航按钮
 只支持iOS
 
