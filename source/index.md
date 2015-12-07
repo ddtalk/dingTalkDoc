@@ -21,6 +21,8 @@ includes:
 
   - blog
   
+  - appstore
+  
   - faq
 
   - updatelog
