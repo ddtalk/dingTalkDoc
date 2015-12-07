@@ -718,7 +718,7 @@ department_id | long | 是 | 获取的部门id
             "position": "工程师",
             "email": "zhangsan@alibaba-inc.com",
             "avatar":  "./dingtalk/abc.jpg",
-            "jobnumber": "111111", 
+            "jobnumber": "111111",
             "extattr": {
                 "爱好":"旅游",
                 "年龄":"24"
@@ -1821,7 +1821,7 @@ CorpId | 发生通讯录变更的企业
   "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",
   "timeStamp":"1783610513",
   "nonce":"123456",
-  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl" 
+  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"
  }
 
 ```
@@ -2082,7 +2082,7 @@ EventType | "check_url"
   "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",
   "timeStamp":"1783610513",
   "nonce":"123456",
-  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl" 
+  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"
   }
 
 ```
@@ -2363,6 +2363,7 @@ msgtype |String | 是 | 消息类型，此时固定为：oa
 参数 | 参数类型 | 必须 | 说明
 ------ | ------- | ------- | ------
 oa.message_url| String | 是 | 客户端点击消息时跳转到的H5地址
+oa.pc_message_url| String | 否 | PC端点击消息时跳转到的H5地址
 oa.head | String | 是 | 消息头部内容
 oa.head.bgcolor | String | 是 | 消息头部的背景颜色。长度限制为8个英文字符，其中前2为表示透明度，后6位表示颜色值。不要添加0x
 oa.head.text | String | 是 | 消息的头部标题
@@ -2651,10 +2652,10 @@ Https请求方式：POST
 access_token | String | 是 | 调用接口凭证
 startTimeMs | String | 是 | 事件发生时间，单位为距离1970的毫秒数
 endTimeMs | String | 是 | 事件结束时间（瞬间结束的，该值和发生事件一致）
-module | String | 否 | 微应用提供区分内部模块的标记 
-originId | String | 否 | 微应用中该记录的主键索引 
-userid | String | 是 | 员工在企业内的UserID，企业用来唯一标识用户的字段 
-agentId | String | 是 | 授权方应用id 
+module | String | 否 | 微应用提供区分内部模块的标记
+originId | String | 否 | 微应用中该记录的主键索引
+userid | String | 是 | 员工在企业内的UserID，企业用来唯一标识用户的字段
+agentId | String | 是 | 授权方应用id
 extension | JSONObject | 否 | 扩展字段，json格式
 
 ######  返回结果
@@ -2769,7 +2770,7 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 40057 | 不合法的callbackurl
 40061 | 设置应用头像失败
 40062 | 不合法的应用模式
-40063 | 不合法的分机号 
+40063 | 不合法的分机号
 40064 | 不合法的工作地址    
 40065 | 不合法的备注  
 40066 | 不合法的部门列表
@@ -2876,16 +2877,16 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 51007 | 跳转获取用户企业身份失败
 51008 | 跳转url解码失败
 51009 | 要跳转的地址不是标准url
-52010 | 无效的corpid 
-52011 | jsapi ticket 读取失败 
-52012 | jsapi 签名生成失败 
-52013 | 签名校验失败 
-52014 | 无效的url参数 
-52015 | 无效的随机字符串参数 
-52016 | 无效的签名参数 
-52017 | 无效的jsapi列表参数 
-52018 | 无效的时间戳 
-52019 | 无效的agentid 
+52010 | 无效的corpid
+52011 | jsapi ticket 读取失败
+52012 | jsapi 签名生成失败
+52013 | 签名校验失败
+52014 | 无效的url参数
+52015 | 无效的随机字符串参数
+52016 | 无效的签名参数
+52017 | 无效的jsapi列表参数
+52018 | 无效的时间戳
+52019 | 无效的agentid
 60001 | 不合法的部门名称
 60002 | 部门层级深度超过限制
 60003 | 部门不存在
@@ -2920,13 +2921,13 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 60119 | 不合法的position
 60120 | 用户已禁用
 60121 | 找不到该用户
-60122 | 不合法的extattr 
+60122 | 不合法的extattr
 60123 | 不合法的jobnumber
 70001 | 企业不存在或者已经被解散
-70002 | 获取套件下的微应用失败 
+70002 | 获取套件下的微应用失败
 70003 | agentid对应微应用不存在
-70004 | 企业下没有对应该agentid的微应用 
-70005 | ISV激活套件失败 
+70004 | 企业下没有对应该agentid的微应用
+70005 | ISV激活套件失败
 71006 | 回调地址已经存在
 71007 | 回调地址已不存在
 71008 | 回调call_back_tag必须在指定的call_back_tag列表中
