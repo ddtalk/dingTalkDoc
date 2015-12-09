@@ -921,8 +921,8 @@ content | String | 分享内容
 image | String |分享的图片
 
 
-### ut打点
-
+### ut数据埋点
+ISV与钉钉进行数据对接的数据埋点接口，用于采集用户数据，ISV可根据微应用中关键操作进行埋点
 ```javascript
 dd.biz.util.ut({
     key: String,//打点名
@@ -937,8 +937,8 @@ dd.biz.util.ut({
 
 参数 | 参数类型 | 说明
 ----- | ----- | -----
-key | String | 打点名
-value | String | 打点传值
+key | String | 打点名，目前建议值open_micro_general_operat
+value | String | 打点传值，必须传入’corpId':'传入corpId','agentId':'传入agentId','type':'传入type’；type(由isv自由提供的点击类型，默认可以传空)
 
 
 <!--### 选取图片[暂不开放]
