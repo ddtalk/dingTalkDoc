@@ -365,7 +365,7 @@
 
 <p><img alt="createtjbd" src="https://img.alicdn.com/tps/TB1Az_EJFXXXXb3XFXXXXXXXXXX-678-539.jpg" /></p>
 
-<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&ldquo;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
+<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&quot;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
 
 <h5 id="c-点击“确定”按钮进入套件列">c.点击“确定”按钮进入套件列</h5>
 
@@ -471,7 +471,7 @@
 
 <p>在使用回调接口之前您需要了解的是，</p>
 
-<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&quot;，</p>
+<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&ldquo;，</p>
 
 <ul>
 <li><p>回调URL:服务提供商接收推送请求的协议和地址</p></li>
@@ -1462,7 +1462,7 @@ AES加密的buf由16个字节的随机字符串、4个字节的msg长度、明�
 
 <h3 id="加解密库和demo下载">加解密库和demo下载</h3>
 
-<h4 id="java库和demo">Java库和demo</h4>
+java库和demo&rdquo;>Java库和demo</h4>
 
 <p>首先，您需要做以下准备工作</p>
 
@@ -1483,7 +1483,7 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 
 <p>demo地址：<a href="https://github.com/injekt/openapi-demo-java/blob/master/src/com/alibaba/dingtalk/openapi/servlet">https://github.com/injekt/openapi-demo-java/blob/master/src/com/alibaba/dingtalk/openapi/servlet</a></p>
 
-<h4 id="php库和demo">php库和demo</h4>
+php库和demo&quot;>php库和demo</h4>
 
 <p>库地址：<a href="https://github.com/injekt/openapi-demo-php/tree/master/crypto">https://github.com/injekt/openapi-demo-php/tree/master/crypto</a></p>
 
@@ -4191,6 +4191,11 @@ mobile | 手机号码
 <li>user_add_org : 通讯录用户增加</li>
 <li>user_modify_org : 通讯录用户更改</li>
 <li>user_leave_org : 通讯录用户离职</li>
+<li>org_admin_add ：通讯录用户被设为管理员</li>
+<li>org_admin_remove ：通讯录用户被取消设置管理员</li>
+<li>org_dept_create ： 通讯录企业部门创建</li>
+<li>org_dept_modify ： 通讯录企业部门修改</li>
+<li>org_dept_remove ： 通讯录企业部门删除</li>
 </ul>
 
 <p>POST数据解密后示例
@@ -4213,7 +4218,7 @@ mobile | 手机号码
 </thead><tbody>
 <tr>
 <td>EventType</td>
-<td>事件类型，有三种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;</td>
+<td>事件类型，有八种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -4221,7 +4226,11 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>UserId</td>
-<td>发生变更的userid列表</td>
+<td>用户发生变更的userid列表</td>
+</tr>
+<tr>
+<td>DeptId</td>
+<td>部门发生变更的userid列表</td>
 </tr>
 <tr>
 <td>CorpId</td>
@@ -4309,7 +4318,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有三种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;</td>
+<td>需要监听的事件类型，有八种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -4412,7 +4421,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>需要监听的事件类型，有三种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;</td>
+<td>需要监听的事件类型，有八种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -4438,7 +4447,7 @@ mobile | 手机号码
 
 <h6 id="请求包结构体">请求包结构体</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"call_back_tag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user_add_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_modify_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_leave_org"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"call_back_tag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user_add_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_modify_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_leave_org"</span><span class="p">,</span><span class="s2">"org_admin_add"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_admin_remove"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_create"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_modify"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_remove"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aes_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111lvdhntotr3x9qhlbytb18zyz5z111111111"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.dingtalk.com"</span><span class="w">
@@ -4465,7 +4474,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有三种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;</td>
+<td>需要监听的事件类型，有八种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -4641,11 +4650,15 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>事件类型，有三种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;</td>
+<td>事件类型，有八种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
 </tr>
 <tr>
 <td>userid</td>
 <td>相关员工列表</td>
+</tr>
+<tr>
+<td>deptid</td>
+<td>相关部门列表</td>
 </tr>
 <tr>
 <td>corpid</td>
@@ -4760,8 +4773,7 @@ mobile | 手机号码
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/message/send_to_conversation?access_token=ACCESS_TOKEN</code></p>
 
-<h6 id="参数说明">参数说明</h6>
-
+<h6 id="参数说明">参数说明
 <table><thead>
 <tr>
 <th>参数</th>
@@ -4803,7 +4815,7 @@ mobile | 手机号码
 
 <p>目前支持text、image、voice、file、link、OA消息类型。每个消息都由消息头和消息体组成，企业会话的消息头由touser,toparty,agentid组成。消息体请参见以下各种<a href="#消息类型及数据格式"><font color=red >消息类型</font></a>。</p>
 
-<h6 id="参数说明">参数说明</h6>
+参数说明&rdquo;>参数说明</h6>
 
 <table><thead>
 <tr>
@@ -4874,7 +4886,7 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="消息类型及数据格式">消息类型及数据格式</h2>
+消息类型及数据格式&quot;>消息类型及数据格式</h2>
 
 <h3 id="text消息">text消息</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -5008,8 +5020,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h3 id="link消息">link消息</h3>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h3 id="link消息">link消息<pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"messageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s.dingtalk.com/market/dingtalk/error_code.php"</span><span class="p">,</span><span class="w">
@@ -5256,7 +5267,7 @@ mobile | 手机号码
 
 <p><img alt="oames" src="https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg" /></p>
 
-<h2 id="管理多媒体文件">管理多媒体文件</h2>
+管理多媒体文件&quot;>管理多媒体文件</h2>
 
 <p>企业在使用接口时，对多媒体文件、多媒体消息的获取和调用等操作，是通过media_id来进行的。通过本接口，企业可以上传或下载多媒体文件。</p>
 
@@ -5337,7 +5348,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h6 id="上传的媒体文件限制">上传的媒体文件限制</h6>
+上传的媒体文件限制&quot;>上传的媒体文件限制</h6>
 
 <ul>
 <li>图片（image）:1MB，支持JPG格式</li>
@@ -5379,7 +5390,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h6 id="返回说明">返回说明</h6>
+返回说明&quot;>返回说明</h6>
 
 <p>和普通的http下载相同，请根据http头做相应的处理。</p>
 <pre class="highlight plaintext"><code>  HTTP/1.1 200: OK
@@ -5407,8 +5418,7 @@ mobile | 手机号码
 
 <p>详细信息请查看<a href="#免登服务"><font color=red >免登服务流程</font></a></p>
 
-<h3 id="通过code换取用户身份">通过CODE换取用户身份</h3>
-
+<h3 id="通过code换取用户身份">通过CODE换取用户身份
 <p>企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的用户信息。<strong>此接口只用于免登服务中用来换取用户信息</strong></p>
 
 <h6 id="请求说明">请求说明</h6>
@@ -5485,11 +5495,10 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="通过code换取微应用管理员的身份信息">通过CODE换取微应用管理员的身份信息</h3>
-
+<h3 id="通过code换取微应用管理员的身份信息">通过CODE换取微应用管理员的身份信息
 <p>企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的管理员信息。<strong>此接口只用于微应用后台管理员免登中用来换取管理员信息</strong></p>
 
-<h6 id="请求说明">请求说明</h6>
+请求说明&quot;>请求说明</h6>
 
 <p>Https请求方式: GET</p>
 
@@ -5563,7 +5572,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>email</td>
-<td>email地址&rdquo;,</td>
+<td>email地址&quot;,</td>
 </tr>
 <tr>
 <td>name</td>
@@ -5727,7 +5736,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <p>企业在使用微应用中的JS API时，需要先从钉钉开放平台接口获取jsapi_ticket生成签名数据，并将最终签名用的部分字段及签名结果返回到H5中，JS API底层将通过这些数据判断H5是否有权限使用JS API。</p>
 
-<h6 id="请求说明">请求说明</h6>
+请求说明&quot;>请求说明</h6>
 
 <p>Https请求方式：GET</p>
 
@@ -8056,16 +8065,19 @@ latitude | 该点纬度
 </tr>
 </tbody></table>
 
-<h3 id="ut打点">ut打点</h3>
-<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">ut</span><span class="p">({</span>
-    <span class="na">key</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span><span class="c1">//打点名</span>
-    <span class="na">value</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span><span class="c1">//打点传值</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="cm">/**/</span>
-    <span class="p">},</span>
-    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
-<span class="p">})</span>
-</code></pre>
+<h3 id="ut数据埋点">ut数据埋点</h3>
+
+<p>ISV与钉钉进行数据对接的数据埋点接口，用于采集用户数据，ISV可根据微应用中关键操作进行埋点
+<code class="prettyprint">javascript
+dd.biz.util.ut({
+    key: String,//打点名
+    value: String,//打点传值
+    onSuccess : function() {
+        /**/
+    },
+    onFail : function(err) {}
+})
+</code></p>
 
 <h5 id="参数说明">参数说明</h5>
 
@@ -8079,12 +8091,12 @@ latitude | 该点纬度
 <tr>
 <td>key</td>
 <td>String</td>
-<td>打点名</td>
+<td>打点名，目前建议值open_micro_general_operat</td>
 </tr>
 <tr>
 <td>value</td>
 <td>String</td>
-<td>打点传值</td>
+<td>打点传值，必须传入’corpId&rsquo;:&lsquo;传入corpId&rsquo;,&#39;agentId&rsquo;:&#39;传入agentId&rsquo;,&#39;type&rsquo;:&#39;传入type’；type(由isv自由提供的点击类型，默认可以传空)</td>
 </tr>
 </tbody></table>
 
@@ -8968,8 +8980,7 @@ memberCount | 群聊成员总数
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">webViewBounce</span><span class="p">.</span><span class="nx">disable</span><span class="p">()</span>
 </code></pre>
 
-<h2 id="扫码">扫码</h2>
-
+<h2 id="扫码">扫码
 <p>dd.biz</p>
 
 <p>0.0.6</p>
@@ -9001,8 +9012,7 @@ memberCount | 群聊成员总数
 </tr>
 </tbody></table>
 
-<h5 id="　返回说明">　返回说明</h5>
-
+<h5 id="　返回说明">　返回说明
 <table><thead>
 <tr>
 <th>参数</th>
@@ -9345,7 +9355,7 @@ dd.biz.user.get({
 ```
 -->
 
-<h2 id="导航栏">导航栏</h2>
+导航栏&quot;>导航栏</h2>
 
 <p>dd.biz</p>
 
@@ -9423,8 +9433,7 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 <span class="p">});</span>
 </code></pre>
 
-<h5 id="参数说明">参数说明</h5>
-
+<h5 id="参数说明">参数说明
 <table><thead>
 <tr>
 <th>参数</th>
@@ -9495,9 +9504,8 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 <span class="p">})</span>
 </code></pre>
 
-<h2 id="附录">附录</h2>
-
-<h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
+<h2 id="附录">附录
+js-api权限签名算法&quot;>JS-API权限签名算法</h3>
 
 <p>如果开发者想使用钉钉容器开放的jsapi接口，需要经过以下流程：</p>
 
