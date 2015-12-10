@@ -6924,7 +6924,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <ul>
 <li>所有接口都为异步</li>
 <li>接受一个object类型的参数</li>
-<li>成功回调 onSuccess</li>
+<li>成功回调 onSuccess(某些异步接口的成功回调，将在事件触发时被调用，具体详情请查看相关onSuccess回调时机，未做描述的即为同步接口)</li>
 <li>失败回调 onFail</li>
 </ul>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="err">命名空间</span><span class="p">.</span><span class="err">功能</span><span class="p">.</span><span class="err">方法</span><span class="p">({</span>
@@ -7285,6 +7285,7 @@ document.addEventListener('backbutton', function(e) {
     <span class="na">title</span><span class="p">:</span> <span class="s2">"提示"</span><span class="p">,</span><span class="c1">//可传空</span>
     <span class="na">buttonName</span><span class="p">:</span> <span class="s2">"收到"</span><span class="p">,</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在点击button之后回调</span>
         <span class="cm">/*回调*/</span>
     <span class="p">},</span>
     <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
@@ -7325,6 +7326,7 @@ document.addEventListener('backbutton', function(e) {
     <span class="na">title</span><span class="p">:</span> <span class="s2">"提示"</span><span class="p">,</span>
     <span class="na">buttonLabels</span><span class="p">:</span> <span class="p">[</span><span class="s1">'爱'</span><span class="p">,</span> <span class="s1">'不爱'</span><span class="p">],</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在点击button之后回调</span>
         <span class="cm">/*
         {
             buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
@@ -7383,6 +7385,7 @@ document.addEventListener('backbutton', function(e) {
     <span class="na">title</span><span class="p">:</span> <span class="s2">"提示"</span><span class="p">,</span>
     <span class="na">buttonLabels</span><span class="p">:</span> <span class="p">[</span><span class="s1">'继续'</span><span class="p">,</span> <span class="s1">'不玩了'</span><span class="p">],</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在点击button之后回调</span>
         <span class="cm">/*
         {
             buttonIndex: 0, //被点击按钮的索引值，Number类型，从0开始
@@ -7571,6 +7574,7 @@ document.addEventListener('backbutton', function(e) {
     <span class="na">cancelButton</span><span class="p">:</span> <span class="s1">'取消'</span><span class="p">,</span> <span class="c1">//取消按钮文本</span>
     <span class="na">otherButtons</span><span class="p">:</span> <span class="p">[</span><span class="s2">"孙悟空"</span><span class="p">,</span><span class="s2">"猪八戒"</span><span class="p">,</span><span class="s2">"唐僧"</span><span class="p">,</span><span class="s2">"沙和尚"</span><span class="p">],</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在点击button之后回调</span>
         <span class="cm">/*{
             buttonIndex: 0 //被点击按钮的索引值，Number，从0开始, 取消按钮为-1
         }*/</span>
@@ -7630,6 +7634,7 @@ document.addEventListener('backbutton', function(e) {
     <span class="na">content</span><span class="p">:</span><span class="s2">"1.功能更新2.功能更新;"</span><span class="p">,</span> <span class="c1">//文本内容</span>
     <span class="na">buttonLabels</span><span class="p">:[</span><span class="s2">"了解更多"</span><span class="p">,</span><span class="s2">"知道了"</span><span class="p">],</span><span class="c1">// 最多两个按钮，至少有一个按钮。</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在点击button之后回调</span>
         <span class="cm">/*{
             buttonIndex: 0 //被点击按钮的索引值，Number，从0开始
         }*/</span>
@@ -8021,6 +8026,7 @@ latitude | 该点纬度
     <span class="na">content</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
     <span class="na">image</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在分享完成之后回调</span>
         <span class="cm">/**/</span>
     <span class="p">},</span>
     <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
@@ -8117,10 +8123,13 @@ dd.biz.util.chooseImage({
 <h3 id="上传图片">上传图片</h3>
 
 <p>选择图片+上传，防止恶意上传</p>
+
+<p>将在成功上传之后回调onSuccess方法，返回alicdn上的图片链接。微应用也可以调用<code class="prettyprint">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot;&gt;</code>来自定义上传图片，此标签2.5及以上版本支持。</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">uploadImage</span><span class="p">({</span>
     <span class="na">multiple</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//是否多选，默认false</span>
     <span class="na">max</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">//最多可选个数</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在图片上传成功之后调用</span>
         <span class="cm">/*
         [
           'http://gtms03.alicdn.com/tps/i3/TB1VF6uGFXXXXalaXXXmh5R_VXX-237-236.png'
@@ -8157,18 +8166,22 @@ dd.biz.util.chooseImage({
 <h3 id="上传图片（仅支持拍照上传）">上传图片（仅支持拍照上传）</h3>
 
 <p>只支持直接拍照上传，即调用这个API之后将直接调起相机界面</p>
-<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">uploadImageFromCamera</span><span class="p">({</span>
-    <span class="na">compression</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="c1">//(是否压缩，默认为true)</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cm">/*
+
+<p>比如可以应用在，需要用户上传即时照片的场景。成功上传之后回调onSuccess方法，返回图片链接
+<code class="prettyprint">javascript
+dd.biz.util.uploadImageFromCamera({
+    compression:true,//(是否压缩，默认为true)
+    onSuccess : function(result) {
+         //onSuccess将在图片上传成功之后调用
+        /*
         [
-          'http://gtms03.alicdn.com/tps/i3/TB1VF6uGFXXXXalaXXXmh5R_VXX-237-236.png'
+          &#39;http://gtms03.alicdn.com/tps/i3/TB1VF6uGFXXXXalaXXXmh5R_VXX-237-236.png&#39;
         ]
-        */</span>
-    <span class="p">},</span>
-    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
-<span class="p">})</span>
-</code></pre>
+        */
+    },
+    onFail : function() {}
+})
+</code></p>
 
 <h5 id="参数说明">参数说明</h5>
 
@@ -8250,6 +8263,7 @@ text | 扫码的内容 -->
     <span class="na">format</span><span class="p">:</span> <span class="s1">'yyyy-MM-dd'</span><span class="p">,</span>
     <span class="na">value</span><span class="p">:</span> <span class="s1">'2015-04-17'</span><span class="p">,</span> <span class="c1">//默认显示日期</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在点击完成之后回调</span>
         <span class="cm">/*{
             value: "2015-02-10"
         }
@@ -8301,6 +8315,7 @@ text | 扫码的内容 -->
     <span class="na">format</span><span class="p">:</span> <span class="s1">'HH:mm'</span><span class="p">,</span>
     <span class="na">value</span><span class="p">:</span> <span class="s1">'14:00'</span><span class="p">,</span> <span class="c1">//默认显示时间  0.0.3</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在点击完成之后回调</span>
         <span class="cm">/*{
             value: "10:00"
         }
@@ -8352,6 +8367,7 @@ text | 扫码的内容 -->
     <span class="na">format</span><span class="p">:</span> <span class="s1">'yyyy-MM-dd HH:mm'</span><span class="p">,</span>
     <span class="na">value</span><span class="p">:</span> <span class="s1">'2015-04-17 08:00'</span><span class="p">,</span> <span class="c1">//默认显示</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在点击完成之后回调</span>
         <span class="cm">/*{
             value: "2015-06-10 09:50"
         }
@@ -8408,6 +8424,7 @@ text | 扫码的内容 -->
         <span class="na">value</span><span class="p">:</span> <span class="s1">'234'</span>
     <span class="p">}],</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//onSuccess将在点击完成之后回调</span>
         <span class="cm">/*
         {
             key: '选项2',
@@ -8477,7 +8494,13 @@ text | 扫码的内容 -->
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">pickConversation</span><span class="p">({</span>
     <span class="na">corpId</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//企业id</span>
     <span class="na">isConfirm</span><span class="p">:</span><span class="s1">'true'</span><span class="p">,</span> <span class="c1">//是否弹出确认窗口，默认为true</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在选择结束之后调用</span>
+        <span class="cm">/*{
+            cid: 'xxxx',
+            title:'xxx'
+        }*/</span>
+<span class="p">},</span>
     <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
 <span class="p">})</span>
 </code></pre>
@@ -8532,7 +8555,13 @@ text | 扫码的内容 -->
 <p>2.6版本新增</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">chooseConversationByCorpId</span><span class="p">({</span>
     <span class="na">corpId</span><span class="p">:</span> <span class="s1">'xxx'</span><span class="p">,</span> <span class="c1">//企业id</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">//onSuccess将在选择结束之后调用</span>
+        <span class="cm">/*{
+            chatId: 'xxxx',
+            title:'xxx'
+        }*/</span>
+<span class="p">},</span>
     <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
 <span class="p">})</span>
 </code></pre>
@@ -8700,7 +8729,9 @@ memberCount | 群聊成员总数
         <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">''</span><span class="p">],</span>
     <span class="p">},</span> <span class="c1">//附件信息</span>
     <span class="na">text</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//消息</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//onSuccess将在点击发送之后调用</span>
+    <span class="p">},</span>
     <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
 <span class="p">})</span>
 </code></pre>
@@ -8867,6 +8898,7 @@ memberCount | 群聊成员总数
     <span class="na">placeholder</span><span class="p">:</span> <span class="s1">'说点什么吧'</span><span class="p">,</span> <span class="c1">//占位符</span>
     <span class="na">text</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//默认填充文本</span>
     <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//onSuccess将在点击发送之后调用</span>
         <span class="cm">/*{
             text: String
         }*/</span>
@@ -8987,6 +9019,7 @@ memberCount | 群聊成员总数
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">scan</span><span class="p">({</span>
     <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span><span class="c1">//type为qrCode或者barCode</span>
     <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//onSuccess将在扫码成功之后回调</span>
       <span class="cm">/* data结构
         { 'text': String}
       */</span>
@@ -9043,6 +9076,7 @@ memberCount | 群聊成员总数
   <span class="na">corpId</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">//企业id</span>
   <span class="na">max</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span> <span class="c1">//人数限制，当multiple为true才生效，可选范围1-1500</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//onSuccess将在选人结束，点击确定按钮的时候被回调</span>
   <span class="cm">/* data结构
     [{
       "name": "张三", //姓名
@@ -9132,6 +9166,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
   <span class="na">selectedUsers</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="p">...],</span> <span class="c1">//预选用户</span>
   <span class="na">corpId</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">//企业id</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//onSuccess将在选人，选部门结束，点击确定按钮的时候被回调</span>
   <span class="cm">/* data结构
     {
       "users": [
@@ -9210,12 +9245,23 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 <td>users.avatar</td>
 <td>头像图片url，可能为空</td>
 </tr>
+<tr>
+<td>users.emplId</td>
+<td>用户id,<a href="#%B7%D6%10X%E6%C5"><font color=red>获取成员详情接口</font></a></td>
+</tr>
+<tr>
+<td>department</td>
+<td>选取的部门</td>
+</tr>
+<tr>
+<td>department.id</td>
+<td>部门id</td>
+</tr>
+<tr>
+<td>department.name</td>
+<td>部门名称</td>
+</tr>
 </tbody></table>
-
-<p>users.emplId 用户id,<a href="#%B7%D6%10X%E6%C5"><font color=red>获取成员详情接口</font></a>
-department | 选取的部门
-department.id | 部门id
-department.name | 部门名称</p>
 
 <!-- ### 选取
 
@@ -9382,6 +9428,7 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
         <span class="cm">/*
         {}
         */</span>
+        <span class="c1">//如果control为true，则onSuccess将在发生按钮点击事件被回调</span>
     <span class="p">},</span>
     <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
 <span class="p">});</span>
@@ -9422,12 +9469,12 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setRight</span><span class="p">({</span>
     <span class="na">show</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span><span class="c1">//控制按钮显示， true 显示， false 隐藏， 默认true</span>
     <span class="na">control</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span><span class="c1">//是否控制点击事件，true 控制，false 不控制， 默认false</span>
-    <span class="na">showIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span><span class="c1">//是否显示icon，true 显示， false 不显示，默认true； 注：具体UI以客户端为准</span>
     <span class="na">text</span><span class="p">:</span> <span class="s1">'发送'</span><span class="p">,</span><span class="c1">//控制显示文本，空字符串表示显示默认文本          </span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="cm">/*
         {}
         */</span>
+        <span class="c1">//如果control为true，则onSuccess将在发生按钮点击事件被回调</span>
     <span class="p">},</span>
     <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
 <span class="p">});</span>
@@ -9450,11 +9497,6 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 <td>control</td>
 <td>Boolean</td>
 <td>是否控制点击事件，true 控制，false 不控制， 默认false</td>
-</tr>
-<tr>
-<td>showIcon</td>
-<td>Boolean</td>
-<td>是否显示icon，true 显示，false 不显示，默认true； 注：具体UI以客户端为准</td>
 </tr>
 <tr>
 <td>text</td>
@@ -9490,6 +9532,54 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 <td>title</td>
 <td>String</td>
 <td>控制标题文本，空字符串表示显示默认文本</td>
+</tr>
+</tbody></table>
+
+<h3 id="设置标题栏icon">设置标题栏Icon</h3>
+
+<p>调用此jsapi之后，icon的显示位置在Android和iOS上有所区别,如下图</p>
+
+<ul>
+<li>iOS：显示在导航栏标题的右边，紧靠着标题</li>
+<li>Android：显示在导航栏右侧按钮组的最左边</li>
+</ul>
+
+<p><img alt="setIcon" src="https://img.alicdn.com/tps/TB1ckCRKVXXXXXdXVXXXXXXXXXX-325-117.jpg" /></p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setIcon</span><span class="p">({</span>
+    <span class="na">showIcon</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span><span class="c1">//是否显示icon</span>
+    <span class="na">iconIndex</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="c1">//显示的iconIndex,如图</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*结构
+        {
+        }*/</span>
+        <span class="c1">//点击icon之后将会回调这个函数</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//jsapi调用失败将会回调此函数</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<p><img src="https://img.alicdn.com/tps/TB16nmYKVXXXXXiXFXXXXXXXXXX-184-274.jpg" width = "184" height = "274" alt="图片名称" align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>showIcon</td>
+<td>Boolean</td>
+<td>控制按钮显示， true 显示， false 隐藏， 默认false</td>
+</tr>
+<tr>
+<td>iconIndex</td>
+<td>int</td>
+<td>将要显示的icon的iconIndex（对应关系如右图,有三种icon可选）  注：具体UI以客户端为准</td>
 </tr>
 </tbody></table>
 
