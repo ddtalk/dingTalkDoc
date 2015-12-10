@@ -92,7 +92,7 @@ dd.error(function(error){
 
 * 所有接口都为异步
 * 接受一个object类型的参数
-* 成功回调 onSuccess
+* 成功回调 onSuccess(某些异步接口的成功回调，将在事件触发时被调用，具体详情请查看相关onSuccess回调时机，未做描述的即为同步接口)
 * 失败回调 onFail
 
 ```javascript
@@ -383,6 +383,7 @@ dd.device.notification.alert({
     title: "提示",//可传空
     buttonName: "收到",
     onSuccess : function() {
+    	//onSuccess将在点击button之后回调
         /*回调*/
     },
     onFail : function(err) {}
@@ -409,6 +410,7 @@ dd.device.notification.confirm({
     title: "提示",
     buttonLabels: ['爱', '不爱'],
     onSuccess : function(result) {
+    	//onSuccess将在点击button之后回调
         /*
         {
             buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
@@ -442,6 +444,7 @@ dd.device.notification.prompt({
     title: "提示",
     buttonLabels: ['继续', '不玩了'],
     onSuccess : function(result) {
+        //onSuccess将在点击button之后回调
         /*
         {
             buttonIndex: 0, //被点击按钮的索引值，Number类型，从0开始
@@ -560,6 +563,7 @@ dd.device.notification.actionSheet({
     cancelButton: '取消', //取消按钮文本
     otherButtons: ["孙悟空","猪八戒","唐僧","沙和尚"],
     onSuccess : function(result) {
+        //onSuccess将在点击button之后回调
         /*{
             buttonIndex: 0 //被点击按钮的索引值，Number，从0开始, 取消按钮为-1
         }*/
@@ -595,6 +599,7 @@ dd.device.notification.modal({
     content:"1.功能更新2.功能更新;", //文本内容
     buttonLabels:["了解更多","知道了"],// 最多两个按钮，至少有一个按钮。
     onSuccess : function(result) {
+        //onSuccess将在点击button之后回调
         /*{
             buttonIndex: 0 //被点击按钮的索引值，Number，从0开始
         }*/
@@ -903,6 +908,7 @@ dd.biz.util.share({
     content: String,
     image: String,
     onSuccess : function() {
+        //onSuccess将在分享完成之后回调
         /**/
     },
     onFail : function(err) {}
@@ -923,10 +929,12 @@ image | String |分享的图片
 
 ### ut打点
 
+打点接口将在之后之后出台调用细则，要求微应用在哪些地方进行调用，从而向钉钉服务器上传打点数据。
+
 ```javascript
 dd.biz.util.ut({
     key: String,//打点名
-    value: String,//打点传值
+    value: String/JSONObject,//打点传值
     onSuccess : function() {
         /**/
     },
@@ -938,7 +946,7 @@ dd.biz.util.ut({
 参数 | 参数类型 | 说明
 ----- | ----- | -----
 key | String | 打点名
-value | String | 打点传值
+value | String/JSONObject | 打点传值
 
 
 <!--### 选取图片[暂不开放]
@@ -958,11 +966,14 @@ dd.biz.util.chooseImage({
 ### 上传图片
 选择图片+上传，防止恶意上传
 
+将在成功上传之后回调onSuccess方法，返回alicdn上的图片链接。微应用也可以调用`<input type="file" accept="image/*">`来自定义上传图片，此标签2.5及以上版本支持。
+
 ```javascript
 dd.biz.util.uploadImage({
     multiple: false, //是否多选，默认false
     max: 3, //最多可选个数
     onSuccess : function(result) {
+    	//onSuccess将在图片上传成功之后调用
         /*
         [
           'http://gtms03.alicdn.com/tps/i3/TB1VF6uGFXXXXalaXXXmh5R_VXX-237-236.png'
@@ -985,10 +996,12 @@ max | Number | Number为正整数，最多可选个数
 ### 上传图片（仅支持拍照上传）
 只支持直接拍照上传，即调用这个API之后将直接调起相机界面
 
+比如可以应用在，需要用户上传即时照片的场景。成功上传之后回调onSuccess方法，返回图片链接
 ```javascript
 dd.biz.util.uploadImageFromCamera({
     compression:true,//(是否压缩，默认为true)
     onSuccess : function(result) {
+    	 //onSuccess将在图片上传成功之后调用
         /*
         [
           'http://gtms03.alicdn.com/tps/i3/TB1VF6uGFXXXXalaXXXmh5R_VXX-237-236.png'
@@ -1060,6 +1073,7 @@ dd.biz.util.datepicker({
     format: 'yyyy-MM-dd',
     value: '2015-04-17', //默认显示日期
     onSuccess : function(result) {
+        //onSuccess将在点击完成之后回调
         /*{
             value: "2015-02-10"
         }
@@ -1089,6 +1103,7 @@ dd.biz.util.timepicker({
     format: 'HH:mm',
     value: '14:00', //默认显示时间  0.0.3
     onSuccess : function(result) {
+        //onSuccess将在点击完成之后回调
         /*{
             value: "10:00"
         }
@@ -1118,6 +1133,7 @@ dd.biz.util.datetimepicker({
     format: 'yyyy-MM-dd HH:mm',
     value: '2015-04-17 08:00', //默认显示
     onSuccess : function(result) {
+        //onSuccess将在点击完成之后回调
         /*{
             value: "2015-06-10 09:50"
         }
@@ -1152,6 +1168,7 @@ dd.biz.util.chosen({
         value: '234'
     }],
     onSuccess : function(result) {
+    //onSuccess将在点击完成之后回调
         /*
         {
             key: '选项2',
@@ -1193,7 +1210,13 @@ corpid必须是用户所属的企业的corpid
 dd.biz.chat.pickConversation({
     corpId: '', //企业id
     isConfirm:'true', //是否弹出确认窗口，默认为true
-    onSuccess : function() {},
+    onSuccess : function() {
+    	//onSuccess将在选择结束之后调用
+        /*{
+            cid: 'xxxx',
+            title:'xxx'
+        }*/
+},
     onFail : function() {}
 })
 ```
@@ -1223,7 +1246,13 @@ corpid必须是用户所属的企业的corpid
 ```javascript
 dd.biz.chat.chooseConversationByCorpId({
     corpId: 'xxx', //企业id
-    onSuccess : function() {},
+    onSuccess : function() {
+        	//onSuccess将在选择结束之后调用
+        /*{
+            chatId: 'xxxx',
+            title:'xxx'
+        }*/
+},
     onFail : function() {}
 })
 ```
@@ -1360,7 +1389,9 @@ dd.biz.ding.post({
         images: [''],
     }, //附件信息
     text: '', //消息
-    onSuccess : function() {},
+    onSuccess : function() {
+    //onSuccess将在点击发送之后调用
+    },
     onFail : function() {}
 })
 ```
@@ -1449,6 +1480,7 @@ dd.ui.input.plain({
     placeholder: '说点什么吧', //占位符
     text: '', //默认填充文本
     onSuccess: function(data) {
+    	//onSuccess将在点击发送之后调用
         /*{
             text: String
         }*/
@@ -1551,6 +1583,7 @@ dd.biz
 dd.biz.util.scan({
     type: String,//type为qrCode或者barCode
     onSuccess: function(data) {
+    //onSuccess将在扫码成功之后回调
       /* data结构
         { 'text': String}
       */
@@ -1591,6 +1624,7 @@ dd.biz.contact.choose({
   corpId: String, //企业id
   max: Number, //人数限制，当multiple为true才生效，可选范围1-1500
   onSuccess: function(data) {
+  //onSuccess将在选人结束，点击确定按钮的时候被回调
   /* data结构
     [{
       "name": "张三", //姓名
@@ -1643,6 +1677,7 @@ dd.biz.contact.complexChoose({
   selectedUsers: [String, String, ...], //预选用户
   corpId: String, //企业id
   onSuccess: function(data) {
+  //onSuccess将在选人，选部门结束，点击确定按钮的时候被回调
   /* data结构
     {
       "users": [
@@ -1691,7 +1726,7 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 users | 选取的用户
 users.name | 姓名
 users.avatar | 头像图片url，可能为空
-users.emplId 用户id,[<font color=red>获取成员详情接口</font>](#%B7%D6%10X%E6%C5)
+users.emplId | 用户id,[<font color=red>获取成员详情接口</font>](#%B7%D6%10X%E6%C5)
 department | 选取的部门
 department.id | 部门id
 department.name | 部门名称
@@ -1845,6 +1880,7 @@ dd.biz.navigation.setLeft({
         /*
         {}
         */
+        //如果control为true，则onSuccess将在发生按钮点击事件被回调
     },
     onFail : function(err) {}
 });
@@ -1864,12 +1900,12 @@ text | String | 控制显示文本，空字符串表示显示默认文本
 dd.biz.navigation.setRight({
     show: false,//控制按钮显示， true 显示， false 隐藏， 默认true
     control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
-    showIcon: true,//是否显示icon，true 显示， false 不显示，默认true； 注：具体UI以客户端为准
     text: '发送',//控制显示文本，空字符串表示显示默认文本        	
     onSuccess : function(result) {
         /*
         {}
         */
+        //如果control为true，则onSuccess将在发生按钮点击事件被回调
     },
     onFail : function(err) {}
 });
@@ -1881,7 +1917,6 @@ dd.biz.navigation.setRight({
 ----- | ----- | -----
 show | Boolean | 控制按钮显示， true 显示， false 隐藏， 默认true
 control | Boolean | 是否控制点击事件，true 控制，false 不控制， 默认false
-showIcon | Boolean  | 是否显示icon，true 显示，false 不显示，默认true； 注：具体UI以客户端为准
 text | String | 控制显示文本，空字符串表示显示默认文本
 
 
@@ -1900,12 +1935,50 @@ dd.biz.navigation.setTitle({
     onFail : function(err) {}
 });
 ```
+
+
+
+
+
 ##### 参数说明
 
 参数 | 参数类型 | 说明
 ----- | ----- | -----
 title | String | 控制标题文本，空字符串表示显示默认文本
 
+### 设置标题栏Icon
+调用此jsapi之后，icon的显示位置在Android和iOS上有所区别,如下图
+
+- iOS：显示在导航栏标题的右边，紧靠着标题
+- Android：显示在导航栏右侧按钮组的最左边
+
+![setIcon](https://img.alicdn.com/tps/TB1ckCRKVXXXXXdXVXXXXXXXXXX-325-117.jpg)
+
+
+```javascript
+dd.biz.navigation.setIcon({
+  	showIcon : true,//是否显示icon
+  	iconIndex : 1,//显示的iconIndex,如图
+    onSuccess : function(result) {
+        /*结构
+        {
+        }*/
+        //点击icon之后将会回调这个函数
+    },
+    onFail : function(err) {
+    //jsapi调用失败将会回调此函数
+    }
+});
+```
+
+<img src="https://img.alicdn.com/tps/TB16nmYKVXXXXXiXFXXXXXXXXXX-184-274.jpg" width = "184" height = "274" alt="图片名称" align=right />
+
+##### 参数说明
+
+参数 | 参数类型 | 说明
+----- | ----- | -----
+showIcon | Boolean | 控制按钮显示， true 显示， false 隐藏， 默认false
+iconIndex | int  | 将要显示的icon的iconIndex（对应关系如右图,有三种icon可选）  注：具体UI以客户端为准
 
 ### 触发关闭
 
