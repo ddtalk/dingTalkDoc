@@ -25,6 +25,8 @@ A:首先检查用来生成签名(signature)的jsapi_ticket是否过期（jsapi_t
 
 然后检查生成签名的Url参数，与调用dd.config 所在的url是否一致
 
+(生成签名用的url需要去除hash部分，e.g. 如果当前页面url是http://abc.def/ghi/jkl?m=123&n=456#opq，则用于生成签名的url是http://abc.def/ghi/jkl?m=123&n=456)
+
 可以使用[<font color=red >调试工具</font>](https://debug.dingtalk.com)来生成jsapi_ticket和signature，并和你实际使用的进行对比。
 
 ### Q:上传文件不成功
