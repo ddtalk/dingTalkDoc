@@ -15,6 +15,8 @@ includes:
   
   - client
   
+  - pc
+  
   - cdn
 
   - serverdebug
@@ -29,5 +31,4 @@ includes:
  
 search: false
 --- 
-
 
