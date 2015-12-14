@@ -1566,7 +1566,35 @@ Token：123456</p>
 
 <h2 id="钉钉pc版调用免登">钉钉PC版调用免登</h2>
 
-<p>敬请期待</p>
+<h3 id="使用js-api-推荐使用">使用JS-API(推荐使用)</h3>
+
+<p>步骤一：首先需要获取当前用户的corpid。ISV开发者请在微应用主页地址使用$CORPID$模板参数表示corpid，用户访问微应用的时候钉钉服务器将把$CORPID$替换成用户所属企业的corpid，例如原本的主页地址是http://www.dingtalk.com/index，则能获取用户corpid的主页地址为http://www.dingtalk.com/index?corpid=$CORPID$</p>
+
+<p>步骤二：使用钉钉js-api提供的<a href="#pc版获取免登授权码"><font color=red >PC版获取免登授权码</font></a>接口获取CODE</p>
+
+<p>步骤二：<a href="#通过code换取用户身份"><font color=red >通过CODE换取身份</font></a></p>
+
+<p>demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkPC</p>
+
+<h3 id="使用标准oauth2-0">使用标准OAUTH2.0</h3>
+
+<p><a href="#http://tools.ietf.org/html/rfc6749"><font color=red >什么是OAUTH2.0</font></a></p>
+
+<p>步骤一：企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/connect/oauth2/authorize?appid=CORPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE</code></p>
+
+<p>其中REDIRECT_URI为企业H5地址，钉钉开放平台授权服务器如果判断当前用户属于当前企业时，会再次通过HTTP 302跳转回企业应用的H5地址(即REDIRECT_URI)，并在H5的URL后面追加参数code=CODE&amp;state=STATE,即</p>
+
+<p><code class="prettyprint">REDIRECT_URI?code=CODE&amp;state=abcd1234</code></p>
+
+<p>步骤二：企业在后台解析code参数，获取CODE</p>
+
+<p>步骤三：<a href="#通过code换取用户身份"><font color=red >通过CODE换取身份</font></a></p>
+
+<aside class="notice">
+有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
+</aside>
 
 <h2 id="微应用后台管理免登">微应用后台管理免登</h2>
 
@@ -2981,7 +3009,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
             </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"工程师"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan@alibaba-inc.com"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w">  </span><span class="s2">"./dingtalk/abc.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"extattr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"爱好"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"年龄"</span><span class="p">:</span><span class="s2">"24"</span><span class="w">
@@ -5159,7 +5187,7 @@ mobile | 手机号码
   </span><span class="nt">"msg_signature"</span><span class="p">:</span><span class="s2">"111108bb8e6dbce3c9671d6fdb69d15066227608"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"timeStamp"</span><span class="p">:</span><span class="s2">"1783610513"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w"> 
+  </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w">
  </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -5611,7 +5639,7 @@ mobile | 手机号码
   </span><span class="nt">"msg_signature"</span><span class="p">:</span><span class="s2">"111108bb8e6dbce3c9671d6fdb69d15066227608"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"timeStamp"</span><span class="p">:</span><span class="s2">"1783610513"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w"> 
+  </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -6083,6 +6111,12 @@ mobile | 手机号码
 <td>String</td>
 <td>是</td>
 <td>客户端点击消息时跳转到的H5地址</td>
+</tr>
+<tr>
+<td>oa.pc_message_url</td>
+<td>String</td>
+<td>否</td>
+<td>PC端点击消息时跳转到的H5地址</td>
 </tr>
 <tr>
 <td>oa.head</td>
@@ -10788,6 +10822,1577 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 <p><a href="#根据corpid选择会话">biz.chat.chooseConversationByCorpId</a></p>
 
 <p><a href="#根据chatid跳转到对应会话">biz.chat.toConversation</a></p>
+
+          <h1 id="pc端开发文档">PC端开发文档</h1>
+
+<p>微应用是 钉钉 为连接企业办公打造的办公入口，通过微应用你可以将企业的业务审批，内部系统，生成，协作，管理，上下游沟通连接到钉钉，更简单和低成本实现企业协同；</p>
+
+<p>结合钉钉的基础通信能力，让企业应用更活跃，员工更高效。</p>
+
+<p>钉钉的 PC 端开发文档将为开发者提供调用钉钉基础控件的能力，通过与客户端微应用结合，给用户带来多端的体验。</p>
+
+<h2 id="demo-和调试工具">Demo 和调试工具</h2>
+
+<p>我们提供了Demo和调试工具给您的开发提供方便，如果对调用参数有疑问，请使用调试工具。</p>
+
+<!-- 对jsapi用法有疑问，可查看Demo. -->
+
+<p>调试工具: 点击 <a href="https://t.dingtalk.com/invite/index?code=5b2a85509e&amp;inviterUid=80E166E782C43269">https://t.dingtalk.com/invite/index?code=5b2a85509e&amp;inviterUid=80E166E782C43269</a>申请加入该组织，获得同意后，在 PC 端点击 [工作] - [钉钉API测试]。</p>
+
+<!-- github:`待补充` -->
+
+<h2 id="配置展示形式">配置展示形式</h2>
+
+<h3 id="企业接入">企业接入</h3>
+
+<p>通过访问管理后台<a href="https://oa.dingtalk.com">https://oa.dingtalk.com</a>，点击[微应用]-[新增微应用]，输入 PC 端地址，重新登录即可出现。</p>
+
+<h3 id="isv接入">ISV接入</h3>
+
+<p>参考<a href="http://open.dingtalk.com/doc/index.html?spm=a3140.7785475.0.0.07BTXr#3-创建微应用">创建微应用</a>，配置 pc 端地址即可。</p>
+
+<h3 id="企业会话支持-pc-端打开">企业会话支持 PC 端打开</h3>
+
+<p>参考<a href="http://open.dingtalk.com/doc/index.html?spm=a3140.7785475.0.0.07BTXr#发送企业会话消息">发送企业会话消息</a>，消息体中带入 pc_message_url 即可实现在 PC 端的打开。</p>
+
+<h2 id="应用设计">应用设计</h2>
+
+<!--
+#### 样式库
+
+钉钉不限制第三方微应用的表现形式，但是需要引入钉钉的默认基础样式，基础样式确保了字体，字体颜色，行间距等基础的样式统一。
+
+引入下列 reset.css:`待补充`
+
+同时，钉钉提供了部分通用样式供开发者参考，包含了头像，按钮，icon等资源。 `待补充`
+
+同时，钉钉要求开发者在设计微应用的时候，基于 `retina` 进行开发； -->
+
+<h4 id="响应式">响应式</h4>
+
+<p>因为钉钉的 PC 端的宽度是可变的，所以微应用的页面都要求进行响应式设计。</p>
+
+<h5 id="基础尺寸-企业会话详情">基础尺寸 - 企业会话详情</h5>
+
+<p><img src="https://static.dingtalk.com/media/lALOArO7PM0CWs0DhA_900_602.png" />
+企业会话详情目前是定宽设计（360px），但不排除未来该宽度可以调整，所以需要开发者将此页面进行响应式设计。</p>
+
+<h5 id="基础尺寸-微应用首页">基础尺寸 - 微应用首页</h5>
+
+<p><img src="https://static.dingtalk.com/media/lALOArO6j80CWs0DhA_900_602.png" />
+微应用首页默认宽度是585px，支持用户拖拽更改宽高，所以需要开发者将此页面进行响应式设计。</p>
+
+<h2 id="通用">通用</h2>
+
+<h3 id="页面引入js文件">页面引入js文件</h3>
+
+<p>js文件版本在添加升级功能时地址会变化，如有需要（比如要使用新增的js-api）,请随时关注地址变更。但是旧版本js文件也将一直可用。</p>
+
+<p><code class="prettyprint">http://g.alicdn.com/dingding/dingtalk-pc-api/2.3.1/index.js</code></p>
+
+<h3 id="全局变量、命名空间">全局变量、命名空间</h3>
+
+<p>直接引入index.js会得到一个全局变量<code class="prettyprint">DingTalkPC</code>，支持amd、cmd引入方式</p>
+
+<p>全局变量DingTalkPC，命名空间：设备(DingTalkPC.device)、业务(DingTalkPC.biz)</p>
+
+<h3 id="权限验证配置-beta">权限验证配置(beta)</h3>
+
+<p>钉钉JS API安全验证，只有经过安全验证的微应用才能调用安全级别较高的API。</p>
+
+<p>获取JS-API权限验证使用的签名的方法请参考附录-<a href="#js-api权限签名算法"><font color=red >JS-API权限签名算法</font></a></p>
+
+<p><a href="https://github.com/injekt/jsapi-demo"><font color=red >jsapi权限验证配置demo&ndash;node.js版本</font></a></p>
+
+<p><a href="https://github.com/injekt/openapi-demo-java"><font color=red >jsapi权限验证配置demo&ndash;java版本</font></a></p>
+
+<p><a href="https://github.com/injekt/openapi-demo-php"><font color=red >jsapi权限验证配置demo&ndash;php版本</font></a></p>
+<pre class="highlight javascript"><code> <span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+    <span class="na">agentId</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">// 必填，微应用ID</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span><span class="c1">//必填，企业ID</span>
+    <span class="na">timeStamp</span><span class="p">:</span> <span class="p">,</span> <span class="c1">// 必填，生成签名的时间戳</span>
+    <span class="na">nonceStr</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">// 必填，生成签名的随机串</span>
+    <span class="na">signature</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">// 必填，签名</span>
+    <span class="na">jsApiList</span><span class="p">:</span> <span class="p">[</span><span class="s1">'device.notification.alert'</span><span class="p">,</span> <span class="s1">'device.notification.confirm'</span><span class="p">]</span> <span class="c1">// 必填，需要使用的jsapi列表</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>agentId</td>
+<td>String</td>
+<td>是</td>
+<td>微应用ID</td>
+</tr>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>是</td>
+<td>企业ID</td>
+</tr>
+<tr>
+<td>timeStamp</td>
+<td>String</td>
+<td>是</td>
+<td>生成签名的时间戳</td>
+</tr>
+<tr>
+<td>nonceStr</td>
+<td>String</td>
+<td>是</td>
+<td>生成签名的随机串</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>String</td>
+<td>是</td>
+<td>签名</td>
+</tr>
+<tr>
+<td>jsApiList</td>
+<td>Array</td>
+<td>是</td>
+<td>需要调用的jsapi列表</td>
+</tr>
+</tbody></table>
+
+<h3 id="通过ready接口处理成功验证">通过ready接口处理成功验证</h3>
+
+<p>DingTalkPC.ready参数为回调函数，在环境准备就绪时触发，jsapi的调用需要保证在该回调函数触发后调用，否则无效。</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">){</span>
+  <span class="cm">/*{
+      authorizedAPIList: ['device.notification.alert'], //已授权API列表
+      unauthorizedAPIList: [''], //未授权API列表
+  }*/</span>
+  <span class="c1">//接口操作应该在ready后才可调用</span>
+<span class="p">});</span>
+</code></pre>
+
+<h3 id="通过error接口处理失败验证">通过error接口处理失败验证</h3>
+
+<p>config信息验证失败会执行error函数，错误信息可以在返回的error参数中参看</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+  <span class="cm">/*{
+      errorCode: 1001, //错误码
+      errorMessage: '', //错误信息
+  }*/</span>
+<span class="p">});</span>
+</code></pre>
+
+<h3 id="接口约定">接口约定</h3>
+
+<ul>
+<li>所有接口都为异步</li>
+<li>接受一个object类型的参数</li>
+<li>成功回调 onSuccess</li>
+<li>失败回调 onFail</li>
+</ul>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="err">命名空间</span><span class="p">.</span><span class="err">功能</span><span class="p">.</span><span class="err">方法</span><span class="p">({</span>
+    <span class="err">参数</span><span class="mi">1</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="err">参数</span><span class="mi">2</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//成功回调</span>
+    <span class="cm">/*
+    {
+        //所有返回信息都输出在这里
+    }*/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="c1">//失败回调</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h3 id="pc版获取免登授权码">PC版获取免登授权码</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">permission</span><span class="p">.</span><span class="nx">requestAuthCode</span><span class="p">({</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span> <span class="c1">//企业ID</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/*{
+        code: 'hYLK98jkf0m' //string authCode
+    }*/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>是</td>
+<td>企业ID</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>授权码</td>
+</tr>
+</tbody></table>
+
+<h2 id="弹窗">弹窗</h2>
+
+<p>DingTalkPC.device</p>
+
+<h3 id="alert">alert</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">notification</span><span class="p">.</span><span class="nx">alert</span><span class="p">({</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s2">"亲爱的"</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"提示"</span><span class="p">,</span><span class="c1">//可传空</span>
+    <span class="na">buttonName</span><span class="p">:</span> <span class="s2">"收到"</span><span class="p">,</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="cm">/*回调*/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<p><img src="http://gtms04.alicdn.com/tps/i4/TB1mXnaKFXXXXbvXVXXV8PWOVXX-1792-1200.png" width = "350" height = "" alt="图片名称" align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>消息内容</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>弹窗标题</td>
+</tr>
+<tr>
+<td>buttonName</td>
+<td>String</td>
+<td>按钮名称</td>
+</tr>
+</tbody></table>
+
+<h3 id="confirm">confirm</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">notification</span><span class="p">.</span><span class="nx">confirm</span><span class="p">({</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s2">"你爱我吗"</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"提示"</span><span class="p">,</span>
+    <span class="na">buttonLabels</span><span class="p">:</span> <span class="p">[</span><span class="s1">'爱'</span><span class="p">,</span> <span class="s1">'不爱'</span><span class="p">],</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*
+        {
+            buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
+        }
+        */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<p><img src="http://gtms01.alicdn.com/tps/i1/TB1I4jbKFXXXXbBXVXX._qIYpXX-1794-1198.png" width = "350" height = "" alt="图片名称" align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>消息说明</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>标题</td>
+</tr>
+<tr>
+<td>buttonLabels</td>
+<td>Array[String]</td>
+<td>按钮名称</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>buttonIndex</td>
+<td>被点击按钮的索引值，Number类型，从0开始</td>
+</tr>
+</tbody></table>
+
+<h3 id="prompt">prompt</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">notification</span><span class="p">.</span><span class="nx">prompt</span><span class="p">({</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s2">"再说一遍？"</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"提示"</span><span class="p">,</span>
+    <span class="na">buttonLabels</span><span class="p">:</span> <span class="p">[</span><span class="s1">'继续'</span><span class="p">,</span> <span class="s1">'不玩了'</span><span class="p">],</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*
+        {
+            buttonIndex: 0, //被点击按钮的索引值，Number类型，从0开始
+            value: '' //输入的值
+        }
+        */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<p><img src="http://gtms02.alicdn.com/tps/i2/TB1iwLlKFXXXXbgXFXXFvH2OVXX-1792-1194.png" width = "350" height = "" alt="图片名称" align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>消息内容</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>标题</td>
+</tr>
+<tr>
+<td>buttonLabels</td>
+<td>Array[String]</td>
+<td>按钮名称</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>buttonIndex</td>
+<td>被点击按钮的索引值，Number类型，从0开始</td>
+</tr>
+<tr>
+<td>value</td>
+<td>输入的值</td>
+</tr>
+</tbody></table>
+
+<h3 id="toast">toast</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">notification</span><span class="p">.</span><span class="nx">toast</span><span class="p">({</span>
+    <span class="na">type</span><span class="p">:</span> <span class="s2">"information"</span><span class="p">,</span> <span class="c1">//toast的类型 alert, success, error, warning, information, confirm</span>
+    <span class="na">text</span><span class="p">:</span> <span class="s1">'这里是个toast'</span><span class="p">,</span> <span class="c1">//提示信息</span>
+    <span class="na">duration</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">//显示持续时间，单位秒，最短2秒，最长5秒</span>
+    <span class="na">delay</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">//延迟显示，单位秒，默认0, 最大限制为10</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*{}*/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<p><img src="http://gtms03.alicdn.com/tps/i3/TB18p6hKFXXXXXBXVXXrQ409pXX-1786-1198.png" width ="350" height = "" alt="图片名称"  align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>toast的类型 alert, success, error, warning, information, confirm，默认information</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>提示信息</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>Number</td>
+<td>显示持续时间，单位秒，最小2，最大限制为5</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>Number</td>
+<td>延迟显示，单位秒，默认0，最大限制为10</td>
+</tr>
+</tbody></table>
+
+<h3 id="actionsheet">actionsheet</h3>
+
+<p>单选列表</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">notification</span><span class="p">.</span><span class="nx">actionSheet</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"谁是最棒哒？"</span><span class="p">,</span> <span class="c1">//标题</span>
+    <span class="na">cancelButton</span><span class="p">:</span> <span class="s1">'取消'</span><span class="p">,</span> <span class="c1">//取消按钮文本</span>
+    <span class="na">otherButtons</span><span class="p">:</span> <span class="p">[</span><span class="s2">"孙悟空"</span><span class="p">,</span><span class="s2">"猪八戒"</span><span class="p">,</span><span class="s2">"唐僧"</span><span class="p">,</span><span class="s2">"沙和尚"</span><span class="p">],</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*{
+            buttonIndex: 0 //被点击按钮的索引值，Number，从0开始, 取消按钮为-1
+        }*/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<p><img src="http://gtms04.alicdn.com/tps/i4/TB1mSvwKFXXXXX7XFXXpXX.QFXX-1886-1278.png" width = "350" height = "" alt="图片名称" align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>标题</td>
+</tr>
+<tr>
+<td>cancelButton</td>
+<td>String</td>
+<td>取消按钮文本</td>
+</tr>
+<tr>
+<td>otherButtons</td>
+<td>Array[String]</td>
+<td>其他按钮列表</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>buttonIndex</td>
+<td>被点击按钮的索引值，Number，从0开始, 取消按钮为-1</td>
+</tr>
+</tbody></table>
+
+<h2 id="业务">业务</h2>
+
+<p>DingTalkPC.biz</p>
+
+<h3 id="打开应用内页面">打开应用内页面</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">open</span><span class="p">({</span>
+    <span class="na">name</span><span class="p">:</span><span class="s1">'profile'</span><span class="p">,</span><span class="c1">//页面名称</span>
+    <span class="na">params</span><span class="p">:{</span>
+        <span class="na">id</span><span class="p">:</span> <span class="s1">'123456'</span><span class="p">,</span><span class="c1">// String 必选 用户工号</span>
+        <span class="na">corpId</span><span class="p">:</span><span class="s1">'dingb4ff1079f84f8d54'</span> <span class="c1">//String 必选 企业id</span>
+    <span class="p">},</span><span class="c1">//传参</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="cm">/**/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>页面名称</td>
+</tr>
+<tr>
+<td>params</td>
+<td>JSONObject</td>
+<td>传参</td>
+</tr>
+</tbody></table>
+
+<p>目前支持以下页面，具体参数看右边</p>
+
+<ol>
+<li>个人资料页</li>
+</ol>
+
+<p>传参例子(右旁代码区)以及参数说明</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"profile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"params"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"corpId"</span><span class="p">:</span><span class="s2">"dingb4ff1079f84f8d54"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"onSuccess"</span><span class="p">:</span><span class="err">function()</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"onFail"</span><span class="p">:</span><span class="err">function(err)</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>是</td>
+<td>固定为 &ldquo;profile&rdquo;</td>
+</tr>
+<tr>
+<td>params.id</td>
+<td>String</td>
+<td>是</td>
+<td>用户工号</td>
+</tr>
+<tr>
+<td>params.corpId</td>
+<td>String</td>
+<td>是</td>
+<td>企业ID</td>
+</tr>
+</tbody></table>
+
+<!--
+b.聊天页面
+
+```javascript
+// 页面名称：
+    chat
+// 传参：
+    users: ['123'] 用户列表,工号
+    corpId: '' //企业id
+```
+
+c.免费电话页面
+
+```javascript
+// 页面名称：
+    call
+// 传参：
+```
+
+d.联系人添加页面
+
+```javascript
+// 页面名称：
+    contactAdd
+// 传参：
+```
+
+f.唤起添加好友页面
+
+
+```
+// 页面名称：
+    friendAdd
+// 传参：
+``` -->
+
+<h3 id="打开模态框（modal）">打开模态框（modal）</h3>
+
+<p>打开一个模态框</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">openModal</span><span class="p">({</span>
+    <span class="na">size</span><span class="p">:</span><span class="s1">'middle'</span><span class="p">,</span>  <span class="c1">// modal的尺寸</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://test.dingtalk.com/modal.html'</span><span class="p">,</span> <span class="c1">//打开modal的内容的url</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'modal title'</span><span class="p">,</span> <span class="c1">//顶部标题</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*
+
+        */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<p><img src="http://gtms02.alicdn.com/tps/i2/TB1PqPwKFXXXXa8XFXXsaR5YpXX-1880-1276.png" width = "350" height = "" alt="图片名称" align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>size</td>
+<td>String</td>
+<td>模态框的尺寸大小 三种选择 具体看下表</td>
+</tr>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>模态框内部显示内容的url</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>模态框标题</td>
+</tr>
+</tbody></table>
+
+<h5 id="尺寸选择详情：">尺寸选择详情：</h5>
+
+<table><thead>
+<tr>
+<th>名称</th>
+<th>size输入</th>
+<th>尺寸长宽</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>（默认）大模态框</td>
+<td></td>
+<td>包括标题 676px * 545px</td>
+</tr>
+<tr>
+<td>中模态框</td>
+<td>&ldquo;middle&rdquo;</td>
+<td>包括标题 440px * 300px</td>
+</tr>
+<tr>
+<td>小模态框</td>
+<td>&ldquo;mini&rdquo;</td>
+<td>包括标题 366px * 120px</td>
+</tr>
+</tbody></table>
+
+<h3 id="打开侧边面板（slidepanel）">打开侧边面板（SlidePanel）</h3>
+
+<p>打开侧边面板</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">openSlidePanel</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'about:blank'</span><span class="p">,</span> <span class="c1">//打开侧边栏的url</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'title'</span><span class="p">,</span> <span class="c1">//侧边栏顶部标题</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*
+        */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<p><img src="http://gtms02.alicdn.com/tps/i2/TB1mzDBKFXXXXcTXpXXhMAQZVXX-1888-1278.png" width = "350" height = "" alt="图片名称" align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>侧边面板顶部显示标题</td>
+</tr>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>侧边面板内部显示内容的url</td>
+</tr>
+</tbody></table>
+
+<h3 id="上传图片">上传图片</h3>
+
+<p>选择图片+上传，防止恶意上传</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">uploadImage</span><span class="p">({</span>
+    <span class="na">multiple</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//是否多选，默认false</span>
+    <span class="na">max</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">//最多可选个数</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*
+        [
+          'https://static.dingtalk.com/media/lADOA9bQH8zIzMg_200_200.jpg'
+        ]
+        */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>multiple</td>
+<td>Boolean</td>
+<td>是否多选，默认false</td>
+</tr>
+<tr>
+<td>max</td>
+<td>Number</td>
+<td>Number为正整数，最多可选个数</td>
+</tr>
+</tbody></table>
+
+<h3 id="下载文件">下载文件</h3>
+
+<p>下载一个文件</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">'//static.dingtalk.com/media/lADOADTWJM0C2M0C7A_748_728.jpg_60x60q90.jpg'</span><span class="p">,</span> <span class="c1">//要下载的文件的url</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'一个图片.jpg'</span><span class="p">,</span> <span class="c1">//定义下载文件名字</span>
+    <span class="na">onProgress</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">msg</span><span class="p">){</span>
+      <span class="c1">// 文件下载进度回调</span>
+    <span class="p">},</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*
+          true
+        */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<p><img src="http://gtms02.alicdn.com/tps/i2/TB1TfjCKFXXXXXwXFXXDZsQZVXX-1888-1280.png" width = "350" height = "" alt="图片名称" align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>要下载文件的url</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>定义下载文件的名字，记得添加文件扩展名，默认无文件扩展名</td>
+</tr>
+<tr>
+<td>onProgress</td>
+<td>Function</td>
+<td>文件下载进度回调</td>
+</tr>
+</tbody></table>
+
+<h3 id="打开本地文件">打开本地文件</h3>
+
+<p>打开本地文件接口</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">openLocalFile</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//本地文件的url</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*
+          true
+        */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>url是缓存文件的key</td>
+</tr>
+</tbody></table>
+
+<h3 id="批量检测本地文件是否存在">批量检测本地文件是否存在</h3>
+
+<p>批量检测本地文件是否存在</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">isLocalFileExist</span><span class="p">({</span>
+    <span class="na">params</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="na">url</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//本地文件的url</span>
+      <span class="p">},{</span>
+        <span class="na">url</span><span class="p">:</span> <span class="s1">''</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/*
+          [{
+              url: '', //本地文件的url
+              path: '', // 文件的path
+              isExist: true //根据你输入的文件的url检测出的结果，true:存在，false：不存在
+          }]
+        */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>url是缓存文件的key</td>
+</tr>
+</tbody></table>
+
+<h3 id="预览图片">预览图片</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">previewImage</span><span class="p">({</span>
+    <span class="na">urls</span><span class="p">:</span> <span class="p">[</span><span class="s1">'//static.dingtalk.com/media/1.jpg'</span><span class="p">,</span> <span class="s1">'//static.dingtalk.com/media/2.jpg'</span><span class="p">],</span><span class="c1">//图片地址列表</span>
+    <span class="na">current</span><span class="p">:</span> <span class="s1">'//static.dingtalk.com/media/1.jpg'</span><span class="p">,</span><span class="c1">//当前显示的图片链接</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/**/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<p><img src="http://gtms02.alicdn.com/tps/i2/TB1SaYsKFXXXXaIXVXXkOgK6FXX-1882-1276.png" width = "350" height = "" alt="图片名称" align=right /></p>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>urls</td>
+<td>Array[String]</td>
+<td>图片地址列表</td>
+</tr>
+<tr>
+<td>current</td>
+<td>String</td>
+<td>当前显示的图片链接</td>
+</tr>
+</tbody></table>
+
+<h3 id="在浏览器上打开链接">在浏览器上打开链接</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">openLink</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">"http://www.dingtalk.com"</span><span class="p">,</span><span class="c1">//要打开链接的地址</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/**/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>要打开链接的地址</td>
+</tr>
+</tbody></table>
+
+<h2 id="导航">导航</h2>
+
+<p>DingTalkPC.biz</p>
+
+<h3 id="触发关闭">触发关闭</h3>
+
+<p>注意：只在SlidePanel和Modal里起作用</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">quit</span><span class="p">({</span>
+    <span class="na">message</span><span class="p">:</span> <span class="s2">"quit message"</span><span class="p">,</span><span class="c1">//退出信息，传递给openModal或者openSlidePanel的onSuccess函数的result参数</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/**/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>退出信息，传递给openModal或者openSlidePanel的onSuccess函数的result参数</td>
+</tr>
+</tbody></table>
+
+<h3 id="设置标题">设置标题</h3>
+
+<p>注意：只在SlidePanel和Modal里起作用</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"lalala"</span><span class="p">,</span><span class="c1">//标题</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/**/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>标题</td>
+</tr>
+</tbody></table>
+
+<h3 id="设置左侧导航按钮">设置左侧导航按钮</h3>
+
+<p>注意：只在SlidePanel里起作用</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setLeft</span><span class="p">({</span>
+    <span class="na">text</span><span class="p">:</span> <span class="s2">"lalala"</span><span class="p">,</span><span class="c1">//显示文字信息</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/**/</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>显示文字信息</td>
+</tr>
+</tbody></table>
+
+<h4 id="设置左侧按钮点击后的回调">设置左侧按钮点击后的回调</h4>
+
+<p>DingTalkPC.addEventListener(&lsquo;leftBtnClick&rsquo;, handleFn);</p>
+<pre class="highlight javascript"><code><span class="c1">//添加监听回调函数</span>
+<span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'leftBtnClick'</span><span class="p">,</span> <span class="nx">handleFn</span><span class="p">);</span>
+
+<span class="c1">//移除相应handleFn的监听回调函数</span>
+<span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">'leftBtnClick'</span><span class="p">,</span> <span class="nx">handleFn</span><span class="p">);</span>
+
+</code></pre>
+
+<h2 id="ding">Ding</h2>
+
+<p>DingTalkPC.biz</p>
+
+<h3 id="发钉">发钉</h3>
+
+<h4 id="图片类型">图片类型</h4>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">ding</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
+    <span class="na">users</span> <span class="p">:</span> <span class="p">[</span><span class="s1">'100'</span><span class="p">,</span> <span class="s1">'101'</span><span class="p">],</span><span class="c1">//用户列表，工号</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'dingb4ff1079f84f8d54'</span><span class="p">,</span> <span class="c1">//加密的企业id</span>
+    <span class="na">type</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">//钉类型 1：image  2：link</span>
+    <span class="na">alertType</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="na">alertDate</span><span class="p">:</span> <span class="p">{</span><span class="s2">"format"</span><span class="p">:</span><span class="s2">"yyyy-MM-dd HH:mm"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"2015-05-09 08:00"</span><span class="p">},</span>
+    <span class="na">attachment</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">images</span><span class="p">:</span> <span class="p">[</span><span class="s1">''</span><span class="p">],</span> <span class="c1">//只取第一个image</span>
+    <span class="p">},</span> <span class="c1">//附件信息</span>
+    <span class="na">text</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//消息体</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>users</td>
+<td>Array[String]</td>
+<td>用户列表，工号</td>
+</tr>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业id</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Number</td>
+<td>Number为整数。钉类型 1：image，2：link</td>
+</tr>
+<tr>
+<td>alertType</td>
+<td>Number</td>
+<td>钉提醒类型 0：电话, 1：短信, 2：应用内</td>
+</tr>
+<tr>
+<td>alertDate</td>
+<td>Object</td>
+<td>钉提醒时间</td>
+</tr>
+<tr>
+<td>attachment</td>
+<td>Object</td>
+<td>附件信息</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>消息体</td>
+</tr>
+</tbody></table>
+
+<h4 id="link类型">Link类型</h4>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">ding</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
+    <span class="na">users</span> <span class="p">:</span> <span class="p">[</span><span class="s1">'100'</span><span class="p">,</span> <span class="s1">'101'</span><span class="p">],</span><span class="c1">//用户列表，工号</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'dingb4ff1079f84f8d54'</span><span class="p">,</span> <span class="c1">//企业id</span>
+    <span class="na">type</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="c1">//钉类型 1：image  2：link</span>
+    <span class="na">alertType</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="na">alertDate</span><span class="p">:</span> <span class="p">{</span><span class="s2">"format"</span><span class="p">:</span><span class="s2">"yyyy-MM-dd HH:mm"</span><span class="p">,</span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"2015-05-09 08:00"</span><span class="p">},</span>
+    <span class="na">attachment</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">title</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//附件的标题</span>
+        <span class="na">url</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//附件点击后跳转url</span>
+        <span class="na">image</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//附件显示时的图片 【可选】</span>
+        <span class="na">text</span><span class="p">:</span> <span class="s1">''</span> <span class="c1">//附件显示时的消息体 【可选】</span>
+    <span class="p">}</span>
+    <span class="nl">text</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span> <span class="c1">//消息体</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">})</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>users</td>
+<td>Array[String]</td>
+<td>用户列表，工号</td>
+</tr>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业id</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Number</td>
+<td>Number为整数。钉类型 1：image  2：link</td>
+</tr>
+<tr>
+<td>alertType</td>
+<td>Number</td>
+<td>钉提醒类型 0：电话, 1：短信, 2：应用内</td>
+</tr>
+<tr>
+<td>alertDate</td>
+<td>Object</td>
+<td>钉提醒时间</td>
+</tr>
+<tr>
+<td>attachment</td>
+<td>Object</td>
+<td>附件信息</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>消息体</td>
+</tr>
+</tbody></table>
+
+<h2 id="企业通讯录">企业通讯录</h2>
+
+<p>DingTalkPC.biz</p>
+
+<h3 id="选人">选人</h3>
+
+<p>此接口只能对用户进行选择，若要同时选择部门，请使用“选人，选部门”接口。</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
+    <span class="na">multiple</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//是否多选： true多选 false单选； 默认true</span>
+    <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="s1">'10001'</span><span class="p">,</span> <span class="s1">'10002'</span><span class="p">,</span> <span class="p">...],</span> <span class="c1">//默认选中的用户列表，工号；成功回调中应包含该信息</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'dingb4ff1079f84f8d54'</span><span class="p">,</span> <span class="c1">//企业id</span>
+    <span class="na">max</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">//人数限制，当multiple为true才生效，可选范围1-1500</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* data结构
+      [{
+        "name": "张三", //姓名
+        "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+        "emplId": '0573', //工号
+       },
+       ...
+      ]
+    */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>multiple</td>
+<td>Boolean</td>
+<td>是否多选： true多选，false单选； 默认true</td>
+</tr>
+<tr>
+<td>users</td>
+<td>Array[String]</td>
+<td>默认选中的用户列表，工号；成功回调中应包含该信息</td>
+</tr>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业id</td>
+</tr>
+<tr>
+<td>max</td>
+<td>Number</td>
+<td>人数限制，当multiple为true才生效，可选范围1-1500</td>
+</tr>
+</tbody></table>
+
+<!--
+startWithDepartmentId: Number, //-1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
+startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
+-->
+
+<h5 id="　返回说明">　返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>头像图片url，可能为空</td>
+</tr>
+<tr>
+<td>emplId</td>
+<td>工号</td>
+</tr>
+</tbody></table>
+
+<h2 id="自定义联系人">自定义联系人</h2>
+
+<p>DingTalkPC.biz</p>
+
+<h3 id="单选自定义联系人">单选自定义联系人</h3>
+
+<p>选取单个自定义联系人</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">customContact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'选人的标题'</span><span class="p">,</span> <span class="c1">//标题</span>
+    <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="s1">'10001'</span><span class="p">,</span> <span class="s1">'10002'</span><span class="p">,</span> <span class="p">...],</span><span class="c1">//一组员工工号</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'dingb4ff1079f84f8d54'</span><span class="p">,</span><span class="c1">//加密的企业 ID，</span>
+    <span class="na">isShowCompanyName</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">//true|false，默认为 false</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* data结构
+      [{
+        "name": "张三", //姓名
+        "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+        "emplId": '0573', //工号
+       },
+       ...
+      ]
+    */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+<tr>
+<td>users</td>
+<td>Array[String]</td>
+<td>一组员工工号</td>
+</tr>
+<tr>
+<td>isShowCompanyName</td>
+<td>Boolean</td>
+<td>是否显示公司名称</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>标题</td>
+</tr>
+</tbody></table>
+
+<h5 id="　返回说明">　返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>头像图片url，可能为空</td>
+</tr>
+<tr>
+<td>emplId</td>
+<td>工号</td>
+</tr>
+</tbody></table>
+
+<h3 id="多选自定义联系人">多选自定义联系人</h3>
+
+<p>选取多个自定义联系人</p>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">customContact</span><span class="p">.</span><span class="nx">multipleChoose</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'多选人的标题'</span><span class="p">,</span> <span class="c1">//标题</span>
+    <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="s1">'10001'</span><span class="p">,</span> <span class="s1">'10002'</span><span class="p">,</span> <span class="p">...],</span><span class="c1">//一组员工工号</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'dingb4ff1079f84f8d54'</span><span class="p">,</span><span class="c1">//企业 ID，</span>
+    <span class="na">isShowCompanyName</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">//true|false，默认为 false</span>
+    <span class="na">selectedUsers</span><span class="p">:</span> <span class="p">[</span><span class="s2">"18658"</span><span class="p">],</span> <span class="c1">//默认选中的人</span>
+    <span class="na">disabledUsers</span><span class="p">:</span> <span class="p">[</span><span class="s2">"78308"</span><span class="p">],</span> <span class="c1">//不能选的人</span>
+    <span class="na">max</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">//人数限制</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* data结构
+      [{
+        "name": "张三", //姓名
+        "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+        "emplId": '0573', //工号
+       },
+       ...
+      ]
+    */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+<tr>
+<td>users</td>
+<td>Array[String]</td>
+<td>是否多选： true多选，false单选； 默认true</td>
+</tr>
+<tr>
+<td>isShowCompanyName</td>
+<td>Boolean</td>
+<td>默认选中的用户列表，工号；成功回调中应包含该信息</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>选择窗口的标题</td>
+</tr>
+<tr>
+<td>selectedUsers</td>
+<td>Array[String]</td>
+<td>默认选中的人</td>
+</tr>
+<tr>
+<td>disabledUsers</td>
+<td>Array[String]</td>
+<td>不能选的人</td>
+</tr>
+<tr>
+<td>max</td>
+<td>Number</td>
+<td>人数限制</td>
+</tr>
+</tbody></table>
+
+<h5 id="　返回说明">　返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>头像图片url，可能为空</td>
+</tr>
+<tr>
+<td>emplId</td>
+<td>工号</td>
+</tr>
+</tbody></table>
+
+<!-- ## 聊天
+DingTalkPC.biz
+
+### 选择会话
+
+```javascript
+DingTalkPC.biz.chat.chooseConversation({
+    onSuccess: function(data) {
+    /* data结构
+      {
+        "id":"25001:2442003", //会话id
+        "title":"钉钉-轻浅-pc专业户" // 会话名称
+      }
+    */
+    },
+    onFail : function(err) {}
+});
+```
+
+#### 参数说明
+
+空
+
+
+#### 返回说明
+
+参数 | 说明
+------|------
+id | 会话id
+title | 会话名称 -->
+
+<h2 id="附录">附录</h2>
+
+<h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
+
+<p>如果开发者想使用钉钉容器开放的jsapi接口，需要经过以下流程：</p>
+
+<ul>
+<li><p>首先需要<a href="#获取jsapi_ticket"><font color=red >获取jsapi_ticket</font></a>。</p></li>
+<li><p>然后在web页面加载到钉钉容器时，通过<a href="#页面引入js文件"><font color=red >jsapi权限验证配置接口</font></a>验证可用的jsapi。这个接口使用的参数signature，在下文中有详细的说明。</p></li>
+</ul>
+
+<h4 id="1-获取jsapi_ticket">1.获取jsapi_ticket</h4>
+
+<p>jsapi_ticket,是开发者调用钉钉JS接口的临时授权码，其作用主要用于生成签名，这个签名在<a href="http://open.dingtalk.com/#页面引入js文件"><font color=red >jsapi权限验证配置接口</font></a>中使用。</p>
+
+<p>正常的情况下，jsapi_ticket的有效期为7200秒，通过access_token来获取。由于频繁刷新jsapi_ticket会导致api调用受限，影响自身业务，开发者必须在自己的服务全局缓存jsapi_ticket。
+获取jsapi_ticket，具体可以<a href="#js接口api"><font color=red >参考文档</font></a></p>
+
+<h4 id="2-签名生成算法">2.签名生成算法</h4>
+
+<p>开发者在web页面使用钉钉容器提供的jsapi时，需要验证调用权限，并以参数signature标识合法性</p>
+
+<p>签名生成的规则：</p>
+
+<p>List keyArray = sort(noncestr,timestamp,jsapi_ticket,url);</p>
+
+<p>String str = assemble(keyArray);</p>
+
+<p>signature = sha1(str);</p>
+
+<p>参与签名的字段包括在上文中获取的jsapi_ticket，noncestr（随机字符串，自己随便填写即可）,timestamp（当前时间戳，具体值为当前时间到1970年1月1号的秒数）,url（当前网页的URL，不包含#及其后面部分）。例如：</p>
+
+<ul>
+<li>noncestr=Zn4zmLFKD0wzilzM</li>
+<li>jsapi_ticket=mS5k98fdkdgDKxkXGEs8LORVREiweeWETE40P37wkidkfksDSKDJFD5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcKIDU8l</li>
+<li>timestamp=1414588745</li>
+<li>url=http://open.dingtalk.com</li>
+</ul>
+
+<p>步骤1. sort()含义为对所有待签名参数按照字段名的ASCII 码从小到大排序（字典序）</p>
+
+<p>步骤2. assemble()含义为根据步骤1中获的参数字段的顺序，使用URL键值对的格式（即key1=value1&amp;key2=value2…）拼接成字符串</p>
+
+<p>步骤2. sha1()的含义为对在步骤2拼接好的字符串进行sha1加密。</p>
+
+<h3 id="图片缩放">图片缩放</h3>
+
+<p>通过JS-API获取的图片都支持缩放，比如图片：</p>
+
+<p><code class="prettyprint">http://gtms02.alicdn.com/tps/i2/TB1SlYwGFXXXXXrXVXX9vKJ2XXX-2880-1560.jpg</code></p>
+
+<p>可通过文件名拼接的方法缩放为最大宽高为250x250的尺寸。</p>
+
+<p><code class="prettyprint">http://gtms02.alicdn.com/tps/i2/TB1SlYwGFXXXXXrXVXX9vKJ2XXX-2880-1560.jpg_250x250.jpg</code></p>
+
+<p>拼接规则为:文件名+拼接规则；推荐使用以下拼接规则：</p>
+
+<p>80x80 =&gt; _80x80.jpg</p>
+
+<p>120x120 =&gt; _120x120.jpg</p>
+
+<p>250x250 =&gt; _250x250.jpg</p>
+
+<p>310x310 =&gt; _310x310.jpg</p>
+
+<!--
+### 容器能力
+
+[runtime.permission.requestAuthCode](#获取免登授权码)
+
+[device.notification.alert](#alert)
+
+[device.notification.confirm](#confirm)
+
+[device.notification.prompt](#prompt)
+
+[device.notification.toast](#toast)
+
+[device.notification.actionSheet](#actionSheet)
+
+[biz.util.open](#打开应用内页面)
+
+[biz.util.openModal](#打开模态框（modal）)
+
+[biz.util.openSlidePanel](#打开侧边面板（SlidePanel）)
+
+[biz.util.uploadImage](#上传图片)
+
+[biz.util.downloadFile](#下载文件)
+
+[biz.util.openLocalFile](#打开文件)
+
+[biz.util.isLocalFileExist](#批量检测文件是否存在)
+
+[biz.util.previewImage](#预览图片)
+
+[biz.util.openLink](#在浏览器上打开链接)
+
+[biz.navigation.quit](#触发关闭)
+
+[biz.navigation.setTitle](#设置标题)
+
+[biz.navigation.setLeft](#设置左侧导航按钮)
+
+[biz.ding.post](#发钉)
+
+[biz.contact.choose](#选人)
+
+[biz.customContact.choose](#单选自定义联系人)
+
+[biz.customContact.multipleChoose](#多选自定义联系人) -->
 
           <h1 id="微应用体验优化">微应用体验优化</h1>
 
