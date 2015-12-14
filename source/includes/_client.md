@@ -929,6 +929,7 @@ image | String |分享的图片
 
 ### ut数据埋点
 ISV与钉钉进行数据对接的数据埋点接口，用于采集用户数据，ISV可根据微应用中关键操作进行埋点
+
 ```javascript
 dd.biz.util.ut({
     key: String,//打点名
