@@ -1289,7 +1289,7 @@ dd.biz.chat.toConversation({
 参数 | 参数类型 | 说明
 ----- | ----- | -----
 corpId | String | 企业ID
-chatId | String | 企业ID
+chatId | String | 会话ID
 
 ##### 返回说明（无）
 
