@@ -1,5 +1,7 @@
 # 更新日志
 
+- 2015.12.15 [<font color=red >增加管理日历接入指南</font>](#管理日历接入指南)
+
 - 2015.11.19 [<font color=red >增加会话JSAPI接口</font>](#根据corpid选择会话)
 
 - 2015.11.19 [<font color=red >增加群会话接口</font>](#群会话接口（暂未开放）)
