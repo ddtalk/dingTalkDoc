@@ -4,6 +4,10 @@
 
 A:在钉钉管理后台的微应用设置页面可以获取，详细方法请参见[<font color=red >《接入指南-获取CorpID和CorpSecret》</font>](#获取corpid和corpsecret)。
 
+### Q:『计算解密文字错误』怎么解决？
+A:查看[<font color=red >加解密库和demo下载</font>](#加解密库和demo下载)第二个步骤
+
+
 ### Q:调用管理通讯录接口返回430004，无效的HTTP HEADER Content-Type如何解决？
 
 A:管理通讯录的部分接口采用了POST请求，请求体使用JSON格式，请在HTTP请求头中设置Content-Type:application/json。
