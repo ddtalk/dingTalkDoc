@@ -1004,17 +1004,17 @@ permanent_code	| 永久授权码，从get_permanent_code接口中获取
 
 ### 13: ISV套件上架流程
 
-
-- 云市场商品发布操作介绍文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b113k21o24lrv1kom4un5.pdf)
-
-云市场商品发布操作文档介绍了套件上架的流程。
+- 一：注册云市场服务商，[<font color=red>服务商入驻流程</font>](https://help.aliyun.com/knowledge_detail/5974029.html?spm=5176.788315044.2.5.YOs845)
 
 
+- 二：在云市场发布商品，套件的上架操作参考云市场商品发布操作介绍文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b113k21o24lrv1kom4un5.pdf)
 
-- 云市场ISV接入文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b01ron15tb3lm1pukcnh4.pdf)
 
-云市场ISV接入文档描述了第三方应用接入到阿里云市场所须实现的接口定义,服务商通过提供以下接口,即可获 得应用订购成功的信息,从而为购买者开通应用。
+- 三：接入云市场，第三方应用接入到阿里云市场所须实现的接口定义,服务商通过提供以下接口,即可获得应用订购成功的信息,从而为购买者开通应用准备环境等，接口定义参考云市场ISV接入文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b01ron15tb3lm1pukcnh4.pdf)
 
+
+- 四：当企业管理员通过云市场完成套件购买后，通过钉钉授权功能进行钉钉套件授权开通，具体授权开通流程见：
+[<font color=red >企业管理员授权应用</font>](#企业管理员授权应用)
 
 
 ### 消息体签名
