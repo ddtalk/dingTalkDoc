@@ -756,11 +756,7 @@ tmp_auth_code | 回调接口（tmp_auth_code）获取的临时授权码
 	{
 		"corpid": "xxxx",
 		"corp_name": "name"
-    },
-    "auth_user_info":
-    {
-    	"userId":""
-	}
+    }
 }
 ```
 
@@ -772,9 +768,6 @@ permanent_code | 永久授权码
 auth_corp_info | 授权方企业信息
 corpid | 授权方企业id
 corp_name | 授权方企业名称
-auth_user_info | 授权方管理员信息
-mobile | 管理员电话
-name | 管理员名字
 
 ### 8:获取企业授权的access_token
 
