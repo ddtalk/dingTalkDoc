@@ -828,7 +828,8 @@ https请求方式: POST
 https://oapi.dingtalk.com/service/get_auth_info?suite_access_token=xxxx
 
 //注意，是suite_access_token，不是授权方（企业）的access_token
-POST数据示例
+
+POST数据示例
 
 ```
 {
@@ -986,21 +987,13 @@ permanent_code	| 永久授权码，从get_permanent_code接口中获取
 	"errmsg":"ok"
 }
 ```
+### 12: 解除授权套件
 
-### 12: 加解密方案
+当ISV想重新模拟测试企业发起授权套件，需要先进行解除对套件的授权。
 
-开启回调模式时，有以下术语需要了解：
+解除授权需要进入进入测试企业OA后台--微应用进行操作，如图：
 
-1. signature是签名，用于验证调用者的合法性。具体算法见以下'消息体签名'章节
-
-2. EncodingAESKey：注册套件提供的数据加密密钥。用于消息体的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取，是AESKey的Base64编码。解码后即为32字节长的AESKey
-
-3. AESKey=Base64_Decode(EncodingAESKey + “=”)，是AES算法的密钥，长度为32字节。AES采用CBC模式，数据采用PKCS#7填充；IV初始向量大小为16字节，取AESKey前16字节。具体详见：http://tools.ietf.org/html/rfc2315
-
-4. msg为消息体明文，格式为JSON
-
-5. 钉钉服务器会把msg消息体明文编码成encrypt，encrypt = Base64_Encode(AES_Encrypt[random(16B) + msg_len(4B) + msg + $key])，是对明文消息msg加密处理后的Base64编码。其中random为16字节的随机字符串；msg_len为4字节的msg长度，网络字节序；msg为消息体明文；$key对于ISV开发来说，填写对应的suitekey，$key对于普通企业开发，填写企业的Corpid。
-最终传给回调者的是encrypt，字段名为encrypt。
+![deleteSuite](https://img.alicdn.com/tps/TB1GpUAKVXXXXckaXXXXXXXXXXX-858-302.jpg)
 
 ### 13: ISV套件上架流程
 
@@ -1029,6 +1022,19 @@ permanent_code	| 永久授权码，从get_permanent_code接口中获取
 
 
 ##### 加解密方案说明
+
+开启回调模式时，有以下术语需要了解：
+
+1. signature是签名，用于验证调用者的合法性。具体算法见以下'消息体签名'章节
+
+2. EncodingAESKey：注册套件提供的数据加密密钥。用于消息体的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取，是AESKey的Base64编码。解码后即为32字节长的AESKey
+
+3. AESKey=Base64_Decode(EncodingAESKey + “=”)，是AES算法的密钥，长度为32字节。AES采用CBC模式，数据采用PKCS#7填充；IV初始向量大小为16字节，取AESKey前16字节。具体详见：http://tools.ietf.org/html/rfc2315
+
+4. msg为消息体明文，格式为JSON
+
+5. 钉钉服务器会把msg消息体明文编码成encrypt，encrypt = Base64_Encode(AES_Encrypt[random(16B) + msg_len(4B) + msg + $key])，是对明文消息msg加密处理后的Base64编码。其中random为16字节的随机字符串；msg_len为4字节的msg长度，网络字节序；msg为消息体明文；$key对于ISV开发来说，填写对应的suitekey，$key对于普通企业开发，填写企业的Corpid。
+最终传给回调者的是encrypt，字段名为encrypt。
 
 ######	对明文msg加密的过程如下：
 
