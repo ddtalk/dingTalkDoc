@@ -1464,18 +1464,13 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="12-加解密方案">12: 加解密方案</h3>
+<h3 id="12-解除授权套件">12: 解除授权套件</h3>
 
-<p>开启回调模式时，有以下术语需要了解：</p>
+<p>当ISV想重新模拟测试企业发起授权套件，需要先进行解除对套件的授权。</p>
 
-<ol>
-<li><p>signature是签名，用于验证调用者的合法性。具体算法见以下&#39;消息体签名&#39;章节</p></li>
-<li><p>EncodingAESKey：注册套件提供的数据加密密钥。用于消息体的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取，是AESKey的Base64编码。解码后即为32字节长的AESKey</p></li>
-<li><p>AESKey=Base64_Decode(EncodingAESKey + “=”)，是AES算法的密钥，长度为32字节。AES采用CBC模式，数据采用PKCS#7填充；IV初始向量大小为16字节，取AESKey前16字节。具体详见：http://tools.ietf.org/html/rfc2315</p></li>
-<li><p>msg为消息体明文，格式为JSON</p></li>
-<li><p>钉钉服务器会把msg消息体明文编码成encrypt，encrypt = Base64_Encode(AES_Encrypt[random(16B) + msg_len(4B) + msg + $key])，是对明文消息msg加密处理后的Base64编码。其中random为16字节的随机字符串；msg_len为4字节的msg长度，网络字节序；msg为消息体明文；$key对于ISV开发来说，填写对应的suitekey，$key对于普通企业开发，填写企业的Corpid。
-最终传给回调者的是encrypt，字段名为encrypt。</p></li>
-</ol>
+<p>解除授权需要进入进入测试企业OA后台&ndash;微应用进行操作，如图：</p>
+
+<p><img alt="deleteSuite" src="https://img.alicdn.com/tps/TB1GpUAKVXXXXckaXXXXXXXXXXX-858-302.jpg" /></p>
 
 <h3 id="13-isv套件上架流程">13: ISV套件上架流程</h3>
 
@@ -1539,6 +1534,17 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 </ol>
 
 <h5 id="加解密方案说明">加解密方案说明</h5>
+
+<p>开启回调模式时，有以下术语需要了解：</p>
+
+<ol>
+<li><p>signature是签名，用于验证调用者的合法性。具体算法见以下&#39;消息体签名&#39;章节</p></li>
+<li><p>EncodingAESKey：注册套件提供的数据加密密钥。用于消息体的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取，是AESKey的Base64编码。解码后即为32字节长的AESKey</p></li>
+<li><p>AESKey=Base64_Decode(EncodingAESKey + “=”)，是AES算法的密钥，长度为32字节。AES采用CBC模式，数据采用PKCS#7填充；IV初始向量大小为16字节，取AESKey前16字节。具体详见：http://tools.ietf.org/html/rfc2315</p></li>
+<li><p>msg为消息体明文，格式为JSON</p></li>
+<li><p>钉钉服务器会把msg消息体明文编码成encrypt，encrypt = Base64_Encode(AES_Encrypt[random(16B) + msg_len(4B) + msg + $key])，是对明文消息msg加密处理后的Base64编码。其中random为16字节的随机字符串；msg_len为4字节的msg长度，网络字节序；msg为消息体明文；$key对于ISV开发来说，填写对应的suitekey，$key对于普通企业开发，填写企业的Corpid。
+最终传给回调者的是encrypt，字段名为encrypt。</p></li>
+</ol>
 
 <h6 id="对明文msg加密的过程如下：">对明文msg加密的过程如下：</h6>
 
