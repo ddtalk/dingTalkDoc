@@ -1017,6 +1017,40 @@ permanent_code	| 永久授权码，从get_permanent_code接口中获取
 [<font color=red >企业管理员授权应用</font>](#企业管理员授权应用)
 
 
+### 14: ISV为授权方的企业单独设置IP白名单
+
+该API用于为授权方的企业单独设置IP白名单,以达到套件中的微应用相关服务私有化部署的目的。
+
+https请求方式: POST
+
+https://oapi.dingtalk.com/service/set_corp_ipwhitelist?suite_access_token=xxxx
+
+POST数据示例
+
+```
+{	
+	"auth_corpid":"dingabcdefgxxx",
+	"ip_whitelist":["1.2.3.4","5.6.*.*"]
+}
+```
+
+请求参数说明
+
+参数					| 说明
+-------				| -------------
+auth_corpid			| 授权方corpid
+ip_whitelist		| 要为其设置的IP白名单,格式支持IP段,用星号表示,如【5.6.\*.\*】,代表从【5.6.0.\*】到【5.6.255.\*】的任意IP,在第三段设为星号时,将忽略第四段的值,注意:仅支持后两段设置为星号
+
+返回结果示例
+
+```
+{
+	"errcode":0,
+	"errmsg":"ok"
+}
+```
+
+
 ### 消息体签名
 
 为了验证调用者的合法性，钉钉在回调url中增加了消息签名，以参数signature标识，企业需要验证此参数的正确性后再解密。

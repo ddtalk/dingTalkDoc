@@ -2588,6 +2588,71 @@ userid | 员工在企业内的UserID
 }
 ```
 
+### 通过CODE换取普通钉钉用户的身份信息
+
+第三方web服务提供商在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的钉钉用户信息。**此接口只用于普通钉钉用户账号开放**
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/sns/getuserinfo?access_token=ACCESS_TOKEN&code=CODE`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 需要由appId及appSecret换取
+code | String | 是 | 通过Oauth认证给回调URL带上的CODE
+
+###### 返回结果
+
+正确时返回示例如下,具体返回字段取决于用户最终授权：
+
+```
+{
+    "corp_info": [
+        {
+            "is_auth": true, 
+            "is_sys": false, 
+            "corp_name": "钉钉"
+        }, 
+        {
+            "is_auth": true, 
+            "is_sys": false, 
+            "corp_name": "阿里巴巴", 
+            "rights_level": 10
+        }
+    ], 
+    "errcode": 0, 
+    "errmsg": "ok", 
+    "user_info": {
+        "mobile": "13012345678", 
+        "name": "张三"
+    }
+}
+```
+
+参数 | 说明
+---------- | ------
+corp_info | 企业信息
+is_auth | 企业是否经过钉钉认证
+is_sys | 当前用户是否为该企业的管理员
+rights_level | 该企业的权益等级
+corp_name | 企业名称
+mobile | 手机号
+name | 用户姓名
+
+
+出错时返回示例如下：
+
+```
+{
+    "errcode": 40029,
+    "errmsg": "invalid code"
+}
+```
+
 
 <!-- ### 通过CODE换取用户身份
 

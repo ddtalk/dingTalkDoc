@@ -15,7 +15,7 @@
 2. 如果没有获取到cookie，调用免登服务，获取用户身份后，由企业生成代表用户身份的cookie
 3. 根据cookie获取用户身份，进入相应的页面
 
-##手机客户端调用免登
+##手机客户端微应用中调用免登
 
 ### 使用JS-API(推荐使用)
 
@@ -47,7 +47,7 @@ demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/mas
 </aside>
 
 
-##钉钉PC版调用免登
+##钉钉PC版微应用中调用免登
 
 ### 使用JS-API(推荐使用)
 
@@ -80,7 +80,7 @@ demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkP
 
 
 
-##微应用后台管理免登
+##微应用后台管理员免登
 实现微应用后台管理系统与钉钉OA后台的免登
 
 应用场景示例如下图：
@@ -137,3 +137,34 @@ REDIRECT_URL为微应用后台地址，首先跳转到钉钉OA管理后台登录
 开发者从URL中解析code参数，获取CODE并保存下来，再按照上面使用方法中的步骤二和步骤三 获得管理员信息
 
 demo查看:[https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet](https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet)
+
+##普通钉钉用户账号开放及免登(暂未开放，敬请期待)
+第三方web服务提供者，通过此项服务，可以使用普通钉钉用户账号登录自有的系统，并可将自有系统的账号与钉钉账号进行绑定，同时还能够获取钉钉用户的个人及企业数据，如姓名、手机号、对应企业的名称、企业是否认证过、企业的权益等级、其在企业内是否为管理员等信息(取决于用户最终授权)。
+
+<font color=red >注:此功能与ISV没有关系，任何外部系统都可以使用。</font>
+
+1: 获取完成免登过程中验证身份的appId及appSecret。
+
+<font color=red >暂未开放，敬请期待</font>
+
+2: 使用appid及appSecret访问如下接口，获取accesstoken。
+
+https://oapi.dingtalk.com/sns/gettoken?appid=APPID&appsecret=APPSECRET
+
+3: 在钉钉用户访问你的Web系统时，如果用户选择使用钉钉账号登录，则需要由你构造并引导用户跳转到如下链接。
+
+https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=REDIRECT_URL
+
+参数 | 说明
+---------- | ------
+appid | 需要在第1步获取,代表了你提供的服务，必填
+redirect_url | 重定向地址(需要urlencode编码),该地址所在域名需要配置为appid对应的安全域名，必填
+state | 用于防止重放攻击，选填
+response_type | 固定为code，必填
+scope | 固定为snsapi_login，必填
+
+4:在钉钉用户登录钉钉系统后，会302到你指定的redirect_url，并向url参数中追加code及state两个参数。
+
+5:在你的web系统获取到代表用户的code之后，使用第2步获取的AccessToken及code获取当前钉钉用户授权过的个人数据。
+
+[<font color=red >https://oapi.dingtalk.com/sns/getuserinfo?access_token=ACCESS_TOKEN&code=CODE</font>](#通过code换取普通钉钉用户的身份信息)

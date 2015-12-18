@@ -365,7 +365,7 @@
 
 <p><img alt="createtjbd" src="https://img.alicdn.com/tps/TB1Az_EJFXXXXb3XFXXXXXXXXXX-678-539.jpg" /></p>
 
-<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&ldquo;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
+<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&quot;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
 
 <h5 id="c-点击“确定”按钮进入套件列">c.点击“确定”按钮进入套件列</h5>
 
@@ -471,7 +471,7 @@
 
 <p>在使用回调接口之前您需要了解的是，</p>
 
-<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&quot;，</p>
+<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&ldquo;，</p>
 
 <ul>
 <li><p>回调URL:服务提供商接收推送请求的协议和地址</p></li>
@@ -1423,6 +1423,46 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 <a href="#企业管理员授权应用"><font color=red >企业管理员授权应用</font></a></p></li>
 </ul>
 
+<h3 id="14-isv为授权方的企业单独设置ip白名单">14: ISV为授权方的企业单独设置IP白名单</h3>
+
+<p>该API用于为授权方的企业单独设置IP白名单,以达到套件中的微应用相关服务私有化部署的目的。</p>
+
+<p>https请求方式: POST</p>
+
+<p>https://oapi.dingtalk.com/service/set_corp_ipwhitelist?suite_access_token=xxxx</p>
+
+<p>POST数据示例</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">   
+    </span><span class="nt">"auth_corpid"</span><span class="p">:</span><span class="s2">"dingabcdefgxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ip_whitelist"</span><span class="p">:[</span><span class="s2">"1.2.3.4"</span><span class="p">,</span><span class="s2">"5.6.*.*"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>请求参数说明</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>auth_corpid</td>
+<td>授权方corpid</td>
+</tr>
+<tr>
+<td>ip_whitelist</td>
+<td>要为其设置的IP白名单,格式支持IP段,用星号表示,如【5.6.*.*】,代表从【5.6.0.*】到【5.6.255.*】的任意IP,在第三段设为星号时,将忽略第四段的值,注意:仅支持后两段设置为星号</td>
+</tr>
+</tbody></table>
+
+<p>返回结果示例</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <h3 id="消息体签名">消息体签名</h3>
 
 <p>为了验证调用者的合法性，钉钉在回调url中增加了消息签名，以参数signature标识，企业需要验证此参数的正确性后再解密。</p>
@@ -1528,7 +1568,7 @@ Token：123456</p>
 <li>根据cookie获取用户身份，进入相应的页面</li>
 </ol>
 
-<h2 id="手机客户端调用免登">手机客户端调用免登</h2>
+<h2 id="手机客户端微应用中调用免登">手机客户端微应用中调用免登</h2>
 
 <h3 id="使用js-api-推荐使用">使用JS-API(推荐使用)</h3>
 
@@ -1560,7 +1600,7 @@ Token：123456</p>
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
 
-<h2 id="钉钉pc版调用免登">钉钉PC版调用免登</h2>
+<h2 id="钉钉pc版微应用中调用免登">钉钉PC版微应用中调用免登</h2>
 
 <h3 id="使用js-api-推荐使用">使用JS-API(推荐使用)</h3>
 
@@ -1592,7 +1632,7 @@ Token：123456</p>
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
 
-<h2 id="微应用后台管理免登">微应用后台管理免登</h2>
+<h2 id="微应用后台管理员免登">微应用后台管理员免登</h2>
 
 <p>实现微应用后台管理系统与钉钉OA后台的免登</p>
 
@@ -1655,6 +1695,58 @@ Token：123456</p>
 <p>开发者从URL中解析code参数，获取CODE并保存下来，再按照上面使用方法中的步骤二和步骤三 获得管理员信息</p>
 
 <p>demo查看:<a href="https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet">https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet</a></p>
+
+<h2 id="普通钉钉用户账号开放及免登-暂未开放，敬请期待">普通钉钉用户账号开放及免登(暂未开放，敬请期待)</h2>
+
+<p>第三方web服务提供者，通过此项服务，可以使用普通钉钉用户账号登录自有的系统，并可将自有系统的账号与钉钉账号进行绑定，同时还能够获取钉钉用户的个人及企业数据，如姓名、手机号、对应企业的名称、企业是否认证过、企业的权益等级、其在企业内是否为管理员等信息(取决于用户最终授权)。</p>
+
+<p><font color=red >注:此功能与ISV没有关系，任何外部系统都可以使用。</font></p>
+
+<p>1: 获取完成免登过程中验证身份的appId及appSecret。</p>
+
+<p><font color=red >暂未开放，敬请期待</font></p>
+
+<p>2: 使用appid及appSecret访问如下接口，获取accesstoken。</p>
+
+<p>https://oapi.dingtalk.com/sns/gettoken?appid=APPID&amp;appsecret=APPSECRET</p>
+
+<p>3: 在钉钉用户访问你的Web系统时，如果用户选择使用钉钉账号登录，则需要由你构造并引导用户跳转到如下链接。</p>
+
+<p>https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_type=code&amp;scope=snsapi_login&amp;state=STATE&amp;redirect_uri=REDIRECT_URL</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appid</td>
+<td>需要在第1步获取,代表了你提供的服务，必填</td>
+</tr>
+<tr>
+<td>redirect_url</td>
+<td>重定向地址(需要urlencode编码),该地址所在域名需要配置为appid对应的安全域名，必填</td>
+</tr>
+<tr>
+<td>state</td>
+<td>用于防止重放攻击，选填</td>
+</tr>
+<tr>
+<td>response_type</td>
+<td>固定为code，必填</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>固定为snsapi_login，必填</td>
+</tr>
+</tbody></table>
+
+<p>4:在钉钉用户登录钉钉系统后，会302到你指定的redirect_url，并向url参数中追加code及state两个参数。</p>
+
+<p>5:在你的web系统获取到代表用户的code之后，使用第2步获取的AccessToken及code获取当前钉钉用户授权过的个人数据。</p>
+
+<p><a href="#通过code换取普通钉钉用户的身份信息"><font color=red >https://oapi.dingtalk.com/sns/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</font></a></p>
 
           <h1 id="服务端开发文档">服务端开发文档</h1>
 
@@ -5510,8 +5602,7 @@ mobile | 手机号码
 
 <p>用户可以通过此回调接口获取推送失败的变更事件。</p>
 
-<h6 id="请求说明">请求说明</h6>
-
+<h6 id="请求说明">请求说明
 <p>Https请求方式: get</p>
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/call_back/get_call_back_failed_result?access_token=ACCESS_TOKEN</code></p>
@@ -5736,7 +5827,7 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="发送企业会话消息">发送企业会话消息</h2>
+发送企业会话消息&rdquo;>发送企业会话消息</h2>
 
 <p>企业可以主动发消息给员工，消息量不受限制。</p>
 
@@ -6072,8 +6163,7 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h6 id="参数说明">参数说明</h6>
-
+<h6 id="参数说明">参数说明
 <table><thead>
 <tr>
 <th>参数</th>
@@ -6299,8 +6389,7 @@ mobile | 手机号码
 <li>普通文件（file）：10MB</li>
 </ul>
 
-<h3 id="获取媒体文件">获取媒体文件</h3>
-
+<h3 id="获取媒体文件">获取媒体文件
 <p>通过media_id获取图片、语音等文件。</p>
 
 <h6 id="请求说明">请求说明</h6>
@@ -6309,7 +6398,7 @@ mobile | 手机号码
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/media/get?access_token=ACCESS_TOKEN&amp;media_id=MEDIA_ID</code></p>
 
-<h6 id="参数说明">参数说明</h6>
+参数说明&quot;>参数说明</h6>
 
 <table><thead>
 <tr>
@@ -6395,7 +6484,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h6 id="返回结果">返回结果</h6>
+返回结果&quot;>返回结果</h6>
 
 <p>正确时返回示例如下：</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -6517,7 +6606,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>email</td>
-<td>email地址&rdquo;,</td>
+<td>email地址&quot;,</td>
 </tr>
 <tr>
 <td>name</td>
@@ -6526,6 +6615,109 @@ mobile | 手机号码
 <tr>
 <td>userid</td>
 <td>员工在企业内的UserID</td>
+</tr>
+</tbody></table>
+
+<p>出错时返回示例如下：</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">40029</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid code"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="通过code换取普通钉钉用户的身份信息">通过CODE换取普通钉钉用户的身份信息</h3>
+
+<p>第三方web服务提供商在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的钉钉用户信息。<strong>此接口只用于普通钉钉用户账号开放</strong></p>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/sns/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>需要由appId及appSecret换取</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>是</td>
+<td>通过Oauth认证给回调URL带上的CODE</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+
+<p>正确时返回示例如下,具体返回字段取决于用户最终授权：</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"corp_info"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"is_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"is_sys"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"钉钉"</span><span class="w">
+        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"is_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"is_sys"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"阿里巴巴"</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"rights_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w"> 
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13012345678"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corp_info</td>
+<td>企业信息</td>
+</tr>
+<tr>
+<td>is_auth</td>
+<td>企业是否经过钉钉认证</td>
+</tr>
+<tr>
+<td>is_sys</td>
+<td>当前用户是否为该企业的管理员</td>
+</tr>
+<tr>
+<td>rights_level</td>
+<td>该企业的权益等级</td>
+</tr>
+<tr>
+<td>corp_name</td>
+<td>企业名称</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>name</td>
+<td>用户姓名</td>
 </tr>
 </tbody></table>
 
@@ -6582,8 +6774,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <h2 id="统计数据">统计数据</h2>
 
-<h3 id="记录统计数据">记录统计数据</h3>
-
+<h3 id="记录统计数据">记录统计数据
 <p>用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总，提供给开发者。</p>
 
 <h6 id="请求说明">请求说明</h6>
@@ -10368,7 +10559,7 @@ dd.biz.user.get({
 http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 </code></pre>
 
-<h5 id="参数说明">参数说明</h5>
+参数说明&quot;>参数说明</h5>
 
 <p>目前设置导航栏颜色是通过url参数进行配置, 其键为dd_nav_bgcolor，其值形式为AARRGGBB</p>
 
@@ -10644,7 +10835,7 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 
 <h2 id="附录">附录</h2>
 
-<h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
+js-api权限签名算法&quot;>JS-API权限签名算法</h3>
 
 <p>如果开发者想使用钉钉容器开放的jsapi接口，需要经过以下流程：</p>
 
@@ -12002,7 +12193,7 @@ f.唤起添加好友页面
 
 <p>DingTalkPC.biz</p>
 
-<h3 id="选人">选人</h3>
+选人&quot;>选人</h3>
 
 <p>此接口只能对用户进行选择，若要同时选择部门，请使用“选人，选部门”接口。</p>
 <pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
@@ -12288,7 +12479,7 @@ DingTalkPC.biz.chat.chooseConversation({
 id | 会话id
 title | 会话名称 -->
 
-<h2 id="附录">附录</h2>
+附录&quot;>附录</h2>
 
 <h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
 
