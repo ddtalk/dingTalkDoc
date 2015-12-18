@@ -599,7 +599,7 @@ POST数据解密后示例
 SuiteKey	| 应用套件的SuiteKey
 EventType	| change_auth
 TimeStamp	| 时间戳
-AuthCorpID	| 授权方企业的corpid
+AuthCorpId	| 授权方企业的corpid
 
 ##### 返回说明
 
@@ -678,6 +678,56 @@ nonce  | 随机字符串
 encrypt  | "Random"字段的加密字符串
 
 
+#### f."解除授权"事件
+
+此事件的推送会发生在企业解除套件授权的时候。
+
+POST数据解密后示例
+
+```
+
+{
+  "EventType":"suite_relieve",
+  "SuiteKey":"suited6db0pze8yao1b1y",
+  "TimeStamp":"12351458245",
+  "AuthCorpId":"ding4583267d28sd61"
+}
+
+```
+
+服务提供商在收到"解除授权"事件推送后务必返回包含经过加密的字符串"success"的json数据。
+
+
+参数			| 说明
+-------		| -------------
+SuiteKey	| 应用套件的SuiteKey
+EventType	| suite_relieve
+TimeStamp	| 时间戳
+AuthCorpId	|授权方企业的corpid
+
+##### 返回说明
+
+服务提供商在收到"解除授权"事件推送后务必返回包含经过加密的字符串"success"的json数据。
+
+只有返回了对应的json数据，钉钉才会判断此事件推送成功。
+
+```
+
+{
+  "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",
+  "timeStamp":"1783610513",
+  "nonce":"123456",
+  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl" // "Random"字段的加密数据
+}
+
+```
+
+参数      | 说明
+-------   | -------------
+msg_signature  | 消息体签名
+timeStamp | 时间戳
+nonce  | 随机字符串
+encrypt  | "success"字段的加密字符串
 
 
 ### 6: 获取套件访问Token（suite_access_token）
@@ -756,11 +806,7 @@ tmp_auth_code | 回调接口（tmp_auth_code）获取的临时授权码
 	{
 		"corpid": "xxxx",
 		"corp_name": "name"
-    },
-    "auth_user_info":
-    {
-    	"userId":""
-	}
+    }
 }
 ```
 
@@ -772,9 +818,6 @@ permanent_code | 永久授权码
 auth_corp_info | 授权方企业信息
 corpid | 授权方企业id
 corp_name | 授权方企业名称
-auth_user_info | 授权方管理员信息
-mobile | 管理员电话
-name | 管理员名字
 
 ### 8:获取企业授权的access_token
 
@@ -997,17 +1040,51 @@ permanent_code	| 永久授权码，从get_permanent_code接口中获取
 
 ### 13: ISV套件上架流程
 
-
-- 云市场商品发布操作介绍文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b113k21o24lrv1kom4un5.pdf)
-
-云市场商品发布操作文档介绍了套件上架的流程。
+- 一：注册云市场服务商，[<font color=red>服务商入驻流程</font>](https://help.aliyun.com/knowledge_detail/5974029.html?spm=5176.788315044.2.5.YOs845)
 
 
+- 二：在云市场发布商品，套件的上架操作参考云市场商品发布操作介绍文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b113k21o24lrv1kom4un5.pdf)
 
-- 云市场ISV接入文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b01ron15tb3lm1pukcnh4.pdf)
 
-云市场ISV接入文档描述了第三方应用接入到阿里云市场所须实现的接口定义,服务商通过提供以下接口,即可获 得应用订购成功的信息,从而为购买者开通应用。
+- 三：接入云市场，第三方应用接入到阿里云市场所须实现的接口定义,服务商通过提供以下接口,即可获得应用订购成功的信息,从而为购买者开通应用准备环境等，接口定义参考云市场ISV接入文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b01ron15tb3lm1pukcnh4.pdf)
 
+
+- 四：当企业管理员通过云市场完成套件购买后，通过钉钉授权功能进行钉钉套件授权开通，具体授权开通流程见：
+[<font color=red >企业管理员授权应用</font>](#企业管理员授权应用)
+
+
+### 14: ISV为授权方的企业单独设置IP白名单
+
+该API用于为授权方的企业单独设置IP白名单,以达到套件中的微应用相关服务私有化部署的目的。
+
+https请求方式: POST
+
+https://oapi.dingtalk.com/service/set_corp_ipwhitelist?suite_access_token=xxxx
+
+POST数据示例
+
+```
+{	
+	"auth_corpid":"dingabcdefgxxx",
+	"ip_whitelist":["1.2.3.4","5.6.*.*"]
+}
+```
+
+请求参数说明
+
+参数					| 说明
+-------				| -------------
+auth_corpid			| 授权方corpid
+ip_whitelist		| 要为其设置的IP白名单,格式支持IP段,用星号表示,如【5.6.\*.\*】,代表从【5.6.0.\*】到【5.6.255.\*】的任意IP,在第三段设为星号时,将忽略第四段的值,注意:仅支持后两段设置为星号
+
+返回结果示例
+
+```
+{
+	"errcode":0,
+	"errmsg":"ok"
+}
+```
 
 
 ### 消息体签名

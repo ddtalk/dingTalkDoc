@@ -1289,7 +1289,7 @@ dd.biz.chat.toConversation({
 参数 | 参数类型 | 说明
 ----- | ----- | -----
 corpId | String | 企业ID
-chatId | String | 企业ID
+chatId | String | 会话ID
 
 ##### 返回说明（无）
 
@@ -1991,11 +1991,11 @@ dd.biz.navigation.close({
     onFail : function(err) {}
 })
 ```
-## 分享给钉钉好友
+## 分享到会话
 
 该功能是钉钉团队为开发者提供，帮助移动应用通过用户社交快速传播的功能。
 
-“分享给钉钉好友”功能为客户端调用功能，请将对应SDK集成至开发者移动端应用中。
+“分享到会话”功能为客户端调用功能，请将对应SDK集成至开发者移动端应用中。
 
 ### 场景介绍
 
