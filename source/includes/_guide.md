@@ -599,7 +599,7 @@ POST数据解密后示例
 SuiteKey	| 应用套件的SuiteKey
 EventType	| change_auth
 TimeStamp	| 时间戳
-AuthCorpID	| 授权方企业的corpid
+AuthCorpId	| 授权方企业的corpid
 
 ##### 返回说明
 
@@ -678,6 +678,56 @@ nonce  | 随机字符串
 encrypt  | "Random"字段的加密字符串
 
 
+#### f."解除授权"事件
+
+此事件的推送会发生在企业解除套件授权的时候。
+
+POST数据解密后示例
+
+```
+
+{
+  "EventType":"suite_relieve",
+  "SuiteKey":"suited6db0pze8yao1b1y",
+  "TimeStamp":"12351458245",
+  "AuthCorpId":"ding4583267d28sd61"
+}
+
+```
+
+服务提供商在收到"解除授权"事件推送后务必返回包含经过加密的字符串"success"的json数据。
+
+
+参数			| 说明
+-------		| -------------
+SuiteKey	| 应用套件的SuiteKey
+EventType	| suite_relieve
+TimeStamp	| 时间戳
+AuthCorpId	|授权方企业的corpid
+
+##### 返回说明
+
+服务提供商在收到"解除授权"事件推送后务必返回包含经过加密的字符串"success"的json数据。
+
+只有返回了对应的json数据，钉钉才会判断此事件推送成功。
+
+```
+
+{
+  "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",
+  "timeStamp":"1783610513",
+  "nonce":"123456",
+  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl" // "Random"字段的加密数据
+}
+
+```
+
+参数      | 说明
+-------   | -------------
+msg_signature  | 消息体签名
+timeStamp | 时间戳
+nonce  | 随机字符串
+encrypt  | "success"字段的加密字符串
 
 
 ### 6: 获取套件访问Token（suite_access_token）
