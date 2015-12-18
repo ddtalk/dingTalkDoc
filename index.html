@@ -803,7 +803,7 @@
 <td>时间戳</td>
 </tr>
 <tr>
-<td>AuthCorpID</td>
+<td>AuthCorpId</td>
 <td>授权方企业的corpid</td>
 </tr>
 </tbody></table>
@@ -920,6 +920,86 @@
 <tr>
 <td>encrypt</td>
 <td>&quot;Random&quot;字段的加密字符串</td>
+</tr>
+</tbody></table>
+
+<h4 id="f-quot-解除授权-quot-事件">f.&quot;解除授权&quot;事件</h4>
+
+<p>此事件的推送会发生在企业解除套件授权的时候。</p>
+
+<p>POST数据解密后示例</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"EventType"</span><span class="p">:</span><span class="s2">"suite_relieve"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"SuiteKey"</span><span class="p">:</span><span class="s2">"suited6db0pze8yao1b1y"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"TimeStamp"</span><span class="p">:</span><span class="s2">"12351458245"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"AuthCorpId"</span><span class="p">:</span><span class="s2">"ding4583267d28sd61"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>服务提供商在收到&quot;解除授权&quot;事件推送后务必返回包含经过加密的字符串&quot;success&quot;的json数据。</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>SuiteKey</td>
+<td>应用套件的SuiteKey</td>
+</tr>
+<tr>
+<td>EventType</td>
+<td>suite_relieve</td>
+</tr>
+<tr>
+<td>TimeStamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>AuthCorpId</td>
+<td>授权方企业的corpid</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<p>服务提供商在收到&quot;解除授权&quot;事件推送后务必返回包含经过加密的字符串&quot;success&quot;的json数据。</p>
+
+<p>只有返回了对应的json数据，钉钉才会判断此事件推送成功。</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"msg_signature"</span><span class="p">:</span><span class="s2">"111108bb8e6dbce3c9671d6fdb69d15066227608"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timeStamp"</span><span class="p">:</span><span class="s2">"1783610513"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="s2">"Random"</span><span class="err">字段的加密数据</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>msg_signature</td>
+<td>消息体签名</td>
+</tr>
+<tr>
+<td>timeStamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>nonce</td>
+<td>随机字符串</td>
+</tr>
+<tr>
+<td>encrypt</td>
+<td>&quot;success&quot;字段的加密字符串</td>
 </tr>
 </tbody></table>
 
@@ -1482,7 +1562,7 @@ AES加密的buf由16个字节的随机字符串、4个字节的msg长度、明�
 
 <h3 id="加解密库和demo下载">加解密库和demo下载</h3>
 
-<h4 id="java库和demo">Java库和demo</h4>
+java库和demo&rdquo;>Java库和demo</h4>
 
 <p>首先，您需要做以下准备工作</p>
 
@@ -1509,7 +1589,8 @@ JDK6的下载地址：<a href="http://www.oracle.com/technetwork/java/javase/dow
 
 <p>demo地址：<a href="https://github.com/injekt/openapi-demo-php/blob/master/receive.php">https://github.com/injekt/openapi-demo-php/blob/master/receive.php</a></p>
 
-<h4 id="c-库和demo">C#库和demo
+<h4 id="c-库和demo">C#库和demo</h4>
+
 <p>库地址：<a href="https://github.com/ian-cuc/suite-demo-c-/tree/master/API">https://github.com/ian-cuc/suite-demo-c-/tree/master/API</a></p>
 
 <p>demo地址：<a href="https://github.com/ian-cuc/suite-demo-c-/blob/master/receive.ashx.cs">https://github.com/ian-cuc/suite-demo-c-/blob/master/receive.ashx.cs</a></p>
@@ -6885,7 +6966,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 </tr>
 </tbody></table>
 
-返回结果&quot;>返回结果</h6>
+<h6 id="返回结果">返回结果</h6>
 
 <p>正确时返回示例如下：</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -6933,7 +7014,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <p><a href="#客户端开发文档"><font color=red >客户端开发文档</font></a></p>
 
-管理日历接入指南&quot;>管理日历接入指南</h2>
+<h2 id="管理日历接入指南">管理日历接入指南</h2>
 
 <p>钉钉提供微应用接入管理日历的能力。目前处于测试阶段，为了保证接入的质量以及良好的用户体验，接入方需要与钉钉管理日历团队协商接入方案。</p>
 
@@ -7875,7 +7956,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 </tr>
 </tbody></table>
 
-demo&quot;>Demo</h2>
+<h2 id="demo">Demo</h2>
 
 <p>提供了使用Java、PHP、Nodejs 接入钉钉开放平台API的代码示例，和在线调试工具</p>
 
