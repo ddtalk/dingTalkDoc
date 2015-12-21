@@ -2135,7 +2135,7 @@ c. 在DDShareActivity中将接收到的intent及实现了IDDAPIEventHandler接�
 
 ### Demo下载
 
-[<font color=blue >Android Demo 下载</font>](http://download.taobaocdn.com/freedom/31112/compress/p1a6frgn5e1s8cg8jqjrt613hp4.zip)
+[<font color=blue >Android Demo 下载</font>](http://download.taobaocdn.com/freedom/31112/compress/p1a71dcqcqen6g7e2joobd1bdm4.zip)
 
 [<font color=blue >iOS Demo 下载</font>](http://download.taobaocdn.com/freedom/31112/compress/DTShareKit.zip)
 
