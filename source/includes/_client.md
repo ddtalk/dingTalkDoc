@@ -590,7 +590,7 @@ buttonIndex | 被点击按钮的索引值，Number，从0开始, 取消按钮为
 
 ### modal
 
-modal弹浮层 
+modal弹浮层
 
 ```javascript
 dd.device.notification.modal({
@@ -1899,7 +1899,7 @@ text | String | 控制显示文本，空字符串表示显示默认文本
 dd.biz.navigation.setRight({
     show: false,//控制按钮显示， true 显示， false 隐藏， 默认true
     control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
-    text: '发送',//控制显示文本，空字符串表示显示默认文本        	
+    text: '发送',//控制显示文本，空字符串表示显示默认文本
     onSuccess : function(result) {
         /*
         {}
@@ -2003,7 +2003,7 @@ dd.biz.navigation.close({
 将通过钉钉内置浏览器打开网页的形式进行呈现。在传播内容的同时，也会同时露出应用的名称与logo，起到品牌传播的效果。
 
 ### 应用范例
-    
+
 #### 支付宝
 
 从支付宝发送红包可以分享给钉钉同事，用户分享后，钉钉好友可以通过这个分享直接打开支付宝抢红包。
@@ -2078,9 +2078,66 @@ c. 在DDShareActivity中将接收到的intent及实现了IDDAPIEventHandler接�
 
 支持文本、图片、链接以及特殊的支付宝红包类型，具体使用可参考Demo
 
+#### iOS接入流程
+
+准备工作
+
+- 申请AppID, 申请时请提供，应用的BundleID，应用名称和应用图标，图标需要提供两个尺寸：28x28px和 108x108px，格式为PNG；
+- 下载DTShareSDK；DTShareSDK最低部署系统版本为iOS7.0，包含 `armv7, i386, x86_64, arm64` 架构；
+- 安装钉钉iOS客户端2.7.0及以后的版本；
+
+步骤1：将SDK的下列文件导入到工程中；
+
+![share_sdk_import](https://img.alicdn.com/tps/TB1hydHLXXXXXXFXXXXXXXXXXXX-290-97.png)
+
+步骤2：配置工程
+
+- 在Other Linker Flags添加 `-all_load`选项;
+
+![other_linker_flags](https://img.alicdn.com/tps/TB118c9KVXXXXcIaXXXXXXXXXXX-808-201.png)
+
+- 将申请的appId添加到URL Types中作为钉钉回调的scheme, `identifier` 填写`dingtalk`; `URL Schemes`填写申请的AppId。 iOS9及以后的系统需要将钉钉和分享SDK的scheme配置在Info.plist的LSApplicationQueriesSchemes列表中，scheme分别为 `dingtalk, dingtalk-open`
+
+![Alt text](https://img.alicdn.com/tps/TB1QyhdLXXXXXbZXVXXXXXXXXXX-973-709.png)
+
+步骤4：注册应用并添加必要的URL Handler
+
+如示例中，在AppDelegate.m文件中引用`AppDelegate.h`，在@implementation AppDelegate中增加如下代码：
+
+![share_sdk_code_sample](https://img.alicdn.com/tps/TB1F7xvLXXXXXbHXpXXXXXXXXXX-999-554.png)
+
+步骤4：分享数据到钉钉客户端
+
+发送分享请求的过程主要分为两部分：
+
+- 组装DTMediaMessage对象；
+- 调用+[DTOpenAPI sendReq:]发送数据；
+
+不同类型的分享数据通过DTMediaMessage的mediaObject区分：
+
+- DTMediaTextObject 纯文本数据；
+- DTMediaImageObject 纯图片数据；
+- DTMediaWebObject Web页面数据；
+
+下面是分享文本部分代码，其它类型请参考Demo示例：
+
+![share_sdk_text_sample_code](https://img.alicdn.com/tps/TB1ZWthLXXXXXbxXVXXXXXXXXXX-595-257.png)
+
+**注意：分享纯图片数据和Web页面缩略图时，可以使用两种形式：图片URL和图片Data，钉钉内优先使用图片Data形式；分享数据的数据量限制在SDK的头文件中均有描述，超过限制的数据不会发送到钉钉客户端。**
+
+#### 判断当前设备是否支持分享到钉钉
+
+钉钉从2.7版本开始支持分享，SDK中提供了接口来判断当前设备是否能够支持分享到钉钉。
+
+![share_sdk_check_dingtalk_api](https://img.alicdn.com/tps/TB1zfhBLXXXXXXpXpXXXXXXXXXX-556-288.png)
+
+**注意：在iOS9上需要将钉钉SDK相关的Scheme注册到Info.plist的LSApplicationQueriesSchemes明代中，否则会导致检测方法总是返回NO。**
+
 ### Demo下载
 
 [<font color=blue >Android Demo 下载</font>](http://download.taobaocdn.com/freedom/31112/compress/p1a6frgn5e1s8cg8jqjrt613hp4.zip)
+
+[<font color=blue >iOS Demo 下载</font>](http://download.taobaocdn.com/freedom/31112/compress/DTShareKit.zip)
 
 ## 附录
 
