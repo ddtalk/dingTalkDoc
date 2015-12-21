@@ -1046,7 +1046,7 @@ permanent_code	| 永久授权码，从get_permanent_code接口中获取
 - 二：在云市场发布商品，套件的上架操作参考云市场商品发布操作介绍文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b113k21o24lrv1kom4un5.pdf)
 
 
-- 三：接入云市场，第三方应用接入到阿里云市场所须实现的接口定义,服务商通过提供以下接口,即可获得应用订购成功的信息,从而为购买者开通应用准备环境等，接口定义参考云市场ISV接入文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b01ron15tb3lm1pukcnh4.pdf)
+- 三：接入云市场，第三方应用接入到阿里云市场所须实现的接口定义,服务商通过提供以下接口,即可获得应用订购成功的信息,从而为购买者开通应用准备环境等，接口定义参考云市场ISV接入文档：[<font color=red>下载</font>](http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b01ron15tb3lm1pukcnh4.pdf)，云市场接口调试工具：[<font color=red>云市场接口调试工具</font>](http://msp.aliyun.com/isvDoc)
 
 
 - 四：当企业管理员通过云市场完成套件购买后，通过钉钉授权功能进行钉钉套件授权开通，具体授权开通流程见：
