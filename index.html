@@ -8847,7 +8847,7 @@ document.addEventListener('backbutton', function(e) {
 
 <h3 id="modal">modal</h3>
 
-<p>modal弹浮层 </p>
+<p>modal弹浮层</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">notification</span><span class="p">.</span><span class="nx">modal</span><span class="p">({</span>
     <span class="na">image</span><span class="p">:</span><span class="s2">"http://gw.alicdn.com/tps/i2/TB1SlYwGFXXXXXrXVXX9vKJ2XXX-2880-1560.jpg_200x200.jpg"</span><span class="p">,</span> <span class="c1">// 标题图片地址</span>
     <span class="na">title</span><span class="p">:</span><span class="s2">"2.4版本更新"</span><span class="p">,</span> <span class="c1">//标题</span>
@@ -10690,7 +10690,7 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setRight</span><span class="p">({</span>
     <span class="na">show</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span><span class="c1">//控制按钮显示， true 显示， false 隐藏， 默认true</span>
     <span class="na">control</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span><span class="c1">//是否控制点击事件，true 控制，false 不控制， 默认false</span>
-    <span class="na">text</span><span class="p">:</span> <span class="s1">'发送'</span><span class="p">,</span><span class="c1">//控制显示文本，空字符串表示显示默认文本          </span>
+    <span class="na">text</span><span class="p">:</span> <span class="s1">'发送'</span><span class="p">,</span><span class="c1">//控制显示文本，空字符串表示显示默认文本</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
         <span class="cm">/*
         {}
@@ -10903,9 +10903,73 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 
 <p>支持文本、图片、链接以及特殊的支付宝红包类型，具体使用可参考Demo</p>
 
+<h4 id="ios接入流程">iOS接入流程</h4>
+
+<p>准备工作</p>
+
+<ul>
+<li>申请AppID, 申请时请提供，应用的BundleID，应用名称和应用图标，图标需要提供两个尺寸：28x28px和 108x108px，格式为PNG；</li>
+<li>下载DTShareSDK；DTShareSDK最低部署系统版本为iOS7.0，包含 <code class="prettyprint">armv7, i386, x86_64, arm64</code> 架构；</li>
+<li>安装钉钉iOS客户端2.7.0及以后的版本；</li>
+</ul>
+
+<p>步骤1：将SDK的下列文件导入到工程中；</p>
+
+<p><img alt="Import SDK File" src="https://img.alicdn.com/tps/TB1hydHLXXXXXXFXXXXXXXXXXXX-290-97.png" /></p>
+
+<p>步骤2：配置工程</p>
+
+<ul>
+<li>在Other Linker Flags添加 <code class="prettyprint">-all_load</code>选项;</li>
+</ul>
+
+<p><img alt="other_linker_flags" src="https://img.alicdn.com/tps/TB118c9KVXXXXcIaXXXXXXXXXXX-808-201.png" /></p>
+
+<ul>
+<li>将申请的appId添加到URL Types中作为钉钉回调的scheme, <code class="prettyprint">identifier</code> 填写<code class="prettyprint">dingtalk</code>; <code class="prettyprint">URL Schemes</code>填写<code class="prettyprint">申请的AppId</code>。 iOS9及以后的系统需要将钉钉和分享SDK的scheme配置在Info.plist的LSApplicationQueriesSchemes列表中，scheme分别为 <code class="prettyprint">dingtalk, dingtalk-open</code></li>
+</ul>
+
+<p><img alt="Alt text" src="https://img.alicdn.com/tps/TB1QyhdLXXXXXbZXVXXXXXXXXXX-973-709.png" /></p>
+
+<p>步骤3：注册应用并添加必要的URL Handler</p>
+
+<p>如示例中，在AppDelegate.m文件中引用<code class="prettyprint">DTOpenKit.h</code>，在@implementation AppDelegate中增加如下代码：</p>
+
+<p><img alt="share_sdk_code" src="https://img.alicdn.com/tps/TB1F7xvLXXXXXbHXpXXXXXXXXXX-999-554.png" /></p>
+
+<p>步骤5：分享数据到钉钉客户端</p>
+
+<p>发送分享请求的过程主要分为两部分：</p>
+
+<ul>
+<li>组装DTMediaMessage对象；</li>
+<li>调用+[DTOpenAPI sendReq:]发送数据；</li>
+</ul>
+
+<p>不同类型的分享数据通过DTMediaMessage的mediaObject区分：</p>
+
+<ul>
+<li>DTMediaTextObject 纯文本数据；</li>
+<li>DTMediaImageObject 纯图片数据；</li>
+<li>DTMediaWebObject Web页面数据；</li>
+</ul>
+
+<p>下面是分享文本为例，其它类型请参考Demo示例：</p>
+
+<p><img alt="share_sdk_text_msg" src="https://img.alicdn.com/tps/TB1ZWthLXXXXXbxXVXXXXXXXXXX-595-257.png" /></p>
+
+<p><strong>注意：分享纯图片数据和Web页面缩略图时，可以使用两种形式：图片URL和图片Data，钉钉内优先使用图片Data形式；分享数据的数据量限制在SDK的头文件中均有描述，超过限制的数据不会发送到钉钉客户端。</strong></p>
+
+<p>钉钉从2.7版本开始支持分享，SDK中提供了接口来判断当前设备是否能够支持分享到钉钉。</p>
+
+<p><img alt="share_sdk_check_dingtalk" src="https://img.alicdn.com/tps/TB1zfhBLXXXXXXpXpXXXXXXXXXX-556-288.png" /></p>
+
+<p><strong>注意：在iOS9上需要将钉钉SDK相关的Scheme注册到Info.plist的LSApplicationQueriesSchemes明代中，否则会导致检测方法总是返回NO。</strong></p>
+
 <h3 id="demo下载">Demo下载</h3>
 
-<p><a href="http://download.taobaocdn.com/freedom/31112/compress/p1a6frgn5e1s8cg8jqjrt613hp4.zip"><font color=blue >Android Demo 下载</font></a></p>
+<p><a href="http://download.taobaocdn.com/freedom/31112/compress/p1a6frgn5e1s8cg8jqjrt613hp4.zip"><font color=blue >Android Demo 下载</font></a>
+<a href="http://download.taobaocdn.com/freedom/31112/compress/DTShareKit.zip"><font color=blue >iOS Demo 下载</font></a></p>
 
 <h2 id="附录">附录</h2>
 
