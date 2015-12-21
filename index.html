@@ -365,7 +365,7 @@
 
 <p><img alt="createtjbd" src="https://img.alicdn.com/tps/TB1Az_EJFXXXXb3XFXXXXXXXXXX-678-539.jpg" /></p>
 
-<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&quot;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
+<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&ldquo;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
 
 <h5 id="c-点击“确定”按钮进入套件列">c.点击“确定”按钮进入套件列</h5>
 
@@ -471,7 +471,7 @@
 
 <p>在使用回调接口之前您需要了解的是，</p>
 
-<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&ldquo;，</p>
+<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&quot;，</p>
 
 <ul>
 <li><p>回调URL:服务提供商接收推送请求的协议和地址</p></li>
@@ -1477,7 +1477,7 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 <ul>
 <li><p>一：注册云市场服务商，<a href="https://help.aliyun.com/knowledge_detail/5974029.html?spm=5176.788315044.2.5.YOs845"><font color=red>服务商入驻流程</font></a></p></li>
 <li><p>二：在云市场发布商品，套件的上架操作参考云市场商品发布操作介绍文档：<a href="http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b113k21o24lrv1kom4un5.pdf"><font color=red>下载</font></a></p></li>
-<li><p>三：接入云市场，第三方应用接入到阿里云市场所须实现的接口定义,服务商通过提供以下接口,即可获得应用订购成功的信息,从而为购买者开通应用准备环境等，接口定义参考云市场ISV接入文档：<a href="http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b01ron15tb3lm1pukcnh4.pdf"><font color=red>下载</font></a></p></li>
+<li><p>三：接入云市场，第三方应用接入到阿里云市场所须实现的接口定义,服务商通过提供以下接口,即可获得应用订购成功的信息,从而为购买者开通应用准备环境等，接口定义参考云市场ISV接入文档：<a href="http://download.taobaocdn.com/freedom/31112/pdf/p1a5lce9b01ron15tb3lm1pukcnh4.pdf"><font color=red>下载</font></a>，云市场接口调试工具：<a href="http://msp.aliyun.com/isvDoc"><font color=red>云市场接口调试工具</font></a></p></li>
 <li><p>四：当企业管理员通过云市场完成套件购买后，通过钉钉授权功能进行钉钉套件授权开通，具体授权开通流程见：
 <a href="#企业管理员授权应用"><font color=red >企业管理员授权应用</font></a></p></li>
 </ul>
@@ -1568,7 +1568,7 @@ AES加密的buf由16个字节的随机字符串、4个字节的msg长度、明�
 
 <h3 id="加解密库和demo下载">加解密库和demo下载</h3>
 
-java库和demo&rdquo;>Java库和demo</h4>
+<h4 id="java库和demo">Java库和demo</h4>
 
 <p>首先，您需要做以下准备工作</p>
 
@@ -5672,7 +5672,8 @@ mobile | 手机号码
 
 <p>用户可以通过此回调接口获取推送失败的变更事件。</p>
 
-<h6 id="请求说明">请求说明
+<h6 id="请求说明">请求说明</h6>
+
 <p>Https请求方式: get</p>
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/call_back/get_call_back_failed_result?access_token=ACCESS_TOKEN</code></p>
@@ -5897,7 +5898,7 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-发送企业会话消息&rdquo;>发送企业会话消息</h2>
+<h2 id="发送企业会话消息">发送企业会话消息</h2>
 
 <p>企业可以主动发消息给员工，消息量不受限制。</p>
 
@@ -6233,7 +6234,8 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h6 id="参数说明">参数说明
+<h6 id="参数说明">参数说明</h6>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -6459,7 +6461,8 @@ mobile | 手机号码
 <li>普通文件（file）：10MB</li>
 </ul>
 
-<h3 id="获取媒体文件">获取媒体文件
+<h3 id="获取媒体文件">获取媒体文件</h3>
+
 <p>通过media_id获取图片、语音等文件。</p>
 
 <h6 id="请求说明">请求说明</h6>
@@ -6468,7 +6471,7 @@ mobile | 手机号码
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/media/get?access_token=ACCESS_TOKEN&amp;media_id=MEDIA_ID</code></p>
 
-参数说明&quot;>参数说明</h6>
+<h6 id="参数说明">参数说明</h6>
 
 <table><thead>
 <tr>
@@ -6554,7 +6557,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-返回结果&quot;>返回结果</h6>
+<h6 id="返回结果">返回结果</h6>
 
 <p>正确时返回示例如下：</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -6676,7 +6679,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>email</td>
-<td>email地址&quot;,</td>
+<td>email地址&rdquo;,</td>
 </tr>
 <tr>
 <td>name</td>
@@ -6844,7 +6847,8 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <h2 id="统计数据">统计数据</h2>
 
-<h3 id="记录统计数据">记录统计数据
+<h3 id="记录统计数据">记录统计数据</h3>
+
 <p>用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总，提供给开发者。</p>
 
 <h6 id="请求说明">请求说明</h6>
@@ -10629,7 +10633,7 @@ dd.biz.user.get({
 http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 </code></pre>
 
-参数说明&quot;>参数说明</h5>
+<h5 id="参数说明">参数说明</h5>
 
 <p>目前设置导航栏颜色是通过url参数进行配置, 其键为dd_nav_bgcolor，其值形式为AARRGGBB</p>
 
@@ -10905,7 +10909,7 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 
 <h2 id="附录">附录</h2>
 
-js-api权限签名算法&quot;>JS-API权限签名算法</h3>
+<h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
 
 <p>如果开发者想使用钉钉容器开放的jsapi接口，需要经过以下流程：</p>
 
@@ -12263,7 +12267,7 @@ f.唤起添加好友页面
 
 <p>DingTalkPC.biz</p>
 
-选人&quot;>选人</h3>
+<h3 id="选人">选人</h3>
 
 <p>此接口只能对用户进行选择，若要同时选择部门，请使用“选人，选部门”接口。</p>
 <pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
@@ -12549,7 +12553,7 @@ DingTalkPC.biz.chat.chooseConversation({
 id | 会话id
 title | 会话名称 -->
 
-附录&quot;>附录</h2>
+<h2 id="附录">附录</h2>
 
 <h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
 
