@@ -6849,7 +6849,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <h3 id="记录统计数据">记录统计数据</h3>
 
-<p>用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总，提供给开发者。</p>
+<p>用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总。</p>
 
 <h6 id="请求说明">请求说明</h6>
 
@@ -6913,14 +6913,118 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <td>extension</td>
 <td>JSONObject</td>
 <td>否</td>
-<td>扩展字段，json格式</td>
+<td>扩展字段，json格式,具体的业务数据模型的定义，请参考附录二，现只开放考勤类业务数据模型</td>
 </tr>
 </tbody></table>
 
 <h6 id="返回结果">返回结果</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"$:LWCP_v1:$t3G6JuXLNr7pd0fWOQKS2w=="</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>数据标识id</td>
+</tr>
+<tr>
+<td>errcode</td>
+<td>返回码</td>
+</tr>
+<tr>
+<td>errmsg</td>
+<td>对返回码的文本描述内容</td>
+</tr>
+</tbody></table>
+
+<h3 id="更新统计数据">更新统计数据</h3>
+
+<p>isv企业可以通过这个接口更新微应用数据，所更新的数据必须是通过/data/record接口插入的。</p>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式：POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/data/update?access_token=ACCESS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>是</td>
+<td>使用/data/record接口插入数据时返回的id</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>调用接口凭证</td>
+</tr>
+<tr>
+<td>startTimeMs</td>
+<td>String</td>
+<td>是</td>
+<td>事件发生时间，单位为距离1970的毫秒数</td>
+</tr>
+<tr>
+<td>endTimeMs</td>
+<td>String</td>
+<td>是</td>
+<td>事件结束时间（瞬间结束的，该值和发生事件一致）</td>
+</tr>
+<tr>
+<td>module</td>
+<td>String</td>
+<td>否</td>
+<td>微应用提供区分内部模块的标记</td>
+</tr>
+<tr>
+<td>originId</td>
+<td>String</td>
+<td>否</td>
+<td>微应用中该记录的主键索引</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>String</td>
+<td>是</td>
+<td>员工在企业内的UserID，企业用来唯一标识用户的字段</td>
+</tr>
+<tr>
+<td>agentId</td>
+<td>String</td>
+<td>是</td>
+<td>授权方应用id</td>
+</tr>
+<tr>
+<td>extension</td>
+<td>JSONObject</td>
+<td>否</td>
+<td>扩展字段，json格式,具体的业务数据模型的定义，请参考附录二，现只开放考勤类业务数据模型</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -7036,7 +7140,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <h2 id="附录">附录</h2>
 
-<h3 id="全局返回码说明">全局返回码说明</h3>
+<h3 id="附录一-全局返回码说明">附录一 全局返回码说明</h3>
 
 <p>开发者每次调用接口时，可能获得正确或错误的返回码，企业可以根据返回码信息调试接口，排查错误。</p>
 
@@ -7965,6 +8069,56 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <td>计算解密文字suitekey或者corpid不匹配</td>
 </tr>
 </tbody></table>
+
+<h3 id="附录二-微应用数据中心业务模型定义">附录二  微应用数据中心业务模型定义</h3>
+
+<h6 id="考勤业务数据模型">考勤业务数据模型</h6>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"attendance"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"类别，10-正常打卡，11-异常打卡，12-旷工，13-未设置考勤规则，14-范围外打卡，15-未到岗"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stdWorkingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"标准工作时长，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"actualWorkingTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"实际工作时长，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"originUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"业务数据跳转url"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reportLocations"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"上报位置标识"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"上报标识"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"上报时间，时间戳，格式为数字，单位毫秒"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+
+    </span><span class="nt">"items"</span><span class="p">:[</span><span class="w">
+        </span><span class="s2">"originId"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"业务数据标识"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"originUrl"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"业务数据跳转url"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="err">:</span><span class="w"> </span><span class="s2">"考勤状态，20-正常，21-迟到，22-早退，23-未打卡，24-缺卡"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"outOfScope"</span><span class="err">:</span><span class="w"> </span><span class="s2">"是否范围外，0-否，1-是"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"classId"</span><span class="err">:</span><span class="w"> </span><span class="s2">"班次标识"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"className"</span><span class="err">:</span><span class="w"> </span><span class="s2">"班次名称"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"periodId"</span><span class="err">:</span><span class="w"> </span><span class="s2">"时段标识"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"periodName"</span><span class="err">:</span><span class="w"> </span><span class="s2">"时段名称"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"periodStartTime"</span><span class="err">:</span><span class="w"> </span><span class="s2">"考勤时间段开始时间，时间戳，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"periodEndTime"</span><span class="err">:</span><span class="w"> </span><span class="s2">"考勤时间段结束时间，时间戳，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"checkStartTime"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"有效打卡开始时间，时间戳，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"checkEndTime"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"有效打卡结束时间，时间戳，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"checkTime"</span><span class="err">:</span><span class="w"> </span><span class="s2">"设置的标准打卡时间，时间戳，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signTime"</span><span class="err">:</span><span class="w"> </span><span class="s2">"实际考勤打卡时间，时间戳，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signPlace"</span><span class="err">:</span><span class="w"> </span><span class="s2">"实际考勤地点"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signOffset"</span><span class="err">:</span><span class="w"> </span><span class="s2">"实际偏移距离，单位米"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signWifi"</span><span class="err">:</span><span class="w"> </span><span class="s2">"实际的考勤wifi"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signWifiMAC"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"实际的考勤wifiMAC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"checkPlace"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"设置的考勤地点"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"checkOffset"</span><span class="err">:</span><span class="w"> </span><span class="s2">"设置的偏移距离，单位米"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"checkWifi"</span><span class="w"> </span><span class="err">:</span><span class="s2">"设置的考勤wifi"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"checkWifiMAC"</span><span class="w"> </span><span class="err">:</span><span class="s2">"设置的考勤wifiMAC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"duty"</span><span class="err">:</span><span class="w"> </span><span class="s2">"上下班,0-上班，1-下班"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"absentTime"</span><span class="err">:</span><span class="w"> </span><span class="s2">"迟到或早退的时长，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"supplement"</span><span class="err">:</span><span class="w"> </span><span class="s2">"是否已补签，0-否，1-是"</span><span class="w">
+    </span><span class="p">]</span><span class="w">   
+
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
 
 <h2 id="demo">Demo</h2>
 
