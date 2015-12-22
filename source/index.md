@@ -22,9 +22,7 @@ includes:
   - serverdebug
 
   - blog
-  
-  - appstore
-  
+    
   - faq
 
   - updatelog
