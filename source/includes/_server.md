@@ -2702,7 +2702,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 ###记录统计数据
 
-用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总，提供给开发者。
+用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总。
 
 ###### 请求说明
 
@@ -2721,20 +2721,59 @@ module | String | 否 | 微应用提供区分内部模块的标记
 originId | String | 否 | 微应用中该记录的主键索引
 userid | String | 是 | 员工在企业内的UserID，企业用来唯一标识用户的字段
 agentId | String | 是 | 授权方应用id
-extension | JSONObject | 否 | 扩展字段，json格式
+extension | JSONObject | 否 | 扩展字段，json格式,具体的业务数据模型的定义，请参考附录二，现只开放考勤类业务数据模型
 
 ######  返回结果
 
 ```
 {
     "errcode": 0,
+    "id":"$:LWCP_v1:$t3G6JuXLNr7pd0fWOQKS2w==",
     "errmsg": "ok"
+}
+```
+参数 |  说明
+---------- | -------
+id      | 数据标识id
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+###更新统计数据
+
+isv企业可以通过这个接口更新微应用数据，所更新的数据必须是通过/data/record接口插入的。
+
+###### 请求说明
+
+Https请求方式：POST
+
+`https://oapi.dingtalk.com/data/update?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+id| String| 是|使用/data/record接口插入数据时返回的id
+access_token | String | 是 | 调用接口凭证
+startTimeMs | String | 是 | 事件发生时间，单位为距离1970的毫秒数
+endTimeMs | String | 是 | 事件结束时间（瞬间结束的，该值和发生事件一致）
+module | String | 否 | 微应用提供区分内部模块的标记
+originId | String | 否 | 微应用中该记录的主键索引
+userid | String | 是 | 员工在企业内的UserID，企业用来唯一标识用户的字段
+agentId | String | 是 | 授权方应用id
+extension | JSONObject | 否 | 扩展字段，json格式,具体的业务数据模型的定义，请参考附录二，现只开放考勤类业务数据模型
+######  返回结果
+
+```
+{
+"errcode": 0,
+"errmsg": "ok"
 }
 ```
 参数 |  说明
 ---------- | -------
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
+
 
 
 ## JS接口API
@@ -2799,7 +2838,7 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 具体接入文档查看：[管理日历接入指南](http://download.taobaocdn.com/freedom/31112/pdf/p1a6htv7hq1o3p63g9ahpq51n5q4.pdf)
 
 ## 附录
-### 全局返回码说明
+### 附录一 全局返回码说明
 
 开发者每次调用接口时，可能获得正确或错误的返回码，企业可以根据返回码信息调试接口，排查错误。
 
@@ -3037,6 +3076,56 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 900009 | 计算解密文字长度不匹配
 900010 | 计算解密文字suitekey或者corpid不匹配
 
+###附录二  微应用数据中心业务模型定义
+######考勤业务数据模型
+
+```
+
+{
+    "type": "attendance",
+    "category": "类别，10-正常打卡，11-异常打卡，12-旷工，13-未设置考勤规则，14-范围外打卡，15-未到岗",
+    "stdWorkingTime": "标准工作时长，格式为数字，单位毫秒",
+    "actualWorkingTime": "实际工作时长，格式为数字，单位毫秒",
+    "originUrl": "业务数据跳转url",
+    "reportLocations":[
+        {
+            "id" : "上报位置标识",
+            "address": "上报标识",
+            "time": "上报时间，时间戳，格式为数字，单位毫秒"
+        }
+    ],
+
+    "items":[
+        "originId" : "业务数据标识",
+        "originUrl" : "业务数据跳转url",
+        "status": "考勤状态，20-正常，21-迟到，22-早退，23-未打卡，24-缺卡",
+        "outOfScope": "是否范围外，0-否，1-是",
+        "classId": "班次标识",
+        "className": "班次名称",
+        "periodId": "时段标识",
+        "periodName": "时段名称",
+        "periodStartTime": "考勤时间段开始时间，时间戳，格式为数字，单位毫秒",
+        "periodEndTime": "考勤时间段结束时间，时间戳，格式为数字，单位毫秒",
+        "checkStartTime" : "有效打卡开始时间，时间戳，格式为数字，单位毫秒",
+        "checkEndTime" : "有效打卡结束时间，时间戳，格式为数字，单位毫秒",
+        "checkTime": "设置的标准打卡时间，时间戳，格式为数字，单位毫秒",
+        "signTime": "实际考勤打卡时间，时间戳，格式为数字，单位毫秒",
+        "signPlace": "实际考勤地点",
+        "signOffset": "实际偏移距离，单位米",
+        "signWifi": "实际的考勤wifi",
+        "signWifiMAC" : "实际的考勤wifiMAC",
+        "checkPlace" : "设置的考勤地点",
+        "checkOffset": "设置的偏移距离，单位米",
+        "checkWifi" :"设置的考勤wifi",
+        "checkWifiMAC" :"设置的考勤wifiMAC",
+        "duty": "上下班,0-上班，1-下班",
+        "absentTime": "迟到或早退的时长，格式为数字，单位毫秒",
+        "supplement": "是否已补签，0-否，1-是"
+    ]   
+
+}
+
+```
 ## Demo
 
 提供了使用Java、PHP、Nodejs 接入钉钉开放平台API的代码示例，和在线调试工具
