@@ -3699,7 +3699,7 @@ mobile | 手机号码
 <td>微应用的PC端主页，必须以http开头或https开头，如果不为空则必须与homepageUrl的域名一致</td>
 </tr>
 <tr>
-<td>ompLink</td>
+<td>ompUrl</td>
 <td>String</td>
 <td>否</td>
 <td>微应用的OA后台管理主页，必须以http开头或https开头</td>
@@ -7263,6 +7263,12 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <td>授权方应用id</td>
 </tr>
 <tr>
+<td>callbackUrl</td>
+<td>String</td>
+<td>是</td>
+<td>针对该条数据的回调url</td>
+</tr>
+<tr>
 <td>extension</td>
 <td>JSONObject</td>
 <td>否</td>
@@ -7300,7 +7306,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <h3 id="更新统计数据">更新统计数据</h3>
 
-<p>isv企业可以通过这个接口更新微应用数据，所更新的数据必须是通过/data/record接口插入的。</p>
+<p>isv企业可以通过这个接口更新微应用数据，所更新的数据必须是通过/data/record接口插入的，现在只能更新module，callbackUrl，extension三个字段。</p>
 
 <h6 id="请求说明">请求说明</h6>
 
@@ -7365,6 +7371,12 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 <td>String</td>
 <td>是</td>
 <td>授权方应用id</td>
+</tr>
+<tr>
+<td>callbackUrl</td>
+<td>String</td>
+<td>是</td>
+<td>针对该条数据的回调url</td>
 </tr>
 <tr>
 <td>extension</td>
