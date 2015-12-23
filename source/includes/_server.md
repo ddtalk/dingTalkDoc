@@ -791,7 +791,7 @@ appName | String | 是 | 微应用的名称。长度限制为1~10个字符
 appDesc  | String | 是 | 微应用的描述。长度限制为1~20个字符
 homepageUrl | String | 是 | 微应用的移动端主页，必须以http开头或https开头
 pcHomepageUrl | String | 否 | 微应用的PC端主页，必须以http开头或https开头，如果不为空则必须与homepageUrl的域名一致
-ompLink | String | 否 | 微应用的OA后台管理主页，必须以http开头或https开头
+ompUrl | String | 否 | 微应用的OA后台管理主页，必须以http开头或https开头
 
 ###### 返回结果
 
@@ -2721,6 +2721,7 @@ module | String | 否 | 微应用提供区分内部模块的标记
 originId | String | 否 | 微应用中该记录的主键索引
 userid | String | 是 | 员工在企业内的UserID，企业用来唯一标识用户的字段
 agentId | String | 是 | 授权方应用id
+callbackUrl | String | 是 | 针对该条数据的回调url
 extension | JSONObject | 否 | 扩展字段，json格式,具体的业务数据模型的定义，请参考附录二，现只开放考勤类业务数据模型
 
 ######  返回结果
@@ -2740,7 +2741,7 @@ errmsg | 对返回码的文本描述内容
 
 ###更新统计数据
 
-isv企业可以通过这个接口更新微应用数据，所更新的数据必须是通过/data/record接口插入的。
+isv企业可以通过这个接口更新微应用数据，所更新的数据必须是通过/data/record接口插入的，现在只能更新module，callbackUrl，extension三个字段。
 
 ###### 请求说明
 
@@ -2760,6 +2761,7 @@ module | String | 否 | 微应用提供区分内部模块的标记
 originId | String | 否 | 微应用中该记录的主键索引
 userid | String | 是 | 员工在企业内的UserID，企业用来唯一标识用户的字段
 agentId | String | 是 | 授权方应用id
+callbackUrl | String | 是 | 针对该条数据的回调url
 extension | JSONObject | 否 | 扩展字段，json格式,具体的业务数据模型的定义，请参考附录二，现只开放考勤类业务数据模型
 ######  返回结果
 
