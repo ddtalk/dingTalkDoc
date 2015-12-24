@@ -365,7 +365,7 @@
 
 <p><img alt="createtjbd" src="https://img.alicdn.com/tps/TB1Az_EJFXXXXb3XFXXXXXXXXXX-678-539.jpg" /></p>
 
-<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&quot;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
+<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&ldquo;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
 
 <h5 id="c-点击“确定”按钮进入套件列">c.点击“确定”按钮进入套件列</h5>
 
@@ -471,7 +471,7 @@
 
 <p>在使用回调接口之前您需要了解的是，</p>
 
-<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&ldquo;，</p>
+<p>首先要拿到您创建套件时填写的&quot;回调URL&quot;，&quot;Token&quot;，&quot;数据加密密钥(ENCODING_AES_KEY)&quot;，</p>
 
 <ul>
 <li><p>回调URL:服务提供商接收推送请求的协议和地址</p></li>
@@ -1817,8 +1817,11 @@ a)售卖方式：钉钉类商品支持按次售卖或按周期售卖。</p>
 <p>钉钉类型的商品的生产过程：
 商品类型 | 生产/服务过程
 &mdash;&mdash; | &mdash;&ndash; 
-钉钉类商品  | 需要先通过钉钉验收，审核上架后，用户购买商品进行授权开通，ISV应用接收授权信息后立即开通
-- 5.1 ISV接入API</p>
+钉钉类商品  | 需要先通过钉钉验收，审核上架后，用户购买商品进行授权开通，ISV应用接收授权信息后立即开通</p>
+
+<ul>
+<li>5.1 ISV接入API</li>
+</ul>
 
 <p>ISV通过接入API实现用户购买、续费、商品过期信息的处理，通过购买时云市场传入的corpid与钉钉企业进行关联，实现开通时的企业绑定；通过续费接口实现对钉钉企业商品有效期的管理；通过商品过期接口实现对应用内企业数据的导出、备份等操作</p>
 
@@ -1834,9 +1837,10 @@ a)售卖方式：钉钉类商品支持按次售卖或按周期售卖。</p>
 <li>6.2 开据发票
 ISV开全额发票给企业用户</li>
 <li>6.3 线下退款
-ISV可与企业用户协商进行线下退款
-#### 7.  用户授权</li>
+ISV可与企业用户协商进行线下退款</li>
 </ul>
+
+<h4 id="7-用户授权">7.  用户授权</h4>
 
 <p>当企业管理员通过云市场完成套件购买后，通过钉钉授权功能进行钉钉套件授权开通，具体授权开通流程见：
 <a href="#企业管理员授权应用"><font color=red >企业管理员授权应用</font></a></p>
@@ -6272,7 +6276,8 @@ mobile | 手机号码
 
 <p>目前支持text、image、voice、file、link、OA消息类型。每个消息都由消息头和消息体组成，企业会话的消息头由touser,toparty,agentid组成。消息体请参见以下各种<a href="#消息类型及数据格式"><font color=red >消息类型</font></a>。</p>
 
-<h6 id="参数说明">参数说明
+<h6 id="参数说明">参数说明</h6>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -6386,7 +6391,8 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h6 id="参数说明">参数说明
+<h6 id="参数说明">参数说明</h6>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -6591,7 +6597,8 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h6 id="参数说明">参数说明
+<h6 id="参数说明">参数说明</h6>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -6817,7 +6824,8 @@ mobile | 手机号码
 <li>普通文件（file）：10MB</li>
 </ul>
 
-<h3 id="获取媒体文件">获取媒体文件
+<h3 id="获取媒体文件">获取媒体文件</h3>
+
 <p>通过media_id获取图片、语音等文件。</p>
 
 <h6 id="请求说明">请求说明</h6>
@@ -6826,7 +6834,7 @@ mobile | 手机号码
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/media/get?access_token=ACCESS_TOKEN&amp;media_id=MEDIA_ID</code></p>
 
-参数说明&rdquo;>参数说明</h6>
+<h6 id="参数说明">参数说明</h6>
 
 <table><thead>
 <tr>
@@ -6912,7 +6920,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-返回结果&quot;>返回结果</h6>
+<h6 id="返回结果">返回结果</h6>
 
 <p>正确时返回示例如下：</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -7034,7 +7042,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>email</td>
-<td>email地址&quot;,</td>
+<td>email地址&rdquo;,</td>
 </tr>
 <tr>
 <td>name</td>
@@ -7202,7 +7210,8 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <h2 id="统计数据">统计数据</h2>
 
-<h3 id="记录统计数据">记录统计数据
+<h3 id="记录统计数据">记录统计数据</h3>
+
 <p>用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总。</p>
 
 <h6 id="请求说明">请求说明</h6>
@@ -7416,7 +7425,7 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <p>企业在使用微应用中的JS API时，需要先从钉钉开放平台接口获取jsapi_ticket生成签名数据，并将最终签名用的部分字段及签名结果返回到H5中，JS API底层将通过这些数据判断H5是否有权限使用JS API。</p>
 
-请求说明&quot;>请求说明</h6>
+<h6 id="请求说明">请求说明</h6>
 
 <p>Https请求方式：GET</p>
 
@@ -11153,7 +11162,7 @@ dd.biz.user.get({
 http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 </code></pre>
 
-参数说明&quot;>参数说明</h5>
+<h5 id="参数说明">参数说明</h5>
 
 <p>目前设置导航栏颜色是通过url参数进行配置, 其键为dd_nav_bgcolor，其值形式为AARRGGBB</p>
 
@@ -11249,7 +11258,7 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 
 <p>可通过拼接url方式隐藏 showmenu=false</p>
 
-设置标题&quot;>设置标题</h3>
+<h3 id="设置标题">设置标题</h3>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">({</span>
     <span class="na">title</span> <span class="p">:</span> <span class="s1">'邮箱正文'</span><span class="p">,</span><span class="c1">//控制标题文本，空字符串表示显示默认文本</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
@@ -11494,7 +11503,8 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 
 <p><a href="http://download.taobaocdn.com/freedom/31112/compress/DTShareKit.zip"><font color=blue >iOS Demo 下载</font></a></p>
 
-<h2 id="附录">附录
+<h2 id="附录">附录</h2>
+
 <h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
 
 <p>如果开发者想使用钉钉容器开放的jsapi接口，需要经过以下流程：</p>
@@ -12853,7 +12863,7 @@ f.唤起添加好友页面
 
 <p>DingTalkPC.biz</p>
 
-选人&quot;>选人</h3>
+<h3 id="选人">选人</h3>
 
 <p>此接口只能对用户进行选择，若要同时选择部门，请使用“选人，选部门”接口。</p>
 <pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
@@ -13139,7 +13149,7 @@ DingTalkPC.biz.chat.chooseConversation({
 id | 会话id
 title | 会话名称 -->
 
-附录&quot;>附录</h2>
+<h2 id="附录">附录</h2>
 
 <h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
 
