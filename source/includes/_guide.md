@@ -899,8 +899,8 @@ permanent_code		| 永久授权码，通过get_permanent_code获取
 	  "corp_name":"corpid",
 	  "corpid":"auth_corpid_value",
 	  "industry":"互联网",
-	  "invite_code" : "1001"
-	  "license_code" : "sdfjduqoxdmxhakdj"
+	  "invite_code" : "1001",
+	  "license_code" : "sdfjduqoxdmxhakdj",
 	  "invite_url" : "https://t.dingtalk.com/invite/index?code=xxxx&inviterUid=xxxxx"
 	},
 	"auth_user_info":

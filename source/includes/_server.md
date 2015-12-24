@@ -181,7 +181,7 @@ access_token | String | 是 | 调用接口凭证
             "id": 3,
             "name": "服务端开发组",
             "parentid": 2,
-            "createDeptGroup": false
+            "createDeptGroup": false,
             "autoAddUser": false
         }
     ]
@@ -317,7 +317,7 @@ Https请求方式: POST
     "deptManagerUseridList": "manager1111|2222",
     "deptHiding": false,
     "deptPerimits": "12|23",
-    "orgDeptOwner": "manager1111",   
+    "orgDeptOwner": "manager1111"
 }
 ```
 
@@ -1155,9 +1155,9 @@ file.media_id |String | 是 | 媒体文件id，可以调用上传媒体文件接
     "msgtype": "link",
     "link": {
         "title": "测试",
-        "text": "测试"
+        "text": "测试",
         "picUrl":"@lALOACZwe2Rk",
-        "messageUrl": "http://s.dingtalk.com/market/dingtalk/error_code.php",
+        "messageUrl": "http://s.dingtalk.com/market/dingtalk/error_code.php"
     }
 }
 ```
