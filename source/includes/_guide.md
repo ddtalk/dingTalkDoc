@@ -900,6 +900,8 @@ permanent_code		| 永久授权码，通过get_permanent_code获取
 	  "corpid":"auth_corpid_value",
 	  "industry":"互联网",
 	  "invite_code" : "1001"
+	  "license_code" : "sdfjduqoxdmxhakdj"
+	  "invite_url" : "https://t.dingtalk.com/invite/index?code=xxxx&inviterUid=xxxxx"
 	},
 	"auth_user_info":
     {
@@ -931,6 +933,8 @@ permanent_code		| 永久授权码，通过get_permanent_code获取
 auth_corp_info		| 授权方企业信息
 corpid				| 授权方企业id
 invite_code         | 表示邀请码，只有填写过且是ISV自己邀请码的数据才会返回,否则值为空字符串
+license_code 		| 套件许可号
+invite_url			| 企业对外部人员邀请码
 industry			| 表示企业所属行业
 corp_name			| 授权方企业名称
 auth_user_info      | 授权方管理员信息
