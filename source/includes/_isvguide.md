@@ -1182,7 +1182,7 @@ ISV接入相关接口调试：[<font color=red >ISV接入调试工具</font>](ht
 
 入驻成功后，您可以访问[<font color=red>服务商平台</font>](http://msp.aliyun.com/)进行操作。
 请在左侧菜单中点击”服务商信息”，进入服务商信息维护页面。
-[<font color=red>注意，供应商名称、淘宝账号、支付宝账号填写后无法修改，请慎重填写！</font>]
+[<font color=red>注意，供应商名称、淘宝账号、支付宝账号填写后无法修改，请慎重填写！淘宝账号、支付宝账号必须是关联关系</font>]
 
 - 2.3 提交店铺资料
 访问[<font color=red>服务商平台</font>](http://msp.aliyun.com/)，在左侧菜单中点击”店铺管理”提交店铺资料。每个服务商拥有自己的店铺，例如：http://market.aliyun.com/store/771374.html 后续我们会开放对店铺首页进行装修的功能
