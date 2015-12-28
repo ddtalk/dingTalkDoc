@@ -1,4 +1,4 @@
-# 更新日志
+# Release Notes
 <div id="websiteContainer" style="position:absolute;left:20px; height:20px;">
 	<div id="releaseNotesContainer" role="main"></div>
 </div>
