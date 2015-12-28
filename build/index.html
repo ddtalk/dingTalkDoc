@@ -90,25 +90,13 @@
 <li>邮件组: open-dingtalk@list.alibaba-inc.com</li>
 </ul>
 
-          <h1 id="快速开发指南">快速开发指南</h1>
-
-<p>假如你是企业用户，要为自己的公司开发微应用，查看<a href="#企业接入"><font color=red >企业接入</font></a>。</p>
-
-<p>假如你是ISV(服务提供商)，作为第三方要给其他公司提供微应用，先查看<a href="#isv接入"><font color=red >ISV接入</font></a>。</p>
-
-<p>钉钉开放平台提供了<strong>企业通讯录管理、文件管理、发送企业会话消息</strong>等功能，接口使用可以参考<a href="#服务端开发文档"><font color=red >服务端开发文档</font></a>；</p>
-
-<p>我们定制了微应用专用的运行容器，提供了一组可以调用<strong>钉钉的本地能力和业务逻辑</strong>的JS接口，开发者可以通过这些接口使用钉钉的本地能力或者钉钉的业务逻辑，降低开发成本，提高微应用在移动客户端的体验。接口使用可以参考<a href="#客户端开发文档"><font color=red >客户端开发文档</font></a>。</p>
-
-<p>该指南主要介绍了企业和ISV（服务提供商）如何接入钉钉开放平台，其中涉及到接入过程中使用的工具、与钉钉开放平台相关的概念和接入钉钉开放平台的一些实践方法，以帮助开发者快速开发自己的微应用。</p>
-
-<h2 id="企业接入">企业接入</h2>
+          <h1 id="企业接入指南">企业接入指南</h1>
 
 <p>企业接入指南重点介绍使用钉钉开放平台的开发微应用的流程，帮助企业快速接入钉钉开放平台。该节主要分为四个部分：第一部分介绍企业接入钉钉开放平台的准备工作；第二部介绍如何访问开放平台服务端接口；第三部分介绍钉钉开放平台提供的员工身份验证流程；第四部分介绍发送消息到微应用会话。</p>
 
 <p><br /></p>
 
-<h3 id="开发环境准备">开发环境准备</h3>
+<h2 id="开发环境准备">开发环境准备</h2>
 
 <p>开发者在使用钉钉开放平台开发微应用前需做好以下准备：</p>
 
@@ -126,7 +114,7 @@
 
 <p><strong>钉钉管理后台管理员（以下简称钉钉后台管理员）</strong> 在企业通讯录管理页面可以完成企业的组织结构和员工个人信息的添加、删除、查看和修改等操作；在微应用管理页面可以完成添加和删除微应用，获取CorpID和CorpSecret(接入钉钉开放平台的凭证)，查看微应用相关信息，管理微应用的运行状态等。开发者在使用该系统前需要注册成为钉钉后台管理员或者由钉钉后台管理员分配管理员子帐号。</p>
 
-<h3 id="创建微应用">创建微应用</h3>
+<h2 id="创建微应用">创建微应用</h2>
 
 <p>一、进入 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 页面, 点击 <a href="https://oa.dingtalk.com/register.html?spm=0.0.0.0.dL51oc"><font color=red >企业注册</font></a>；（已经注册可跳过此步骤）</p>
 
@@ -142,7 +130,7 @@
 通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程注册管理员帐号。
 </aside>
 
-<h4 id="分配管理员子账号：">分配管理员子账号：</h4>
+<h3 id="分配管理员子账号：">分配管理员子账号：</h3>
 
 <p>一、登录钉钉后台管理系统，按下图进入安全中心的添加管理员子帐号页面；</p>
 
@@ -154,7 +142,7 @@
 
 <p>完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 <em>钉小秘</em> 会话中收到管理员帐号和初始密码，该钉钉用户可以通过收到的帐号和密码登录 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 进入安全中心对初始密码进行修改。</p>
 
-<h4 id="微应用管理和创建">微应用管理和创建</h4>
+<h3 id="微应用管理和创建">微应用管理和创建</h3>
 
 <p>登录钉钉管理后台后可以进入 <em>应用中心</em> 页面对微应用进行运行状态管理，进入微应用后台，微应用信息查看与设置，微应用添加和删除等操作。</p>
 
@@ -186,17 +174,17 @@
 
 <p><img alt="createMi" src="https://img.alicdn.com/tps/TB1xStVKpXXXXbjXFXXXXXXXXXX-361-640.jpg" /></p>
 
-<h3 id="使用免登服务">使用免登服务</h3>
+<h2 id="使用免登服务">使用免登服务</h2>
 
 <p>假如在进入微应用的时候需要获取当前用户的信息，可以使用免登服务，实现账户打通。详细文档请参阅<a href="#免登服务"><font color=red >免登服务</font></a>。</p>
 
 <p><br /></p>
 
-<h3 id="调用平台接口">调用平台接口</h3>
+<h2 id="调用平台接口">调用平台接口</h2>
 
 <p>开发者在调用钉钉开放平台接口时需要附加AccessToken，AccessToken可以通过CorpID和CorpSecret获取。</p>
 
-<h4 id="获取corpid和corpsecret">获取CorpID和CorpSecret</h4>
+<h3 id="获取corpid和corpsecret">获取CorpID和CorpSecret</h3>
 
 <p>CorpID是企业的唯一标识，获取CorpID和CorpSecret的步骤如下:</p>
 
@@ -212,7 +200,7 @@
 钉钉开放平台提供了获取和修改企业(团队)的组织结构信息、人员信息等功能，所以请妥善保管CorpID和CorpSecret，避免外泄影响企业信息安全。
 </aside>
 
-<h4 id="获取accesstoken">获取AccessToken</h4>
+<h3 id="获取accesstoken">获取AccessToken</h3>
 
 <p>开发者在调用开放平台接口前需要通过CorpID和CorpSecret获取AccessToken。获取AccessToken的方法是向 <code class="prettyprint">https://oapi.dingtalk.com/gettoken?corpid=id&amp;corpsecret=secrect</code> GET请求。</p>
 
@@ -230,7 +218,7 @@
 
 <p><br /></p>
 
-<h3 id="发送企业会话消息">发送企业会话消息</h3>
+<h2 id="发送企业会话消息">发送企业会话消息</h2>
 
 <p>用户可以在企业会话中查看微应用发送的消息，开发者可以通过发送消息接口将消息发送到企业会话中。</p>
 
@@ -244,29 +232,258 @@
 
 <p>如果在使用开放平台中遇到困难请浏览<a href="#faq"><font color=red >《常见问题》</font></a>一节，若仍不能解决请按概述中的提供的反馈方式联系我们。</p>
 
-<h2 id="isv接入">ISV接入</h2>
+          <h1 id="isv接入指南">ISV接入指南</h1>
 
-<h3 id="钉钉isv（服务提供商）应用授权和接口说明">钉钉ISV（服务提供商）应用授权和接口说明</h3>
+<p>钉钉开放平台提供了<strong>企业通讯录管理、文件管理、发送企业会话消息</strong>等功能，接口使用可以参考<a href="#服务端开发文档"><font color=red >服务端开发文档</font></a>；</p>
 
-<p>欢迎成为钉钉微应用的服务提供商！
-通过接入钉钉ISV的应用授权接口，可以快速发布自己的微应用套件，引导企业客户自动开通微应用，将自己的服务快速触达到自己的目标客户！
-钉钉的应用授权方案包含以下两个场景：</p>
+<p>我们定制了微应用专用的运行容器，提供了一组可以调用<strong>钉钉的本地能力和业务逻辑</strong>的JS接口，开发者可以通过这些接口使用钉钉的本地能力或者钉钉的业务逻辑，降低开发成本，提高微应用在移动客户端的体验。接口使用可以参考<a href="#客户端开发文档"><font color=red >客户端开发文档</font></a>。</p>
 
-<h4 id="isv注册应用">ISV注册应用</h4>
+<p>该指南主要介绍了企业和ISV（服务提供商）如何接入钉钉开放平台，其中涉及到接入过程中使用的工具、与钉钉开放平台相关的概念和接入钉钉开放平台的一些实践方法，以帮助开发者快速开发自己的微应用。</p>
 
-<p>你，作为ISV若要使用此方案，只需在阿里云上注册成为第三方服务提供商，在ISV接入后台创建应用套件，并在应用套件中配置好相应的应用。
-本方案所说的应用套件，是第三方应用授权的主体，它可以包含多个第三方所提供的同一类型的应用。目前一个第三方最多可以注册五个应用套件，一个应用套件最多可以包含五个应用。</p>
+<h2 id="接入准备">接入准备</h2>
 
-<h4 id="企业管理员授权应用">企业管理员授权应用</h4>
+<p>开发者在使用钉钉开放平台开发微应用前需做好以下准备：</p>
 
-<p>企业的管理员在钉钉企业后台的微应用列表中浏览你的应用套件后，即可发起一键授权，系统将展示微应用的第三方授权页面，管理员根据授权页面的引导，确认授权内容，完成授权操作。
-授权完成之后，企业就可使用ISV服务提供商所提供的应用服务了。一切将变得简单自然。以下是详细的接口调用时序图</p>
+<ul>
+<li>注册钉钉企业；</li>
+<li>服务端环境搭建和域名注册；</li>
+<li>开发环境搭建；</li>
+</ul>
 
-<p><img alt="Mou icon" src="https://img.alicdn.com/tps/TB1RhMGJXXXXXXdXVXXXXXXXXXX-876-659.jpg" /></p>
+<h3 id="注册钉钉企业账号">注册钉钉企业账号</h3>
 
-<h3 id="1-注册成为第三方服务提供商">1:注册成为第三方服务提供商</h3>
+<p>一、进入 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 页面, 点击 <a href="https://oa.dingtalk.com/register.html?spm=0.0.0.0.dL51oc"><font color=red >企业注册</font></a>；（已经注册可跳过此步骤）</p>
 
-<h4 id="1-1需要提供的数据项">1.1需要提供的数据项</h4>
+<p><img alt="enterprise_register_entry" src="https://img.alicdn.com/tps/TB14kI8IFXXXXciapXXXXXXXXXX.jpg" /></p>
+
+<p>二、填写注册手机号码和短信验证码；</p>
+
+<p>三、输入企业基本信息和管理员帐号和密码，点击 <em>注册</em> 按钮完成注册过程。</p>
+
+<p><img alt="input_enterprise_info" src="https://img.alicdn.com/tps/TB1bru8JFXXXXXcXFXXXXXXXXXX-1171-807.png" /></p>
+
+<aside class="notice">
+通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程注册管理员帐号。
+</aside>
+
+<h4 id="分配管理员子账号：">分配管理员子账号：</h4>
+
+<p>一、登录钉钉后台管理系统，按下图进入安全中心的添加管理员子帐号页面；</p>
+
+<p><img alt="add_sub_manager" src="https://img.alicdn.com/tps/TB1Q3DiJFXXXXbkXXXXXXXXXXXX-1147-377.png" /></p>
+
+<p>二、按下图提示填写子帐号信息</p>
+
+<p><img alt="set_sub_manager_account" src="https://img.alicdn.com/tps/TB16euYJFXXXXcRXFXXXXXXXXXX-601-336.png" /></p>
+
+<p>完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 <em>钉小秘</em> 会话中收到管理员帐号和初始密码，该钉钉用户可以通过收到的帐号和密码登录 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 进入安全中心对初始密码进行修改。</p>
+
+<h3 id="服务端环境搭建和域名注册">服务端环境搭建和域名注册</h3>
+
+<p>开发者可以自己搭建服务器也可以购买云主机来搭建自己的服务端环境，开发者需要为自己的微应用注册合法有效的域名</p>
+
+<h3 id="开发环境搭建">开发环境搭建</h3>
+
+<p>钉钉开放平台的服务端接口不区分语言和平台，开发者可以使用自己熟悉的技术搭建开发环境来开发微应用</p>
+
+<p>至此，您已经完成了准备工作。</p>
+
+<p>假如你是企业用户，要为自己的公司开发微应用，查看<a href="#企业接入"><font color=red >企业接入</font></a>。</p>
+
+<p>假如你是ISV(服务提供商)，作为第三方要给其他公司提供微应用，先查看<a href="#isv接入"><font color=red >ISV接入</font></a>。</p>
+
+<h2 id="isv接入整体流程">ISV接入整体流程</h2>
+
+<p><img alt="ISV process" src="https://img.alicdn.com/tps/TB1fDX4LXXXXXa2XpXXXXXXXXXX-1009-367.png" /></p>
+
+<h3 id="isv接入说明">ISV接入说明</h3>
+
+<p>ISV接入钉钉后有2种选择：</p>
+
+<ul>
+<li><p>套件通过钉钉应用中心推广（精品套件），符合接入<a href="#isv接入整体流程"><font color=red>整体流程</font></a>中的要求，并满足<a href="#标准规范"><font color=red>标准规范</font></a>中的要求，需要通过钉钉应用中心推广必须与钉钉进行商务洽谈，商务洽谈联系方式：<a href="#商务洽谈"><font color=red>商务洽谈</font></a></p></li>
+<li><p>套件通过ISV线下推广，可以通过2种方式进行操：</p></li>
+</ul>
+
+<p>1.通过企业接入的方式，为企业单独进行接入</p>
+
+<p>2.通过钉钉快速部署进行实施，详细内容见<a href="#钉钉快速部署指南"><font color=red>钉钉快速部署指南</font></a>中的描述。使用此方式需满足<a href="#标准规范"><font color=red>标准规范</font></a>中的要求，钉钉团队会进行质量验收，其它项由ISV自己负责，如果接收到用户的投诉，钉钉保留对ISV的处罚权利</p>
+
+<h3 id="商务洽谈">商务洽谈</h3>
+
+<p>ISV联系钉钉ISV接入接口人进行合作洽谈，更多信息请通过联系方式：angle.lixy@alibaba-inc.com 进行</p>
+
+<h3 id="钉钉快速部署指南">钉钉快速部署指南</h3>
+
+<h4 id="isv接入准备">ISV接入准备</h4>
+
+<p>1.ISV使用快速部署必须先实现<a href="#isv套件对企业独立部署方案"><font color=red>ISV套件对企业独立部署方案</font></a></p>
+
+<p>2.ISV需要在云市场提交商品审核，套件上架流程详见：<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a></p>
+
+<p>3.ISV在接入之前需要通过联系钉钉ISV接入接口人获取ISV企业邀请码，联系方式：angle.lixy@alibaba-inc.com</p>
+
+<p>4.填写“ISV线下快速部署申请表”，发送到open-dingtalk@list.alibaba-inc.com申请， 审核通过后，钉钉小二会发送链接&amp;二维码给ISV, ISV可以生成H5页面，分享给用户扫码或者点击下载<a href="http://download.taobaocdn.com/freedom/30712/xls/p1a7c2m1e71q9e8me125a118d1npe4.xls"><font color=red>ISV线下快速部署申请表</font></a></p>
+
+<p><img alt="Application Form" src="https://img.alicdn.com/tps/TB1c3uBLXXXXXaNXXXXXXXXXXXX-802-571.png" /></p>
+
+<p>填写说明：</p>
+
+<table><thead>
+<tr>
+<th>栏位</th>
+<th>填写要求</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>服务商名称</td>
+<td>必填，阿里云市场注册的服务商全名</td>
+</tr>
+<tr>
+<td>套件名称</td>
+<td>必填，ISV提交商品审核的套件全称，套件上架流程详见<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a></td>
+</tr>
+<tr>
+<td>邀请码</td>
+<td>必填，钉钉ISV接入接口人分配的ISV企业邀请码</td>
+</tr>
+<tr>
+<td>申请快速部署原因</td>
+<td>必填，需要申明使用此方案的原因、使用场景信息</td>
+</tr>
+<tr>
+<td>是否有现场实施人员</td>
+<td>必填，是否有现场实施人员支持，如没有，注明通过什么方式分享二维码</td>
+</tr>
+<tr>
+<td>通讯录导入方式</td>
+<td>必填，选择isv引入的企业用户通过哪种方式维护通讯录，如：由企业管理员通过钉钉OA后台导入（），通过钉钉手机端创建团队；ISV现有系统通过钉钉接口导入等</td>
+</tr>
+<tr>
+<td>是否申请自定义手机“工作”tab界面</td>
+<td>必填，钉钉手机端的工作界面可以为ISV定义：手机工作界面   1. Banner：ISV通过发布带图片公告的形式，实现banner页效果 2. 套件排序置顶 3. 手机工作界面tab名称定义为ISV套件名称，例如由工作改为“XXX”</td>
+</tr>
+<tr>
+<td>申请定义手机“工作”tab界面原因</td>
+<td>不必填，咨询钉钉ISV接入接口人</td>
+</tr>
+<tr>
+<td>是否验证应用序列号</td>
+<td>必填，应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置。举例： ISV 通过自有渠道，售卖了一套微应用给客户A，客户A扫码可以快速创建团队并开通应用，如果该二维码分享给了B，B也可以通过扫码开通应用，而B实际并未支付费用，为避免此问题，ISV可以发给A客户唯一的序列号，A客户扫码后，必须输入序列号并得到ISV验证，才可开通应用</td>
+</tr>
+<tr>
+<td>套件icon</td>
+<td>必填，引导页面需要套件icon，规格120*120，圆角，请在“套件icon”sheet页进行上传</td>
+</tr>
+<tr>
+<td>手机“工作”tab命名</td>
+<td>如需申请“工作”tab名称自定义，则必填，“工作”tab名称可以重命名，支持4个汉字</td>
+</tr>
+<tr>
+<td>公告</td>
+<td>如需申请“工作”tab界面自定义，则必填，工作界面的banner通过发布带图片公告的形式展现，需要填写发送公告所在企业的corp_id和公告标题；公告路径：https://app.dingtalk.com/#/app/blackboard/create，图片推荐尺寸： 640*380</td>
+</tr>
+<tr>
+<td>是否需要团队链接,用于发送邀请</td>
+<td>必填，开通微应用时，程序会自动生成团队链接发给ISV，ISV得到团队链接可以通过邮件或者短信发送邀请，如需团队链接，请注明邀请方式</td>
+</tr>
+</tbody></table>
+
+<p>5.如果需要定义不同的任务或者其他特殊需求，请提前在开发阶段，向接口的钉钉小二提出产品需求（任务：见产品主体流程中描述的开通步骤，每个步骤称为一个任务）</p>
+
+<h4 id="产品主体流程">产品主体流程</h4>
+
+<p><img alt="ksbs_process" src="https://img.alicdn.com/tps/TB1xcWaLXXXXXcIXVXXXXXXXXXX-863-585.png" /></p>
+
+<p>实施步骤：</p>
+
+<ol>
+<li>安装钉钉，并且完成注册，请使用以下二维码和链接，让客户扫码，打开下载钉钉地址：
+http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</li>
+</ol>
+
+<p><img alt="DD_QRcode" src="https://img.alicdn.com/tps/TB1HeydLXXXXXaJXVXXXXXXXXXX-584-584.png" /></p>
+
+<p>2.提交快速部署后，钉钉工作人员会通过邮件，发送套件二维码给ISV, 客户通过钉钉手机端上的扫码工具，扫描进入快速部署引导页</p>
+
+<p><img alt="DD_ksbs1" src="https://img.alicdn.com/tps/TB1n7qhLXXXXXXhXVXXXXXXXXXX-427-640.png" /></p>
+
+<p>3.创建团队：配置可以选择创建1人团队（大于等于1人），或多人团队（大于等于6人），</p>
+
+<p>➢1人团队：适合人数较多团队，需要通过钉钉OA管理后台表格导入，或者</p>
+
+<p>➢多人团队：适合人数较少团队，便于在钉钉手机端上，创建团队</p>
+
+<p><img alt="DD_ksbs2" src="https://img.alicdn.com/tps/TB17wWoLXXXXXcTXpXXXXXXXXXX-394-652.png" /></p>
+
+<p>4.开通微应用：分为3步：：输入应用序列号－立即授权－使用范围设置</p>
+
+<p>4.1  输入应用序列号： 应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置</p>
+
+<p>➢ISV通过openapi /service/get_auth_info 获取授权信息，应用序列号即在返回数据中</p>
+
+<p>➢/service/get_auth_info接口具体信息请参考 <a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
+
+<p><img alt="DD_ksbs3" src="https://img.alicdn.com/tps/TB18Hx9LXXXXXbeaXXXXXXXXXXX-427-706.png" /></p>
+
+<p>4.2：立即授权</p>
+
+<p><img alt="DD_ksbs4" src="https://img.alicdn.com/tps/TB1Ic9CLXXXXXaxXXXXXXXXXXXX-438-720.png" /></p>
+
+<p>4.3：设置使用范围，设置微应用哪些员工可以使用</p>
+
+<p><img alt="DD_ksbs5" src="https://img.alicdn.com/tps/TB1iV5nLXXXXXcaXpXXXXXXXXXX-449-780.png" /></p>
+
+<p>4.4 开始使用， 用户点击“开始使用”可以进入手机端工作界面页</p>
+
+<p><img alt="DD_ksbs6" src="https://img.alicdn.com/tps/TB190CBLXXXXXa.XXXXXXXXXXXX-450-729.png" />
+<img alt="DD_ksbs7" src="https://img.alicdn.com/tps/TB17ceELXXXXXXtXXXXXXXXXXXX-504-702.png" /></p>
+
+<p>4.5  开通授权后，isv可获取团队邀请链接，团队邀请链接处理逻辑</p>
+
+<p>➢isv通过openapi /service/get_auth_info 获取授权信息，团队邀请链接即在返回数据中</p>
+
+<p>➢/service/get_auth_info接口具体信息请参考<a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
+
+<h2 id="注册钉钉开发者">注册钉钉开发者</h2>
+
+<h3 id="描述（description）">描述（Description）</h3>
+
+<p>阿里云用户登录后，在通过实名认证的情况下，填写相关信息，完成开发者的身份申请。</p>
+
+<h3 id="前置条件（pre-conditions）">前置条件（Pre-Conditions）</h3>
+
+<p>申请者首先是阿里云用户</p>
+
+<h3 id="基本流程（basic-flow）">基本流程（Basic Flow）</h3>
+
+<h4 id="a-点击进入控制台，进行登录。">a. 点击进入<a href="http://console.d.aliyun.com"><font color=red >控制台</font></a>，进行登录。</h4>
+
+<h4 id="b-登录阿里云账号">b. 登录阿里云账号</h4>
+
+<h4 id="c-进行实名认证（已经实名认证过的开发者直接看g-步骤）">c. 进行实名认证（已经实名认证过的开发者直接看g.步骤）</h4>
+
+<p>用户未通过实名认证，需要实名认证后，才能申请开发者，流程如下：</p>
+
+<h4 id="d-点击“立即认证”">d. 点击“立即认证”</h4>
+
+<p><img alt="lijirz" src="https://img.alicdn.com/tps/TB1PUwmIVXXXXbbXXXXXXXXXXXX-866-305.png" /></p>
+
+<h4 id="e-新开窗口跳转到阿里云认证页面">e. 新开窗口跳转到阿里云认证页面</h4>
+
+<p><img alt="shimingrz" src="https://img.alicdn.com/tps/TB1lv3iIVXXXXa6XpXXXXXXXXXX-866-412.png" /></p>
+
+<h4 id="f-实名认证通过，在弹窗点击“立即刷新”按钮">f. 实名认证通过，在弹窗点击“立即刷新”按钮</h4>
+
+<p><img alt="zhengzairz" src="https://img.alicdn.com/tps/TB11m_VIVXXXXaqapXXXXXXXXXX-866-334.png" /></p>
+
+<h4 id="g-显示已通过实名认证">g. 显示已通过实名认证</h4>
+
+<p><img alt="shiming" src="https://img.alicdn.com/tps/TB1C3T6IVXXXXXWaXXXXXXXXXXX-866-335.png" /></p>
+
+<h4 id="h-选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”">h. 选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”</h4>
+
+<h5 id="数据项说明">数据项说明</h5>
 
 <table><thead>
 <tr>
@@ -292,47 +509,31 @@
 </tr>
 </tbody></table>
 
-<h4 id="1-2-描述（description）">1.2 描述（Description）</h4>
+<h4 id="i-显示申请开发者成功">i. 显示申请开发者成功</h4>
 
-<p>阿里云用户登录后，在通过实名认证的情况下，填写相关信息，完成开发者的身份申请。</p>
+<h2 id="创建套件-amp-微应用">创建套件&amp;微应用</h2>
 
-<h4 id="1-3-前置条件（pre-conditions）">1.3 前置条件（Pre-Conditions）</h4>
+<h3 id="1-创建套件">1: 创建套件</h3>
 
-<p>申请者首先是阿里云用户</p>
+<h4 id="1-1-描述（description）">1.1 描述（Description）</h4>
 
-<h4 id="1-4-基本流程（basic-flow）">1.4 基本流程（Basic Flow）</h4>
+<p>在开发钉钉应用前，首先要创建一个套件，套件可以包含一组应用，并对这组应用统一进行权限管理。</p>
 
-<h5 id="a-点击进入控制台，进行登录。">a. 点击进入<a href="http://console.d.aliyun.com"><font color=red >控制台</font></a>，进行登录。</h5>
+<h4 id="1-2-前置条件（pre-conditions）">1.2 前置条件（Pre-Conditions）</h4>
 
-<h5 id="b-登录阿里云账号">b. 登录阿里云账号</h5>
+<p>阿里云用户成功申请开发者</p>
 
-<h5 id="c-进行实名认证（已经实名认证过的开发者直接看g-步骤）">c. 进行实名认证（已经实名认证过的开发者直接看g.步骤）</h5>
+<h4 id="1-3-基本流程（basic-flow）">1.3 基本流程（Basic Flow）</h4>
 
-<p>用户未通过实名认证，需要实名认证后，才能申请开发者，流程如下：</p>
+<h5 id="a-钉钉应用菜单-套件列表，点击“创建套件”">a.钉钉应用菜单-套件列表，点击“创建套件”</h5>
 
-<h5 id="d-点击“立即认证”">d. 点击“立即认证”</h5>
+<p><img alt="createtj" src="https://img.alicdn.com/tps/TB1fyqYJFXXXXcXXVXXXXXXXXXX-1346-479.jpg" /></p>
 
-<p><img alt="lijirz" src="https://img.alicdn.com/tps/TB1PUwmIVXXXXbbXXXXXXXXXXXX-866-305.png" /></p>
+<h5 id="b．填写创建套件表单">b．填写创建套件表单</h5>
 
-<h5 id="e-新开窗口跳转到阿里云认证页面">e. 新开窗口跳转到阿里云认证页面</h5>
+<p><img alt="createtjbd" src="https://img.alicdn.com/tps/TB1Az_EJFXXXXb3XFXXXXXXXXXX-678-539.jpg" /></p>
 
-<p><img alt="shimingrz" src="https://img.alicdn.com/tps/TB1lv3iIVXXXXa6XpXXXXXXXXXX-866-412.png" /></p>
-
-<h5 id="f-实名认证通过，在弹窗点击“立即刷新”按钮">f. 实名认证通过，在弹窗点击“立即刷新”按钮</h5>
-
-<p><img alt="zhengzairz" src="https://img.alicdn.com/tps/TB11m_VIVXXXXaqapXXXXXXXXXX-866-334.png" /></p>
-
-<h5 id="g-显示已通过实名认证">g. 显示已通过实名认证</h5>
-
-<p><img alt="shiming" src="https://img.alicdn.com/tps/TB1C3T6IVXXXXXWaXXXXXXXXXXX-866-335.png" /></p>
-
-<h5 id="h-选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”">h. 选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”</h5>
-
-<h5 id="i-显示申请开发者成功">i. 显示申请开发者成功</h5>
-
-<h3 id="2-创建套件">2: 创建套件</h3>
-
-<h4 id="2-1-需要提供的数据项：">2.1 需要提供的数据项：</h4>
+<h5 id="数据项说明：">数据项说明：</h5>
 
 <table><thead>
 <tr>
@@ -346,7 +547,7 @@
 </tr>
 <tr>
 <td>回调URL</td>
-<td>以http://开头，系统将会把此套件的SuiteTicket，临时授权码以及授权变更事件推送给此URL，详细请看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a></td>
+<td>以http://开头，系统将会把此套件的SuiteTicket，临时授权码以及授权变更事件推送给此URL，详细请看<a href="#2-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a></td>
 </tr>
 <tr>
 <td>Token</td>
@@ -370,33 +571,35 @@
 </tr>
 </tbody></table>
 
-<h4 id="2-2-描述（description）">2.2 描述（Description）</h4>
-
-<p>在开发钉钉应用前，首先要创建一个套件，套件可以包含一组应用，并对这组应用统一进行权限管理。</p>
-
-<h4 id="2-3-前置条件（pre-conditions）">2.3 前置条件（Pre-Conditions）</h4>
-
-<p>阿里云用户成功申请开发者</p>
-
-<h4 id="2-4-基本流程（basic-flow）">2.4 基本流程（Basic Flow）</h4>
-
-<h5 id="a-钉钉应用菜单-套件列表，点击“创建套件”">a.钉钉应用菜单-套件列表，点击“创建套件”</h5>
-
-<p><img alt="createtj" src="https://img.alicdn.com/tps/TB1fyqYJFXXXXcXXVXXXXXXXXXX-1346-479.jpg" /></p>
-
-<h5 id="b．填写创建套件表单">b．填写创建套件表单</h5>
-
-<p><img alt="createtjbd" src="https://img.alicdn.com/tps/TB1Az_EJFXXXXb3XFXXXXXXXXXX-678-539.jpg" /></p>
-
-<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&ldquo;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#5-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
+<p><strong>当您注册套件时，钉钉服务器为了避免无效推送，将会验证回调url的有效性，对回调url推送&quot;验证回调URL有效性事件&ldquo;，收到推送后您需要做正确的处理，才能成功创建套件。详细处理步骤请查看<a href="#2-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a>和&quot;验证回调URL有效性事件&quot;。</strong></p>
 
 <h5 id="c-点击“确定”按钮进入套件列">c.点击“确定”按钮进入套件列</h5>
 
 <p>在这里可以查看套件详细信息，比如套件Key（suite_key），套件secret(suite_secret)</p>
 
-<h3 id="3-创建微应用">3: 创建微应用</h3>
+<h3 id="2-创建微应用">2: 创建微应用</h3>
 
-<h4 id="3-1-需要提供的数据项：">3.1 需要提供的数据项：</h4>
+<h4 id="2-1-描述（description）">2.1 描述（Description）</h4>
+
+<p>开发者编辑套件基本信息，创建微应用。</p>
+
+<h4 id="2-2-前置条件（pre-conditions）">2.2 前置条件（Pre-Conditions）</h4>
+
+<p>阿里云用户，申请成为开发者，套件列表点击“管理”操作</p>
+
+<h4 id="2-3-基本流程（basic-flow）">2.3 基本流程（Basic Flow）</h4>
+
+<h5 id="a-查看套件基本信息">a 查看套件基本信息</h5>
+
+<h5 id="b-点击“创建微应用按钮”">b 点击“创建微应用按钮”</h5>
+
+<p><img alt="createmini1" src="https://img.alicdn.com/tps/TB19X14JFXXXXc3XFXXXXXXXXXX-1164-326.jpg" /></p>
+
+<h5 id="c-添加创建微应用表单，点击“确定”按钮">c 添加创建微应用表单，点击“确定”按钮</h5>
+
+<p><img alt="createmini2" src="https://img.alicdn.com/tps/TB1G0nnJFXXXXa8XXXXXXXXXXXX-705-649.jpg" /></p>
+
+<h5 id="需要提供的数据项：">需要提供的数据项：</h5>
 
 <table><thead>
 <tr>
@@ -430,43 +633,23 @@
 </tr>
 </tbody></table>
 
-<h4 id="3-2-描述（description）">3.2 描述（Description）</h4>
-
-<p>开发者编辑套件基本信息，创建微应用。</p>
-
-<h4 id="3-3-前置条件（pre-conditions）">3.3 前置条件（Pre-Conditions）</h4>
-
-<p>阿里云用户，申请成为开发者，套件列表点击“管理”操作</p>
-
-<h4 id="3-4-基本流程（basic-flow）">3.4 基本流程（Basic Flow）</h4>
-
-<h5 id="a-查看套件基本信息">a 查看套件基本信息</h5>
-
-<h5 id="b-点击“创建微应用按钮”">b 点击“创建微应用按钮”</h5>
-
-<p><img alt="createmini1" src="https://img.alicdn.com/tps/TB19X14JFXXXXc3XFXXXXXXXXXX-1164-326.jpg" /></p>
-
-<h5 id="c-添加创建微应用表单，点击“确定”按钮">c 添加创建微应用表单，点击“确定”按钮</h5>
-
-<p><img alt="createmini2" src="https://img.alicdn.com/tps/TB1G0nnJFXXXXa8XXXXXXXXXXXX-705-649.jpg" /></p>
-
 <h5 id="d-微应用列表添加一行记录">d 微应用列表添加一行记录</h5>
 
 <p><img alt="createmini3" src="https://img.alicdn.com/tps/TB1V7DoJFXXXXarXXXXXXXXXXXX-1164-440.jpg" /></p>
 
-<h3 id="4-注册测试企业">4: 注册测试企业</h3>
+<h3 id="3-注册测试企业">3: 注册测试企业</h3>
 
-<h4 id="1-描述（description）">1.描述（Description）</h4>
+<h4 id="3-1-描述（description）">3.1.描述（Description）</h4>
 
-<p>钉钉套件在开发过程中，需要在钉钉移动端上登录绑定了相关企业的钉钉帐号来进行调试。在此之前，需要开发者对注册的测试企业&quot;发起授权所有套件&quot;，之后钉钉服务器会向您填写的回调url<a href="##5-回调接口（分为五个回调类型）"><font color=red>推送临时授权码</font></a>，您需要通过临时授权码一步一步到<a href="#11-激活授权套件"><font color=red>激活授权套件</font></a>，才能让测试企业的微应用列表出现您开发的微应用。</p>
+<p>钉钉套件在开发过程中，需要在钉钉移动端上登录绑定了相关企业的钉钉帐号来进行调试。在此之前，需要开发者对注册的测试企业&quot;发起授权所有套件&quot;，之后钉钉服务器会向您填写的回调url<a href="##2-回调接口（分为五个回调类型）"><font color=red>推送临时授权码</font></a>，您需要通过临时授权码一步一步到<a href="#7-激活授权套件"><font color=red>激活授权套件</font></a>，才能让测试企业的微应用列表出现您开发的微应用。</p>
 
-<h4 id="2-前置条件（pre-conditions）">2.前置条件（Pre-Conditions）</h4>
+<h4 id="3-2-前置条件（pre-conditions）">3.2.前置条件（Pre-Conditions）</h4>
 
 <p>阿里云用户成功申请开发者</p>
 
-<h4 id="3-基本流程（basic-flow）">3.基本流程（Basic Flow）</h4>
+<h4 id="3-3-基本流程（basic-flow）">3.3.基本流程（Basic Flow）</h4>
 
-<h5 id="a-钉钉应用菜单—开发环境列表，点击“注册测试企业”">a.钉钉应用菜单—开发环境列表，点击“注册测试企业”</h5>
+<h6 id="a-钉钉应用菜单—开发环境列表，点击“注册测试企业”">a.钉钉应用菜单—开发环境列表，点击“注册测试企业”</h6>
 
 <p><img alt="signintest1" src="https://img.alicdn.com/tps/TB1VBWRJVXXXXXGaXXXXXXXXXXX-1022-78.jpg" /></p>
 
@@ -490,7 +673,28 @@
 
 <p><img alt="signintest6" src="https://img.alicdn.com/tps/TB1snUfIVXXXXbSXpXXXXXXXXXX-866-456.png" /></p>
 
-<h3 id="5-回调接口（分为五个回调类型）">5: 回调接口（分为五个回调类型）</h3>
+<h2 id="isv接入开发指南">ISV接入开发指南</h2>
+
+<h3 id="1-isv接口调用整体流程">1: ISV接口调用整体流程</h3>
+
+<p>欢迎成为钉钉微应用的服务提供商！
+通过接入钉钉ISV的应用授权接口，可以快速发布自己的微应用套件，引导企业客户自动开通微应用，将自己的服务快速触达到自己的目标客户！
+钉钉的应用授权方案包含以下两个场景：</p>
+
+<h4 id="isv注册应用">ISV注册应用</h4>
+
+<p>你，作为ISV若要使用此方案，只需在阿里云上注册成为第三方服务提供商，在ISV接入后台创建应用套件，并在应用套件中配置好相应的应用。
+本方案所说的应用套件，是第三方应用授权的主体，它可以包含多个第三方所提供的同一类型的应用。目前一个第三方最多可以注册五个应用套件，一个应用套件最多可以包含五个应用。</p>
+
+<h4 id="企业管理员授权应用">企业管理员授权应用</h4>
+
+<p>企业的管理员在钉钉企业后台的微应用列表中浏览你的应用套件后，即可发起一键授权，系统将展示微应用的第三方授权页面，管理员根据授权页面的引导，确认授权内容，完成授权操作。
+授权完成之后，企业就可使用ISV服务提供商所提供的应用服务了。一切将变得简单自然。以下是详细的接口调用时序图
+<img alt="Mou icon" src="https://img.alicdn.com/tps/TB1RhMGJXXXXXXdXVXXXXXXXXXX-876-659.jpg" /></p>
+
+<h3 id="2-回调接口（分为五个回调类型）">2: 回调接口（分为五个回调类型）</h3>
+
+<h4 id="使用场景">使用场景</h4>
 
 <p>在使用回调接口之前您需要了解的是，</p>
 
@@ -530,6 +734,8 @@
 <p>本地调试：<a href="#调试工具"><font color=red >如何本地进行调试？</font></a></p>
 
 <p>如有需要，可以查看具体加解密步骤：<a href="#12-加解密方案"><font color=red >查看</font></a></p>
+
+<h4 id="接口说明">接口说明</h4>
 
 <h4 id="a-验证回调url有效性事件">a.<font color=red >验证回调URL有效性事件</font></h4>
 
@@ -1026,9 +1232,13 @@
 </tr>
 </tbody></table>
 
-<h3 id="6-获取套件访问token（suite_access_token）">6: 获取套件访问Token（suite_access_token）</h3>
+<h3 id="3-获取套件访问token（suite_access_token）">3: 获取套件访问Token（suite_access_token）</h3>
+
+<h4 id="使用场景">使用场景</h4>
 
 <p>该API用于获取应用套件令牌（suite_access_token）</p>
+
+<h4 id="接口说明">接口说明</h4>
 
 <p>接口调用请求说明
 https请求方式: POST
@@ -1088,11 +1298,15 @@ https://oapi.dingtalk.com/service/get_suite_token</p>
 </tr>
 </tbody></table>
 
-<h3 id="7-获取企业的永久授权码">7: 获取企业的永久授权码</h3>
+<h3 id="4-获取企业的永久授权码">4: 获取企业的永久授权码</h3>
+
+<h4 id="使用场景">使用场景</h4>
 
 <p>该API用于使用临时授权码换取授权方的永久授权码，并换取授权信息、企业access_token。得到永久授权码之后请将永久授权码存储下来。</p>
 
 <p>注：临时授权码使用一次后即失效</p>
+
+<h4 id="接口说明">接口说明</h4>
 
 <p>接口调用请求说明
 https请求方式: POST
@@ -1155,9 +1369,13 @@ https://oapi.dingtalk.com/service/get_permanent_code?suite_access_token=xxxx</p>
 </tr>
 </tbody></table>
 
-<h3 id="8-获取企业授权的access_token">8:获取企业授权的access_token</h3>
+<h3 id="5-获取企业授权的access_token">5:获取企业授权的access_token</h3>
 
-<p>服务提供商在取得企业的永久授权码并完成对企业应用的设置之后，便可以开始通过调用企业接口来运营这些应用。其中，调用企业接口所需的access_token获取方法如下。</p>
+<h4 id="使用场景">使用场景</h4>
+
+<p>服务提供商在取得企业的永久授权码并完成对企业应用的设置之后，便可以开始通过调用企业接口来运营这些应用。其中，调用企业接口所需的access_token获取方法如下接口说明。</p>
+
+<h4 id="接口说明">接口说明</h4>
 
 <p>接口调用请求说明</p>
 
@@ -1214,9 +1432,13 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 </tr>
 </tbody></table>
 
-<h3 id="9-获取企业授权的授权数据">9: 获取企业授权的授权数据</h3>
+<h3 id="6-获取企业授权的授权数据">6: 获取企业授权的授权数据</h3>
+
+<h4 id="使用场景">使用场景</h4>
 
 <p>该API用于通过永久授权码换取授权信息。 永久授权码的获取，是通过临时授权码使用get_permanent_code 接口获取到的permanent_code。</p>
+
+<h4 id="接口说明">接口说明</h4>
 
 <p>接口调用请求说明</p>
 
@@ -1263,9 +1485,7 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
       </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="s2">"corpid"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"corpid"</span><span class="p">:</span><span class="s2">"auth_corpid_value"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"industry"</span><span class="p">:</span><span class="s2">"互联网"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"invite_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"license_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"sdfjduqoxdmxhakdj"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"invite_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://t.dingtalk.com/invite/index?code=xxxx&amp;inviterUid=xxxxx"</span><span class="w">
+      </span><span class="nt">"invite_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"auth_user_info"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1309,14 +1529,6 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 <tr>
 <td>invite_code</td>
 <td>表示邀请码，只有填写过且是ISV自己邀请码的数据才会返回,否则值为空字符串</td>
-</tr>
-<tr>
-<td>license_code</td>
-<td>套件许可号</td>
-</tr>
-<tr>
-<td>invite_url</td>
-<td>企业对外部人员邀请码</td>
 </tr>
 <tr>
 <td>industry</td>
@@ -1368,9 +1580,13 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 </tr>
 </tbody></table>
 
-<h3 id="10-获取企业的应用信息">10:获取企业的应用信息</h3>
+<h3 id="7-获取企业的应用信息">7:获取企业的应用信息</h3>
 
-<p>该API用于获取授权方的企业的某个应用的基本信息，包括LOGO,名称，描述等,信息接口调用请求说明</p>
+<h4 id="使用场景">使用场景</h4>
+
+<p>该API用于获取已授权开通的企业的某个应用的基本信息，包括LOGO,名称，描述等,信息接口调用请求说明</p>
+
+<h4 id="接口说明">接口说明</h4>
 
 <p>https请求方式: POST</p>
 
@@ -1452,9 +1668,15 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 </tr>
 </tbody></table>
 
-<h3 id="11-激活授权套件">11:激活授权套件</h3>
+<h3 id="8-激活授权套件">8:激活授权套件</h3>
 
-<p>该API用于激活授权方企业的套件微应用,信息接口调用请求说明</p>
+<h4 id="使用场景">使用场景</h4>
+
+<p>该API适用于当企业用户授权开通套件时ISV套件进行调用，用于激活授权方企业的套件微应用。如果ISV未调用此接口，则企业用户无法使用ISV套件</p>
+
+<h4 id="接口说明">接口说明</h4>
+
+<p>信息接口调用请求说明</p>
 
 <p>https请求方式: POST</p>
 
@@ -1497,380 +1719,25 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="12-解除授权套件">12: 解除授权套件</h3>
+<h3 id="9-解除授权套件">9: 解除授权套件</h3>
+
+<h4 id="使用场景">使用场景</h4>
 
 <p>当ISV想重新模拟测试企业发起授权套件，需要先进行解除对套件的授权。</p>
+
+<h4 id="操作说明">操作说明</h4>
 
 <p>解除授权需要进入进入测试企业OA后台&ndash;微应用进行操作，如图：</p>
 
 <p><img alt="deleteSuite" src="https://img.alicdn.com/tps/TB1GpUAKVXXXXckaXXXXXXXXXXX-858-302.jpg" /></p>
 
-<h3 id="13-isv套件上架流程">13: ISV套件上架流程</h3>
+<h3 id="10-isv为授权方的企业单独设置ip白名单">10: ISV为授权方的企业单独设置IP白名单</h3>
 
-<h4 id="1-云市场介绍">1. 云市场介绍</h4>
+<h4 id="使用场景">使用场景</h4>
 
-<ul>
-<li>1.1 背景介绍</li>
-</ul>
+<p>该API用于ISV为企业独立部署场景，在ISV为企业进行独立部署软件系统时，由于是独立机房环境，每套系统是不同的IP地址，ISV可以通过此API为授权套件企业设置IP白名单,设置成功后，套件中的微应用可以调用钉钉开放平台接口服务。</p>
 
-<p>钉钉应用当前依托云市场提供商品管理、交易管理的能力，为钉钉企业提供应用必须通过云市场进行商品相关的操作。</p>
-
-<ul>
-<li>1.2 概念定义</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>名称</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>服务商</td>
-<td>云市场中的卖家，提供钉钉应用</td>
-</tr>
-<tr>
-<td>服务商入驻</td>
-<td>申请成为云市场卖家的过程，需要填写信息并审核</td>
-</tr>
-<tr>
-<td>保证金</td>
-<td>在云市场的卖家需要缴纳一定金额的保证金，保障服务水平和商品质量</td>
-</tr>
-<tr>
-<td>市场</td>
-<td>云市场将商品进行管理、展示、交易</td>
-</tr>
-<tr>
-<td>商品</td>
-<td>在云市场中进行售卖的应用</td>
-</tr>
-<tr>
-<td>商品类型</td>
-<td>对商品的划分，影响商品展示属性和生产过程，当前只需关注钉钉类商品</td>
-</tr>
-<tr>
-<td>商品接入</td>
-<td>部分商品由云市场进行生产，因此需要先将商品的生产信息提交到云市场进行接入</td>
-</tr>
-<tr>
-<td>订单</td>
-<td>通过订单来完成商品购买的过程</td>
-</tr>
-<tr>
-<td>业务</td>
-<td>订单生成的订单实例即业务，通过业务完成商品生产和交付的过程</td>
-</tr>
-<tr>
-<td>云市场API</td>
-<td>云市场生产时可以调用服务商提供的API，服务商完成一定的生产工作后返回结果给云市场</td>
-</tr>
-</tbody></table>
-
-<ul>
-<li>1.2 整体流程
-<img alt="wholeProcess" src="https://img.alicdn.com/tps/TB10Q8lLXXXXXbaaXXXXXXXXXXX-826-1279.png" /></li>
-</ul>
-
-<h4 id="2-如何入驻云市场">2.如何入驻云市场</h4>
-
-<p>入驻云市场您需要完成以下步骤 申请入驻 -&gt; 补充供应商资料 -&gt; 提交店铺资料 -&gt; 支付保证金</p>
-
-<ul>
-<li>2.1 申请入驻</li>
-</ul>
-
-<p>您可以通过<a href="http://market.aliyun.com/supplierApply"><font color=red>申请入驻</font></a>
-查看入驻条件和提交入驻申请。</p>
-
-<p>云市场分为软件市场、服务市场和建站市场，不同的市场有不同的入驻条件，入驻市场后您可以在该市场发布商品。</p>
-
-<p>您首次入驻时，需要选择需要入驻的市场(钉钉类商品选择 软件市场)，填写信息后提交审核。
-当您已经入驻某个市场后，可以从此页面入驻其他市场，此时不需要重新填写资料，直接提交审核即可。</p>
-
-<p>您提交入驻申请后，云市场小二将会联系您。</p>
-
-<ul>
-<li>2.2 补充供应商资料</li>
-</ul>
-
-<p>入驻成功后，您可以访问<a href="http://msp.aliyun.com/"><font color=red>服务商平台</font></a>进行操作。
-请在左侧菜单中点击”服务商信息”，进入服务商信息维护页面。
-[<font color=red>注意，供应商名称、淘宝账号、支付宝账号填写后无法修改，请慎重填写！</font>]</p>
-
-<ul>
-<li>2.3 提交店铺资料</li>
-</ul>
-
-<p>访问<a href="http://msp.aliyun.com/"><font color=red>服务商平台</font></a>，在左侧菜单中点击”店铺管理”提交店铺资料。每个服务商拥有自己的店铺，例如：http://market.aliyun.com/store/771374.html 后续我们会开放对店铺首页进行装修的功能</p>
-
-<ul>
-<li>2.4 支付保证金
-为了更好地保障阿里云用户及钉钉的权益，提升云市场服务商的服务水平和商品质量。发布钉钉商品前，其服务商需缴纳保证金；如果服务商未缴纳保证金，其名下的商品不得上架售卖</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>分类</th>
-<th>保证金金额</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>A、免费应用</td>
-<td>5万元</td>
-</tr>
-<tr>
-<td>B、收费应用</td>
-<td></td>
-</tr>
-<tr>
-<td>累计交易额 0＜X≤500（万元）</td>
-<td>10万</td>
-</tr>
-<tr>
-<td>累计交易额 500＜X≤1000（万元）</td>
-<td>50万</td>
-</tr>
-<tr>
-<td>累计交易额 1000万元以上</td>
-<td>100万</td>
-</tr>
-</tbody></table>
-
-<p>保证金需按照上述表格中的规定进行缴纳。</p>
-
-<p>保证金缴纳方式：
-服务商签订《云市场服务商入驻协议》后，将指定金额的保证金汇款到阿里云账户，收到保证金后，联系钉钉运营小二，确认后阿里云会开具保证金收据并邮寄给服务商。</p>
-
-<p>阿里云账户：</p>
-
-<p>开户银行： 招商银行杭州分行高新支行</p>
-
-<p>开户名称： 阿里云计算有限公司</p>
-
-<p>帐号： 5719 0549 3610 900</p>
-
-<h4 id="3-如何进行商品管理">3. 如何进行商品管理</h4>
-
-<ul>
-<li>3.1 提交商品审核</li>
-</ul>
-
-<p>1.请在发布商品页面选择钉钉类商品。</p>
-
-<p>2.填写应用钉钉类商品的接入信息。
-<img alt="submitProduct" src="https://img.alicdn.com/tps/TB1HvdzLXXXXXbLXFXXXXXXXXXX-865-283.png" />
-a)商品名称：请填写您的商品名称，此信息将作为商品名称直接展示给客户。</p>
-
-<p>b)选择套件：系统会提供从开发者平台读取到的您的钉钉套件，您可以选择一个套件作为售卖的商品。</p>
-
-<p>c)主页地址：当您选择钉钉套件后，系统会自动读取，您不需要填写此地址。</p>
-
-<p>d)生产系统接口地址：您可以在此处录入您的生产系统接口地址，当客户购买您的商品后，云市场会调用此链接通知您的系统，以便您通过系统处理客户的请求。</p>
-
-<p>e)源代码地址：请您填写您的软件的源代码地址以便我们进行安全扫描，此项为非必填内容。</p>
-
-<p>f)填写完成后，请点击”下一步”进入商品基础信息填写页面</p>
-
-<p>3.填写钉钉类商品的基础信息。
-<img alt="submitProduct1" src="https://img.alicdn.com/tps/TB1A_XoLXXXXXXZaXXXXXXXXXXX-865-363.png" />
-<img alt="submitProduct2" src="https://img.alicdn.com/tps/TB1lTduLXXXXXakXVXXXXXXXXXX-865-396.png" />
-<img alt="submitProduct3" src="https://img.alicdn.com/tps/TB1gE4sLXXXXXbrXVXXXXXXXXXX-865-199.png" />
-a)商品图片：请上传商品列表页面和商品详情页面展示的商品图片。推荐图片大小为160*120像素。</p>
-
-<p>b)商品介绍：请填写您的商品简介，此信息将在云市场的商品列表页面进行展示，建议字数控制在100字以内。</p>
-
-<p>c)商品详情：请填写您商品的详细介绍信息，此信息将在商品详情页面进行展示，建议尽量详情得描述您的商品。</p>
-
-<p>d)成功案例：可以填写您的商品的成功案例，此信息将在商品详情页面进行展示，可以不填写。</p>
-
-<p>e)app展示图片：您可以上传在app端展示的商品图片。</p>
-
-<p>f)填写完成后，请点击”下一步”进入商品业务信息填写页面。</p>
-
-<p>4.填写钉钉类商品的业务信息。
-<img alt="submitProductBiz" src="https://img.alicdn.com/tps/TB1PMNHLXXXXXb8XpXXXXXXXXXX-865-210.png" /></p>
-
-<p>a)商品所属类目：请填写您将商品放在哪个类目下，此选项会影响用户搜索商品时在哪个类目下进行展现。同时，当您选择类目后，系统会显示该类目的商品特有的一些属性，您可以根据实际情况填写属性信息，如果您的商品不包含该属性也可以不进行填写。</p>
-
-<p>b)填写完成后，请点击”下一步”进入商品销售信息填写页面。</p>
-
-<p>5.填写钉钉类商品的销售信息。
-<img alt="submitProductSel1" src="https://img.alicdn.com/tps/TB1vcJHLXXXXXb0XpXXXXXXXXXX-865-305.png" />
-<img alt="submitProductSel2" src="https://img.alicdn.com/tps/TB1cbFjLXXXXXcSaXXXXXXXXXXX-844-303.png" />
-a)售卖方式：钉钉类商品支持按次售卖或按周期售卖。</p>
-
-<p>b)商品版本名称：请填写售卖的版本名称，在商品页面会显示在上图红框处的位置。一个商品可添加多个版本并设置不同价格。</p>
-
-<p>c)商品定价：<br>
-如果选择按次售卖，则请设置商品单次价格。<br>
-如果选择按周期售卖，则需要设置允许订购的周期，新购价格，续费价格。新购、续费价格以单月为基价，不同订购周期的价格为基价*订购周期的月份数。如果需要设置优惠，请联系小二操作。</p>
-
-<p>d)填写完成后，请点击”提交”。提交后商品会进入审核流程。</p>
-
-<p>6.钉钉类商品Sku Code</p>
-
-<p>如果您的钉钉类商品需要版本对应的Sku Code，请提交商品信息后，在商品列表页面点击”管理”。进入商品详情页面后，点击”销售信息”tab，在下图位置可以查看版本对应的Sku Code。
-<img src="https://img.alicdn.com/tps/TB1Ts0RLXXXXXbgXXXXXXXXXXXX-865-460.png"  alt="图片名称" align=right /></p>
-
-<ul>
-<li>3.2 查看商品</li>
-</ul>
-
-<p>您可以在<a href="http://msp.aliyun.com/commodity/manage/index"><font color=red>服务商平台</font></a>左侧菜单中商品管理查看您的商品。
-您可以通过商品的上架状态和审核状态对商品进行筛选，并且可以通过列表进入商品详情页面进行商品管理。
-<img alt="viewProduct" src="https://img.alicdn.com/tps/TB1R44FLXXXXXc1XpXXXXXXXXXX-865-284.png" /></p>
-
-<ul>
-<li>3.3 查看审核</li>
-</ul>
-
-<p>提交商品后，小二会针对商品进行审核。
-商品审核分为两个阶段：商品接入审核、商品售卖信息审核。</p>
-
-<p>商品接入审核：
-小二会先对商品的接入信息进行审核，如果审核通过，则开始进行售卖信息审核。如果接入信息审核驳回，您可以在商品列表中看到商品审核状态为驳回，并且查看驳回原因。您可以编辑商品信息，重新提交审核。</p>
-
-<p>商品售卖信息审核：
-完成商品接入审核后，小二会进行商品售卖信息的审核。
-如果售卖信息审核驳回，您可以在商品列表中看到商品审核状态为驳回，并且查看驳回原因。
-您可以编辑商品的售卖信息，重新提交审核。(此时不能修改商品接入信息。)
-如果售卖信息审核通过，商品会自动上架。</p>
-
-<ul>
-<li>3.4 编辑商品</li>
-</ul>
-
-<p>您的商品审核通过上架后，您可以在商品详情页面编辑商品信息。
-<img alt="updateProduct" src="https://img.alicdn.com/tps/TB1y4FVLXXXXXXfXXXXXXXXXXXX-865-179.png" />
-切换不同的tab页面，点击”编辑”按钮进入编辑状态。
-商品的接入信息修改后，需要小二重新进行审核。审核通过后，会将显示给用户的信息自动更新。
-商品的基本信息、业务信息和销售信息修改后，不需要经过小二审核，会直接影响前台展示的内容。</p>
-
-<ul>
-<li>3.5 下架商品</li>
-</ul>
-
-<p>如果您的商品已经上架，需要进行下架，请联系小二进行操作。
-您的商品下架后，您可以在商品列表中点击”继续发布”，重新提交审核。</p>
-
-<h4 id="4-如何进行交易管理">4. 如何进行交易管理</h4>
-
-<ul>
-<li>4.1 订单管理</li>
-</ul>
-
-<p>您可以在<a href="http://msp.aliyun.com/order/order_list.htm"><font color=red>服务商平台</font></a>左侧菜单中交易管理-订单管理查看订单信息
-<img alt="orderManage" src="https://img.alicdn.com/tps/TB1wvXFLXXXXXc8XpXXXXXXXXXX-465-387.png" /></p>
-
-<p>您可以通过订单ID、客户ID、订单状态等条件查询订单。在”操作”栏，点击”查看”可以查看订单详细信息。
-<img alt="orderManage1" src="https://img.alicdn.com/tps/TB1fI4yLXXXXXc_XFXXXXXXXXXX-865-396.png" /></p>
-
-<p>在订单还未支付前，可以点击”订单改价”修改订单的支付价格。在支付价格中填入金额，填写修改原因，点击”提交”，可以将订单的支付价格修改为您填写的金额。
-<img alt="orderManage2" src="https://img.alicdn.com/tps/TB1GetsLXXXXXbJXVXXXXXXXXXX-865-257.png" />
-在订单支付后，可以点击”关联业务”查看订单生成的业务实例。您也可以从业务管理菜单中直接查看业务信息。</p>
-
-<ul>
-<li>4.2 业务管理</li>
-</ul>
-
-<p>您可以在<a href="http://msp.aliyun.com/orderbiz/order_biz_list.htm"><font color=red>服务商平台</font></a>左侧菜单中交易管理-业务管理查看业务信息
-<img alt="bizManage" src="https://img.alicdn.com/tps/TB1eUhwLXXXXXXQXVXXXXXXXXXX-865-376.png" />
-您可以通过业务ID、客户ID、业务状态等条件查询业务。在”操作”栏，点击”查看”可以查看业务详细信息。
-在业务详细信息中，可以在”补充页面信息”栏中填写您对业务的备注，并且在列表页面可以根据这个信息进行搜索。
-<img alt="bizStatusManage" src="https://img.alicdn.com/tps/TB1yXXNLXXXXXXKXpXXXXXXXXXX-865-144.png" />
-钉钉类商品的业务状态</p>
-
-<p>开通中</p>
-
-<p>已开通</p>
-
-<p>已过期</p>
-
-<p>已关闭</p>
-
-<p>对于钉钉类型商品，如果状态是开通中，可以点击”开通应用”来手动开通。
-<img src="https://img.alicdn.com/tps/TB1ynxtLXXXXXa1XVXXXXXXXXXX-865-133.png"  alt="图片名称" align=right /></p>
-
-<ul>
-<li>4.3 退款管理</li>
-</ul>
-
-<p>您可以在<a href="http://msp.aliyun.com/refund/refund_record_list.htm"><font color=red>服务商平台</font></a>左侧菜单中交易管理-退款管理查看退款信息。
-<img alt="refundManage" src="https://img.alicdn.com/tps/TB1zoJJLXXXXXaeXpXXXXXXXXXX-865-250.png" />
-用户购买的商品，在交易担保期内，可以享受不满意全额退款。详细规则请参考http://help.aliyun.com/knowledge_detail/6555340.html</p>
-
-<p>用户申请退款后，您可以在退款管理中查看到退款申请。
-您可以通过申请人、退款状态等条件查询退款申请。在”操作”栏，点击”查看”可以查看退款详细信息。</p>
-
-<p>退款状态:</p>
-
-<p>审核中： 用户提交退款申请，需要服务商进行审核</p>
-
-<p>已取消：用户取消了提交的退款申请</p>
-
-<p>退款中：服务商同意退款申请，系统进行退款中</p>
-
-<p>退款成功：已经成功进行退款</p>
-
-<p>审核不通过：服务商驳回了用户的退款申请</p>
-
-<p>审核中的退款申请，您可以在退款申请的详情页面进行审核通过或者审核驳回。
-如果您不处理用户的退款申请，3个自然日后系统会自动通过退款申请。</p>
-
-<ul>
-<li>4.4 评价管理</li>
-</ul>
-
-<p>您可以在<a href="http://msp.aliyun.com/orderrate/index.htm"><font color=red>服务商平台</font></a>左侧菜单中买家评价管理查看和回复用户对商品的评价。
-<img alt="evaluateManage" src="https://img.alicdn.com/tps/TB17JxrLXXXXXcPXVXXXXXXXXXX-865-383.png" />
-您可以通过客户ID、商品名称、回复状态等条件查询用户回复。
-用户可以对交易进行一次初评和一次追评，您可以分别针对初评和追评进行回复。用户的评价信息和您的回复都会显示在商品详情下方。</p>
-
-<ul>
-<li>4.5 客户管理</li>
-</ul>
-
-<p>您可以在<a href="http://msp.aliyun.com/orderrate/index.htm"><font color=red>服务商平台</font></a>左侧菜单中客户管理查看购买了您商品的客户。
-<img alt="customersManage" src="https://img.alicdn.com/tps/TB1kHlULXXXXXX8XXXXXXXXXXXX-865-360.png" />
-您可以通过客户ID、客户名称、联系方式来查找客户。在操作栏点击”关联产品”可以查看这个客户购买的业务。</p>
-
-<h4 id="5-如何生产商品">5. 如何生产商品</h4>
-
-<p>钉钉类型的商品的生产过程：
-商品类型 | 生产/服务过程
-&mdash;&mdash; | &mdash;&ndash; 
-钉钉类商品  | 需要先通过钉钉验收，审核上架后，用户购买商品进行授权开通，ISV应用接收授权信息后立即开通</p>
-
-<ul>
-<li>5.1 ISV接入API</li>
-</ul>
-
-<p>ISV通过接入API实现用户购买、续费、商品过期信息的处理，通过购买时云市场传入的corpid与钉钉企业进行关联，实现开通时的企业绑定；通过续费接口实现对钉钉企业商品有效期的管理；通过商品过期接口实现对应用内企业数据的导出、备份等操作</p>
-
-<p>接口调试工具：http://msp.aliyun.com/isvDoc  ISV需要使用用MSP的帐号登陆进行调试</p>
-
-<p>接口说明：<a href="http://gongdan.oss-cn-hangzhou.aliyuncs.com/market/%E4%BA%91%E5%B8%82%E5%9C%BA%E5%95%86%E5%93%81%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3.zip?spm=5176.776672277.0.0.EFfNfS&amp;file=%E4%BA%91%E5%B8%82%E5%9C%BA%E5%95%86%E5%93%81%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3.zip"><font color=red>云市场商品接入API文档</font></a></p>
-
-<h4 id="6-线下操作">6. 线下操作</h4>
-
-<ul>
-<li>6.1 结算收款
-次月底前阿里云为ISV结算上月全部交易额</li>
-<li>6.2 开据发票
-ISV开全额发票给企业用户</li>
-<li>6.3 线下退款
-ISV可与企业用户协商进行线下退款</li>
-</ul>
-
-<h4 id="7-用户授权">7.  用户授权</h4>
-
-<p>当企业管理员通过云市场完成套件购买后，通过钉钉授权功能进行钉钉套件授权开通，具体授权开通流程见：
-<a href="#企业管理员授权应用"><font color=red >企业管理员授权应用</font></a></p>
-
-<h3 id="14-isv为授权方的企业单独设置ip白名单">14: ISV为授权方的企业单独设置IP白名单</h3>
-
-<p>该API用于为授权方的企业单独设置IP白名单,以达到套件中的微应用相关服务私有化部署的目的。</p>
+<h4 id="接口说明">接口说明</h4>
 
 <p>https请求方式: POST</p>
 
@@ -2005,6 +1872,830 @@ Token：123456</p>
 <p>suitekey：suite4xxxxxxxxxxxxxxx</p>
 
 <p>ISV接入相关接口调试：<a href="https://debug.dingtalk.com/isv.html"><font color=red >ISV接入调试工具</font></a></p>
+
+<h2 id="套件上架操作流程">套件上架操作流程</h2>
+
+<h3 id="1-云市场介绍">1. 云市场介绍</h3>
+
+<ul>
+<li>1.1 背景介绍</li>
+</ul>
+
+<p>钉钉应用当前依托云市场提供商品管理、交易管理的能力，为钉钉企业提供应用必须通过云市场进行商品相关的操作。</p>
+
+<ul>
+<li>1.2 概念定义</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>服务商</td>
+<td>云市场中的卖家，提供钉钉应用</td>
+</tr>
+<tr>
+<td>服务商入驻</td>
+<td>申请成为云市场卖家的过程，需要填写信息并审核</td>
+</tr>
+<tr>
+<td>保证金</td>
+<td>在云市场的卖家需要缴纳一定金额的保证金，保障服务水平和商品质量</td>
+</tr>
+<tr>
+<td>市场</td>
+<td>云市场将商品进行管理、展示、交易</td>
+</tr>
+<tr>
+<td>商品</td>
+<td>在云市场中进行售卖的应用</td>
+</tr>
+<tr>
+<td>商品类型</td>
+<td>对商品的划分，影响商品展示属性和生产过程，当前只需关注钉钉类商品</td>
+</tr>
+<tr>
+<td>商品接入</td>
+<td>部分商品由云市场进行生产，因此需要先将商品的生产信息提交到云市场进行接入</td>
+</tr>
+<tr>
+<td>订单</td>
+<td>通过订单来完成商品购买的过程</td>
+</tr>
+<tr>
+<td>业务</td>
+<td>订单生成的订单实例即业务，通过业务完成商品生产和交付的过程</td>
+</tr>
+<tr>
+<td>云市场API</td>
+<td>云市场生产时可以调用服务商提供的API，服务商完成一定的生产工作后返回结果给云市场</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>1.2 整体流程
+<img alt="wholeProcess" src="https://img.alicdn.com/tps/TB10Q8lLXXXXXbaaXXXXXXXXXXX-826-1279.png" /></li>
+</ul>
+
+<h3 id="2-如何入驻云市场">2.如何入驻云市场</h3>
+
+<p>入驻云市场您需要完成以下步骤 申请入驻 -&gt; 补充供应商资料 -&gt; 提交店铺资料 -&gt; 支付保证金</p>
+
+<ul>
+<li>2.1 申请入驻</li>
+</ul>
+
+<p>您可以通过<a href="http://market.aliyun.com/supplierApply"><font color=red>申请入驻</font></a>
+查看入驻条件和提交入驻申请。</p>
+
+<p>云市场分为软件市场、服务市场和建站市场，不同的市场有不同的入驻条件，入驻市场后您可以在该市场发布商品。</p>
+
+<p>您首次入驻时，需要选择需要入驻的市场(钉钉类商品选择 软件市场)，填写信息后提交审核。
+当您已经入驻某个市场后，可以从此页面入驻其他市场，此时不需要重新填写资料，直接提交审核即可。</p>
+
+<p>您提交入驻申请后，云市场小二将会联系您。</p>
+
+<ul>
+<li>2.2 补充供应商资料</li>
+</ul>
+
+<p>入驻成功后，您可以访问<a href="http://msp.aliyun.com/"><font color=red>服务商平台</font></a>进行操作。
+请在左侧菜单中点击”服务商信息”，进入服务商信息维护页面。
+[<font color=red>注意，供应商名称、淘宝账号、支付宝账号填写后无法修改，请慎重填写！淘宝账号、支付宝账号必须是关联关系</font>]</p>
+
+<ul>
+<li>2.3 提交店铺资料</li>
+</ul>
+
+<p>访问<a href="http://msp.aliyun.com/"><font color=red>服务商平台</font></a>，在左侧菜单中点击”店铺管理”提交店铺资料。每个服务商拥有自己的店铺，例如：http://market.aliyun.com/store/771374.html 后续我们会开放对店铺首页进行装修的功能</p>
+
+<ul>
+<li>2.4 支付保证金
+为了更好地保障阿里云用户及钉钉的权益，提升云市场服务商的服务水平和商品质量。发布钉钉商品前，其服务商需缴纳保证金；如果服务商未缴纳保证金，其名下的商品不得上架售卖</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>分类</th>
+<th>保证金金额</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>A、免费应用</td>
+<td>5万元</td>
+</tr>
+<tr>
+<td>B、收费应用</td>
+<td></td>
+</tr>
+<tr>
+<td>累计交易额 0＜X≤500（万元）</td>
+<td>10万</td>
+</tr>
+<tr>
+<td>累计交易额 500＜X≤1000（万元）</td>
+<td>50万</td>
+</tr>
+<tr>
+<td>累计交易额 1000万元以上</td>
+<td>100万</td>
+</tr>
+</tbody></table>
+
+<p>保证金需按照上述表格中的规定进行缴纳。</p>
+
+<p>保证金缴纳方式：
+服务商签订《云市场服务商入驻协议》后，将指定金额的保证金汇款到阿里云账户，收到保证金后，联系钉钉运营小二，确认后阿里云会开具保证金收据并邮寄给服务商。</p>
+
+<p>阿里云账户：</p>
+
+<p>开户银行： 招商银行杭州分行高新支行</p>
+
+<p>开户名称： 阿里云计算有限公司</p>
+
+<p>帐号： 5719 0549 3610 900</p>
+
+<h3 id="3-如何进行商品管理">3. 如何进行商品管理</h3>
+
+<ul>
+<li>3.1 提交商品审核</li>
+</ul>
+
+<p>1.请在发布商品页面选择钉钉类商品。</p>
+
+<p>2.填写应用钉钉类商品的接入信息。
+<img alt="submitProduct" src="https://img.alicdn.com/tps/TB1HvdzLXXXXXbLXFXXXXXXXXXX-865-283.png" />
+a)商品名称：请填写您的商品名称，此信息将作为商品名称直接展示给客户。</p>
+
+<p>b)选择套件：系统会提供从开发者平台读取到的您的钉钉套件，您可以选择一个套件作为售卖的商品。</p>
+
+<p>c)主页地址：当您选择钉钉套件后，系统会自动读取，您不需要填写此地址。</p>
+
+<p>d)生产系统接口地址：您可以在此处录入您的生产系统接口地址，当客户购买您的商品后，云市场会调用此链接通知您的系统，以便您通过系统处理客户的请求。</p>
+
+<p>e)源代码地址：请您填写您的软件的源代码地址以便我们进行安全扫描，此项为非必填内容。</p>
+
+<p>f)填写完成后，请点击”下一步”进入商品基础信息填写页面</p>
+
+<p>3.填写钉钉类商品的基础信息。
+<img alt="submitProduct1" src="https://img.alicdn.com/tps/TB1A_XoLXXXXXXZaXXXXXXXXXXX-865-363.png" />
+<img alt="submitProduct2" src="https://img.alicdn.com/tps/TB1lTduLXXXXXakXVXXXXXXXXXX-865-396.png" />
+<img alt="submitProduct3" src="https://img.alicdn.com/tps/TB1gE4sLXXXXXbrXVXXXXXXXXXX-865-199.png" />
+a)商品图片：请上传商品列表页面和商品详情页面展示的商品图片。推荐图片大小为160*120像素。</p>
+
+<p>b)商品介绍：请填写您的商品简介，此信息将在云市场的商品列表页面进行展示，建议字数控制在100字以内。</p>
+
+<p>c)商品详情：请填写您商品的详细介绍信息，此信息将在商品详情页面进行展示，建议尽量详情得描述您的商品。</p>
+
+<p>d)成功案例：可以填写您的商品的成功案例，此信息将在商品详情页面进行展示，可以不填写。</p>
+
+<p>e)app展示图片：您可以上传在app端展示的商品图片。</p>
+
+<p>f)填写完成后，请点击”下一步”进入商品业务信息填写页面。</p>
+
+<p>4.填写钉钉类商品的业务信息。
+<img alt="submitProductBiz" src="https://img.alicdn.com/tps/TB1PMNHLXXXXXb8XpXXXXXXXXXX-865-210.png" /></p>
+
+<p>a)商品所属类目：请填写您将商品放在哪个类目下，此选项会影响用户搜索商品时在哪个类目下进行展现。同时，当您选择类目后，系统会显示该类目的商品特有的一些属性，您可以根据实际情况填写属性信息，如果您的商品不包含该属性也可以不进行填写。</p>
+
+<p>b)填写完成后，请点击”下一步”进入商品销售信息填写页面。</p>
+
+<p>5.填写钉钉类商品的销售信息。
+<img alt="submitProductSel1" src="https://img.alicdn.com/tps/TB1vcJHLXXXXXb0XpXXXXXXXXXX-865-305.png" />
+<img alt="submitProductSel2" src="https://img.alicdn.com/tps/TB1cbFjLXXXXXcSaXXXXXXXXXXX-844-303.png" />
+a)售卖方式：钉钉类商品支持按次售卖或按周期售卖。</p>
+
+<p>b)商品版本名称：请填写售卖的版本名称，在商品页面会显示在上图红框处的位置。一个商品可添加多个版本并设置不同价格。</p>
+
+<p>c)商品定价：<br>
+如果选择按次售卖，则请设置商品单次价格。<br>
+如果选择按周期售卖，则需要设置允许订购的周期，新购价格，续费价格。新购、续费价格以单月为基价，不同订购周期的价格为基价*订购周期的月份数。如果需要设置优惠，请联系小二操作。</p>
+
+<p>d)填写完成后，请点击”提交”。提交后商品会进入审核流程。</p>
+
+<p>6.钉钉类商品Sku Code</p>
+
+<p>如果您的钉钉类商品需要版本对应的Sku Code，请提交商品信息后，在商品列表页面点击”管理”。进入商品详情页面后，点击”销售信息”tab，在下图位置可以查看版本对应的Sku Code。
+<img src="https://img.alicdn.com/tps/TB1Ts0RLXXXXXbgXXXXXXXXXXXX-865-460.png"  alt="图片名称" align=right /></p>
+
+<ul>
+<li>3.2 查看商品</li>
+</ul>
+
+<p>您可以在<a href="http://msp.aliyun.com/commodity/manage/index"><font color=red>服务商平台</font></a>左侧菜单中商品管理查看您的商品。
+您可以通过商品的上架状态和审核状态对商品进行筛选，并且可以通过列表进入商品详情页面进行商品管理。
+<img alt="viewProduct" src="https://img.alicdn.com/tps/TB1R44FLXXXXXc1XpXXXXXXXXXX-865-284.png" /></p>
+
+<ul>
+<li>3.3 查看审核</li>
+</ul>
+
+<p>提交商品后，小二会针对商品进行审核。
+商品审核分为两个阶段：商品接入审核、商品售卖信息审核。</p>
+
+<p>商品接入审核：
+小二会先对商品的接入信息进行审核，如果审核通过，则开始进行售卖信息审核。如果接入信息审核驳回，您可以在商品列表中看到商品审核状态为驳回，并且查看驳回原因。您可以编辑商品信息，重新提交审核。</p>
+
+<p>商品售卖信息审核：
+完成商品接入审核后，小二会进行商品售卖信息的审核。
+如果售卖信息审核驳回，您可以在商品列表中看到商品审核状态为驳回，并且查看驳回原因。
+您可以编辑商品的售卖信息，重新提交审核。(此时不能修改商品接入信息。)
+如果售卖信息审核通过，商品会自动上架。</p>
+
+<ul>
+<li>3.4 编辑商品</li>
+</ul>
+
+<p>您的商品审核通过上架后，您可以在商品详情页面编辑商品信息。
+<img alt="updateProduct" src="https://img.alicdn.com/tps/TB1y4FVLXXXXXXfXXXXXXXXXXXX-865-179.png" />
+切换不同的tab页面，点击”编辑”按钮进入编辑状态。
+商品的接入信息修改后，需要小二重新进行审核。审核通过后，会将显示给用户的信息自动更新。
+商品的基本信息、业务信息和销售信息修改后，不需要经过小二审核，会直接影响前台展示的内容。</p>
+
+<ul>
+<li>3.5 下架商品</li>
+</ul>
+
+<p>如果您的商品已经上架，需要进行下架，请联系小二进行操作。
+您的商品下架后，您可以在商品列表中点击”继续发布”，重新提交审核。</p>
+
+<h3 id="4-如何进行交易管理">4. 如何进行交易管理</h3>
+
+<ul>
+<li>4.1 订单管理</li>
+</ul>
+
+<p>您可以在<a href="http://msp.aliyun.com/order/order_list.htm"><font color=red>服务商平台</font></a>左侧菜单中交易管理-订单管理查看订单信息
+<img alt="orderManage" src="https://img.alicdn.com/tps/TB1wvXFLXXXXXc8XpXXXXXXXXXX-465-387.png" /></p>
+
+<p>您可以通过订单ID、客户ID、订单状态等条件查询订单。在”操作”栏，点击”查看”可以查看订单详细信息。
+<img alt="orderManage1" src="https://img.alicdn.com/tps/TB1fI4yLXXXXXc_XFXXXXXXXXXX-865-396.png" /></p>
+
+<p>在订单还未支付前，可以点击”订单改价”修改订单的支付价格。在支付价格中填入金额，填写修改原因，点击”提交”，可以将订单的支付价格修改为您填写的金额。
+<img alt="orderManage2" src="https://img.alicdn.com/tps/TB1GetsLXXXXXbJXVXXXXXXXXXX-865-257.png" />
+在订单支付后，可以点击”关联业务”查看订单生成的业务实例。您也可以从业务管理菜单中直接查看业务信息。</p>
+
+<ul>
+<li>4.2 业务管理</li>
+</ul>
+
+<p>您可以在<a href="http://msp.aliyun.com/orderbiz/order_biz_list.htm"><font color=red>服务商平台</font></a>左侧菜单中交易管理-业务管理查看业务信息
+<img alt="bizManage" src="https://img.alicdn.com/tps/TB1eUhwLXXXXXXQXVXXXXXXXXXX-865-376.png" />
+您可以通过业务ID、客户ID、业务状态等条件查询业务。在”操作”栏，点击”查看”可以查看业务详细信息。
+在业务详细信息中，可以在”补充页面信息”栏中填写您对业务的备注，并且在列表页面可以根据这个信息进行搜索。
+<img alt="bizStatusManage" src="https://img.alicdn.com/tps/TB1yXXNLXXXXXXKXpXXXXXXXXXX-865-144.png" />
+钉钉类商品的业务状态</p>
+
+<p>开通中</p>
+
+<p>已开通</p>
+
+<p>已过期</p>
+
+<p>已关闭</p>
+
+<p>对于钉钉类型商品，如果状态是开通中，可以点击”开通应用”来手动开通。
+<img src="https://img.alicdn.com/tps/TB1ynxtLXXXXXa1XVXXXXXXXXXX-865-133.png"  alt="图片名称" align=right /></p>
+
+<ul>
+<li>4.3 退款管理</li>
+</ul>
+
+<p>您可以在<a href="http://msp.aliyun.com/refund/refund_record_list.htm"><font color=red>服务商平台</font></a>左侧菜单中交易管理-退款管理查看退款信息。
+<img alt="refundManage" src="https://img.alicdn.com/tps/TB1zoJJLXXXXXaeXpXXXXXXXXXX-865-250.png" />
+用户购买的商品，在交易担保期内，可以享受不满意全额退款。详细规则请参考http://help.aliyun.com/knowledge_detail/6555340.html</p>
+
+<p>用户申请退款后，您可以在退款管理中查看到退款申请。
+您可以通过申请人、退款状态等条件查询退款申请。在”操作”栏，点击”查看”可以查看退款详细信息。</p>
+
+<p>退款状态:</p>
+
+<p>审核中： 用户提交退款申请，需要服务商进行审核</p>
+
+<p>已取消：用户取消了提交的退款申请</p>
+
+<p>退款中：服务商同意退款申请，系统进行退款中</p>
+
+<p>退款成功：已经成功进行退款</p>
+
+<p>审核不通过：服务商驳回了用户的退款申请</p>
+
+<p>审核中的退款申请，您可以在退款申请的详情页面进行审核通过或者审核驳回。
+如果您不处理用户的退款申请，3个自然日后系统会自动通过退款申请。</p>
+
+<ul>
+<li>4.4 评价管理</li>
+</ul>
+
+<p>您可以在<a href="http://msp.aliyun.com/orderrate/index.htm"><font color=red>服务商平台</font></a>左侧菜单中买家评价管理查看和回复用户对商品的评价。
+<img alt="evaluateManage" src="https://img.alicdn.com/tps/TB17JxrLXXXXXcPXVXXXXXXXXXX-865-383.png" />
+您可以通过客户ID、商品名称、回复状态等条件查询用户回复。
+用户可以对交易进行一次初评和一次追评，您可以分别针对初评和追评进行回复。用户的评价信息和您的回复都会显示在商品详情下方。</p>
+
+<ul>
+<li>4.5 客户管理</li>
+</ul>
+
+<p>您可以在<a href="http://msp.aliyun.com/orderrate/index.htm"><font color=red>服务商平台</font></a>左侧菜单中客户管理查看购买了您商品的客户。
+<img alt="customersManage" src="https://img.alicdn.com/tps/TB1kHlULXXXXXX8XXXXXXXXXXXX-865-360.png" />
+您可以通过客户ID、客户名称、联系方式来查找客户。在操作栏点击”关联产品”可以查看这个客户购买的业务。</p>
+
+<h3 id="5-如何生产商品">5. 如何生产商品</h3>
+
+<p>钉钉类型的商品的生产过程：
+商品类型 | 生产/服务过程
+&mdash;&mdash; | &mdash;&ndash; 
+钉钉类商品  | 需要先通过钉钉验收，审核上架后，用户购买商品进行授权开通，ISV应用接收授权信息后立即开通</p>
+
+<ul>
+<li>5.1 ISV接入API</li>
+</ul>
+
+<p>ISV通过接入API实现用户购买、续费、商品过期信息的处理，通过购买时云市场传入的corpid与钉钉企业进行关联，实现开通时的企业绑定；通过续费接口实现对钉钉企业商品有效期的管理；通过商品过期接口实现对应用内企业数据的导出、备份等操作</p>
+
+<p>接口调试工具：http://msp.aliyun.com/isvDoc  ISV需要使用用MSP的帐号登陆进行调试</p>
+
+<p>接口说明：<a href="http://gongdan.oss-cn-hangzhou.aliyuncs.com/market/%E4%BA%91%E5%B8%82%E5%9C%BA%E5%95%86%E5%93%81%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3.zip?spm=5176.776672277.0.0.EFfNfS&amp;file=%E4%BA%91%E5%B8%82%E5%9C%BA%E5%95%86%E5%93%81%E6%8E%A5%E5%85%A5%E6%96%87%E6%A1%A3.zip"><font color=red>云市场商品接入API文档</font></a></p>
+
+<h3 id="6-线下操作">6. 线下操作</h3>
+
+<ul>
+<li>6.1 结算收款
+次月底前阿里云为ISV结算上月全部交易额</li>
+<li>6.2 开据发票
+ISV开全额发票给企业用户</li>
+<li>6.3 线下退款
+ISV可与企业用户协商进行线下退款</li>
+</ul>
+
+<h3 id="7-用户授权">7.  用户授权</h3>
+
+<p>当企业管理员通过云市场完成套件购买后，通过钉钉授权功能进行钉钉套件授权开通，具体授权开通流程见：
+<a href="#企业管理员授权应用"><font color=red >企业管理员授权应用</font></a></p>
+
+<h2 id="isv通用技术方案">ISV通用技术方案</h2>
+
+<h3 id="isv套件对企业独立部署方案">ISV套件对企业独立部署方案</h3>
+
+<h4 id="背景：">背景：</h4>
+
+<p>在面向企业级软件领域，ISV提供企业的软件系统分2种形态：1，SAAS应用软件；2，独立部署的软件系统；钉钉的C＋＋战略立足于与ISV合作伙伴一起为企业提供专业的、安全的移动办公解决方案，因此需要解决SAAS应用软件和ISV独立部署软件系统与钉钉结合的版本可以快速部署，降低整体方案的推广与实施成本。</p>
+
+<h4 id="概述：">概述：</h4>
+
+<p>本方案对于ISV软件与钉钉的结合版本通过统一的授权模型实现可对任意企业客户统一实施钉钉＋X的版本，由钉钉根据ISV提供的套件相关信息统一生成二维码，企业用户通过二维码下载钉钉、注册钉钉企业、对套件进行授权后使用。
+技术实现说明：（此处只针对独立部署的场景进行描述，SAAS类系统见<a href="#ISV接入开发指南"><font color=red >ISV接入开发指南</font></a>）</p>
+
+<h4 id="系统实现：">系统实现：</h4>
+
+<h5 id="名词解释：">名词解释：</h5>
+
+<p>ISV套件授权系统：ISV用于与钉钉开放平台进行授权的独立系统，部署在阿里云的通用授权服务</p>
+
+<p>ISV独立部署应用系统：ISV为企业独立部署的软件系统</p>
+
+<h5 id="实现流程说明：">实现流程说明：</h5>
+
+<p>1，    ISV开发完成套件并获取钉钉颁发的二维码</p>
+
+<p>2，    ISV为企业进行独立软件部署完成</p>
+
+<p>3，    企业扫码注册成功后输入ISV系统的关联码（如：序列号、企业ID等）用于钉钉企业与ISV系统用户进行关联</p>
+
+<p>4，    企业进行套件使用授权</p>
+
+<p>a)  ISV套件授权系统通过钉钉开放平台完成授权，参考钉钉isv（服务提供商）应用授权和接口说明</p>
+
+<p>b)  ISV套件授权系统通过钉钉开放平台接口获取企业输入的关联码与ISV独立部署系统进行关联</p>
+
+<p>c)  ISV套件授权系统调用钉钉开放平台接口完成企业独立部署软件IP白名单设置，参考为授权方的企业单独设置ip白名单</p>
+
+<p>d)  ISV套件授权系统获取企业永久授权码并进行存储</p>
+
+<ul>
+<li><p>方案一：ISV将获取到的永久授权码回传至独立部署的应用系统，独立部署应用系统通过授权码直接调用钉钉开放平台API</p></li>
+<li><p>方案二：ISV独立部署应用数据请求先发送至ISV套件服务器，ISV套件服务器使用授权码调用钉钉开放平台API</p></li>
+</ul>
+
+<p>5，    完成授权开始使用</p>
+
+<h5 id="系统交互图：">系统交互图：</h5>
+
+<p><img alt="system_design" src="https://img.alicdn.com/tps/TB1TgCgLXXXXXXqXVXXXXXXXXXX-802-514.png" /></p>
+
+<h3 id="isv用户账号绑定方案">ISV用户账号绑定方案</h3>
+
+<h4 id="背景：">背景：</h4>
+
+<p>在ISV开发钉钉套件时，存在2个独立账号体系，为提升用户的体验，需要对2个独立账号体系进行账号绑定，目前的账号分为3种情况：</p>
+
+<p>1，只存在于ISV系统中的用户</p>
+
+<p>2，只存在于钉钉系统中的用户</p>
+
+<p>3，在钉钉与ISV系统中同时存在的用户</p>
+
+<h4 id="概述：">概述：</h4>
+
+<p>本方案用于ISV软件与钉钉的结合版本用户账号绑定的场景</p>
+
+<h4 id="系统实现：">系统实现：</h4>
+
+<p>1，只存在于ISV系统中的用户：</p>
+
+<p>通过邀请码注册的企业可以调用钉钉开放平台的通讯录接口，具有通讯录维护的权限，通过接口直接同步企业组织结构及人员信息到钉钉</p>
+
+<p>1.1 有手机号码：</p>
+
+<p>通过钉钉开放平台接口同步企业及用户数据，ISV系统采用钉钉userid进行账号绑定</p>
+
+<p>1.2 有邮箱：</p>
+
+<p>采用快速部署方式，企业创建成功后通过钉钉接口获取加入团队链接，邮件通知企业员工进行加入，ISV系统采用钉钉userid进行账号绑定</p>
+
+<p>2，只存在于钉钉系统中的用户：</p>
+
+<p>ISV在企业授权时通过钉钉接口获取组织结构与人员信息，通过钉钉userid与ISV用户信息进行关联实现绑定</p>
+
+<p>3，在钉钉与ISV系统中同时存在的用户：</p>
+
+<p>ISV需以钉钉通讯录为准进行账号同步与绑定，与只存在于钉钉系统中的用户采用相同的处理方式，产品上可以实现让用户显示绑定已有ISV系统账号，通过免登获取钉钉userid进行系统账号绑定</p>
+
+          <h1 id="标准规范">标准规范</h1>
+
+<h2 id="成为isv的必要条件">成为ISV的必要条件</h2>
+
+<p>开发者在成为钉钉应用服务商时需要满足以下条件：</p>
+
+<ul>
+<li>1，ISV必须注册钉钉企业并通过认证；</li>
+<li>2，ISV必须注册阿里云账号并通过企业认证；</li>
+</ul>
+
+<p>开发者可以从 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 进行注册／认证／登录钉钉企业管理后台
+开发者可以通过<a href="http://console.d.aliyun.com"><font color=red >控制台</font></a>，进行注册／认证／登录开发者平台</p>
+
+<h2 id="产品标准">产品标准</h2>
+
+<h3 id="套件／微应用命名规范：">套件／微应用命名规范：</h3>
+
+<p>1.不能使用通用名词命名，包括拼音谐音，如墨迹天气、滴滴打车，不能命名为天气，打车
+2.不能带有钉钉，阿里，淘宝，等阿里巴巴关联产品和企业文字
+3.应用不得包含虚假、欺骗或误导的陈述，或是使用的名称与其他应用类似
+4.命名必须符合开发者相关协议条款,不得带有影射竞争对手，触犯法律和道德的文字
+5.命名不能重名，一旦应用审核通过，则不允许同名应用提交申请
+6.应用的名字、描述和截图与应用内容相关
+7.应用不得包括符号，和任何“beta”、“demo”、“trial”或“test”版本的应用
+8.建议不超过6个汉字</p>
+
+<h3 id="场景化与钉钉统一通讯能力结合，比如消息，会话，钉，通讯录，群等如：">场景化与钉钉统一通讯能力结合，比如消息，会话，钉，通讯录，群等如：</h3>
+
+<p><img alt="product_scene1" src="https://img.alicdn.com/tps/TB1FUmiLXXXXXauXFXXXXXXXXXX-431-613.png" />
+<img alt="product_scene2" src="https://img.alicdn.com/tps/TB1EgabLXXXXXXIXVXXXXXXXXXX-467-556.png" /></p>
+
+<h3 id="需要在钉钉上形成完整的业务闭环，用户可以在钉钉手机端上解决完整的业务刚需">需要在钉钉上形成完整的业务闭环，用户可以在钉钉手机端上解决完整的业务刚需</h3>
+
+<h3 id="需要按照钉钉ui规范进行产品设计，请下载">需要按照钉钉UI规范进行产品设计，<a href="http://download.taobaocdn.com/freedom/30563/compress/p1a5tl8v1d1fk91l9l15cu1vnp54l4.zip"><font color=red >请下载</font></a></h3>
+
+<p><img alt="product_UI" src="https://img.alicdn.com/tps/TB18eWkLXXXXXcnXpXXXXXXXXXX-528-223.png" /></p>
+
+<h3 id="如果已有原生app，-建议isv在钉钉版本上保留原生app的核心价值，并积极实现和原生app相同或更好的用户体验">如果已有原生APP， 建议ISV在钉钉版本上保留原生APP的核心价值，并积极实现和原生APP相同或更好的用户体验</h3>
+
+<h3 id="降低用户使用门槛，原则上不出现任何注册功能，必须实现移动端应用无需注册，直接开通使用和免登，如有pc版，需要实现pc端的免登，但此功能非开始共创和灰度的必要条件，可以后续迭代完善">降低用户使用门槛，原则上不出现任何注册功能，必须实现移动端应用无需注册，直接开通使用和免登，如有PC版，需要实现PC端的免登，但此功能非开始共创和灰度的必要条件，可以后续迭代完善</h3>
+
+<p><img alt="product_use" src="https://img.alicdn.com/tps/TB1ZNx3LXXXXXaIaXXXXXXXXXXX-644-575.png" /></p>
+
+<h3 id="钉钉不会以任何方式提供客户的联系方式（包括手机，固定电话等），isv产品设计上也不能误导客户提供联系方式，如业务需要，则必须向客户明确说明，联系方式的真实使用目的，范围和场景，并让客户自行选择是否提供联系方式">钉钉不会以任何方式提供客户的联系方式（包括手机，固定电话等），ISV产品设计上也不能误导客户提供联系方式，如业务需要，则必须向客户明确说明，联系方式的真实使用目的，范围和场景，并让客户自行选择是否提供联系方式</h3>
+
+<p><img alt="product_ feedback" src="https://img.alicdn.com/tps/TB17mSwLXXXXXXeXXXXXXXXXXXX-419-505.png" /></p>
+
+<h3 id="商品上架前，提供产品的下一阶段的迭代计划；例如：">商品上架前，提供产品的下一阶段的迭代计划；例如：</h3>
+
+<p><img alt="product_plan" src="https://img.alicdn.com/tps/TB17mSwLXXXXXXeXXXXXXXXXXXX-419-505.png" /></p>
+
+<h2 id="技术标准">技术标准</h2>
+
+<h3 id="质量标准">质量标准</h3>
+
+<h4 id="tc验收标准：覆盖率大于等于95">TC验收标准：覆盖率大于等于95%</h4>
+
+<ul>
+<li>必要的输入：ISV提供《TC文档》，《需求规格说明书》</li>
+<li>TC中必须包含但不限于场景要求：</li>
+</ul>
+
+<p>1.输入框必须校验：长度限制，特殊字符控制</p>
+
+<p>2.网络情况：WiFi，2G，3G，4G</p>
+
+<p>3.机型适配：见《附录3 适配机型列表》</p>
+
+<p>4.钉钉版本适配：包含对钉钉版本支持的说明</p>
+
+<p>5.图片：尺寸限制，大小限制</p>
+
+<p>6.多端：PC与移动关联的功能场景 </p>
+
+<h4 id="测试验收评分标准：验收评分必须大于90分验收通过，小于则不通过（一个版本验收不超过2次）">测试验收评分标准：验收评分必须大于90分验收通过，小于则不通过（一个版本验收不超过2次）</h4>
+
+<ul>
+<li>必要的输入：ISV提供《测试报告》，《bug列表》</li>
+<li>评分细则（详细说明见《附录1 质量评分细则说明》）：
+1.Blocker：功能主流程无法走通（验收不通过）</li>
+</ul>
+
+<p>2.Critical：系统无法执行、崩溃或严重资源不足、应用模块无法启动或异常退出、无法测试、造成系统不稳定。（验收不通过）</p>
+
+<p>3.Major：部分非祝流程功能存在严重缺陷，但不会影响到系统稳定性（扣7分）</p>
+
+<p>4.Minor：界面、性能缺陷（扣2分）</p>
+
+<p>5.Trivial：易用性问题（扣1分）</p>
+
+<h4 id="应用线上质量标准：">应用线上质量标准：</h4>
+
+<p>1.ISV需按照《附录2线上故障定义表》 中的故障等级定义解决线上问题</p>
+
+<p>2.P1/P2类bug 处理 原则当天发现当天解决不得过夜</p>
+
+<p>3.P3类bug 处理 原则不得超过3天</p>
+
+<p>4.P4类bug 处理 原则可在下个迭代发布中解决</p>
+
+<h3 id="性能标准">性能标准</h3>
+
+<h4 id="页面大小">页面大小</h4>
+
+<p>首屏页面大小小于200k </p>
+
+<h4 id="加载时间">加载时间</h4>
+
+<p>首屏加载时间小于2s </p>
+
+<h4 id="微应用性能检测">微应用性能检测</h4>
+
+<p>使用钉钉官方提供的微应用性能检测工具，检测评分大于90分,评分工具地址：http://mqc.aliyun.com/hfive.htm?from=dingtalk；您需要使用阿里云帐号进行登陆</p>
+
+<h3 id="安全标准">安全标准</h3>
+
+<h4 id="应用服务安全标准：">应用服务安全标准：</h4>
+
+<p>1.应用必须部署在阿里云（适用范围：SAAS类应用适用；独立部署应用不做此限制）</p>
+
+<p>2.开启云盾全部防御功能，开启云监控，实时监控线上服务状况保障7*24小时防控</p>
+
+<h4 id="代码安全标准：">代码安全标准：</h4>
+
+<p>1.符合<a href="http://download.taobaocdn.com/freedom/30563/compress/p1a5tl8v1f1n1b1a4hk6vbl01nnv5.zip"><font color=red >《钉钉开放平台编码规范》</font></a></p>
+
+<p>2.通过钉钉官方安全扫描</p>
+
+<h3 id="数据采集标准">数据采集标准</h3>
+
+<h4 id="数据指标：">数据指标：</h4>
+
+<p>1.操作用户数：指每日在应用内重要按钮有操作行为的去重用户数</p>
+
+<p>2.操作企业数：指每日在应用内重要按钮有操作行为的用户所在企业去重统计数</p>
+
+<p>3.重要按钮：</p>
+
+<p>1).重要的TAB页面切换，比如 应用有5个浏览页面，每次切换页面需要记录一个操作</p>
+
+<p>2).向服务端有数据上传的点击，比如 表单保存，提交数据，页面修改，新增内容，上传图片等</p>
+
+<h2 id="运营标准">运营标准</h2>
+
+<h3 id="新用户引导">新用户引导</h3>
+
+<p>如：</p>
+
+<p><img alt="operation_newuser" src="https://img.alicdn.com/tps/TB1BEuXLXXXXXbtXVXXXXXXXXXX-337-392.png" /></p>
+
+<h3 id="版本更新用户引导">版本更新用户引导</h3>
+
+<p>如：</p>
+
+<p><img alt="operation_newrelease" src="https://img.alicdn.com/tps/TB1.9KrLXXXXXXCXpXXXXXXXXXX-375-434.png" /></p>
+
+<h3 id="用户反馈">用户反馈</h3>
+
+<p>在应用中需要有方便用户反馈的入口，并确保可以及时给用户反馈，例如：
+<img alt="operation_feedback" src="https://img.alicdn.com/tps/TB11uirLXXXXXXGXpXXXXXXXXXX-375-617.png" /></p>
+
+<h3 id="用户使用手册">用户使用手册</h3>
+
+<p>简单应用仅需提供H5使用手册，复杂并涉及到管理后台配置及操作的，需要提供PC端及H5使用手册。可参考钉钉现有体验站，或提供图文、视频等应用使用说明，方便用户参看或企业内传阅。参考<a href="http://download.taobaocdn.com/freedom/30563/compress/p1a5tl8v1libr132t1khc1gvi1nhr8.zip"><font color=red >《钉钉体验站模板及提交规范》</font></a>；例如：</p>
+
+<p><img alt="operation_usemanual" src="https://img.alicdn.com/tps/TB1Zjh7LXXXXXcrXVXXXXXXXXXX-393-550.png" /></p>
+
+<h2 id="上架（应用中心）标准">上架（应用中心）标准</h2>
+
+<h3 id="服务提供商资质审核标准">服务提供商资质审核标准</h3>
+
+<p>1、符合国家相关法律、法规规定，拥有正规的公司资质,具有15人以上的技术及客服团队;</p>
+
+<p>2、拥有一年以上的该行业的服务经验;</p>
+
+<p>3、可提供不少于5*8小时的客服在线服务;</p>
+
+<p>4、提供的应用均以钉钉产品为使用场景;</p>
+
+<p>5、接受《云市场服务商入驻协议 》以及 《云市场平台服务协议 》并按照协议相互约束的条款开展业务合作;</p>
+
+<p>6、接受阿里云云市场的相关协议及管理规范；</p>
+
+<h3 id="保证金规则">保证金规则</h3>
+
+<table><thead>
+<tr>
+<th>分类</th>
+<th>保证金金额</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>A、免费应用</td>
+<td>5万元</td>
+</tr>
+<tr>
+<td>B、收费应用</td>
+<td></td>
+</tr>
+<tr>
+<td>累计交易额 0＜X≤500（万元）</td>
+<td>10万</td>
+</tr>
+<tr>
+<td>累计交易额 500＜X≤1000（万元）</td>
+<td>50万</td>
+</tr>
+<tr>
+<td>累计交易额 1000万元以上</td>
+<td>100万</td>
+</tr>
+</tbody></table>
+
+<h3 id="应用收费规则">应用收费规则</h3>
+
+<p>支持按次售卖或按周期售卖</p>
+
+<p>1.如果选择按次售卖，则请设置商品单次价格。免费商品价格设置0元，联系小二进行操作设置</p>
+
+<p>2.如果选择按周期售卖，则需要设置允许订购的周期，新购价格，续费价格。新购、续费价格以单月为基价，不同订购周期的价格为基价*订购周期的月份数。如果需要设置优惠，请联系小二操作</p>
+
+<h3 id="结算方式">结算方式</h3>
+
+<h4 id="按月结算">按月结算</h4>
+
+<p>次月底前阿里云为ISV结算上月全部交易额</p>
+
+<h4 id="开票方式">开票方式</h4>
+
+<p>ISV开全额发票给企业用户</p>
+
+<p>1.分成：2016年3月份之前不进行分成，分成之后，分成部分的发票由阿里云为ISV进行开票</p>
+
+<h2 id="附录1：质量评分细则说明">附录1：质量评分细则说明</h2>
+
+<p>1） Blocker：阻碍开发或测试工作的问题。（这个测试人员通常很少遇到）（验收不通过）</p>
+
+<p>2） Critical：系统无法执行、崩溃或严重资源不足、应用模块无法启动或异常退出、无法测试、造成系统不稳定。（验收不通过）
+         具体为：</p>
+
+<p>○ 严重花屏</p>
+
+<p>○ 内存泄漏</p>
+
+<p>○ 用户数据丢失或破坏</p>
+
+<p>○ 系统崩溃/死机/冻结</p>
+
+<p>○ 模块无法启动或异常退出</p>
+
+<p>○ 严重的数值计算错误</p>
+
+<p>○ 功能设计与需求严重不符</p>
+
+<p>○ 用户权限问题</p>
+
+<p>○ 安全问题</p>
+
+<p>○ 其它导致无法测试的错误</p>
+
+<p>3） Major：非祝流程功能存在严重缺陷，但不会影响到系统稳定性（验收不通过）
+         具体为：</p>
+
+<p>○功能未实现</p>
+
+<p>○ 功能错误</p>
+
+<p>○ 系统刷新错误</p>
+
+<p>○ 语音或数据通讯错误</p>
+
+<p>○ 轻微的数值计算错误</p>
+
+<p>○ 系统所提供的功能或服务受明显的影响</p>
+
+<p>4） Minor：界面、性能缺陷（扣2分）
+         具体为：</p>
+
+<p>○ 操作界面错误（包括数据窗口内列名定义、含义是否一致）</p>
+
+<p>○ 边界条件下错误</p>
+
+<p>○ 提示信息错误（包括未给出信息、信息提示错误等）</p>
+
+<p>○ 长时间操作无进度提示</p>
+
+<p>○ 系统未优化（性能问题）</p>
+
+<p>○ 光标跳转设置不好，鼠标（光标）定位错误</p>
+
+<p>5） Trivial：易用性及建议性问题（扣1分）
+    具体为：</p>
+
+<p>○ 界面格式等不规范</p>
+
+<p>○ 辅助说明描述不清楚</p>
+
+<p>○ 操作时未给用户提示</p>
+
+<p>○ 可输入区域和只读区域没有明显的区分标志</p>
+
+<p>○ 个别不影响产品理解的错别字</p>
+
+<p>○ 文字排列不整齐等一些小问题</p>
+
+<p>○ 建议</p>
+
+<h2 id="附录2-线上故障定义表">附录2:线上故障定义表</h2>
+
+<p><img alt="fault_list" src="https://img.alicdn.com/tps/TB1mWJ.LXXXXXbHXVXXXXXXXXXX-632-486.png" /></p>
+
+<h2 id="附录3-适配机型列表">附录3:适配机型列表</h2>
+
+<p>Android：（Android4.1及以上版本）</p>
+
+<p>1、htc  x920e</p>
+
+<ol>
+<li><p>LG G2 A8</p></li>
+<li><p>Coolpad A6</p></li>
+<li><p>huawei g3</p></li>
+<li><p>Moto G</p></li>
+</ol>
+
+<p>6、OPPO U705T Android 4.1.1</p>
+
+<p>7、三星 s4 I9500 Android4.2.2</p>
+
+<p>8、华为H60-L02</p>
+
+<p>9、华为H30-L01</p>
+
+<p>10、nexus 5 A10 5.1.1</p>
+
+<p>11、coolpad 8720 Android 4.3</p>
+
+<p>12、nexus 4</p>
+
+<p>13、魅族MX4 Android 4.4.2</p>
+
+<p>14、魅族MX4 Pro Android 4.4.4</p>
+
+<p>15、三星Note 3 Android 4.3</p>
+
+<p>16、Oppo813t 小屏</p>
+
+<p>17、vivo S9t Android 4.1.2</p>
+
+<p>18、三星GT-N7100 Android 4.1.2</p>
+
+<p>19、魅族 M1 note   Android 4.4.4</p>
+
+<p>20、华为Mate 7 5.1.1</p>
+
+<p>21、联想A820t Android 4.1.2</p>
+
+<p>iPhone：（IOS 7及以上版本）</p>
+
+<p>iPhone 4s </p>
+
+<p>iPhone 5 </p>
+
+<p>iPhone 5c</p>
+
+<p>iPhone 5s</p>
+
+<p>iPhone6</p>
+
+<p>iPhone 6plus </p>
+
+<p>iPhone 6s</p>
 
           <h1 id="免登服务">免登服务</h1>
 
@@ -8588,6 +9279,24 @@ deviceId | 手机设备号,由钉钉在安装时随机产生
 
 <p><a href="https://github.com/outlookxie/app-todolist"><font color=red >微应用Demo地址</font></a>:<a href="https://github.com/outlookxie/app-todolist">https://github.com/outlookxie/app-todolist</a></p>
 
+<h2 id="开发版钉钉客户端（android）">开发版钉钉客户端（Android）</h2>
+
+<p>版本：2.7.0</p>
+
+<p><a href="http://mupppub.cn-hangzhou.oss.aliyun-inc.com/24085/1257883/1257883/260ae0a85736cb8cfbc549f5ad8d5a9e/702553%40Rimet-dingtalk-dev-2.7.0.apk">下载地址</a></p>
+
+<p>启用开发者模式后即可使用chrome inspector进行调试。开发版客户端仅供微应用开发调试使用。</p>
+
+<p>启用步骤：</p>
+
+<ul>
+<li>进入“我的”(个人资料页)</li>
+<li>选择“设置”</li>
+<li>选择“通用”</li>
+<li>选择“开发者选项”</li>
+<li>打开“微应用调试”</li>
+</ul>
+
 <h2 id="通用">通用</h2>
 
 <h3 id="页面引入js文件">页面引入js文件</h3>
@@ -11189,6 +11898,8 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 
 <p>目前设置导航栏颜色是通过url参数进行配置, 其键为dd_nav_bgcolor，其值形式为AARRGGBB</p>
 
+<p>例如：微应用当前页面的链接为：https://abc.xyz/，设置导航栏颜色时增加参数，参数名是dd_nav_bgcolor，值为FF112233 其中前面两位默认是FF，后面6位是对应的色值，最终的页面url为：https://abc.xyz/?dd_nav_bgcolor=FF5E97F6</p>
+
 <h3 id="设置左侧导航按钮">设置左侧导航按钮</h3>
 
 <p>只支持iOS</p>
@@ -13539,41 +14250,6 @@ new FileBody(file, ContentType.APPLICATION_OCTET_STREAM, file.getName())).build(
 <br /> 
 <br /> 
 <br /> </p>
-
-<!--- 2015.12.15 [<font color=red >增加管理日历接入指南</font>](#管理日历接入指南)
-
-- 2015.11.19 [<font color=red >增加会话JSAPI接口</font>](#根据corpid选择会话)
-
-- 2015.11.19 [<font color=red >增加群会话接口</font>](#群会话接口（暂未开放）)
-
-- 2015.11.13 [<font color=red >增加OA后台管理员免登</font>](#oa后台管理员调用免登)
-
-- 2015.11.12 [<font color=red >dd.biz.ding.post 增加参数</font>](#ding)
-
-- 2015.11.5 [<font color=red >通讯录接口增加参数</font>](#管理通讯录)
-
-- 2015.10.16 [<font color=red >更新客户端文档引入javascript文件版本</font>](#通用)
-
-- 2015.10.10 [<font color=red >创建部门和更新部门新增参数</font>](#创建部门)
-
-- 2015.9.25 [<font color=red >增加验证回调URL有效性事件和套件信息更新事件</font>](#5-回调接口（分为五个回调类型）)
-
-- 2015.9.11 [<font color=red >增加通讯录事件回调接口</font>](#通讯录变更事件回调接口)
-
-- 2015.9.8 [<font color=red >增加团队博客</font>](#%E2%1FZ%A2)
-
-- 2015.9.6 [<font color=red >增加JS-API调试工具</font>](#jsapi%03%D5%E5w)
-
-- 2015.9.6 [<font color=red >增加biz.util.uploadImageFromCamera接口</font>](#上传图片（仅支持拍照上传）)
-
-- 2015.8.28 [<font color=red >增加ISV接入调试工具</font>](#isv接入调试工具)
-
-- 2015.8.25 [<font color=red >增加回调接口加解密库和对应加解密demo</font>](#5-回调接口（分为三个回调类型）)
-
-- 2015.8.20 [<font color=red >增加钉钉服务端API调试工具</font>](#钉钉服务端API调试工具)
-
-- 2015.8.6 [<font color=red >增加合作伙伴(ISV服务提供商)接入阿里云的指南</font>](#合作伙伴接入)
-&ndash;>
 
       </div>
     </div

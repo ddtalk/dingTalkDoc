@@ -9,6 +9,10 @@ includes:
   
   - guide
 
+  - isvguide
+
+  - standar
+
   - identityverify
   
   - server
