@@ -79,7 +79,7 @@ ISV联系钉钉ISV接入接口人进行合作洽谈，更多信息请通过联�
 
 ### 钉钉快速部署指南
 #### ISV接入准备
-1.ISV使用快速部署必须先实现[<font color=red>ISV套件对企业独立部署方案</font>](#ISV套件对企业独立部署方案)
+1.ISV使用快速部署必须先实现[<font color=red>ISV套件对企业独立部署方案</font>](#isv套件对企业独立部署方案)
 
 2.ISV需要在云市场提交商品审核，套件上架流程详见：[<font color=red>套件上架流程</font>](#套件上架操作流程)3.ISV在接入之前需要通过联系钉钉ISV接入接口人获取ISV企业邀请码，联系方式：angle.lixy@alibaba-inc.com
 4.填写“ISV线下快速部署申请表”，发送到open-dingtalk@list.alibaba-inc.com申请， 审核通过后，钉钉小二会发送链接&二维码给ISV, ISV可以生成H5页面，分享给用户扫码或者点击下载[<font color=red>ISV线下快速部署申请表</font>](http://download.taobaocdn.com/freedom/30712/xls/p1a7c2m1e71q9e8me125a118d1npe4.xls)
