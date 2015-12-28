@@ -31,6 +31,29 @@ under the License.
     <% else %>
       <%= javascript_include_tag  "all_nosearch" %>
     <% end %>
+
+<!--   <link href="stylesheets/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheets/releasenotes.plugin.css">
+ -->
+  <script src="javascripts/lib/marked.js"></script>
+  <script src="javascripts/releasenotes.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#releaseNotesContainer").releaseNotes({
+        milestonesShown     : 10,
+        // If you want to show private repo
+        // You need to add repo credentials in api.php
+        phpApi        : false,
+        phpApiPath      : '/',
+        showDescription   : true,
+        showComments    : true,
+        // Used if phpAPI is false
+        repo        : 'dingTalkDoc',
+        username        : 'ddtalk'
+      });
+    });
+  </script>
+
   </head>
 
   <body class="<%= page_classes %>">
