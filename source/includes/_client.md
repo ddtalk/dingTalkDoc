@@ -1879,6 +1879,8 @@ http://abc.xyz?dd_nav_bgcolor=FF5E97F6
 ##### 参数说明
 目前设置导航栏颜色是通过url参数进行配置, 其键为dd_nav_bgcolor，其值形式为AARRGGBB
 
+例如：微应用当前页面的链接为：https://abc.xyz/，设置导航栏颜色时增加参数，参数名是dd_nav_bgcolor，值为FF112233 其中前面两位默认是FF，后面6位是对应的色值，最终的页面url为：https://abc.xyz/?dd_nav_bgcolor=FF5E97F6
+
 
 ### 设置左侧导航按钮
 只支持iOS
