@@ -2728,25 +2728,25 @@ ISV可与企业用户协商进行线下退款</li>
 
 <p>demo地址:<a href="https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js"><font color=red >https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js</font></a></p>
 
-<h3 id="使用标准oauth2-0">使用标准OAUTH2.0</h3>
+<!--### 使用标准OAUTH2.0
+[<font color=red >什么是OAUTH2.0</font>](#http://tools.ietf.org/html/rfc6749)
 
-<p><a href="#http://tools.ietf.org/html/rfc6749"><font color=red >什么是OAUTH2.0</font></a></p>
+步骤一：企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:
 
-<p>步骤一：企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:</p>
+`https://oapi.dingtalk.com/connect/oauth2/authorize?appid=CORPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE`
 
-<p><code class="prettyprint">https://oapi.dingtalk.com/connect/oauth2/authorize?appid=CORPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE</code></p>
+其中REDIRECT_URI为企业H5地址，钉钉开放平台授权服务器如果判断当前用户属于当前企业时，会再次通过HTTP 302跳转回企业应用的H5地址(即REDIRECT_URI)，并在H5的URL后面追加参数code=CODE&state=STATE,即
 
-<p>其中REDIRECT_URI为企业H5地址，钉钉开放平台授权服务器如果判断当前用户属于当前企业时，会再次通过HTTP 302跳转回企业应用的H5地址(即REDIRECT_URI)，并在H5的URL后面追加参数code=CODE&amp;state=STATE,即</p>
+`REDIRECT_URI?code=CODE&state=abcd1234`
 
-<p><code class="prettyprint">REDIRECT_URI?code=CODE&amp;state=abcd1234</code></p>
+步骤二：企业在后台解析code参数，获取CODE
 
-<p>步骤二：企业在后台解析code参数，获取CODE</p>
-
-<p>步骤三：<a href="#通过code换取用户身份"><font color=red >通过CODE换取身份</font></a></p>
+步骤三：[<font color=red >通过CODE换取身份</font>](#通过code换取用户身份)
 
 <aside class="notice">
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
+&ndash;>
 
 <h2 id="钉钉pc版微应用中调用免登">钉钉PC版微应用中调用免登</h2>
 
@@ -2760,25 +2760,25 @@ ISV可与企业用户协商进行线下退款</li>
 
 <p>demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkPC</p>
 
-<h3 id="使用标准oauth2-0">使用标准OAUTH2.0</h3>
+<!--### 使用标准OAUTH2.0
+[<font color=red >什么是OAUTH2.0</font>](#http://tools.ietf.org/html/rfc6749)
 
-<p><a href="#http://tools.ietf.org/html/rfc6749"><font color=red >什么是OAUTH2.0</font></a></p>
+步骤一：企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:
 
-<p>步骤一：企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:</p>
+`https://oapi.dingtalk.com/connect/oauth2/authorize?appid=CORPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE`
 
-<p><code class="prettyprint">https://oapi.dingtalk.com/connect/oauth2/authorize?appid=CORPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE</code></p>
+其中REDIRECT_URI为企业H5地址，钉钉开放平台授权服务器如果判断当前用户属于当前企业时，会再次通过HTTP 302跳转回企业应用的H5地址(即REDIRECT_URI)，并在H5的URL后面追加参数code=CODE&state=STATE,即
 
-<p>其中REDIRECT_URI为企业H5地址，钉钉开放平台授权服务器如果判断当前用户属于当前企业时，会再次通过HTTP 302跳转回企业应用的H5地址(即REDIRECT_URI)，并在H5的URL后面追加参数code=CODE&amp;state=STATE,即</p>
+`REDIRECT_URI?code=CODE&state=abcd1234`
 
-<p><code class="prettyprint">REDIRECT_URI?code=CODE&amp;state=abcd1234</code></p>
+步骤二：企业在后台解析code参数，获取CODE
 
-<p>步骤二：企业在后台解析code参数，获取CODE</p>
-
-<p>步骤三：<a href="#通过code换取用户身份"><font color=red >通过CODE换取身份</font></a></p>
+步骤三：[<font color=red >通过CODE换取身份</font>](#通过code换取用户身份)
 
 <aside class="notice">
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
+&ndash;>
 
 <h2 id="微应用后台管理员免登">微应用后台管理员免登</h2>
 
