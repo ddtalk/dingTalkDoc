@@ -141,39 +141,37 @@ ISV联系钉钉ISV接入接口人进行合作洽谈，更多信息请通过联�
 
 ### 基本流程（Basic Flow）
 
-#### a. 点击进入[<font color=red >控制台</font>](http://console.d.aliyun.com)，进行登录。
+#### a. 点击进入[<font color=red >控制台</font>](http://console.d.aliyun.com)，使用阿里云账号登录。
 
-#### b. 登录阿里云账号
-
-#### c. 进行实名认证（已经实名认证过的开发者直接看g.步骤）
+#### b. 进行实名认证（已经实名认证过的开发者直接看f.步骤）
 
 用户未通过实名认证，需要实名认证后，才能申请开发者，流程如下：
 
-#### d. 点击“立即认证”
+#### c. 点击“立即认证”
 
-![lijirz](https://img.alicdn.com/tps/TB1PUwmIVXXXXbbXXXXXXXXXXXX-866-305.png)
+![lijirz](https://img.alicdn.com/tps/TB1e618LXXXXXc.XXXXXXXXXXXX-1214-471.png)
 
-#### e. 新开窗口跳转到阿里云认证页面
+#### d. 新开窗口跳转到阿里云认证页面
 
 ![shimingrz](https://img.alicdn.com/tps/TB1lv3iIVXXXXa6XpXXXXXXXXXX-866-412.png)
 
-#### f. 实名认证通过，在弹窗点击“立即刷新”按钮
+#### e. 实名认证通过，在弹窗点击“立即刷新”按钮
 
 ![zhengzairz](https://img.alicdn.com/tps/TB11m_VIVXXXXaqapXXXXXXXXXX-866-334.png)
 
-#### g. 显示已通过实名认证
+#### f. 显示已通过实名认证
 
-![shiming](https://img.alicdn.com/tps/TB1C3T6IVXXXXXWaXXXXXXXXXXX-866-335.png)
+![shiming](https://img.alicdn.com/tps/TB1fOPXLXXXXXarXXXXXXXXXXXX-1212-435.png)
 
-#### h. 选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”
+#### g. 选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”
 ##### 数据项说明
 
 字段  		| 属性
 -----------	| -------------
-开发者介绍	| 100字
-开发应用类型	| 选择“钉钉企业账号”
-钉钉企业账号 	| 4-11位小写英文字符、数字、下划线
-账号密码 		| 必须为6位以上数字、大小写字母的组合
+开发者介绍	| 100字以内
+开发的应用类型	| 选择"钉钉应用"
+使用的云产品 	| 选择"容器服务"
+入驻协议 		| "同意"选择框选中
 
 #### i. 显示申请开发者成功
 
