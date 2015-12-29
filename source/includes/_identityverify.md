@@ -27,7 +27,7 @@
 
 demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js</font>](https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js)
 
-### 使用标准OAUTH2.0
+<!--### 使用标准OAUTH2.0
 [<font color=red >什么是OAUTH2.0</font>](#http://tools.ietf.org/html/rfc6749)
 
 步骤一：企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:
@@ -45,7 +45,7 @@ demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/mas
 <aside class="notice">
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
-
+-->
 
 ##钉钉PC版微应用中调用免登
 
@@ -59,7 +59,7 @@ demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/mas
 
 demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkPC
 
-### 使用标准OAUTH2.0
+<!--### 使用标准OAUTH2.0
 [<font color=red >什么是OAUTH2.0</font>](#http://tools.ietf.org/html/rfc6749)
 
 步骤一：企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:
@@ -77,7 +77,7 @@ demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkP
 <aside class="notice">
 有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
 </aside>
-
+-->
 
 
 ##微应用后台管理员免登
