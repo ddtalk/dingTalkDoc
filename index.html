@@ -2240,7 +2240,7 @@ ISV可与企业用户协商进行线下退款</li>
 <p>当企业管理员通过云市场完成套件购买后，通过钉钉授权功能进行钉钉套件授权开通，具体授权开通流程见：
 <a href="#企业管理员授权应用"><font color=red >企业管理员授权应用</font></a></p>
 
-<h3 id="8-与企业用户共创">8.  与企业用户共创</h3>
+<h3 id="8-与企业用户共创">8: 与企业用户共创</h3>
 
 <h4 id="8-1-背景">8.1.  背景</h4>
 
@@ -2268,13 +2268,13 @@ ISV可与企业用户协商进行线下退款</li>
 
 <p>应用（套件）达到共创用户用起来及质量评分80分以上，即可开始1000家灰度内测阶段。</p>
 
-<h3 id="9-如何进行1000家灰度">9.  如何进行1000家灰度</h3>
+<h3 id="9-如何进行1000家灰度">9: 如何进行1000家灰度</h3>
 
-<h3 id="9-1-背景">9.1.  背景</h3>
+<h4 id="9-1-背景">9.1.  背景</h4>
 
 <p>经过10家企业用户的共创，您的套件满足ISV老用户的使用，同时满足了钉钉老用户的使用，此时已经说明您的套件满足了企业用户的使用需求，为进一步验证套件的稳定性与可用性，将开启一周的1000家企业用户灰度，将根据灰度结果进行进一步用户开放</p>
 
-<h3 id="9-2-灰度结果">9.2.  灰度结果</h3>
+<h4 id="9-2-灰度结果">9.2.  灰度结果</h4>
 
 <p>灰度成功的标准（可根据应用类型进行协商调整）：</p>
 
@@ -2777,26 +2777,6 @@ ISV可与企业用户协商进行线下退款</li>
 
 <p>demo地址:<a href="https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js"><font color=red >https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js</font></a></p>
 
-<h3 id="使用标准oauth2-0">使用标准OAUTH2.0</h3>
-
-<p><a href="#http://tools.ietf.org/html/rfc6749"><font color=red >什么是OAUTH2.0</font></a></p>
-
-<p>步骤一：企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/connect/oauth2/authorize?appid=CORPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE</code></p>
-
-<p>其中REDIRECT_URI为企业H5地址，钉钉开放平台授权服务器如果判断当前用户属于当前企业时，会再次通过HTTP 302跳转回企业应用的H5地址(即REDIRECT_URI)，并在H5的URL后面追加参数code=CODE&amp;state=STATE,即</p>
-
-<p><code class="prettyprint">REDIRECT_URI?code=CODE&amp;state=abcd1234</code></p>
-
-<p>步骤二：企业在后台解析code参数，获取CODE</p>
-
-<p>步骤三：<a href="#通过code换取用户身份"><font color=red >通过CODE换取身份</font></a></p>
-
-<aside class="notice">
-有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
-</aside>
-
 <h2 id="钉钉pc版微应用中调用免登">钉钉PC版微应用中调用免登</h2>
 
 <h3 id="使用js-api-推荐使用">使用JS-API(推荐使用)</h3>
@@ -2808,26 +2788,6 @@ ISV可与企业用户协商进行线下退款</li>
 <p>步骤二：<a href="#通过code换取用户身份"><font color=red >通过CODE换取身份</font></a></p>
 
 <p>demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkPC</p>
-
-<h3 id="使用标准oauth2-0">使用标准OAUTH2.0</h3>
-
-<p><a href="#http://tools.ietf.org/html/rfc6749"><font color=red >什么是OAUTH2.0</font></a></p>
-
-<p>步骤一：企业在后台构造一个连接，通过HTTP 302跳转方式，让用户访问钉钉开放平台授权网址，构造的地址如下:</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/connect/oauth2/authorize?appid=CORPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE</code></p>
-
-<p>其中REDIRECT_URI为企业H5地址，钉钉开放平台授权服务器如果判断当前用户属于当前企业时，会再次通过HTTP 302跳转回企业应用的H5地址(即REDIRECT_URI)，并在H5的URL后面追加参数code=CODE&amp;state=STATE,即</p>
-
-<p><code class="prettyprint">REDIRECT_URI?code=CODE&amp;state=abcd1234</code></p>
-
-<p>步骤二：企业在后台解析code参数，获取CODE</p>
-
-<p>步骤三：<a href="#通过code换取用户身份"><font color=red >通过CODE换取身份</font></a></p>
-
-<aside class="notice">
-有安全限制，REDIRECT_URI域名必须包含在企业所有的微应用域名内,否则会提示无权访问页面，微应用请到钉钉oa后台->选择微应用菜单->微应用中心，添加微应用
-</aside>
 
 <h2 id="微应用后台管理员免登">微应用后台管理员免登</h2>
 
