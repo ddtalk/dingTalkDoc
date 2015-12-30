@@ -1865,7 +1865,13 @@ dd.biz.user.get({
 
 ## 导航栏
 
+对导航栏进行简单的自定义查看本页面即可，
+
+想要对导航栏进行更加个性化的定义，可以查看[<font color = red >自定义导航栏文档说明</font>](http://ddtalk.github.io/blog/2015/12/29/navbar/)
+
 dd.biz
+
+**
 
 ### 设置导航栏颜色
 
