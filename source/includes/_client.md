@@ -1865,10 +1865,6 @@ dd.biz.user.get({
 
 ## 导航栏
 
-对导航栏进行简单的自定义查看本页面即可，
-
-想要对导航栏进行更加个性化的定义，可以查看[<font color = red >自定义导航栏文档说明</font>](http://ddtalk.github.io/blog/2015/12/29/navbar/)
-
 dd.biz
 
 **
@@ -1915,7 +1911,7 @@ control | Boolean | 是否控制点击事件，true 控制，false 不控制， 
 showIcon | Boolean | 是否显示icon，true 显示，false 不显示，默认true； 注：具体UI以客户端为准
 text | String | 控制显示文本，空字符串表示显示默认文本
 
-### 设置右侧导航按钮
+### 设置右侧导航单个按钮
 
 ```javascript
 dd.biz.navigation.setRight({
@@ -1942,6 +1938,10 @@ text | String | 控制显示文本，空字符串表示显示默认文本
 
 
 可通过拼接url方式隐藏 showmenu=false
+
+### 设置右侧导航多个按钮
+
+想要对导航栏右侧进行更加个性化的定义，可以查看[<font color = red >自定义导航栏文档说明</font>](http://ddtalk.github.io/blog/2015/12/29/navbar/)
 
 ### 设置标题
 
