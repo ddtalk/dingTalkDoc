@@ -307,7 +307,7 @@ IP白名单		| 调用钉钉API时的合法IP列表，多个IP请以“,”隔开
 
 企业的管理员在钉钉企业后台的微应用列表中浏览你的应用套件后，即可发起一键授权，系统将展示微应用的第三方授权页面，管理员根据授权页面的引导，确认授权内容，完成授权操作。
 授权完成之后，企业就可使用ISV服务提供商所提供的应用服务了。一切将变得简单自然。以下是详细的接口调用时序图
-![Mou icon](https://img.alicdn.com/tps/TB1RhMGJXXXXXXdXVXXXXXXXXXX-876-659.jpg)
+![Mou icon](https://img.alicdn.com/tps/TB1b1fdLXXXXXXTXVXXXXXXXXXX-896-702.jpg)
 
 ### 2: 回调接口（分为五个回调类型）
 #### 使用场景
