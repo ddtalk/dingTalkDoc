@@ -927,8 +927,6 @@ invite_code         | 表示邀请码，只有填写过且是ISV自己邀请码�
 industry			| 表示企业所属行业
 corp_name			| 授权方企业名称
 auth_user_info      | 授权方管理员信息
-mobile              | 管理员电话
-name                | 管理员名字
 corp_logo_url		| 企业logo
 auth_info			| 授权信息
 agent				| 授权的应用信息

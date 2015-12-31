@@ -1865,24 +1865,11 @@ dd.biz.user.get({
 
 ## 导航栏
 
-**想要对导航栏更加个性化的定义，可以查看**
+**想要对导航栏更加个性化的定义，比如设置导航栏左侧按钮，右侧按钮，标题，可以查看**
 
 <a href="http://ddtalk.github.io/blog/2015/12/29/navbar/" target="_blank"><font color = red >
 钉钉微应用定制化导航栏</font></a>
 
-<br>
-### 触发关闭
-
-```javascript
-dd.biz.navigation.close({
-    onSuccess : function(result) {
-        /*result结构
-        {}
-        */
-    },
-    onFail : function(err) {}
-})
-```
 ## 分享到会话
 
 该功能是钉钉团队为开发者提供，帮助移动应用通过用户社交快速传播的功能。

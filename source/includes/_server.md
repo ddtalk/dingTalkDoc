@@ -2654,50 +2654,6 @@ name | 用户姓名
 ```
 
 
-<!-- ### 通过CODE换取用户身份
-
-企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的用户信息。
-
-###### 请求说明
-
-Https请求方式: GET
-
-`https://oapi.dingtalk.com/user/getuserinfo?access_token=ACCESS_TOKEN&code=CODE`
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
----------- | ------- | ------- | ------
-access_token | String | 是 | 调用接口凭证
-code | String | 是 | 通过Oauth认证会给URL带上CODE
-
-###### 返回结果
-
-正确时返回示例如下：
-
-```
-{
-    "errcode": 40029,
-    "errmsg": "invalid code",
-    "userid": "USERID",
-    "deviceId":"DEVICEID"
-}
-```
-
-参数 | 说明
----------- | ------
-userId | 员工在企业内的UserID
-deviceId | 手机设备号,由钉钉在安装时随机产生
-
-出错时返回示例如下：
-
-```
-{
-    "errcode": 40029,
-    "errmsg": "invalid code"
-}
-``` -->
-
 ##统计数据
 
 ###记录统计数据
