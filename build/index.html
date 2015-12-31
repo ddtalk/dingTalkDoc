@@ -697,14 +697,14 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <p>钉钉服务器会向服务提供商申请时填写的套件回调URL定时推送SuiteTicket，以及临时授权码和授权设置变更。</p>
 
-<p>假设您提供的回调URL是</p>
+<p>以<a href="http://ddtalk.github.io/dingTalkDoc/?spm=a3140.7785475.0.0.Ju6sXi#加解密库和demo下载">服务端demo java版本</a>做示例，您提供的回调URL是</p>
 
-<p><code class="prettyprint">https://127.0.0.1/suite/receive</code></p>
+<p><code class="prettyprint">http://您服务端部署的IP:您的端口/demo/isvreceive</code></p>
 
 <p>那么在钉钉服务器每一次访问回调URL的时候
 将请求(下面链接中的signature,timestamp,nonce的值只是示例，并不代表真实返回的值):</p>
 
-<p><code class="prettyprint">https://127.0.0.1/suite/receive?signature=111108bb8e6dbce3c9671d6fdb69d15066227608
+<p><code class="prettyprint">http://您服务端部署的IP:您的端口/demo/isvreceive?signature=111108bb8e6dbce3c9671d6fdb69d15066227608
 &amp;timestamp=1783610513&amp;nonce=380320111</code></p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w">
@@ -735,9 +735,13 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 </code></pre>
 
-<p>此时，由于套件尚未创建成功，还未生成套件的SUITE_KEY，所以在解密post数据的时候，需要使用默认的Env.CREATE_SUITE_KEY（默认值为&quot;suite4xxxxxxxxxxxxxxx&quot;）来解密，以java-demo代码为例（Env为Demo中配置文件），如右。</p>
+<p>此时，由于套件尚未创建成功，还未生成套件的SUITE_KEY，所以在解密post数据的时候，需要使用默认的Env.CREATE_SUITE_KEY（默认值为&quot;suite4xxxxxxxxxxxxxxx&quot;）来解密，以java-demo代码为例（Env为Demo中配置文件），如右，服务端demo已经做了配置。</p>
 
-<p>待成功处理『验证回调URL有效性事件』事件，套件创建成功之后，就不能再使用默认的SUITE_KEY了，需要使用套件本身的SUITE_KEY，所以需要在Env.java中配置SUITE_KEY，然后重新部署代码,此时将用下面的语句进行加解密。</p>
+<p>同时，Demo的配置文件（Env.java）中还需要根据套件创建时填写的TOKEN 和 ENCODING_AES_KEY做相应的更改。</p>
+
+<p><img alt="verifyurl" src="https://img.alicdn.com/tps/TB1LK2kLXXXXXasXFXXXXXXXXXX-1338-1072.png" /></p>
+
+<p>待成功处理『验证回调URL有效性事件』事件，套件创建成功之后，就不能再使用默认的SUITE_KEY了，需要使用套件本身的SUITE_KEY，所以需要在Env.java中配置SUITE_KEY，同时将新创建套件中的SUITE_SECRET配置到Env.java中，然后重新部署代码，此时将用下面的语句进行加解密。因为推送ticket是二十分钟推送一次，再次部署也需要等待二十分钟服务端才会推送，后续会优化该逻辑，保证即时推送，提高推送效率。</p>
 
 <p><code class="prettyprint">dingTalkEncryptor = new DingTalkEncryptor(Env.TOKEN, Env.ENCODING_AES_KEY, Env.SUITE_KEY);//套件创建成功后，使用套件本身的SUITE_KEY进行加解密</code></p>
 
@@ -816,10 +820,12 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <p>服务器会向服务提供商申请时填写的套件事件接收 URL定时（二十分钟）推送ticket：</p>
 
-<p>服务提供商在收到ticket推送后务必返回经过加密的字符串&quot;success&quot;的json数据</p>
+<p>服务提供商在收到ticket推送后务必返回经过加密的字符串&quot;success&quot;的json数据，同时，如果该套件下没有任何的微应用，定时推送的ticket也不会成功，需要保证至少有一个ticket。</p>
 
 <p>如果不返回，钉钉服务器将连续推送，直到推送次数超过100次，就不再推送。倘若您希望钉钉服务器重新推送，需要进入<a href="http://console.d.aliyun.com"><font color=red>开发者后台</font></a>，进入套件管理页面，点击『重新推送』按钮，即可重新推送。
 <img alt="repush" src="https://img.alicdn.com/tps/TB15j7OJFXXXXckXXXXXXXXXXXX-1121-124.jpg" /></p>
+
+<p>以<a href="http://ddtalk.github.io/dingTalkDoc/?spm=a3140.7785475.0.0.Ju6sXi#加解密库和demo下载">服务端demo java版本</a>做示例，每二十分钟服务端会向服务商提供的接口进行一次回调，可以在IsvReceiveServlet.java文件中，打印并获取Env.suiteTicket。在<a href="https://debug.dingtalk.com/isv.html">debug平台</a>获取套件的SuiteAccessToken。</p>
 
 <p>POST数据解密后示例</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -901,7 +907,7 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <p><img alt="shouqun" src="https://img.alicdn.com/tps/TB1rZerKpXXXXX8XXXXXXXXXXXX-720-124.jpg" /></p>
 
-<p>收到临时授权码之后请按照步骤换取永久授权码，并将永久授权码存下来。</p>
+<p>以<a href="http://ddtalk.github.io/dingTalkDoc/?spm=a3140.7785475.0.0.Ju6sXi#加解密库和demo下载">服务端demo java版本</a>做示例，可以在IsvReceiveServlet.java文件中，打印并获取Env.authCode。在<a href="https://debug.dingtalk.com/isv.html">debug平台</a>获取套件的永久授权码，请将永久授权码保存下来，目前永久授权码丢失之后没法再次获取，只能创建套件重新来，后续会优化该逻辑，解决临时授权码只能获取一次永久授权码的问题。</p>
 
 <p>POST数据解密后示例</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
