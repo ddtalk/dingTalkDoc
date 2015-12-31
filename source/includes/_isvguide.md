@@ -53,11 +53,6 @@
 
 至此，您已经完成了准备工作。
 
-假如你是企业用户，要为自己的公司开发微应用，查看[<font color=red >企业接入</font>](#企业接入)。
-
-假如你是ISV(服务提供商)，作为第三方要给其他公司提供微应用，先查看[<font color=red >ISV接入</font>](#isv接入)。
-
-
 ## ISV接入整体流程
 
 ![ISV process](https://img.alicdn.com/tps/TB1fDX4LXXXXXa2XpXXXXXXXXXX-1009-367.png)
