@@ -7522,6 +7522,15 @@ mobile | 手机号码
 <p><code class="prettyprint">https://oapi.dingtalk.com/media/get?access_token=ACCESS_TOKEN&amp;media_id=MEDIA_ID</code></p>
 
 <h6 id="参数说明">参数说明</h6>
+<pre class="highlight plaintext"><code>  HTTP/1.1 200: OK
+  Connection: close
+  Content-Type: image/jpeg
+  Content-disposition: attachment; filename="MEDIA_ID.jpg"
+  Date: Sun, 04 Jan 2015 12:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Length: 1234567
+  ...
+</code></pre>
 
 <table><thead>
 <tr>
@@ -7548,15 +7557,6 @@ mobile | 手机号码
 <h6 id="返回说明">返回说明</h6>
 
 <p>和普通的http下载相同，请根据http头做相应的处理。</p>
-<pre class="highlight plaintext"><code>  HTTP/1.1 200: OK
-  Connection: close
-  Content-Type: image/jpeg
-  Content-disposition: attachment; filename="MEDIA_ID.jpg"
-  Date: Sun, 04 Jan 2015 12:00:00 GMT
-  Cache-Control: no-cache, must-revalidate
-  Content-Length: 1234567
-  ...
-</code></pre>
 
 <p>a)正确时返回：</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">

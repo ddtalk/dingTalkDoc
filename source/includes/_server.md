@@ -2435,22 +2435,16 @@ created_at | 媒体文件上传时间戳
 
 通过media_id获取图片、语音等文件。
 
+
+
 ###### 请求说明
 
 Https请求方式: GET
 
 `https://oapi.dingtalk.com/media/get?access_token=ACCESS_TOKEN&media_id=MEDIA_ID`
 
+
 ###### 参数说明
-
-参数 |参数类型 | 必须 | 说明
----------- | ------- | ------- | ------
-access_token |String | 是 | 调用接口凭证
-media_id |String | 是 | 媒体文件的唯一标示
-
-###### 返回说明
-
-和普通的http下载相同，请根据http头做相应的处理。
 
 ```
   HTTP/1.1 200: OK
@@ -2462,6 +2456,18 @@ media_id |String | 是 | 媒体文件的唯一标示
   Content-Length: 1234567
   ...
 ```
+
+参数 |参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token |String | 是 | 调用接口凭证
+media_id |String | 是 | 媒体文件的唯一标示
+
+
+###### 返回说明
+
+
+和普通的http下载相同，请根据http头做相应的处理。
+
 
 a)正确时返回：
 
