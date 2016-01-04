@@ -23,8 +23,6 @@ includes:
   
   - cdn
 
-  - serverdebug
-
   - blog
     
   - faq
