@@ -13735,26 +13735,25 @@ title | 会话名称 -->
 
 [biz.customContact.multipleChoose](#多选自定义联系人) -->
 
-          <h1 id="微应用体验优化">微应用体验优化</h1>
+          <h1 id="调试工具-amp-性能优化">调试工具&amp;性能优化</h1>
 
-<h2 id="ui规范">UI规范</h2>
+<h2 id="调试工具">调试工具</h2>
 
-<p>对于钉钉中的微应用，要求能符合钉钉整体的UI规范。诸如字体，字号，颜色等。
-<img alt="UI" src="https://img.alicdn.com/tps/TB1.yF4KpXXXXcBXpXXXXXXXXXX-601-281.jpg" /></p>
-
-<p><a href="http://yunpan.taobao.com/s/k9w3LeGzmM"><font color=red>UI规范下载</font></a></p>
+<ul>
+<li><p><a href="https://debug.dingtalk.com"><font color=red >钉钉服务端API调试工具</font></a></p></li>
+<li><p><a href="https://debug.dingtalk.com/isv.html"><font color=red >ISV接入调试工具</font></a></p></li>
+<li><p><a href="http://wsdebug.dingtalk.com/"><font color=red >JSAPI调试工具</font></a>（打开页面后，手机扫描二维码，然后在页面上配置参数，即可调试）</p></li>
+</ul>
 
 <h2 id="h5性能优化方案">H5性能优化方案</h2>
 
-<p>对于一个H5的产品，功能无疑很重要，但是性能同样是用户体验中不可或缺的一环。原本H5的渲染性能就不及native的app，如果不把性能优化做起来，将极大地影响用户使用产品的积极性。所以我们提供了一份H5性能优化的方案，<a href="http://ddtalk.github.io/blog/2015/09/07/dingding-first/"><font color=red>地址</font></a>。</p>
+<p>在钉钉移动客户端上的微应用通过H5来实现，当前H5的渲染性能相较native的app有一定差距，为了提升H5的性能，从体验上与native app缩短差距，我们提供了一份H5性能优化的方案，详细内容见blog中的<a href="http://ddtalk.github.io/blog/2015/09/07/dingding-first/"><font color=red> H5性能优化方案</font></a>。</p>
 
 <h2 id="微应用性能评测">微应用性能评测</h2>
 
-<p>目前微应用性能评测流程还在优化阶段。<br></p>
-
 <p>微应用的性能测验主要是对微应用的整体性能进行评分，这其中包括但不仅限于首屏打开时间等指标。<br></p>
 
-<p>大概流程如下：<br></p>
+<p>流程如下：<br></p>
 
 <p>1、微应用进行性能评测前首先需要确保我们的测试帐号被加入到将要测验的企业里。目前的测试帐号有以下几个：<font color=blue > 13291824394, 15210137915，15810497158。 </font> <br></p>
 
@@ -13762,9 +13761,9 @@ title | 会话名称 -->
 
 <p>3、然后，按照提示，输入要测试的H5应用地址，下一步选择手机即可开始测验。<br></p>
 
-<p>4、测验完成之后，就可以看到测试报告了。测试报告会给出被测试的微应用的整体打分。这个打分机制我们还在不断优化，后续会根据大家的case制定出一套完善的评分机制。测试报告同时会给出被测验的微应用需要优化的地方，开发者可以根据测试报告的优化建议进行相关优化，待优化完成可以再次发起测验流程，并查看报告。<br></p>
+<p>4、测验完成之后，就可以看到测试报告了。测试报告会给出被测试的微应用的整体打分。（打分机制还在不断优化，欢迎大家针对特殊的case提出建议）。测试报告同时会给出被测验的微应用需要优化的内容，开发者可以根据测试报告的优化建议进行相关优化，待优化完成可以再次发起测验流程，并查看报告。<br></p>
 
-<h2 id="cdn">CDN</h2>
+<h2 id="cdn服务">CDN服务</h2>
 
 <p>钉钉开放平台为常用的js库提供了CDN加速服务，这样做不仅可以为您节省流量，还可以获得更快的访问速度。</p>
 
@@ -13796,19 +13795,9 @@ title | 会话名称 -->
 
 <p><a href="http://g.alicdn.com/ilw/cdnjs/zepto/1.1.6/zepto.js">http://g.alicdn.com/ilw/cdnjs/zepto/1.1.6/zepto.js</a></p>
 
-          <h1 id="调试工具">调试工具</h1>
-
-<ul>
-<li><p><a href="https://debug.dingtalk.com"><font color=red >钉钉服务端API调试工具</font></a></p></li>
-<li><p><a href="https://debug.dingtalk.com/isv.html"><font color=red >ISV接入调试工具</font></a></p></li>
-<li><p><a href="http://wsdebug.dingtalk.com/"><font color=red >JSAPI调试工具</font></a>（打开页面后，手机扫描二维码，然后在页面上配置参数，即可调试）</p></li>
-</ul>
-
           <h1 id="团队博客">团队博客</h1>
 
-<p>钉钉开放平台团队建立了一个博客，以提供更加详细的关于钉钉开放平台的信息，帮助钉钉开发者更好的进行开发</p>
-
-<p>如有兴趣，请查看：<a href="http://ddtalk.github.io/blog/"><font color=red>地址</font></a></p>
+<p>钉钉开放平台团队博客提供针对微应用开发的实践及建议，帮助钉钉开发者更好的进行开发，更多信息请查看：<a href="http://ddtalk.github.io/blog/"><font color=red>钉钉开放平台团队博客</font></a></p>
 
           <h1 id="faq">FAQ</h1>
 
