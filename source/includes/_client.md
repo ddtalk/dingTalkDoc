@@ -1739,7 +1739,7 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 users | 选取的用户
 users.name | 姓名
 users.avatar | 头像图片url，可能为空
-users.emplId | userid,[<font color=red>获取成员详情接口</font>](#%B7%D6%10X%E6%C5)
+users.emplId | userid,[<font color=red>获取成员详情接口</font>](#获取部门成员（详情）)
 department | 选取的部门
 department.id | 部门id
 department.name | 部门名称
