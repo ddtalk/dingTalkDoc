@@ -11854,7 +11854,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 
 <p>corpid必须是用户所属的企业的corpid</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">complexChoose</span><span class="p">({</span>
-  <span class="na">startWithDepartmentId</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span> <span class="c1">//-1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)</span>
+  <span class="na">startWithDepartmentId</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span> <span class="c1">//-1表示从自己所在部门开始, 0表示从企业最上层开始，其他数字表示从该部门开始</span>
   <span class="na">selectedUsers</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="p">...],</span> <span class="c1">//预选用户</span>
   <span class="na">corpId</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">//企业id</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -11898,7 +11898,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 <tr>
 <td>startWithDepartmentId</td>
 <td>Number</td>
-<td>-1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)</td>
+<td>-1表示从自己所在部门开始, 0表示从企业最上层开始，其他数字表示从该部门开始</td>
 </tr>
 <tr>
 <td>selectedUsers</td>
