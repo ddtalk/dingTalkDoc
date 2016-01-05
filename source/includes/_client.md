@@ -1633,7 +1633,7 @@ corpid必须是用户所属的企业的corpid
 dd.biz.contact.choose({
   startWithDepartmentId: Number, //-1表示打开的通讯录从自己所在部门开始展示, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
   multiple: Boolean, //是否多选： true多选 false单选； 默认true
-  users: [String, String, ...], //默认选中的用户列表，工号；成功回调中应包含该信息
+  users: [String, String, ...], //默认选中的用户列表，userid；成功回调中应包含该信息
   corpId: String, //企业id
   max: Number, //人数限制，当multiple为true才生效，可选范围1-1500
   onSuccess: function(data) {
@@ -1642,7 +1642,7 @@ dd.biz.contact.choose({
     [{
       "name": "张三", //姓名
       "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
-      "emplId": '0573', //工号
+      "emplId": '0573', //userid
      },
      ...
     ]
@@ -1660,7 +1660,7 @@ dd.biz.contact.choose({
 ----- | ----- | -----
 startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
 multiple | Boolean | 是否多选： true多选，false单选； 默认true
-users | Array[String] | 默认选中的用户列表，用户id；成功回调中应包含该信息
+users | Array[String] | 默认选中的用户列表，userid；成功回调中应包含该信息
 corpId | String | 企业id
 max | Number | 人数限制，当multiple为true才生效，可选范围1-1500
 
@@ -1675,7 +1675,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 ------|------
 name | 姓名
 avatar | 头像图片url，可能为空
-emplId | 用户id，[<font color=red>获取成员详情接口</font>](#%B7%D6%10X%E6%C5)
+emplId | userid，[<font color=red>获取成员详情接口</font>](#获取部门成员（详情）)
 
 ###选人，选部门
 
@@ -1697,7 +1697,7 @@ dd.biz.contact.complexChoose({
       {
         "name": "张三", //姓名
         "avatar": "htp://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
-        "emplId": "0573", //工号:
+        "emplId": "0573", //userid:
       },
       ...
       ],
@@ -1739,7 +1739,7 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 users | 选取的用户
 users.name | 姓名
 users.avatar | 头像图片url，可能为空
-users.emplId | 用户id,[<font color=red>获取成员详情接口</font>](#%B7%D6%10X%E6%C5)
+users.emplId | userid,[<font color=red>获取成员详情接口</font>](#%B7%D6%10X%E6%C5)
 department | 选取的部门
 department.id | 部门id
 department.name | 部门名称
@@ -1751,13 +1751,13 @@ department.name | 部门名称
 ```javascript
 dd.biz.contact.choose({
     multiple: true, //是否多选： true多选 false单选； 默认true
-    users: ['100','101'], //默认选中的用户列表，工号；成功回调中应包含该信息
+    users: ['100','101'], //默认选中的用户列表，userid；成功回调中应包含该信息
     corpId: '', //企业id
     max: 50, //人数限制，当multiple为true才生效，可选范围1-1500
     onSuccess : function(result) {
         /*
         [{
-            emplId: '0573', //工号
+            emplId: '0573', //userid
             name: '张三', //姓名
             nickNameCn: '三张', //花名
             mobilePhone: '****', //手机号 后续不再返回该字段
