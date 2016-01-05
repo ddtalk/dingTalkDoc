@@ -241,60 +241,6 @@
 
           <h1 id="isv接入指南">ISV接入指南</h1>
 
-<p>钉钉开放平台提供了<strong>企业通讯录管理、文件管理、发送企业会话消息</strong>等功能，接口使用可以参考<a href="#服务端开发文档"><font color=red >服务端开发文档</font></a>；</p>
-
-<p>我们定制了微应用专用的运行容器，提供了一组可以调用<strong>钉钉的本地能力和业务逻辑</strong>的JS接口，开发者可以通过这些接口使用钉钉的本地能力或者钉钉的业务逻辑，降低开发成本，提高微应用在移动客户端的体验。接口使用可以参考<a href="#客户端开发文档"><font color=red >客户端开发文档</font></a>。</p>
-
-<p>该指南主要介绍了企业和ISV（服务提供商）如何接入钉钉开放平台，其中涉及到接入过程中使用的工具、与钉钉开放平台相关的概念和接入钉钉开放平台的一些实践方法，以帮助开发者快速开发自己的微应用。</p>
-
-<h2 id="接入准备">接入准备</h2>
-
-<p>开发者在使用钉钉开放平台开发微应用前需做好以下准备：</p>
-
-<ul>
-<li>注册钉钉企业；</li>
-<li>服务端环境搭建和域名注册；</li>
-<li>开发环境搭建；</li>
-</ul>
-
-<h3 id="注册钉钉企业账号">注册钉钉企业账号</h3>
-
-<p>一、进入 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 页面, 点击 <a href="https://oa.dingtalk.com/register.html?spm=0.0.0.0.dL51oc"><font color=red >企业注册</font></a>；（已经注册可跳过此步骤）</p>
-
-<p><img alt="enterprise_register_entry" src="https://img.alicdn.com/tps/TB14kI8IFXXXXciapXXXXXXXXXX.jpg" /></p>
-
-<p>二、填写注册手机号码和短信验证码；</p>
-
-<p>三、输入企业基本信息和管理员帐号和密码，点击 <em>注册</em> 按钮完成注册过程。</p>
-
-<p><img alt="input_enterprise_info" src="https://img.alicdn.com/tps/TB1bru8JFXXXXXcXFXXXXXXXXXX-1171-807.png" /></p>
-
-<aside class="notice">
-通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程注册管理员帐号。
-</aside>
-
-<h4 id="分配管理员子账号：">分配管理员子账号：</h4>
-
-<p>一、登录钉钉后台管理系统，按下图进入安全中心的添加管理员子帐号页面；</p>
-
-<p><img alt="add_sub_manager" src="https://img.alicdn.com/tps/TB1Q3DiJFXXXXbkXXXXXXXXXXXX-1147-377.png" /></p>
-
-<p>二、按下图提示填写子帐号信息</p>
-
-<p><img alt="set_sub_manager_account" src="https://img.alicdn.com/tps/TB16euYJFXXXXcRXFXXXXXXXXXX-601-336.png" /></p>
-
-<p>完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 <em>钉小秘</em> 会话中收到管理员帐号和初始密码，该钉钉用户可以通过收到的帐号和密码登录 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 进入安全中心对初始密码进行修改。</p>
-
-<h3 id="服务端环境搭建和域名注册">服务端环境搭建和域名注册</h3>
-
-<p>开发者可以自己搭建服务器也可以购买云主机来搭建自己的服务端环境，开发者需要为自己的微应用注册合法有效的域名</p>
-
-<h3 id="开发环境搭建">开发环境搭建</h3>
-
-<p>钉钉开放平台的服务端接口不区分语言和平台，开发者可以使用自己熟悉的技术搭建开发环境来开发微应用</p>
-
-<p>至此，您已经完成了准备工作。</p>
-
 <h2 id="isv接入整体流程">ISV接入整体流程</h2>
 
 <p><img alt="ISV process" src="https://img.alicdn.com/tps/TB1fDX4LXXXXXa2XpXXXXXXXXXX-1009-367.png" /></p>
@@ -312,167 +258,87 @@
 
 <p>2.通过钉钉快速部署进行实施，详细内容见<a href="#钉钉快速部署指南"><font color=red>钉钉快速部署指南</font></a>中的描述。使用此方式需满足<a href="#标准规范"><font color=red>标准规范</font></a>中的要求，钉钉团队会进行质量验收，其它项由ISV自己负责，如果接收到用户的投诉，钉钉保留对ISV的处罚权利</p>
 
-<h3 id="商务洽谈">商务洽谈</h3>
+<h2 id="一-注册钉钉企业账号">一.注册钉钉企业账号</h2>
 
-<p>ISV联系钉钉ISV接入接口人进行合作洽谈，更多信息请通过联系方式：angle.lixy@alibaba-inc.com 进行</p>
+<h3 id="1-注册钉钉企业账号">1.注册钉钉企业账号</h3>
 
-<h3 id="钉钉快速部署指南">钉钉快速部署指南</h3>
+<p>一、进入 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 页面, 点击 <a href="https://oa.dingtalk.com/register.html?spm=0.0.0.0.dL51oc"><font color=red >企业注册</font></a>；（已经注册可跳过此步骤）</p>
 
-<h4 id="isv接入准备">ISV接入准备</h4>
+<p><img alt="enterprise_register_entry" src="https://img.alicdn.com/tps/TB14kI8IFXXXXciapXXXXXXXXXX.jpg" /></p>
 
-<p>1.ISV使用快速部署必须先实现<a href="#isv套件对企业独立部署方案"><font color=red>ISV套件对企业独立部署方案</font></a></p>
+<p>二、填写注册手机号码和短信验证码；</p>
 
-<p>2.ISV需要在云市场提交商品审核<font color=red>（钉钉小二会将商品审核为预上架状态，此套件在市场上不可见）</font>，套件上架流程详见：<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a></p>
+<p>三、输入企业基本信息和管理员帐号和密码，点击 <em>注册</em> 按钮完成注册过程。</p>
 
-<p>3.ISV在接入之前需要通过联系钉钉ISV接入接口人获取ISV企业邀请码，联系方式：angle.lixy@alibaba-inc.com
-4.填写“ISV线下快速部署申请表”，发送到open-dingtalk@list.alibaba-inc.com申请， 审核通过后，钉钉小二会发送链接&amp;二维码给ISV, ISV可以生成H5页面，分享给用户扫码或者点击下载<a href="http://download.taobaocdn.com/freedom/30712/xls/p1a7c2m1e71q9e8me125a118d1npe4.xls"><font color=red>ISV线下快速部署申请表</font></a></p>
+<p><img alt="input_enterprise_info" src="https://img.alicdn.com/tps/TB1bru8JFXXXXXcXFXXXXXXXXXX-1171-807.png" /></p>
 
-<p><img alt="Application Form" src="https://img.alicdn.com/tps/TB1c3uBLXXXXXaNXXXXXXXXXXXX-802-571.png" />
-填写说明：</p>
+<aside class="notice">
+通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程注册管理员帐号。
+</aside>
 
-<table><thead>
-<tr>
-<th>栏位</th>
-<th>填写要求</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>服务商名称</td>
-<td>必填，阿里云市场注册的服务商全名</td>
-</tr>
-<tr>
-<td>套件名称</td>
-<td>必填，ISV提交商品审核的套件全称，套件上架流程详见<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a></td>
-</tr>
-<tr>
-<td>邀请码</td>
-<td>必填，钉钉ISV接入接口人分配的ISV企业邀请码</td>
-</tr>
-<tr>
-<td>申请快速部署原因</td>
-<td>必填，需要申明使用此方案的原因、使用场景信息</td>
-</tr>
-<tr>
-<td>是否有现场实施人员</td>
-<td>必填，是否有现场实施人员支持，如没有，注明通过什么方式分享二维码</td>
-</tr>
-<tr>
-<td>通讯录导入方式</td>
-<td>必填，选择isv引入的企业用户通过哪种方式维护通讯录，如：由企业管理员通过钉钉OA后台导入（），通过钉钉手机端创建团队；ISV现有系统通过钉钉接口导入等</td>
-</tr>
-<tr>
-<td>是否申请自定义手机“工作”tab界面</td>
-<td>必填，钉钉手机端的工作界面可以为ISV定义：手机工作界面   1. Banner：ISV通过发布带图片公告的形式，实现banner页效果 2. 套件排序置顶 3. 手机工作界面tab名称定义为ISV套件名称，例如由工作改为“XXX”</td>
-</tr>
-<tr>
-<td>申请定义手机“工作”tab界面原因</td>
-<td>不必填，咨询钉钉ISV接入接口人</td>
-</tr>
-<tr>
-<td>是否验证应用序列号</td>
-<td>必填，应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置。举例： ISV 通过自有渠道，售卖了一套微应用给客户A，客户A扫码可以快速创建团队并开通应用，如果该二维码分享给了B，B也可以通过扫码开通应用，而B实际并未支付费用，为避免此问题，ISV可以发给A客户唯一的序列号，A客户扫码后，必须输入序列号并得到ISV验证，才可开通应用</td>
-</tr>
-<tr>
-<td>套件icon</td>
-<td>必填，引导页面需要套件icon，规格120*120，圆角，请在“套件icon”sheet页进行上传</td>
-</tr>
-<tr>
-<td>手机“工作”tab命名</td>
-<td>如需申请“工作”tab名称自定义，则必填，“工作”tab名称可以重命名，支持4个汉字</td>
-</tr>
-<tr>
-<td>公告</td>
-<td>如需申请“工作”tab界面自定义，则必填，工作界面的banner通过发布带图片公告的形式展现，需要填写发送公告所在企业的corp_id和公告标题；公告路径：https://app.dingtalk.com/#/app/blackboard/create，图片推荐尺寸： 640*380</td>
-</tr>
-<tr>
-<td>是否需要团队链接,用于发送邀请</td>
-<td>必填，开通微应用时，程序会自动生成团队链接发给ISV，ISV得到团队链接可以通过邮件或者短信发送邀请，如需团队链接，请注明邀请方式</td>
-</tr>
-</tbody></table>
+<h3 id="2-分配管理员子账号">2.分配管理员子账号</h3>
 
-<p>5.如果需要定义不同的任务或者其他特殊需求，请提前在开发阶段，向接口的钉钉小二提出产品需求（任务：见产品主体流程中描述的开通步骤，每个步骤称为一个任务）</p>
+<p>一、登录钉钉后台管理系统，按下图进入安全中心的添加管理员子帐号页面；</p>
 
-<h4 id="产品主体流程">产品主体流程</h4>
+<p><img alt="add_sub_manager" src="https://img.alicdn.com/tps/TB1Q3DiJFXXXXbkXXXXXXXXXXXX-1147-377.png" /></p>
 
-<p><img alt="ksbs_process" src="https://img.alicdn.com/tps/TB1xcWaLXXXXXcIXVXXXXXXXXXX-863-585.png" /></p>
+<p>二、按下图提示填写子帐号信息</p>
 
-<p>实施步骤：
-1. 安装钉钉，并且完成注册，请使用以下二维码和链接，让客户扫码，打开下载钉钉地址：
-http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
+<p><img alt="set_sub_manager_account" src="https://img.alicdn.com/tps/TB16euYJFXXXXcRXFXXXXXXXXXX-601-336.png" /></p>
 
-<p><img alt="DD_QRcode" src="https://img.alicdn.com/tps/TB1HeydLXXXXXaJXVXXXXXXXXXX-584-584.png" /></p>
+<p>完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 <em>钉小秘</em> 会话中收到管理员帐号和初始密码，该钉钉用户可以通过收到的帐号和密码登录 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 进入安全中心对初始密码进行修改。</p>
 
-<p>2.提交快速部署后，钉钉工作人员会通过邮件，发送套件二维码给ISV, 客户通过钉钉手机端上的扫码工具，扫描进入快速部署引导页</p>
+<h2 id="二-注册钉钉开发者">二.注册钉钉开发者</h2>
 
-<p><img alt="DD_ksbs1" src="https://img.alicdn.com/tps/TB1n7qhLXXXXXXhXVXXXXXXXXXX-427-640.png" /></p>
+<p>在注册钉钉开发者之前，您需要做好以下准备工作
+- 服务端环境搭建和域名注册；
+- 开发环境搭建；</p>
 
-<p>3.创建团队：配置可以选择创建1人团队（大于等于1人），或多人团队（大于等于6人），
-➢1人团队：适合人数较多团队，需要通过钉钉OA管理后台表格导入，或者
-➢多人团队：适合人数较少团队，便于在钉钉手机端上，创建团队</p>
+<h3 id="1-服务端环境搭建和域名注册">1.服务端环境搭建和域名注册</h3>
 
-<p><img alt="DD_ksbs2" src="https://img.alicdn.com/tps/TB17wWoLXXXXXcTXpXXXXXXXXXX-394-652.png" /></p>
+<p>开发者可以自己搭建服务器也可以购买云主机来搭建自己的服务端环境，开发者需要为自己的微应用注册合法有效的域名</p>
 
-<p>4.开通微应用：分为3步：：输入应用序列号－立即授权－使用范围设置
-4.1  输入应用序列号： 应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置
-➢ISV通过openapi /service/get_auth_info 获取授权信息，应用序列号即在返回数据中
-➢/service/get_auth_info接口具体信息请参考 <a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
+<h3 id="2-开发环境搭建">2.开发环境搭建</h3>
 
-<p><img alt="DD_ksbs3" src="https://img.alicdn.com/tps/TB18Hx9LXXXXXbeaXXXXXXXXXXX-427-706.png" /></p>
+<p>钉钉开放平台的服务端接口不区分语言和平台，开发者可以使用自己熟悉的技术搭建开发环境来开发微应用</p>
 
-<p>4.2：立即授权</p>
+<h3 id="3-注册钉钉开发者">3.注册钉钉开发者</h3>
 
-<p><img alt="DD_ksbs4" src="https://img.alicdn.com/tps/TB1Ic9CLXXXXXaxXXXXXXXXXXXX-438-720.png" /></p>
-
-<p>4.3：设置使用范围，设置微应用哪些员工可以使用</p>
-
-<p><img alt="DD_ksbs5" src="https://img.alicdn.com/tps/TB1iV5nLXXXXXcaXpXXXXXXXXXX-449-780.png" /></p>
-
-<p>4.4 开始使用， 用户点击“开始使用”可以进入手机端工作界面页</p>
-
-<p><img alt="DD_ksbs6" src="https://img.alicdn.com/tps/TB190CBLXXXXXa.XXXXXXXXXXXX-450-729.png" />
-<img alt="DD_ksbs7" src="https://img.alicdn.com/tps/TB17ceELXXXXXXtXXXXXXXXXXXX-504-702.png" /></p>
-
-<p>4.5  开通授权后，isv可获取团队邀请链接，团队邀请链接处理逻辑
-➢isv通过openapi /service/get_auth_info 获取授权信息，团队邀请链接即在返回数据中
-➢/service/get_auth_info接口具体信息请参考<a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
-
-<h2 id="注册钉钉开发者">注册钉钉开发者</h2>
-
-<h3 id="描述（description）">描述（Description）</h3>
+<h4 id="描述（description）">描述（Description）</h4>
 
 <p>阿里云用户登录后，在通过实名认证的情况下，填写相关信息，完成开发者的身份申请。</p>
 
-<h3 id="前置条件（pre-conditions）">前置条件（Pre-Conditions）</h3>
+<h4 id="前置条件（pre-conditions）">前置条件（Pre-Conditions）</h4>
 
 <p>申请者首先是阿里云用户</p>
 
-<h3 id="基本流程（basic-flow）">基本流程（Basic Flow）</h3>
+<h4 id="基本流程（basic-flow）">基本流程（Basic Flow）</h4>
 
-<h4 id="a-点击进入控制台，使用阿里云账号登录。">a. 点击进入<a href="http://console.d.aliyun.com"><font color=red >控制台</font></a>，使用阿里云账号登录。</h4>
+<h5 id="1-点击进入控制台，使用阿里云账号登录。">1. 点击进入<a href="http://console.d.aliyun.com"><font color=red >控制台</font></a>，使用阿里云账号登录。</h5>
 
-<h4 id="b-进行实名认证（已经实名认证过的开发者直接看f-步骤）">b. 进行实名认证（已经实名认证过的开发者直接看f.步骤）</h4>
+<h5 id="2-进行实名认证（已经实名认证过的开发者直接看f-步骤）">2. 进行实名认证（已经实名认证过的开发者直接看f.步骤）</h5>
 
 <p>用户未通过实名认证，需要实名认证后，才能申请开发者，流程如下：</p>
 
-<h4 id="c-点击“立即认证”">c. 点击“立即认证”</h4>
+<h5 id="3-点击“立即认证”">3. 点击“立即认证”</h5>
 
 <p><img alt="lijirz" src="https://img.alicdn.com/tps/TB1e618LXXXXXc.XXXXXXXXXXXX-1214-471.png" /></p>
 
-<h4 id="d-新开窗口跳转到阿里云认证页面">d. 新开窗口跳转到阿里云认证页面</h4>
+<h5 id="4-新开窗口跳转到阿里云认证页面">4. 新开窗口跳转到阿里云认证页面</h5>
 
 <p><img alt="shimingrz" src="https://img.alicdn.com/tps/TB1lv3iIVXXXXa6XpXXXXXXXXXX-866-412.png" /></p>
 
-<h4 id="e-实名认证通过，在弹窗点击“立即刷新”按钮">e. 实名认证通过，在弹窗点击“立即刷新”按钮</h4>
+<h5 id="5-实名认证通过，在弹窗点击“立即刷新”按钮">5. 实名认证通过，在弹窗点击“立即刷新”按钮</h5>
 
 <p><img alt="zhengzairz" src="https://img.alicdn.com/tps/TB11m_VIVXXXXaqapXXXXXXXXXX-866-334.png" /></p>
 
-<h4 id="f-显示已通过实名认证">f. 显示已通过实名认证</h4>
+<h5 id="6-显示已通过实名认证">6. 显示已通过实名认证</h5>
 
 <p><img alt="shiming" src="https://img.alicdn.com/tps/TB1fOPXLXXXXXarXXXXXXXXXXXX-1212-435.png" /></p>
 
-<h4 id="g-选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”">g. 选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”</h4>
+<h5 id="7-选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”">7. 选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”</h5>
 
-<h5 id="数据项说明">数据项说明</h5>
+<h6 id="数据项说明">数据项说明</h6>
 
 <table><thead>
 <tr>
@@ -498,9 +364,9 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 </tr>
 </tbody></table>
 
-<h4 id="i-显示申请开发者成功">i. 显示申请开发者成功</h4>
+<h5 id="8-显示申请开发者成功">8. 显示申请开发者成功</h5>
 
-<h2 id="创建套件-amp-微应用">创建套件&amp;微应用</h2>
+<h2 id="三-开发套件">三.开发套件</h2>
 
 <h3 id="1-创建套件">1: 创建套件</h3>
 
@@ -663,6 +529,204 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 <p><img alt="signintest5" src="https://img.alicdn.com/tps/TB1lEKUJVXXXXaSXVXXXXXXXXXX-1048-158.jpg" /></p>
 
 <p><img alt="signintest6" src="https://img.alicdn.com/tps/TB1snUfIVXXXXbSXpXXXXXXXXXX-866-456.png" /></p>
+
+<h3 id="4-开发套件">4: 开发套件</h3>
+
+<p>钉钉开放平台提供了接入一组应用接入与授权的接口，通过实现接入与授权接口您可以快速发布自己的微应用套件，并在企业客户授权开通微应用时，自动进行开通激活，企业用户可以授权后直接使用您的套件（应用），接口使用可以参考<a href="#isv接入开发指南"><font color=red >ISV接入开发指南</font></a>；</p>
+
+<p>钉钉开放平台提供了<strong>企业通讯录管理、文件管理、发送企业会话消息</strong>等功能，接口使用可以参考<a href="#服务端开发文档"><font color=red >服务端开发文档</font></a>；</p>
+
+<p>我们定制了微应用专用的运行容器，提供了一组可以调用<strong>钉钉的本地能力和业务逻辑</strong>的JS接口，开发者可以通过这些接口使用钉钉的本地能力或者钉钉的业务逻辑，降低开发成本，提高微应用在移动客户端的体验。接口使用可以参考<a href="#客户端开发文档"><font color=red >客户端开发文档</font></a>。</p>
+
+<p>该指南主要介绍了企业和ISV（服务提供商）如何接入钉钉开放平台，其中涉及到接入过程中使用的工具、与钉钉开放平台相关的概念和接入钉钉开放平台的一些实践方法，以帮助开发者快速开发自己的微应用。</p>
+
+<h2 id="四-合作签订">四.合作签订</h2>
+
+<p>ISV联系钉钉ISV接入接口人进行合作洽谈及签订，更多信息请通过联系方式：angle.lixy@alibaba-inc.com 进行</p>
+
+<h2 id="五-钉钉验收">五.钉钉验收</h2>
+
+<p>在提交钉钉验收时，您需要先进行<a href="#套件上架操作流程"><font color=red >套件上架</font></a>操作，钉钉小二看到您提交的套件会开启验收，验收通过后您的商品将会变成预上架状态，在此状态下您可以选择您的套件的销售推广方式：</p>
+
+<p>1.如果您的套件是通过线下销售快速部署，请参考<a href="#钉钉快速部署指南"><font color=red >钉钉快速部署指南</font></a></p>
+
+<p>2.如果您的套件是通过钉钉应用中心上架推广，则您需要进行下一步<a href="#10家企业共创"><font color=red >10家企业共创</font></a></p>
+
+<h2 id="六-10家企业共创">六.10家企业共创</h2>
+
+<h3 id="1-背景">1. 背景</h3>
+
+<p>您的套件开发好之后需要与企业用户一起共创，通过与企业用户共创来检验您的套件是否满足企业用户全面使用以及用户对套件的认可度。</p>
+
+<h3 id="2-共创用户">2. 共创用户</h3>
+
+<p>共创用户需要包含isv老用户、2家钉钉老用户。 - ISV老用户可以通过在企业用户的钉钉OA后台添加微应用的方式进行开通 - 2家钉钉老用户isv可申请加入钉钉用户社区，在社区中寻找共创用户。申请加入钉钉用户社区</p>
+
+<h3 id="3-共创结果">3. 共创结果</h3>
+
+<p>共创周期：一周</p>
+
+<p>在共创过程中，钉钉会重点关注以下数据：</p>
+
+<p>①活跃企业数/添加应用的企业数&gt;70%；</p>
+
+<p>②DAU/WAU&gt;50%；</p>
+
+<p>③用户满意度评分高于90分。(钉钉小二会对共创企业发起用户满意度调查)</p>
+
+<p>同时在共创用户使用过程中，钉钉官方会对应用质量进行在线检测及bug记录评分。评分将影响应用等级，应用等级将决定在钉钉应用市场的排名。</p>
+
+<p>应用（套件）达到共创用户用起来及质量评分80分以上，即可开始1000家灰度内测阶段。</p>
+
+<h2 id="七-提交商品审核">七.提交商品审核</h2>
+
+<p>在<a href="#五-钉钉验收"><font color=red >钉钉验收</font></a>环节您已经提交了您的套件上架，此时钉钉小二会对您的商品进行审核，审核时会综合10家共创企业共创期间的使用数据以及共创用户反馈的问题情况，同时钉钉小二会对用户发起问卷，如果问卷反馈的结果较差，也将审核不通过。商品审核分为两个阶段：商品接入审核、商品售卖信息审核。</p>
+
+<p>商品接入审核： 小二会先对商品的接入信息进行审核，如果审核通过，则开始进行售卖信息审核。如果接入信息审核驳回，您可以在商品列表中看到商品审核状态为驳回，并且查看驳回原因。您可以编辑商品信息，重新提交审核。</p>
+
+<p>商品售卖信息审核： 完成商品接入审核后，小二会进行商品售卖信息的审核。 如果售卖信息审核驳回，您可以在商品列表中看到商品审核状态为驳回，并且查看驳回原因。 您可以编辑商品的售卖信息，重新提交审核。(此时不能修改商品接入信息。) 如果售卖信息审核通过，商品会自动上架。</p>
+
+<h2 id="八-1000家灰度">八.1000家灰度</h2>
+
+<h3 id="1-背景">1. 背景</h3>
+
+<p>经过10家企业用户的共创，您的套件满足ISV老用户的使用，同时满足了钉钉老用户的使用，此时已经说明您的套件满足了企业用户的使用需求，为进一步验证套件的稳定性与可用性，将开启一周的1000家企业用户灰度，将根据灰度结果进行进一步用户开放</p>
+
+<h3 id="2-灰度结果">2. 灰度结果</h3>
+
+<p>灰度成功的标准（可根据应用类型进行协商调整）：</p>
+
+<p>①活跃企业数/添加应用的企业数&gt;50%；</p>
+
+<p>②DAU/WAU&gt;25%；</p>
+
+<p>③用户满意度评分高于80分。</p>
+
+<p>同时在共创用户使用过程中，钉钉官方会对应用质量进行在线检测及bug记录评分。评分将影响应用等级，应用等级将决定在钉钉应用市场的排名。应用（套件）达到共创用户用起来及质量评分80分以上，即可申请审核通过。</p>
+
+<h2 id="九-上架推广">九.上架推广</h2>
+
+<p>至此您的套件将会按照钉钉应用中心的策略展示在钉钉应用中心中，钉钉企业用户的管理员可以通过钉钉应用中心发现应用，当用户完成授权后可以使用您的套件。</p>
+
+<h2 id="钉钉快速部署指南">钉钉快速部署指南</h2>
+
+<h3 id="isv接入准备">ISV接入准备</h3>
+
+<p>1.ISV使用快速部署必须先实现<a href="#isv套件对企业独立部署方案"><font color=red>ISV套件对企业独立部署方案</font></a></p>
+
+<p>2.ISV需要在云市场提交商品审核<font color=red>（钉钉小二会将商品审核为预上架状态，此套件在市场上不可见）</font>，套件上架流程详见：<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a></p>
+
+<p>3.ISV在接入之前需要通过联系钉钉ISV接入接口人获取ISV企业邀请码，联系方式：angle.lixy@alibaba-inc.com
+4.填写“ISV线下快速部署申请表”，发送到open-dingtalk@list.alibaba-inc.com申请， 审核通过后，钉钉小二会发送链接&amp;二维码给ISV, ISV可以生成H5页面，分享给用户扫码或者点击下载<a href="http://download.taobaocdn.com/freedom/30712/xls/p1a7c2m1e71q9e8me125a118d1npe4.xls"><font color=red>ISV线下快速部署申请表</font></a></p>
+
+<p><img alt="Application Form" src="https://img.alicdn.com/tps/TB1c3uBLXXXXXaNXXXXXXXXXXXX-802-571.png" />
+填写说明：</p>
+
+<table><thead>
+<tr>
+<th>栏位</th>
+<th>填写要求</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>服务商名称</td>
+<td>必填，阿里云市场注册的服务商全名</td>
+</tr>
+<tr>
+<td>套件名称</td>
+<td>必填，ISV提交商品审核的套件全称，套件上架流程详见<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a></td>
+</tr>
+<tr>
+<td>邀请码</td>
+<td>必填，钉钉ISV接入接口人分配的ISV企业邀请码</td>
+</tr>
+<tr>
+<td>申请快速部署原因</td>
+<td>必填，需要申明使用此方案的原因、使用场景信息</td>
+</tr>
+<tr>
+<td>是否有现场实施人员</td>
+<td>必填，是否有现场实施人员支持，如没有，注明通过什么方式分享二维码</td>
+</tr>
+<tr>
+<td>通讯录导入方式</td>
+<td>必填，选择isv引入的企业用户通过哪种方式维护通讯录，如：由企业管理员通过钉钉OA后台导入（），通过钉钉手机端创建团队；ISV现有系统通过钉钉接口导入等</td>
+</tr>
+<tr>
+<td>是否申请自定义手机“工作”tab界面</td>
+<td>必填，钉钉手机端的工作界面可以为ISV定义：手机工作界面   1. Banner：ISV通过发布带图片公告的形式，实现banner页效果 2. 套件排序置顶 3. 手机工作界面tab名称定义为ISV套件名称，例如由工作改为“XXX”</td>
+</tr>
+<tr>
+<td>申请定义手机“工作”tab界面原因</td>
+<td>不必填，咨询钉钉ISV接入接口人</td>
+</tr>
+<tr>
+<td>是否验证应用序列号</td>
+<td>必填，应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置。举例： ISV 通过自有渠道，售卖了一套微应用给客户A，客户A扫码可以快速创建团队并开通应用，如果该二维码分享给了B，B也可以通过扫码开通应用，而B实际并未支付费用，为避免此问题，ISV可以发给A客户唯一的序列号，A客户扫码后，必须输入序列号并得到ISV验证，才可开通应用</td>
+</tr>
+<tr>
+<td>套件icon</td>
+<td>必填，引导页面需要套件icon，规格120*120，圆角，请在“套件icon”sheet页进行上传</td>
+</tr>
+<tr>
+<td>手机“工作”tab命名</td>
+<td>如需申请“工作”tab名称自定义，则必填，“工作”tab名称可以重命名，支持4个汉字</td>
+</tr>
+<tr>
+<td>公告</td>
+<td>如需申请“工作”tab界面自定义，则必填，工作界面的banner通过发布带图片公告的形式展现，需要填写发送公告所在企业的corp_id和公告标题；公告路径：https://app.dingtalk.com/#/app/blackboard/create，图片推荐尺寸： 640*380</td>
+</tr>
+<tr>
+<td>是否需要团队链接,用于发送邀请</td>
+<td>必填，开通微应用时，程序会自动生成团队链接发给ISV，ISV得到团队链接可以通过邮件或者短信发送邀请，如需团队链接，请注明邀请方式</td>
+</tr>
+</tbody></table>
+
+<p>5.如果需要定义不同的任务或者其他特殊需求，请提前在开发阶段，向接口的钉钉小二提出产品需求（任务：见产品主体流程中描述的开通步骤，每个步骤称为一个任务）</p>
+
+<h3 id="产品主体流程">产品主体流程</h3>
+
+<p><img alt="ksbs_process" src="https://img.alicdn.com/tps/TB1xcWaLXXXXXcIXVXXXXXXXXXX-863-585.png" /></p>
+
+<p>实施步骤：
+1. 安装钉钉，并且完成注册，请使用以下二维码和链接，让客户扫码，打开下载钉钉地址：
+http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
+
+<p><img alt="DD_QRcode" src="https://img.alicdn.com/tps/TB1HeydLXXXXXaJXVXXXXXXXXXX-584-584.png" /></p>
+
+<p>2.提交快速部署后，钉钉工作人员会通过邮件，发送套件二维码给ISV, 客户通过钉钉手机端上的扫码工具，扫描进入快速部署引导页</p>
+
+<p><img alt="DD_ksbs1" src="https://img.alicdn.com/tps/TB1n7qhLXXXXXXhXVXXXXXXXXXX-427-640.png" /></p>
+
+<p>3.创建团队：配置可以选择创建1人团队（大于等于1人），或多人团队（大于等于6人），
+➢1人团队：适合人数较多团队，需要通过钉钉OA管理后台表格导入，或者
+➢多人团队：适合人数较少团队，便于在钉钉手机端上，创建团队</p>
+
+<p><img alt="DD_ksbs2" src="https://img.alicdn.com/tps/TB17wWoLXXXXXcTXpXXXXXXXXXX-394-652.png" /></p>
+
+<p>4.开通微应用：分为3步：：输入应用序列号－立即授权－使用范围设置
+4.1  输入应用序列号： 应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置
+➢ISV通过openapi /service/get_auth_info 获取授权信息，应用序列号即在返回数据中
+➢/service/get_auth_info接口具体信息请参考 <a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
+
+<p><img alt="DD_ksbs3" src="https://img.alicdn.com/tps/TB18Hx9LXXXXXbeaXXXXXXXXXXX-427-706.png" /></p>
+
+<p>4.2：立即授权</p>
+
+<p><img alt="DD_ksbs4" src="https://img.alicdn.com/tps/TB1Ic9CLXXXXXaxXXXXXXXXXXXX-438-720.png" /></p>
+
+<p>4.3：设置使用范围，设置微应用哪些员工可以使用</p>
+
+<p><img alt="DD_ksbs5" src="https://img.alicdn.com/tps/TB1iV5nLXXXXXcaXpXXXXXXXXXX-449-780.png" /></p>
+
+<p>4.4 开始使用， 用户点击“开始使用”可以进入手机端工作界面页</p>
+
+<p><img alt="DD_ksbs6" src="https://img.alicdn.com/tps/TB190CBLXXXXXa.XXXXXXXXXXXX-450-729.png" />
+<img alt="DD_ksbs7" src="https://img.alicdn.com/tps/TB17ceELXXXXXXtXXXXXXXXXXXX-504-702.png" /></p>
+
+<p>4.5  开通授权后，isv可获取团队邀请链接，团队邀请链接处理逻辑
+➢isv通过openapi /service/get_auth_info 获取授权信息，团队邀请链接即在返回数据中
+➢/service/get_auth_info接口具体信息请参考<a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
 
 <h2 id="isv接入开发指南">ISV接入开发指南</h2>
 
