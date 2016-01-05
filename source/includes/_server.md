@@ -23,7 +23,7 @@
 ### 主动调用
 
 当企业应用服务器调用钉钉开放平台接口时，需使用https协议、Json数据格式、UTF8编码，访问域名为 https://oapi.dingtalk.com。
-在每次主动调用钉钉开放平台接口时需要带上AccessToken参数。AccessToken参数由CorpID和CorpSecret换取。对于ISV来说，[<font color=red>获取企业授权的access_token</font>](#8-获取企业授权的access_token)
+在每次主动调用钉钉开放平台接口时需要带上AccessToken参数。AccessToken参数由CorpID和CorpSecret换取。对于ISV来说，[<font color=red>获取企业授权的access_token</font>](#5-获取企业授权的access_token)
 
 CorpID是企业在钉钉中的标识，每个企业拥有一个唯一的CorpID；
 
