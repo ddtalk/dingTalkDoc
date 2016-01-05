@@ -11764,7 +11764,7 @@ memberCount | 群聊成员总数
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
   <span class="na">startWithDepartmentId</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span> <span class="c1">//-1表示打开的通讯录从自己所在部门开始展示, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)</span>
   <span class="na">multiple</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span> <span class="c1">//是否多选： true多选 false单选； 默认true</span>
-  <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="p">...],</span> <span class="c1">//默认选中的用户列表，工号；成功回调中应包含该信息</span>
+  <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="p">...],</span> <span class="c1">//默认选中的用户列表，userid；成功回调中应包含该信息</span>
   <span class="na">corpId</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">//企业id</span>
   <span class="na">max</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span> <span class="c1">//人数限制，当multiple为true才生效，可选范围1-1500</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -11773,7 +11773,7 @@ memberCount | 群聊成员总数
     [{
       "name": "张三", //姓名
       "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
-      "emplId": '0573', //工号
+      "emplId": '0573', //userid
      },
      ...
     ]
@@ -11807,7 +11807,7 @@ memberCount | 群聊成员总数
 <tr>
 <td>users</td>
 <td>Array[String]</td>
-<td>默认选中的用户列表，用户id；成功回调中应包含该信息</td>
+<td>默认选中的用户列表，userid；成功回调中应包含该信息</td>
 </tr>
 <tr>
 <td>corpId</td>
@@ -11844,7 +11844,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 </tr>
 <tr>
 <td>emplId</td>
-<td>用户id，<a href="#%B7%D6%10X%E6%C5"><font color=red>获取成员详情接口</font></a></td>
+<td>userid，<a href="#获取部门成员（详情）"><font color=red>获取成员详情接口</font></a></td>
 </tr>
 </tbody></table>
 
@@ -11865,7 +11865,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
       {
         "name": "张三", //姓名
         "avatar": "htp://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
-        "emplId": "0573", //工号:
+        "emplId": "0573", //userid:
       },
       ...
       ],
@@ -11939,7 +11939,7 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 </tr>
 <tr>
 <td>users.emplId</td>
-<td>用户id,<a href="#%B7%D6%10X%E6%C5"><font color=red>获取成员详情接口</font></a></td>
+<td>userid,<a href="#获取部门成员（详情）"><font color=red>获取成员详情接口</font></a></td>
 </tr>
 <tr>
 <td>department</td>
@@ -11962,13 +11962,13 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 ```javascript
 dd.biz.contact.choose({
     multiple: true, //是否多选： true多选 false单选； 默认true
-    users: ['100','101'], //默认选中的用户列表，工号；成功回调中应包含该信息
+    users: ['100','101'], //默认选中的用户列表，userid；成功回调中应包含该信息
     corpId: '', //企业id
     max: 50, //人数限制，当multiple为true才生效，可选范围1-1500
     onSuccess : function(result) {
         /*
         [{
-            emplId: '0573', //工号
+            emplId: '0573', //userid
             name: '张三', //姓名
             nickNameCn: '三张', //花名
             mobilePhone: '****', //手机号 后续不再返回该字段
