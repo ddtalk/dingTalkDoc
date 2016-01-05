@@ -1686,7 +1686,7 @@ corpid必须是用户所属的企业的corpid
 
 ```javascript
 dd.biz.contact.complexChoose({
-  startWithDepartmentId: Number, //-1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
+  startWithDepartmentId: Number, //-1表示从自己所在部门开始, 0表示从企业最上层开始，其他数字表示从该部门开始
   selectedUsers: [String, String, ...], //预选用户
   corpId: String, //企业id
   onSuccess: function(data) {
@@ -1723,7 +1723,7 @@ dd.biz.contact.complexChoose({
 
 参数 | 参数类型 | 说明
 ----- | ----- | -----
-startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
+startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从企业最上层开始，其他数字表示从该部门开始
 selectedUsers | Array[String] | 预选用户
 corpId | String | 企业id
 
