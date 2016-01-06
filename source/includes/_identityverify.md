@@ -73,7 +73,7 @@ demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkP
 
 步骤一：在OA后台，点击微应用的“进入后台”，自动跳转到准备工作1中配置的微应用后台地址，开发者从跳转的URL中解析code参数，获取CODE并保存下来
 
-步骤二：通过[<font color=red >获取微应用后台管理Token</font>](#获取微应用后台管理Token)获取AccessToken
+步骤二：通过[<font color=red >获取微应用后台管理Token</font>](#获取微应用后台管理token)获取AccessToken
 
 步骤三：使用AccessToken[<font color=red >通过步骤一获取的CODE换取微应用管理员的身份信息</font>](#通过code换取微应用管理员的身份信息)
 

@@ -52,7 +52,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 - 每个套件调用单个企业的单个接口频率不可超过1000次/分
 
 
-#### 获取AccessToken
+### 获取AccessToken
 
 AccessToken是企业访问钉钉开放平台接口的全局唯一票据，调用接口时需携带AccessToken。
 
@@ -97,8 +97,8 @@ b)错误的Json返回示例:
 }
 ```
 
-#### 获取微应用后台管理Token
-本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>微应用后台管理免登</font>](#oa后台调用管理员免登)服务中使用。
+### 获取微应用后台管理Token
+本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>微应用后台管理免登</font>](#微应用后台管理员免登)服务中使用。
 应用场景示例如下图：
 
 ![normalcorp](https://img.alicdn.com/tps/TB1iw.4KFXXXXXoXFXXXXXXXXXX-594-302.png)
@@ -2549,7 +2549,7 @@ Https请求方式: GET
 
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
-access_token | String | 是 | 再次强调，此token不同于一般的accesstoken，需要调用[<font color=red >获取微应用管理员免登需要的AccessToken</font>](#获取管理员免登token)
+access_token | String | 是 | 再次强调，此token不同于一般的accesstoken，需要调用[<font color=red >获取微应用后台管理Token</font>](#获取微应用后台管理token)
 code | String | 是 | 通过Oauth认证给URL带上的CODE
 
 ###### 返回结果
