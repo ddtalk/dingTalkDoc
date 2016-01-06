@@ -1979,7 +1979,7 @@ access_token | String | 是 | 调用接口凭证
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
 access_token  | 调用接口凭证
-call_back_tag |  需要监听的事件类型，有八种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
+call_back_tag |  需要监听的事件类型，有14种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
 token | 加解密需要用到的token，ISV(服务提供商)推荐使用注册套件时填写的token，普通企业可以随机填写
 aes_key  | 数据加密密钥。用于回调数据的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取,您可以随机生成，ISV(服务提供商)推荐使用注册套件时填写的EncodingAESKey
 url   | 接收事件回调的url
