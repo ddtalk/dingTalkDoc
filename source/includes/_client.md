@@ -979,7 +979,7 @@ dd.biz.util.chooseImage({
 ### 上传图片
 选择图片+上传，防止恶意上传
 
-将在成功上传之后回调onSuccess方法，返回alicdn上的图片链接。微应用也可以调用`<input type="file" accept="image/*">`来自定义上传图片，此标签2.5及以上版本支持。
+将在成功上传之后回调onSuccess方法，返回alicdn上的图片链接。微应用也可以调用`<input type="file" accept="image/*">`来自定义上传图片，此标签钉钉客户端版本2.5及以上支持。
 
 ```javascript
 dd.biz.util.uploadImage({
