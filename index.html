@@ -83,6 +83,10 @@
 
 <p>当您成功注册为开发者，可以通过本文档所描述的接口创建钉钉微应用，为企业实现更多丰富且个性化的企业移动应用。</p>
 
+<p>假如你是企业用户，要为自己的公司开发微应用，查看<a href="#企业接入指南"><font color=red >企业接入指南</font></a>。</p>
+
+<p>假如你是ISV(服务提供商)，作为第三方要给其他公司提供微应用，先查看<a href="#isv接入指南"><font color=red >ISV接入指南</font></a>。</p>
+
 <p>开发者可以通过以下方式了解更多关于钉钉开放平台的消息：</p>
 
 <ul>
@@ -237,23 +241,26 @@
 
           <h1 id="isv接入指南">ISV接入指南</h1>
 
-<p>钉钉开放平台提供了<strong>企业通讯录管理、文件管理、发送企业会话消息</strong>等功能，接口使用可以参考<a href="#服务端开发文档"><font color=red >服务端开发文档</font></a>；</p>
+<h2 id="isv接入整体流程">ISV接入整体流程</h2>
 
-<p>我们定制了微应用专用的运行容器，提供了一组可以调用<strong>钉钉的本地能力和业务逻辑</strong>的JS接口，开发者可以通过这些接口使用钉钉的本地能力或者钉钉的业务逻辑，降低开发成本，提高微应用在移动客户端的体验。接口使用可以参考<a href="#客户端开发文档"><font color=red >客户端开发文档</font></a>。</p>
+<p><img alt="ISV process" src="https://img.alicdn.com/tps/TB1fDX4LXXXXXa2XpXXXXXXXXXX-1009-367.png" /></p>
 
-<p>该指南主要介绍了企业和ISV（服务提供商）如何接入钉钉开放平台，其中涉及到接入过程中使用的工具、与钉钉开放平台相关的概念和接入钉钉开放平台的一些实践方法，以帮助开发者快速开发自己的微应用。</p>
+<h3 id="isv接入说明">ISV接入说明</h3>
 
-<h2 id="接入准备">接入准备</h2>
-
-<p>开发者在使用钉钉开放平台开发微应用前需做好以下准备：</p>
+<p>ISV接入钉钉后有2种选择：</p>
 
 <ul>
-<li>注册钉钉企业；</li>
-<li>服务端环境搭建和域名注册；</li>
-<li>开发环境搭建；</li>
+<li><p>套件通过钉钉应用中心推广（精品套件），符合接入<a href="#isv接入整体流程"><font color=red>整体流程</font></a>中的要求，并满足<a href="#标准规范"><font color=red>标准规范</font></a>中的要求，需要通过钉钉应用中心推广必须与钉钉进行商务洽谈，商务洽谈联系方式：<a href="#商务洽谈"><font color=red>商务洽谈</font></a></p></li>
+<li><p>套件通过ISV线下推广，可以通过2种方式进行操作：</p></li>
 </ul>
 
-<h3 id="注册钉钉企业账号">注册钉钉企业账号</h3>
+<p>1.通过企业接入的方式，为企业单独进行接入</p>
+
+<p>2.通过钉钉快速部署进行实施，详细内容见<a href="#钉钉快速部署指南"><font color=red>钉钉快速部署指南</font></a>中的描述。使用此方式需满足<a href="#标准规范"><font color=red>标准规范</font></a>中的要求，钉钉团队会进行质量验收，其它项由ISV自己负责，如果接收到用户的投诉，钉钉保留对ISV的处罚权利</p>
+
+<h2 id="一-注册钉钉企业账号">一.注册钉钉企业账号</h2>
+
+<h3 id="1-注册钉钉企业账号">1.注册钉钉企业账号</h3>
 
 <p>一、进入 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 页面, 点击 <a href="https://oa.dingtalk.com/register.html?spm=0.0.0.0.dL51oc"><font color=red >企业注册</font></a>；（已经注册可跳过此步骤）</p>
 
@@ -269,7 +276,7 @@
 通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程注册管理员帐号。
 </aside>
 
-<h4 id="分配管理员子账号：">分配管理员子账号：</h4>
+<h3 id="2-分配管理员子账号">2.分配管理员子账号</h3>
 
 <p>一、登录钉钉后台管理系统，按下图进入安全中心的添加管理员子帐号页面；</p>
 
@@ -281,198 +288,57 @@
 
 <p>完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 <em>钉小秘</em> 会话中收到管理员帐号和初始密码，该钉钉用户可以通过收到的帐号和密码登录 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 进入安全中心对初始密码进行修改。</p>
 
-<h3 id="服务端环境搭建和域名注册">服务端环境搭建和域名注册</h3>
+<h2 id="二-注册钉钉开发者">二.注册钉钉开发者</h2>
+
+<p>在注册钉钉开发者之前，您需要做好以下准备工作
+- 服务端环境搭建和域名注册；
+- 开发环境搭建；</p>
+
+<h3 id="1-服务端环境搭建和域名注册">1.服务端环境搭建和域名注册</h3>
 
 <p>开发者可以自己搭建服务器也可以购买云主机来搭建自己的服务端环境，开发者需要为自己的微应用注册合法有效的域名</p>
 
-<h3 id="开发环境搭建">开发环境搭建</h3>
+<h3 id="2-开发环境搭建">2.开发环境搭建</h3>
 
 <p>钉钉开放平台的服务端接口不区分语言和平台，开发者可以使用自己熟悉的技术搭建开发环境来开发微应用</p>
 
-<p>至此，您已经完成了准备工作。</p>
+<h3 id="3-注册钉钉开发者">3.注册钉钉开发者</h3>
 
-<p>假如你是企业用户，要为自己的公司开发微应用，查看<a href="#企业接入"><font color=red >企业接入</font></a>。</p>
-
-<p>假如你是ISV(服务提供商)，作为第三方要给其他公司提供微应用，先查看<a href="#isv接入"><font color=red >ISV接入</font></a>。</p>
-
-<h2 id="isv接入整体流程">ISV接入整体流程</h2>
-
-<p><img alt="ISV process" src="https://img.alicdn.com/tps/TB1fDX4LXXXXXa2XpXXXXXXXXXX-1009-367.png" /></p>
-
-<h3 id="isv接入说明">ISV接入说明</h3>
-
-<p>ISV接入钉钉后有2种选择：</p>
-
-<ul>
-<li><p>套件通过钉钉应用中心推广（精品套件），符合接入<a href="#isv接入整体流程"><font color=red>整体流程</font></a>中的要求，并满足<a href="#标准规范"><font color=red>标准规范</font></a>中的要求，需要通过钉钉应用中心推广必须与钉钉进行商务洽谈，商务洽谈联系方式：<a href="#商务洽谈"><font color=red>商务洽谈</font></a></p></li>
-<li><p>套件通过ISV线下推广，可以通过2种方式进行操：</p></li>
-</ul>
-
-<p>1.通过企业接入的方式，为企业单独进行接入</p>
-
-<p>2.通过钉钉快速部署进行实施，详细内容见<a href="#钉钉快速部署指南"><font color=red>钉钉快速部署指南</font></a>中的描述。使用此方式需满足<a href="#标准规范"><font color=red>标准规范</font></a>中的要求，钉钉团队会进行质量验收，其它项由ISV自己负责，如果接收到用户的投诉，钉钉保留对ISV的处罚权利</p>
-
-<h3 id="商务洽谈">商务洽谈</h3>
-
-<p>ISV联系钉钉ISV接入接口人进行合作洽谈，更多信息请通过联系方式：angle.lixy@alibaba-inc.com 进行</p>
-
-<h3 id="钉钉快速部署指南">钉钉快速部署指南</h3>
-
-<h4 id="isv接入准备">ISV接入准备</h4>
-
-<p>1.ISV使用快速部署必须先实现<a href="#isv套件对企业独立部署方案"><font color=red>ISV套件对企业独立部署方案</font></a></p>
-
-<p>2.ISV需要在云市场提交商品审核，套件上架流程详见：<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a></p>
-
-<p>3.ISV在接入之前需要通过联系钉钉ISV接入接口人获取ISV企业邀请码，联系方式：angle.lixy@alibaba-inc.com
-4.填写“ISV线下快速部署申请表”，发送到open-dingtalk@list.alibaba-inc.com申请， 审核通过后，钉钉小二会发送链接&amp;二维码给ISV, ISV可以生成H5页面，分享给用户扫码或者点击下载<a href="http://download.taobaocdn.com/freedom/30712/xls/p1a7c2m1e71q9e8me125a118d1npe4.xls"><font color=red>ISV线下快速部署申请表</font></a></p>
-
-<p><img alt="Application Form" src="https://img.alicdn.com/tps/TB1c3uBLXXXXXaNXXXXXXXXXXXX-802-571.png" />
-填写说明：</p>
-
-<table><thead>
-<tr>
-<th>栏位</th>
-<th>填写要求</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>服务商名称</td>
-<td>必填，阿里云市场注册的服务商全名</td>
-</tr>
-<tr>
-<td>套件名称</td>
-<td>必填，ISV提交商品审核的套件全称，套件上架流程详见<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a></td>
-</tr>
-<tr>
-<td>邀请码</td>
-<td>必填，钉钉ISV接入接口人分配的ISV企业邀请码</td>
-</tr>
-<tr>
-<td>申请快速部署原因</td>
-<td>必填，需要申明使用此方案的原因、使用场景信息</td>
-</tr>
-<tr>
-<td>是否有现场实施人员</td>
-<td>必填，是否有现场实施人员支持，如没有，注明通过什么方式分享二维码</td>
-</tr>
-<tr>
-<td>通讯录导入方式</td>
-<td>必填，选择isv引入的企业用户通过哪种方式维护通讯录，如：由企业管理员通过钉钉OA后台导入（），通过钉钉手机端创建团队；ISV现有系统通过钉钉接口导入等</td>
-</tr>
-<tr>
-<td>是否申请自定义手机“工作”tab界面</td>
-<td>必填，钉钉手机端的工作界面可以为ISV定义：手机工作界面   1. Banner：ISV通过发布带图片公告的形式，实现banner页效果 2. 套件排序置顶 3. 手机工作界面tab名称定义为ISV套件名称，例如由工作改为“XXX”</td>
-</tr>
-<tr>
-<td>申请定义手机“工作”tab界面原因</td>
-<td>不必填，咨询钉钉ISV接入接口人</td>
-</tr>
-<tr>
-<td>是否验证应用序列号</td>
-<td>必填，应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置。举例： ISV 通过自有渠道，售卖了一套微应用给客户A，客户A扫码可以快速创建团队并开通应用，如果该二维码分享给了B，B也可以通过扫码开通应用，而B实际并未支付费用，为避免此问题，ISV可以发给A客户唯一的序列号，A客户扫码后，必须输入序列号并得到ISV验证，才可开通应用</td>
-</tr>
-<tr>
-<td>套件icon</td>
-<td>必填，引导页面需要套件icon，规格120*120，圆角，请在“套件icon”sheet页进行上传</td>
-</tr>
-<tr>
-<td>手机“工作”tab命名</td>
-<td>如需申请“工作”tab名称自定义，则必填，“工作”tab名称可以重命名，支持4个汉字</td>
-</tr>
-<tr>
-<td>公告</td>
-<td>如需申请“工作”tab界面自定义，则必填，工作界面的banner通过发布带图片公告的形式展现，需要填写发送公告所在企业的corp_id和公告标题；公告路径：https://app.dingtalk.com/#/app/blackboard/create，图片推荐尺寸： 640*380</td>
-</tr>
-<tr>
-<td>是否需要团队链接,用于发送邀请</td>
-<td>必填，开通微应用时，程序会自动生成团队链接发给ISV，ISV得到团队链接可以通过邮件或者短信发送邀请，如需团队链接，请注明邀请方式</td>
-</tr>
-</tbody></table>
-
-<p>5.如果需要定义不同的任务或者其他特殊需求，请提前在开发阶段，向接口的钉钉小二提出产品需求（任务：见产品主体流程中描述的开通步骤，每个步骤称为一个任务）</p>
-
-<h4 id="产品主体流程">产品主体流程</h4>
-
-<p><img alt="ksbs_process" src="https://img.alicdn.com/tps/TB1xcWaLXXXXXcIXVXXXXXXXXXX-863-585.png" /></p>
-
-<p>实施步骤：
-1. 安装钉钉，并且完成注册，请使用以下二维码和链接，让客户扫码，打开下载钉钉地址：
-http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
-
-<p><img alt="DD_QRcode" src="https://img.alicdn.com/tps/TB1HeydLXXXXXaJXVXXXXXXXXXX-584-584.png" /></p>
-
-<p>2.提交快速部署后，钉钉工作人员会通过邮件，发送套件二维码给ISV, 客户通过钉钉手机端上的扫码工具，扫描进入快速部署引导页</p>
-
-<p><img alt="DD_ksbs1" src="https://img.alicdn.com/tps/TB1n7qhLXXXXXXhXVXXXXXXXXXX-427-640.png" /></p>
-
-<p>3.创建团队：配置可以选择创建1人团队（大于等于1人），或多人团队（大于等于6人），
-➢1人团队：适合人数较多团队，需要通过钉钉OA管理后台表格导入，或者
-➢多人团队：适合人数较少团队，便于在钉钉手机端上，创建团队</p>
-
-<p><img alt="DD_ksbs2" src="https://img.alicdn.com/tps/TB17wWoLXXXXXcTXpXXXXXXXXXX-394-652.png" /></p>
-
-<p>4.开通微应用：分为3步：：输入应用序列号－立即授权－使用范围设置
-4.1  输入应用序列号： 应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置
-➢ISV通过openapi /service/get_auth_info 获取授权信息，应用序列号即在返回数据中
-➢/service/get_auth_info接口具体信息请参考 <a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
-
-<p><img alt="DD_ksbs3" src="https://img.alicdn.com/tps/TB18Hx9LXXXXXbeaXXXXXXXXXXX-427-706.png" /></p>
-
-<p>4.2：立即授权</p>
-
-<p><img alt="DD_ksbs4" src="https://img.alicdn.com/tps/TB1Ic9CLXXXXXaxXXXXXXXXXXXX-438-720.png" /></p>
-
-<p>4.3：设置使用范围，设置微应用哪些员工可以使用</p>
-
-<p><img alt="DD_ksbs5" src="https://img.alicdn.com/tps/TB1iV5nLXXXXXcaXpXXXXXXXXXX-449-780.png" /></p>
-
-<p>4.4 开始使用， 用户点击“开始使用”可以进入手机端工作界面页</p>
-
-<p><img alt="DD_ksbs6" src="https://img.alicdn.com/tps/TB190CBLXXXXXa.XXXXXXXXXXXX-450-729.png" />
-<img alt="DD_ksbs7" src="https://img.alicdn.com/tps/TB17ceELXXXXXXtXXXXXXXXXXXX-504-702.png" /></p>
-
-<p>4.5  开通授权后，isv可获取团队邀请链接，团队邀请链接处理逻辑
-➢isv通过openapi /service/get_auth_info 获取授权信息，团队邀请链接即在返回数据中
-➢/service/get_auth_info接口具体信息请参考<a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
-
-<h2 id="注册钉钉开发者">注册钉钉开发者</h2>
-
-<h3 id="描述（description）">描述（Description）</h3>
+<h4 id="描述（description）">描述（Description）</h4>
 
 <p>阿里云用户登录后，在通过实名认证的情况下，填写相关信息，完成开发者的身份申请。</p>
 
-<h3 id="前置条件（pre-conditions）">前置条件（Pre-Conditions）</h3>
+<h4 id="前置条件（pre-conditions）">前置条件（Pre-Conditions）</h4>
 
 <p>申请者首先是阿里云用户</p>
 
-<h3 id="基本流程（basic-flow）">基本流程（Basic Flow）</h3>
+<h4 id="基本流程（basic-flow）">基本流程（Basic Flow）</h4>
 
-<h4 id="a-点击进入控制台，使用阿里云账号登录。">a. 点击进入<a href="http://console.d.aliyun.com"><font color=red >控制台</font></a>，使用阿里云账号登录。</h4>
+<h5 id="1-点击进入控制台，使用阿里云账号登录。">1. 点击进入<a href="http://console.d.aliyun.com"><font color=red >控制台</font></a>，使用阿里云账号登录。</h5>
 
-<h4 id="b-进行实名认证（已经实名认证过的开发者直接看f-步骤）">b. 进行实名认证（已经实名认证过的开发者直接看f.步骤）</h4>
+<h5 id="2-进行实名认证（已经实名认证过的开发者直接看f-步骤）">2. 进行实名认证（已经实名认证过的开发者直接看f.步骤）</h5>
 
 <p>用户未通过实名认证，需要实名认证后，才能申请开发者，流程如下：</p>
 
-<h4 id="c-点击“立即认证”">c. 点击“立即认证”</h4>
+<h5 id="3-点击“立即认证”">3. 点击“立即认证”</h5>
 
 <p><img alt="lijirz" src="https://img.alicdn.com/tps/TB1e618LXXXXXc.XXXXXXXXXXXX-1214-471.png" /></p>
 
-<h4 id="d-新开窗口跳转到阿里云认证页面">d. 新开窗口跳转到阿里云认证页面</h4>
+<h5 id="4-新开窗口跳转到阿里云认证页面">4. 新开窗口跳转到阿里云认证页面</h5>
 
 <p><img alt="shimingrz" src="https://img.alicdn.com/tps/TB1lv3iIVXXXXa6XpXXXXXXXXXX-866-412.png" /></p>
 
-<h4 id="e-实名认证通过，在弹窗点击“立即刷新”按钮">e. 实名认证通过，在弹窗点击“立即刷新”按钮</h4>
+<h5 id="5-实名认证通过，在弹窗点击“立即刷新”按钮">5. 实名认证通过，在弹窗点击“立即刷新”按钮</h5>
 
 <p><img alt="zhengzairz" src="https://img.alicdn.com/tps/TB11m_VIVXXXXaqapXXXXXXXXXX-866-334.png" /></p>
 
-<h4 id="f-显示已通过实名认证">f. 显示已通过实名认证</h4>
+<h5 id="6-显示已通过实名认证">6. 显示已通过实名认证</h5>
 
 <p><img alt="shiming" src="https://img.alicdn.com/tps/TB1fOPXLXXXXXarXXXXXXXXXXXX-1212-435.png" /></p>
 
-<h4 id="g-选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”">g. 选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”</h4>
+<h5 id="7-选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”">7. 选择开发应用类型为“钉钉企业类型”，填入“钉钉企业账号”</h5>
 
-<h5 id="数据项说明">数据项说明</h5>
+<h6 id="数据项说明">数据项说明</h6>
 
 <table><thead>
 <tr>
@@ -498,9 +364,9 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 </tr>
 </tbody></table>
 
-<h4 id="i-显示申请开发者成功">i. 显示申请开发者成功</h4>
+<h5 id="8-显示申请开发者成功">8. 显示申请开发者成功</h5>
 
-<h2 id="创建套件-amp-微应用">创建套件&amp;微应用</h2>
+<h2 id="三-开发套件">三.开发套件</h2>
 
 <h3 id="1-创建套件">1: 创建套件</h3>
 
@@ -614,11 +480,11 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 </tr>
 <tr>
 <td>权限设置</td>
-<td>多选</td>
+<td>此处权限会在用户授权您的套件时进行显示告知用户您的套件所需要获取的企业员工信息，当企业用户授权后，您可以通过<a href="#获取部门成员（详情）"><font color=red>获取部门成员（详情）</font></a>接口获取员工的详细信息</td>
 </tr>
 <tr>
 <td>接口权限</td>
-<td>多选</td>
+<td>此处权限会在用户授权您的套件时进行显示告知用户您的套件所需要获取的企业信息，当企业用户授权后，您的套件可以钉钉开放平台提供的对应接口</td>
 </tr>
 </tbody></table>
 
@@ -630,7 +496,9 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <h4 id="3-1-描述（description）">3.1.描述（Description）</h4>
 
-<p>钉钉套件在开发过程中，需要在钉钉移动端上登录绑定了相关企业的钉钉帐号来进行调试。在此之前，需要开发者对注册的测试企业&quot;发起授权所有套件&quot;，之后钉钉服务器会向您填写的回调url<a href="##2-回调接口（分为五个回调类型）"><font color=red>推送临时授权码</font></a>，您需要通过临时授权码一步一步到<a href="#7-激活授权套件"><font color=red>激活授权套件</font></a>，才能让测试企业的微应用列表出现您开发的微应用。</p>
+<p>钉钉套件在开发过程中，需要在钉钉移动端上登录绑定了相关企业的钉钉帐号来进行调试。在此之前，需要开发者对注册的测试企业&quot;发起授权所有套件&quot;，之后钉钉服务器会向您填写的回调url<a href="#2-回调接口（分为五个回调类型）"><font color=red>推送临时授权码</font></a>，您需要通过临时授权码一步一步到<a href="#8-激活授权套件"><font color=red>激活授权套件</font></a>，才能让测试企业的微应用列表出现您开发的微应用。</p>
+
+<p>备注：[<font color=red>钉钉当前支持最多创建10个测试企业</font>]</p>
 
 <h4 id="3-2-前置条件（pre-conditions）">3.2.前置条件（Pre-Conditions）</h4>
 
@@ -662,23 +530,228 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <p><img alt="signintest6" src="https://img.alicdn.com/tps/TB1snUfIVXXXXbSXpXXXXXXXXXX-866-456.png" /></p>
 
+<h3 id="4-开发套件">4: 开发套件</h3>
+
+<p>钉钉开放平台提供了接入一组应用接入与授权的接口，通过实现接入与授权接口您可以快速发布自己的微应用套件，并在企业客户授权开通微应用时，自动进行开通激活，企业用户可以授权后直接使用您的套件（应用），接口使用可以参考<a href="#isv接入开发指南"><font color=red >ISV接入开发指南</font></a>；</p>
+
+<p>钉钉开放平台提供了<strong>企业通讯录管理、文件管理、发送企业会话消息</strong>等功能，接口使用可以参考<a href="#服务端开发文档"><font color=red >服务端开发文档</font></a>；</p>
+
+<p>我们定制了微应用专用的运行容器，提供了一组可以调用<strong>钉钉的本地能力和业务逻辑</strong>的JS接口，开发者可以通过这些接口使用钉钉的本地能力或者钉钉的业务逻辑，降低开发成本，提高微应用在移动客户端的体验。接口使用可以参考<a href="#客户端开发文档"><font color=red >客户端开发文档</font></a>。</p>
+
+<p>该指南主要介绍了企业和ISV（服务提供商）如何接入钉钉开放平台，其中涉及到接入过程中使用的工具、与钉钉开放平台相关的概念和接入钉钉开放平台的一些实践方法，以帮助开发者快速开发自己的微应用。</p>
+
+<h2 id="四-合作签订">四.合作签订</h2>
+
+<p>ISV联系钉钉ISV接入接口人进行合作洽谈及签订，更多信息请通过联系方式：angle.lixy@alibaba-inc.com 进行</p>
+
+<h2 id="五-钉钉验收">五.钉钉验收</h2>
+
+<p>在提交钉钉验收时，您需要先进行<a href="#套件上架操作流程"><font color=red >套件上架</font></a>操作，钉钉小二看到您提交的套件会开启验收，验收通过后您的商品将会变成预上架状态，在此状态下您可以选择您的套件的销售推广方式：</p>
+
+<p>1.如果您的套件是通过线下销售快速部署，请参考<a href="#钉钉快速部署指南"><font color=red >钉钉快速部署指南</font></a></p>
+
+<p>2.如果您的套件是通过钉钉应用中心上架推广，则您需要进行下一步<a href="#10家企业共创"><font color=red >10家企业共创</font></a></p>
+
+<h2 id="六-10家企业共创">六.10家企业共创</h2>
+
+<h3 id="1-背景">1. 背景</h3>
+
+<p>您的套件开发好之后需要与企业用户一起共创，通过与企业用户共创来检验您的套件是否满足企业用户全面使用以及用户对套件的认可度。</p>
+
+<h3 id="2-共创用户">2. 共创用户</h3>
+
+<p>共创用户需要包含isv老用户、2家钉钉老用户。 - ISV老用户可以通过在企业用户的钉钉OA后台添加微应用的方式进行开通 - 2家钉钉老用户isv可申请加入钉钉用户社区，在社区中寻找共创用户。申请加入钉钉用户社区</p>
+
+<h3 id="3-共创结果">3. 共创结果</h3>
+
+<p>共创周期：一周</p>
+
+<p>在共创过程中，钉钉会重点关注以下数据：</p>
+
+<p>①活跃企业数/添加应用的企业数&gt;70%；</p>
+
+<p>②DAU/WAU&gt;50%；</p>
+
+<p>③用户满意度评分高于90分。(钉钉小二会对共创企业发起用户满意度调查)</p>
+
+<p>同时在共创用户使用过程中，钉钉官方会对应用质量进行在线检测及bug记录评分。评分将影响应用等级，应用等级将决定在钉钉应用市场的排名。</p>
+
+<p>应用（套件）达到共创用户用起来及质量评分80分以上，即可开始1000家灰度内测阶段。</p>
+
+<h2 id="七-提交商品审核">七.提交商品审核</h2>
+
+<p>在<a href="#五-钉钉验收"><font color=red >钉钉验收</font></a>环节您已经提交了您的套件上架，此时钉钉小二会对您的商品进行审核，审核时会综合10家共创企业共创期间的使用数据以及共创用户反馈的问题情况，同时钉钉小二会对用户发起问卷，如果问卷反馈的结果较差，也将审核不通过。商品审核分为两个阶段：商品接入审核、商品售卖信息审核。</p>
+
+<p>商品接入审核： 小二会先对商品的接入信息进行审核，如果审核通过，则开始进行售卖信息审核。如果接入信息审核驳回，您可以在商品列表中看到商品审核状态为驳回，并且查看驳回原因。您可以编辑商品信息，重新提交审核。</p>
+
+<p>商品售卖信息审核： 完成商品接入审核后，小二会进行商品售卖信息的审核。 如果售卖信息审核驳回，您可以在商品列表中看到商品审核状态为驳回，并且查看驳回原因。 您可以编辑商品的售卖信息，重新提交审核。(此时不能修改商品接入信息。) 如果售卖信息审核通过，商品会自动上架。</p>
+
+<h2 id="八-1000家灰度">八.1000家灰度</h2>
+
+<h3 id="1-背景">1. 背景</h3>
+
+<p>经过10家企业用户的共创，您的套件满足ISV老用户的使用，同时满足了钉钉老用户的使用，此时已经说明您的套件满足了企业用户的使用需求，为进一步验证套件的稳定性与可用性，将开启一周的1000家企业用户灰度，将根据灰度结果进行进一步用户开放</p>
+
+<h3 id="2-灰度结果">2. 灰度结果</h3>
+
+<p>灰度成功的标准（可根据应用类型进行协商调整）：</p>
+
+<p>①活跃企业数/添加应用的企业数&gt;50%；</p>
+
+<p>②DAU/WAU&gt;25%；</p>
+
+<p>③用户满意度评分高于80分。</p>
+
+<p>同时在共创用户使用过程中，钉钉官方会对应用质量进行在线检测及bug记录评分。评分将影响应用等级，应用等级将决定在钉钉应用市场的排名。应用（套件）达到共创用户用起来及质量评分80分以上，即可申请审核通过。</p>
+
+<h2 id="九-上架推广">九.上架推广</h2>
+
+<p>至此您的套件将会按照钉钉应用中心的策略展示在钉钉应用中心中，钉钉企业用户的管理员可以通过钉钉应用中心发现应用，当用户完成授权后可以使用您的套件。</p>
+
+<h2 id="钉钉快速部署指南">钉钉快速部署指南</h2>
+
+<h3 id="isv接入准备">ISV接入准备</h3>
+
+<p>1.ISV使用快速部署必须先实现<a href="#isv套件对企业独立部署方案"><font color=red>ISV套件对企业独立部署方案</font></a></p>
+
+<p>2.ISV需要在云市场提交商品审核<font color=red>（钉钉小二会将商品审核为预上架状态，此套件在市场上不可见）</font>，套件上架流程详见：<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a>，在进入下一步之前您需要确保云市场服务商审核通过，确保商品提交审核。</p>
+
+<p>3.ISV在接入之前需要通过联系钉钉ISV接入接口人获取ISV企业邀请码，联系方式：angle.lixy@alibaba-inc.com</p>
+
+<p>4.填写“ISV线下快速部署申请表”，发送到open-dingtalk@list.alibaba-inc.com申请， 审核通过后，钉钉小二会发送链接&amp;二维码给ISV, ISV可以生成H5页面，分享给用户扫码或者点击下载<a href="http://download.taobaocdn.com/freedom/30712/xls/p1a7c2m1e71q9e8me125a118d1npe4.xls"><font color=red>ISV线下快速部署申请表</font></a></p>
+
+<p><img alt="Application Form" src="https://img.alicdn.com/tps/TB1c3uBLXXXXXaNXXXXXXXXXXXX-802-571.png" />
+填写说明：</p>
+
+<table><thead>
+<tr>
+<th>栏位</th>
+<th>填写要求</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>服务商名称</td>
+<td>必填，阿里云市场注册的服务商全名</td>
+</tr>
+<tr>
+<td>套件名称</td>
+<td>必填，ISV提交商品审核的套件全称，套件上架流程详见<a href="#套件上架操作流程"><font color=red>套件上架流程</font></a></td>
+</tr>
+<tr>
+<td>邀请码</td>
+<td>必填，钉钉ISV接入接口人分配的ISV企业邀请码</td>
+</tr>
+<tr>
+<td>申请快速部署原因</td>
+<td>必填，需要申明使用此方案的原因、使用场景信息</td>
+</tr>
+<tr>
+<td>是否有现场实施人员</td>
+<td>必填，是否有现场实施人员支持，如没有，注明通过什么方式分享二维码</td>
+</tr>
+<tr>
+<td>通讯录导入方式</td>
+<td>必填，选择isv引入的企业用户通过哪种方式维护通讯录，如：由企业管理员通过钉钉OA后台导入（），通过钉钉手机端创建团队；ISV现有系统通过钉钉接口导入等</td>
+</tr>
+<tr>
+<td>是否申请自定义手机“工作”tab界面</td>
+<td>必填，钉钉手机端的工作界面可以为ISV定义：手机工作界面   1. Banner：ISV通过发布带图片公告的形式，实现banner页效果 2. 套件排序置顶 3. 手机工作界面tab名称定义为ISV套件名称，例如由工作改为“XXX”</td>
+</tr>
+<tr>
+<td>申请定义手机“工作”tab界面原因</td>
+<td>不必填，咨询钉钉ISV接入接口人</td>
+</tr>
+<tr>
+<td>是否验证应用序列号</td>
+<td>必填，应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置。举例： ISV 通过自有渠道，售卖了一套微应用给客户A，客户A扫码可以快速创建团队并开通应用，如果该二维码分享给了B，B也可以通过扫码开通应用，而B实际并未支付费用，为避免此问题，ISV可以发给A客户唯一的序列号，A客户扫码后，必须输入序列号并得到ISV验证，才可开通应用</td>
+</tr>
+<tr>
+<td>套件icon</td>
+<td>必填，引导页面需要套件icon，规格120*120，圆角，请在“套件icon”sheet页进行上传</td>
+</tr>
+<tr>
+<td>手机“工作”tab命名</td>
+<td>如需申请“工作”tab名称自定义，则必填，“工作”tab名称可以重命名，支持4个汉字</td>
+</tr>
+<tr>
+<td>公告</td>
+<td>如需申请“工作”tab界面自定义，则必填，工作界面的banner通过发布带图片公告的形式展现，需要填写发送公告所在企业的corp_id和公告标题；公告路径：https://app.dingtalk.com/#/app/blackboard/create，图片推荐尺寸： 640*380</td>
+</tr>
+<tr>
+<td>是否需要团队链接,用于发送邀请</td>
+<td>必填，开通微应用时，程序会自动生成团队链接发给ISV，ISV得到团队链接可以通过邮件或者短信发送邀请，如需团队链接，请注明邀请方式</td>
+</tr>
+</tbody></table>
+
+<p>5.如果需要定义不同的任务或者其他特殊需求，请提前在开发阶段，向接口的钉钉小二提出产品需求（任务：见产品主体流程中描述的开通步骤，每个步骤称为一个任务）</p>
+
+<h3 id="产品主体流程">产品主体流程</h3>
+
+<p><img alt="ksbs_process" src="https://img.alicdn.com/tps/TB1xcWaLXXXXXcIXVXXXXXXXXXX-863-585.png" /></p>
+
+<p>实施步骤：
+1. 安装钉钉，并且完成注册，请使用以下二维码和链接，让客户扫码，打开下载钉钉地址：
+http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
+
+<p><img alt="DD_QRcode" src="https://img.alicdn.com/tps/TB1HeydLXXXXXaJXVXXXXXXXXXX-584-584.png" /></p>
+
+<p>2.提交快速部署后，钉钉工作人员会通过邮件，发送套件二维码给ISV, 客户通过钉钉手机端上的扫码工具，扫描进入快速部署引导页</p>
+
+<p><img alt="DD_ksbs1" src="https://img.alicdn.com/tps/TB1n7qhLXXXXXXhXVXXXXXXXXXX-427-640.png" /></p>
+
+<p>3.创建团队：配置可以选择创建1人团队（大于等于1人），或多人团队（大于等于6人），
+➢1人团队：适合人数较多团队，需要通过钉钉OA管理后台表格导入，或者
+➢多人团队：适合人数较少团队，便于在钉钉手机端上，创建团队</p>
+
+<p><img alt="DD_ksbs2" src="https://img.alicdn.com/tps/TB17wWoLXXXXXcTXpXXXXXXXXXX-394-652.png" /></p>
+
+<p>4.开通微应用：分为3步：：输入应用序列号－立即授权－使用范围设置
+4.1  输入应用序列号： 应用序列号由ISV生成并颁发给客户，以证明客户具备线下开通微应用的正版权益；该步骤是否必须可以配置
+➢ISV通过openapi /service/get_auth_info 获取授权信息，应用序列号即在返回数据中
+➢/service/get_auth_info接口具体信息请参考 <a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
+
+<p><img alt="DD_ksbs3" src="https://img.alicdn.com/tps/TB18Hx9LXXXXXbeaXXXXXXXXXXX-427-706.png" /></p>
+
+<p>4.2：立即授权</p>
+
+<p><img alt="DD_ksbs4" src="https://img.alicdn.com/tps/TB1Ic9CLXXXXXaxXXXXXXXXXXXX-438-720.png" /></p>
+
+<p>4.3：设置使用范围，设置微应用哪些员工可以使用</p>
+
+<p><img alt="DD_ksbs5" src="https://img.alicdn.com/tps/TB1iV5nLXXXXXcaXpXXXXXXXXXX-449-780.png" /></p>
+
+<p>4.4 开始使用， 用户点击“开始使用”可以进入手机端工作界面页</p>
+
+<p><img alt="DD_ksbs6" src="https://img.alicdn.com/tps/TB190CBLXXXXXa.XXXXXXXXXXXX-450-729.png" />
+<img alt="DD_ksbs7" src="https://img.alicdn.com/tps/TB17ceELXXXXXXtXXXXXXXXXXXX-504-702.png" /></p>
+
+<p>4.5  开通授权后，isv可获取团队邀请链接，团队邀请链接处理逻辑
+➢isv通过openapi /service/get_auth_info 获取授权信息，团队邀请链接即在返回数据中
+➢/service/get_auth_info接口具体信息请参考<a href="#6-获取企业授权的授权数据"><font color=red>获取企业授权的授权数据</font></a></p>
+
 <h2 id="isv接入开发指南">ISV接入开发指南</h2>
 
 <h3 id="1-isv接口调用整体流程">1: ISV接口调用整体流程</h3>
 
 <p>欢迎成为钉钉微应用的服务提供商！
-通过接入钉钉ISV的应用授权接口，可以快速发布自己的微应用套件，引导企业客户自动开通微应用，将自己的服务快速触达到自己的目标客户！
-钉钉的应用授权方案包含以下两个场景：</p>
+通过接入钉钉ISV的应用授权接口，可以快速发布自己的微应用套件，并在企业客户授权开通微应用时，自动进行开通激活，企业用户可以授权后直接使用您的套件（应用）！</p>
+
+<p>钉钉的应用授权接口包含以下两个阶段：</p>
 
 <h4 id="isv注册应用">ISV注册应用</h4>
 
-<p>你，作为ISV若要使用此方案，只需在阿里云上注册成为第三方服务提供商，在ISV接入后台创建应用套件，并在应用套件中配置好相应的应用。
-本方案所说的应用套件，是第三方应用授权的主体，它可以包含多个第三方所提供的同一类型的应用。目前一个第三方最多可以注册五个应用套件，一个应用套件最多可以包含五个应用。</p>
+<p>当前您经过<a href="#注册钉钉开发者"><font color=red >注册钉钉开发者</font></a>
+和<a href="#创建套件&amp;微应用"><font color=red >创建套件&amp;微应用</font></a>之后，
+已经注册成为钉钉开发者，并在开发者平台中创建好了套件及应用，您需要实现钉钉回调接口，<a href="#2-回调接口（分为五个回调类型）"><font color=red >回调接口（分为五个回调类型）</font></a>。</p>
 
 <h4 id="企业管理员授权应用">企业管理员授权应用</h4>
 
-<p>企业的管理员在钉钉企业后台的微应用列表中浏览你的应用套件后，即可发起一键授权，系统将展示微应用的第三方授权页面，管理员根据授权页面的引导，确认授权内容，完成授权操作。<strong><font color=red>管理员完成授权之后，ISV需要立即激活套件</font></strong>,
-授权以及激活完成之后，企业就可使用ISV服务提供商所提供的应用服务了。一切将变得简单自然。以下是详细的接口调用时序图
+<p>当您开发好套件之后，需要<a href="#3-注册测试企业"><font color=red >注册测试企业</font></a>进行管理员授权应用模拟，
+您可以通过”模拟测试企业发起授权所有套件“进行授权操作，授权成功后，您需要立即激活套件，确保测试企业可以正常使用套件中的功能。</p>
+
+<p>当您的套件发布后，当企业管理员通过钉钉提供的 微应用的第三方授权页面 确认授权内容后，<strong><font color=red>ISV需要立即激活套件，从用户授权至套件激活整体应在5s内完成</font></strong>,授权以及激活完成之后，企业就可使用ISV服务提供商所提供的应用服务了。</p>
+
+<p>以下是套件从开发到企业开始使用套件的详细的接口调用时序图
 <img alt="Mou icon" src="https://img.alicdn.com/tps/TB1b1fdLXXXXXXTXVXXXXXXXXXX-896-702.jpg" /></p>
 
 <h3 id="2-回调接口（分为五个回调类型）">2: 回调接口（分为五个回调类型）</h3>
@@ -697,14 +770,14 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <p>钉钉服务器会向服务提供商申请时填写的套件回调URL定时推送SuiteTicket，以及临时授权码和授权设置变更。</p>
 
-<p>假设您提供的回调URL是</p>
+<p>以<a href="http://ddtalk.github.io/dingTalkDoc/?spm=a3140.7785475.0.0.Ju6sXi#加解密库和demo下载">服务端demo java版本</a>做示例，您提供的回调URL是</p>
 
-<p><code class="prettyprint">https://127.0.0.1/suite/receive</code></p>
+<p><code class="prettyprint">http://您服务端部署的IP:您的端口/demo/isvreceive</code></p>
 
 <p>那么在钉钉服务器每一次访问回调URL的时候
 将请求(下面链接中的signature,timestamp,nonce的值只是示例，并不代表真实返回的值):</p>
 
-<p><code class="prettyprint">https://127.0.0.1/suite/receive?signature=111108bb8e6dbce3c9671d6fdb69d15066227608
+<p><code class="prettyprint">http://您服务端部署的IP:您的端口/demo/isvreceive?signature=111108bb8e6dbce3c9671d6fdb69d15066227608
 &amp;timestamp=1783610513&amp;nonce=380320111</code></p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w">
@@ -722,7 +795,7 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <p>本地调试：<a href="#调试工具"><font color=red >如何本地进行调试？</font></a></p>
 
-<p>如有需要，可以查看具体加解密步骤：<a href="#12-加解密方案"><font color=red >查看</font></a></p>
+<p>如有需要，可以查看具体加解密步骤：<a href="#加解密方案说明"><font color=red >加解密方案说明</font></a></p>
 
 <h4 id="接口说明">接口说明</h4>
 
@@ -735,9 +808,13 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 </code></pre>
 
-<p>此时，由于套件尚未创建成功，还未生成套件的SUITE_KEY，所以在解密post数据的时候，需要使用默认的Env.CREATE_SUITE_KEY（默认值为&quot;suite4xxxxxxxxxxxxxxx&quot;）来解密，以java-demo代码为例（Env为Demo中配置文件），如右。</p>
+<p>此时，由于套件尚未创建成功，还未生成套件的SUITE_KEY，所以在解密post数据的时候，需要使用默认的Env.CREATE_SUITE_KEY（默认值为&quot;suite4xxxxxxxxxxxxxxx&quot;）来解密，以java-demo代码为例（Env为Demo中配置文件），如右，服务端demo已经做了配置。</p>
 
-<p>待成功处理『验证回调URL有效性事件』事件，套件创建成功之后，就不能再使用默认的SUITE_KEY了，需要使用套件本身的SUITE_KEY，所以需要在Env.java中配置SUITE_KEY，然后重新部署代码,此时将用下面的语句进行加解密。</p>
+<p>同时，Demo的配置文件（Env.java）中还需要根据套件创建时填写的TOKEN 和 ENCODING_AES_KEY做相应的更改。</p>
+
+<p><img alt="verifyurl" src="https://img.alicdn.com/tps/TB1LK2kLXXXXXasXFXXXXXXXXXX-1338-1072.png" /></p>
+
+<p>待成功处理『验证回调URL有效性事件』事件，套件创建成功之后，就不能再使用默认的SUITE_KEY了，需要使用套件本身的SUITE_KEY，所以需要在Env.java中配置SUITE_KEY，同时将新创建套件中的SUITE_SECRET配置到Env.java中，然后重新部署代码，此时将用下面的语句进行加解密。因为推送ticket是二十分钟推送一次，再次部署也需要等待二十分钟服务端才会推送，后续会优化该逻辑，保证即时推送，提高推送效率。</p>
 
 <p><code class="prettyprint">dingTalkEncryptor = new DingTalkEncryptor(Env.TOKEN, Env.ENCODING_AES_KEY, Env.SUITE_KEY);//套件创建成功后，使用套件本身的SUITE_KEY进行加解密</code></p>
 
@@ -816,10 +893,12 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <p>服务器会向服务提供商申请时填写的套件事件接收 URL定时（二十分钟）推送ticket：</p>
 
-<p>服务提供商在收到ticket推送后务必返回经过加密的字符串&quot;success&quot;的json数据</p>
+<p>服务提供商在收到ticket推送后务必返回经过加密的字符串&quot;success&quot;的json数据，同时，如果该套件下没有任何的微应用，定时推送的ticket也不会成功，需要保证至少有一个ticket。</p>
 
 <p>如果不返回，钉钉服务器将连续推送，直到推送次数超过100次，就不再推送。倘若您希望钉钉服务器重新推送，需要进入<a href="http://console.d.aliyun.com"><font color=red>开发者后台</font></a>，进入套件管理页面，点击『重新推送』按钮，即可重新推送。
 <img alt="repush" src="https://img.alicdn.com/tps/TB15j7OJFXXXXckXXXXXXXXXXXX-1121-124.jpg" /></p>
+
+<p>以<a href="http://ddtalk.github.io/dingTalkDoc/?spm=a3140.7785475.0.0.Ju6sXi#加解密库和demo下载">服务端demo java版本</a>做示例，每二十分钟服务端会向服务商提供的接口进行一次回调，可以在IsvReceiveServlet.java文件中，打印并获取Env.suiteTicket。在<a href="https://debug.dingtalk.com/isv.html">debug平台</a>获取套件的SuiteAccessToken。</p>
 
 <p>POST数据解密后示例</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -901,7 +980,7 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <p><img alt="shouqun" src="https://img.alicdn.com/tps/TB1rZerKpXXXXX8XXXXXXXXXXXX-720-124.jpg" /></p>
 
-<p>收到临时授权码之后请按照步骤换取永久授权码，并将永久授权码存下来。</p>
+<p>以<a href="http://ddtalk.github.io/dingTalkDoc/?spm=a3140.7785475.0.0.Ju6sXi#加解密库和demo下载">服务端demo java版本</a>做示例，可以在IsvReceiveServlet.java文件中，打印并获取Env.authCode。在<a href="https://debug.dingtalk.com/isv.html">debug平台</a>获取套件的永久授权码，请将永久授权码保存下来，目前永久授权码丢失之后没法再次获取，只能创建套件重新来，后续会优化该逻辑，解决临时授权码只能获取一次永久授权码的问题。</p>
 
 <p>POST数据解密后示例</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -981,7 +1060,7 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 
 <p>当授权方（即授权企业）在微应用管理端中，修改了对套件的授权托管后，钉钉服务器会向服务提供商的套件事件接收 URL（创建套件时填写）推送授权变更消息。注意，推送的授权变更信息并不包括企业用户具体做了什么修改，所以收到推送之后,</p>
 
-<p><strong>ISV需要通过调用<a href="#10-获取企业的应用信息"><font color=red >获取企业的应用信息</font></a>接口</strong>，获取接口返回值其中的&quot;close&quot;参数，才能得知微应用在企业用户做了授权变更之后的状态，有三种状态码，分别为0，1，2.含义如下：</p>
+<p><strong>ISV需要通过调用<a href="#7-获取企业的应用信息"><font color=red >获取企业的应用信息</font></a>接口</strong>，获取接口返回值其中的&quot;close&quot;参数，才能得知微应用在企业用户做了授权变更之后的状态，有三种状态码，分别为0，1，2.含义如下：</p>
 
 <ul>
 <li>0:禁用（例如企业用户在OA后台禁用了微应用）</li>
@@ -1532,14 +1611,6 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 <tr>
 <td>auth_user_info</td>
 <td>授权方管理员信息</td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>管理员电话</td>
-</tr>
-<tr>
-<td>name</td>
-<td>管理员名字</td>
 </tr>
 <tr>
 <td>corp_logo_url</td>
@@ -2251,7 +2322,7 @@ ISV可与企业用户协商进行线下退款</li>
 <h4 id="概述：">概述：</h4>
 
 <p>本方案对于ISV软件与钉钉的结合版本通过统一的授权模型实现可对任意企业客户统一实施钉钉＋X的版本，由钉钉根据ISV提供的套件相关信息统一生成二维码，企业用户通过二维码下载钉钉、注册钉钉企业、对套件进行授权后使用。
-技术实现说明：（此处只针对独立部署的场景进行描述，SAAS类系统见<a href="#ISV接入开发指南"><font color=red >ISV接入开发指南</font></a>）</p>
+技术实现说明：（此处只针对独立部署的场景进行描述，SAAS类系统见<a href="#isv接入开发指南"><font color=red >ISV接入开发指南</font></a>）</p>
 
 <h4 id="系统实现：">系统实现：</h4>
 
@@ -2262,17 +2333,28 @@ ISV独立部署应用系统：ISV为企业独立部署的软件系统</p>
 
 <h5 id="实现流程说明：">实现流程说明：</h5>
 
-<p>1，    ISV开发完成套件并获取钉钉颁发的二维码
-2，    ISV为企业进行独立软件部署完成
-3，    企业扫码注册成功后输入ISV系统的关联码（如：序列号、企业ID等）用于钉钉企业与ISV系统用户进行关联
-4，    企业进行套件使用授权
-a)  ISV套件授权系统通过钉钉开放平台完成授权，参考钉钉isv（服务提供商）应用授权和接口说明
-b)  ISV套件授权系统通过钉钉开放平台接口获取企业输入的关联码与ISV独立部署系统进行关联
-c)  ISV套件授权系统调用钉钉开放平台接口完成企业独立部署软件IP白名单设置，参考为授权方的企业单独设置ip白名单
-d)  ISV套件授权系统获取企业永久授权码并进行存储
-- 方案一：ISV将获取到的永久授权码回传至独立部署的应用系统，独立部署应用系统通过授权码直接调用钉钉开放平台API
-- 方案二：ISV独立部署应用数据请求先发送至ISV套件服务器，ISV套件服务器使用授权码调用钉钉开放平台API
-5，    完成授权开始使用</p>
+<p>1，ISV开发完成套件并获取钉钉颁发的二维码</p>
+
+<p>2，ISV为企业进行独立软件部署完成</p>
+
+<p>3，企业扫码注册成功后输入ISV系统的关联码（如：序列号、企业ID等）用于钉钉企业与ISV系统用户进行关联</p>
+
+<p>4，企业进行套件使用授权</p>
+
+<p>a)ISV套件授权系统通过钉钉开放平台完成授权，参考钉钉isv（服务提供商）应用授权和接口说明</p>
+
+<p>b)ISV套件授权系统通过钉钉开放平台接口获取企业输入的关联码与ISV独立部署系统进行关联</p>
+
+<p>c)ISV套件授权系统调用钉钉开放平台接口完成企业独立部署软件IP白名单设置，参考为授权方的企业单独设置ip白名单</p>
+
+<p>d)ISV套件授权系统获取企业永久授权码并进行存储</p>
+
+<ul>
+<li><p>方案一：ISV将获取到的永久授权码回传至独立部署的应用系统，独立部署应用系统通过授权码直接调用钉钉开放平台API</p></li>
+<li><p>方案二：ISV独立部署应用数据请求先发送至ISV套件服务器，ISV套件服务器使用授权码调用钉钉开放平台API</p></li>
+</ul>
+
+<p>5，    完成授权开始使用</p>
 
 <h5 id="系统交互图：">系统交互图：</h5>
 
@@ -2332,41 +2414,59 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 
 <h2 id="产品标准">产品标准</h2>
 
-<h3 id="套件／微应用命名规范：">套件／微应用命名规范：</h3>
+<h3 id="命名规范">命名规范</h3>
 
-<p>1.不能使用通用名词命名，包括拼音谐音，如墨迹天气、滴滴打车，不能命名为天气，打车
-2.不能带有钉钉，阿里，淘宝，等阿里巴巴关联产品和企业文字
-3.应用不得包含虚假、欺骗或误导的陈述，或是使用的名称与其他应用类似
-4.命名必须符合开发者相关协议条款,不得带有影射竞争对手，触犯法律和道德的文字
-5.命名不能重名，一旦应用审核通过，则不允许同名应用提交申请
-6.应用的名字、描述和截图与应用内容相关
-7.应用不得包括符号，和任何“beta”、“demo”、“trial”或“test”版本的应用
-8.建议不超过6个汉字</p>
+<p>套件／微应用命名规范：</p>
 
-<h3 id="场景化与钉钉统一通讯能力结合，比如消息，会话，钉，通讯录，群等如：">场景化与钉钉统一通讯能力结合，比如消息，会话，钉，通讯录，群等如：</h3>
+<h4 id="1-不能使用通用名词命名，包括拼音谐音，如墨迹天气、滴滴打车，不能命名为天气，打车">1.不能使用通用名词命名，包括拼音谐音，如墨迹天气、滴滴打车，不能命名为天气，打车</h4>
+
+<h4 id="2-不能带有钉钉，阿里，淘宝，等阿里巴巴关联产品和企业文字">2.不能带有钉钉，阿里，淘宝，等阿里巴巴关联产品和企业文字</h4>
+
+<h4 id="3-应用不得包含虚假、欺骗或误导的陈述，或是使用的名称与其他应用类似">3.应用不得包含虚假、欺骗或误导的陈述，或是使用的名称与其他应用类似</h4>
+
+<h4 id="4-命名必须符合开发者相关协议条款-不得带有影射竞争对手，触犯法律和道德的文字">4.命名必须符合开发者相关协议条款,不得带有影射竞争对手，触犯法律和道德的文字</h4>
+
+<h4 id="5-命名不能重名，一旦应用审核通过，则不允许同名应用提交申请">5.命名不能重名，一旦应用审核通过，则不允许同名应用提交申请</h4>
+
+<h4 id="6-应用的名字、描述和截图与应用内容相关">6.应用的名字、描述和截图与应用内容相关</h4>
+
+<h4 id="7-应用不得包括符号，和任何“beta”、“demo”、“trial”或“test”版本的应用">7.应用不得包括符号，和任何“beta”、“demo”、“trial”或“test”版本的应用</h4>
+
+<h4 id="8-建议不超过6个汉字">8.建议不超过6个汉字</h4>
+
+<h3 id="场景规范">场景规范</h3>
+
+<h4 id="场景化与钉钉统一通讯能力结合，比如消息，会话，钉，通讯录，群等如：">场景化与钉钉统一通讯能力结合，比如消息，会话，钉，通讯录，群等如：</h4>
 
 <p><img alt="product_scene1" src="https://img.alicdn.com/tps/TB1FUmiLXXXXXauXFXXXXXXXXXX-431-613.png" />
 <img alt="product_scene2" src="https://img.alicdn.com/tps/TB1EgabLXXXXXXIXVXXXXXXXXXX-467-556.png" /></p>
 
-<h3 id="需要在钉钉上形成完整的业务闭环，用户可以在钉钉手机端上解决完整的业务刚需">需要在钉钉上形成完整的业务闭环，用户可以在钉钉手机端上解决完整的业务刚需</h3>
+<h3 id="功能规范">功能规范</h3>
 
-<h3 id="需要按照钉钉ui规范进行产品设计，请下载">需要按照钉钉UI规范进行产品设计，<a href="http://download.taobaocdn.com/freedom/30563/compress/p1a5tl8v1d1fk91l9l15cu1vnp54l4.zip"><font color=red >请下载</font></a></h3>
+<h4 id="需要在钉钉上形成完整的业务闭环，用户可以在钉钉手机端上解决完整的业务刚需">需要在钉钉上形成完整的业务闭环，用户可以在钉钉手机端上解决完整的业务刚需</h4>
 
-<p><img alt="product_UI" src="https://img.alicdn.com/tps/TB18eWkLXXXXXcnXpXXXXXXXXXX-528-223.png" /></p>
+<h4 id="如果已有原生app，-建议isv在钉钉版本上保留原生app的核心价值，并积极实现和原生app相同或更好的用户体验">如果已有原生APP， 建议ISV在钉钉版本上保留原生APP的核心价值，并积极实现和原生APP相同或更好的用户体验</h4>
 
-<h3 id="如果已有原生app，-建议isv在钉钉版本上保留原生app的核心价值，并积极实现和原生app相同或更好的用户体验">如果已有原生APP， 建议ISV在钉钉版本上保留原生APP的核心价值，并积极实现和原生APP相同或更好的用户体验</h3>
+<h3 id="ui规范">UI规范</h3>
 
-<h3 id="降低用户使用门槛，原则上不出现任何注册功能，必须实现移动端应用无需注册，直接开通使用和免登，如有pc版，需要实现pc端的免登，但此功能非开始共创和灰度的必要条件，可以后续迭代完善">降低用户使用门槛，原则上不出现任何注册功能，必须实现移动端应用无需注册，直接开通使用和免登，如有PC版，需要实现PC端的免登，但此功能非开始共创和灰度的必要条件，可以后续迭代完善</h3>
+<p>需要按照钉钉UI规范进行产品设计，<a href="http://download.taobaocdn.com/freedom/30563/compress/p1a5tl8v1d1fk91l9l15cu1vnp54l4.zip"><font color=red >请下载</font></a>
+<img alt="product_UI" src="https://img.alicdn.com/tps/TB18eWkLXXXXXcnXpXXXXXXXXXX-528-223.png" /></p>
 
-<p><img alt="product_use" src="https://img.alicdn.com/tps/TB1ZNx3LXXXXXaIaXXXXXXXXXXX-644-575.png" /></p>
+<h3 id="免登及注册">免登及注册</h3>
 
-<h3 id="钉钉不会以任何方式提供客户的联系方式（包括手机，固定电话等），isv产品设计上也不能误导客户提供联系方式，如业务需要，则必须向客户明确说明，联系方式的真实使用目的，范围和场景，并让客户自行选择是否提供联系方式">钉钉不会以任何方式提供客户的联系方式（包括手机，固定电话等），ISV产品设计上也不能误导客户提供联系方式，如业务需要，则必须向客户明确说明，联系方式的真实使用目的，范围和场景，并让客户自行选择是否提供联系方式</h3>
+<p>降低用户使用门槛，原则上不出现任何注册功能，必须实现移动端应用无需注册，直接开通使用和免登，如有PC版，需要实现PC端的免登，但此功能非开始共创和灰度的必要条件，可以后续迭代完善
+<img alt="product_use" src="https://img.alicdn.com/tps/TB1ZNx3LXXXXXaIaXXXXXXXXXXX-644-575.png" /></p>
+
+<h3 id="用户引导">用户引导</h3>
+
+<p>钉钉不会以任何方式提供客户的联系方式（包括手机，固定电话等），ISV产品设计上也不能误导客户提供联系方式，如业务需要，则必须向客户明确说明，联系方式的真实使用目的，范围和场景，并让客户自行选择是否提供联系方式</p>
 
 <p><img alt="product_ feedback" src="https://img.alicdn.com/tps/TB17mSwLXXXXXXeXXXXXXXXXXXX-419-505.png" /></p>
 
-<h3 id="商品上架前，提供产品的下一阶段的迭代计划；例如：">商品上架前，提供产品的下一阶段的迭代计划；例如：</h3>
+<h3 id="迭代计划">迭代计划</h3>
 
-<p><img alt="product_plan" src="https://img.alicdn.com/tps/TB17mSwLXXXXXXeXXXXXXXXXXXX-419-505.png" /></p>
+<p>商品上架前，提供产品的下一阶段的迭代计划；例如：
+<img alt="product_plan" src="https://img.alicdn.com/tps/TB17mSwLXXXXXXeXXXXXXXXXXXX-419-505.png" /></p>
 
 <h2 id="技术标准">技术标准</h2>
 
@@ -2418,6 +2518,10 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 <p>4.P4类bug 处理 原则可在下个迭代发布中解决</p>
 
 <h3 id="性能标准">性能标准</h3>
+
+<h4 id="服务端响应时间">服务端响应时间</h4>
+
+<p>isv服务端授权激活响应时间整体小于3s</p>
 
 <h4 id="页面大小">页面大小</h4>
 
@@ -2695,7 +2799,7 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 
 <p>具体流程为：</p>
 
-<p>1.获取CODE(免登授权码)，获取CODE的方式有两种，一种是调用js-api接口（推荐），一种是使用标准OAUTH2.0 HTTP 302跳转的方式。</p>
+<p>1.获取CODE(免登授权码)，获取CODE的方式是调用js-api接口。</p>
 
 <p>2.通过CODE换取用户身份。</p>
 
@@ -2709,7 +2813,7 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 
 <h2 id="手机客户端微应用中调用免登">手机客户端微应用中调用免登</h2>
 
-<h3 id="使用js-api-推荐使用">使用JS-API(推荐使用)</h3>
+<h3 id="使用js-api">使用JS-API</h3>
 
 <p>步骤一：首先需要获取当前用户的corpid。ISV开发者请在微应用主页地址使用$CORPID$模板参数表示corpid，用户访问微应用的时候钉钉服务器将把$CORPID$替换成用户所属企业的corpid，例如原本的主页地址是http://www.dingtalk.com/index，则能获取用户corpid的主页地址为http://www.dingtalk.com/index?corpid=$CORPID$</p>
 
@@ -2721,7 +2825,7 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 
 <h2 id="钉钉pc版微应用中调用免登">钉钉PC版微应用中调用免登</h2>
 
-<h3 id="使用js-api-推荐使用">使用JS-API(推荐使用)</h3>
+<h3 id="使用js-api">使用JS-API</h3>
 
 <p>步骤一：首先需要获取当前用户的corpid。ISV开发者请在微应用主页地址使用$CORPID$模板参数表示corpid，用户访问微应用的时候钉钉服务器将把$CORPID$替换成用户所属企业的corpid，例如原本的主页地址是http://www.dingtalk.com/index，则能获取用户corpid的主页地址为http://www.dingtalk.com/index?corpid=$CORPID$</p>
 
@@ -2757,9 +2861,9 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 
 <p><strong>使用方法（钉钉管理员登陆态）</strong> </p>
 
-<p>步骤一：在OA后台，点击微应用的“进入后台”，自动跳转到准备工作1中配置的微应用后台地址，开发者从跳转的URL中解析code参数，获取CODE并保存下来</p>
+<p>步骤一：在OA后台，点击微应用的“进入后台”，自动跳转到准备工作1中配置的微应用后台地址，开发者从跳转的URL中解析code参数，获取CODE并保存下来，通过此CODE获取管理员的身份信息</p>
 
-<p>步骤二：通过<a href="#获取微应用后台管理Token"><font color=red >获取微应用后台管理Token</font></a>获取AccessToken</p>
+<p>步骤二：通过<a href="#获取微应用后台管理token"><font color=red >获取微应用后台管理Token</font></a>获取AccessToken</p>
 
 <p>步骤三：使用AccessToken<a href="#通过code换取微应用管理员的身份信息"><font color=red >通过步骤一获取的CODE换取微应用管理员的身份信息</font></a></p>
 
@@ -2797,7 +2901,7 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 
 <h2 id="普通钉钉用户账号开放及免登-暂未开放，敬请期待">普通钉钉用户账号开放及免登(暂未开放，敬请期待)</h2>
 
-<p>第三方web服务提供者，通过此项服务，可以使用普通钉钉用户账号登录自有的系统，并可将自有系统的账号与钉钉账号进行绑定，同时还能够获取钉钉用户的个人及企业数据，如姓名、手机号、对应企业的名称、企业是否认证过、企业的权益等级、其在企业内是否为管理员等信息(取决于用户最终授权)。</p>
+<p>第三方web服务提供者，通过此项服务，可以使用普通钉钉用户账号登录自有的系统，并可将自有系统的账号与钉钉账号进行绑定，同时还能够获取钉钉用户的个人及企业数据，如姓名、手机号、对应企业的名称、企业是否认证过、企业的权益等级、其在企业内是否为管理人员等信息(取决于用户最终授权)。</p>
 
 <p><font color=red >注:此功能与ISV没有关系，任何外部系统都可以使用。</font></p>
 
@@ -2805,13 +2909,13 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 
 <p><font color=red >暂未开放，敬请期待</font></p>
 
-<p>2: 使用appid及appSecret访问如下接口，获取accesstoken。</p>
+<p>2: 使用appid及appSecret访问如下接口，获取accesstoken，此处获取的token有效期为2小时，有效期内重复获取，返回相同值，并自动续期，如果在有效期外获取会获得新的token值，建议定时获取本token，不需要用户登录时再获取。</p>
 
-<p>https://oapi.dingtalk.com/sns/gettoken?appid=APPID&amp;appsecret=APPSECRET</p>
+<p><a href="#获取钉钉开放应用的access_token"><font color=red >https://oapi.dingtalk.com/sns/gettoken?appid=APPID&amp;appsecret=APPSECRET</font></a></p>
 
 <p>3: 在钉钉用户访问你的Web系统时，如果用户选择使用钉钉账号登录，则需要由你构造并引导用户跳转到如下链接。</p>
 
-<p>https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_type=code&amp;scope=snsapi_login&amp;state=STATE&amp;redirect_uri=REDIRECT_URL</p>
+<p>https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_type=code&amp;scope=snsapi_login&amp;state=STATE&amp;redirect_uri=REDIRECT_URI</p>
 
 <table><thead>
 <tr>
@@ -2824,7 +2928,7 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 <td>需要在第1步获取,代表了你提供的服务，必填</td>
 </tr>
 <tr>
-<td>redirect_url</td>
+<td>redirect_uri</td>
 <td>重定向地址(需要urlencode编码),该地址所在域名需要配置为appid对应的安全域名，必填</td>
 </tr>
 <tr>
@@ -2841,11 +2945,19 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 </tr>
 </tbody></table>
 
-<p>4:在钉钉用户登录钉钉系统后，会302到你指定的redirect_url，并向url参数中追加code及state两个参数。</p>
+<p>4:在钉钉用户登录钉钉系统后，会302到你指定的redirect_uri，并向url参数中追加code及state两个参数。</p>
 
-<p>5:在你的web系统获取到代表用户的code之后，使用第2步获取的AccessToken及code获取当前钉钉用户授权过的个人数据。</p>
+<p>5:在你的web系统获取到代表用户的code之后，使用第2步获取的AccessToken及code获取当前钉钉用户授权给你的持久授权码，此授权码目前无过期时间，可反复使用，参数code只能使用一次。</p>
 
-<p><a href="#通过code换取普通钉钉用户的身份信息"><font color=red >https://oapi.dingtalk.com/sns/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</font></a></p>
+<p><a href="#获取用户授权的持久授权码"><font color=red >https://oapi.dingtalk.com/sns/get_persistent_code?access_token=ACCESS_TOKEN</font></a></p>
+
+<p>6:在获得钉钉用户的持久授权码后，通过以下接口获取该用户授权的SNS_TOKEN，此token的有效时间为2小时，重复获取不会续期。</p>
+
+<p><a href="#获取用户授权的sns_token"><font color=red >https://oapi.dingtalk.com/sns/get_sns_token?access_token=ACCESS_TOKEN</font></a></p>
+
+<p>7:在获得钉钉用户的SNS_TOKEN后，通过以下接口获取该用户的个人信息。</p>
+
+<p><a href="#获取用户授权的个人信息"><font color=red >https://oapi.dingtalk.com/sns/getuserinfo?sns_token=SNS_TOKEN</font></a></p>
 
           <h1 id="服务端开发文档">服务端开发文档</h1>
 
@@ -2873,7 +2985,7 @@ d)  ISV套件授权系统获取企业永久授权码并进行存储
 <h3 id="主动调用">主动调用</h3>
 
 <p>当企业应用服务器调用钉钉开放平台接口时，需使用https协议、Json数据格式、UTF8编码，访问域名为 https://oapi.dingtalk.com。
-在每次主动调用钉钉开放平台接口时需要带上AccessToken参数。AccessToken参数由CorpID和CorpSecret换取。对于ISV来说，<a href="#8-获取企业授权的access_token"><font color=red>获取企业授权的access_token</font></a></p>
+在每次主动调用钉钉开放平台接口时需要带上AccessToken参数。AccessToken参数由CorpID和CorpSecret换取。对于ISV来说，<a href="#5-获取企业授权的access_token"><font color=red>获取企业授权的access_token</font></a></p>
 
 <p>CorpID是企业在钉钉中的标识，每个企业拥有一个唯一的CorpID；</p>
 
@@ -6268,7 +6380,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h2 id="通讯录变更事件回调接口">通讯录变更事件回调接口</h2>
+<h2 id="通讯录及群会话变更事件回调接口">通讯录及群会话变更事件回调接口</h2>
 
 <p>在使用回调接口之前您需要了解的是，</p>
 
@@ -6307,7 +6419,7 @@ mobile | 手机号码
 
 <p>如有需要，可以查看具体加解密步骤：<a href="#12-加解密方案"><font color=red >查看</font></a></p>
 
-<h3 id="事件回调">事件回调</h3>
+<h3 id="通讯录事件回调">通讯录事件回调</h3>
 
 <p>当企业通讯录发生变化，并且事件类型包含在注册时填写的&quot;call_back_tag&quot;中时，比如call_back_tag字段为&rdquo;[&ldquo;user_add_org&rdquo;,&ldquo;user_modify_org&rdquo;]&ldquo;，那么企业通讯录发生了&quot;通讯录用户增加&quot;和&quot;讯录用户更改&quot;，钉钉服务器会向url推送事件。</p>
 
@@ -6403,6 +6515,114 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
+<h3 id="群会话事件回调">群会话事件回调</h3>
+
+<p>当企业群会话发生变化，并且事件类型包含在注册时填写的&quot;call_back_tag&quot;中时，比如call_back_tag字段为&rdquo;[&ldquo;chat_add_member&rdquo;,&ldquo;chat_remove_member&rdquo;]&ldquo;，那么企业群会话发生了&quot;群会话添加人员&quot;和&quot;群会话删除人员&quot;，钉钉服务器会向url推送事件。</p>
+
+<p>目前可以监听的事件类型分别为:</p>
+
+<ul>
+<li>chat_add_member : 群会话添加人员</li>
+<li>chat_remove_member : 群会话删除人员</li>
+<li>chat_quit : 群会话用户主动退群</li>
+<li>chat_update_owner ：群会话更换群主</li>
+<li>chat_update_title ：群会话更换群名称</li>
+<li>chat_disband ： 群会话解散群</li>
+</ul>
+
+<p>POST数据解密后示例
+接收到推送之后请务必返回经过加密的字符串&quot;success&quot;的json数据</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"EventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chat_add_member"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"TimeStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">43535463645</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"CorpId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"corpid"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ChatId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chat90f29b737b56dc179df8w86t83d5f0f8"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"efefef"</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"Operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager0112"</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>EventType</td>
+<td>事件类型，有六种，&quot;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+</tr>
+<tr>
+<td>TimeStamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>CorpId</td>
+<td>发生群会话变更的企业</td>
+</tr>
+<tr>
+<td>ChatId</td>
+<td>会话的ID</td>
+</tr>
+<tr>
+<td>UserId</td>
+<td>用户发生变更的userid列表</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>已经更新的新的群主的userid</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>已经更新的新的群标题</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td>操作人员的userid</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<p>服务提供商在收到此事件推送后务必返回包含经过加密的字符串&quot;success&quot;的json数据</p>
+
+<p>只有返回了对应的json数据，钉钉才会判断此事件推送成功，套件才能创建成功。</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"msg_signature"</span><span class="p">:</span><span class="s2">"111108bb8e6dbce3c9671d6fdb69d15066227608"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timeStamp"</span><span class="p">:</span><span class="s2">"1783610513"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>msg_signature</td>
+<td>消息体签名</td>
+</tr>
+<tr>
+<td>timeStamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>nonce</td>
+<td>随机字符串</td>
+</tr>
+<tr>
+<td>encrypt</td>
+<td>&ldquo;success&quot;加密字符串</td>
+</tr>
+</tbody></table>
+
 <h3 id="注册事件回调接口">注册事件回调接口</h3>
 
 <p>注册回调接口的时候，钉钉服务器会回调<a href="#测试回调url"><font color=red>测试回调url</font></a>，来验证填写的url的合法性，需要您再接收到回调之后返回加密字符串&quot;success&quot;的json数据,才能完成注册。</p>
@@ -6444,7 +6664,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有八种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>需要监听的事件类型，有14种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -6547,7 +6767,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>需要监听的事件类型，有八种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>需要监听的事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -6600,7 +6820,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有八种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>需要监听的事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -6776,7 +6996,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>事件类型，有八种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
 </tr>
 <tr>
 <td>userid</td>
@@ -6883,7 +7103,7 @@ mobile | 手机号码
 <td>cid</td>
 <td>String</td>
 <td>是</td>
-<td>群消息或者个人聊天会话Id，(通过<a href="#获取会话信息"><font color=red>JSAPI之pickConversation接口</font></a>唤起联系人界面拿到会话ID）</td>
+<td>群消息或者个人聊天会话Id，(通过<a href="#获取会话信息"><font color=red>JSAPI之pickConversation接口</font></a>唤起联系人界面选择之后即可拿到会话ID，之后您可以使用获取到的cid调用此接口）</td>
 </tr>
 </tbody></table>
 
@@ -7501,6 +7721,15 @@ mobile | 手机号码
 <p><code class="prettyprint">https://oapi.dingtalk.com/media/get?access_token=ACCESS_TOKEN&amp;media_id=MEDIA_ID</code></p>
 
 <h6 id="参数说明">参数说明</h6>
+<pre class="highlight plaintext"><code>  HTTP/1.1 200: OK
+  Connection: close
+  Content-Type: image/jpeg
+  Content-disposition: attachment; filename="MEDIA_ID.jpg"
+  Date: Sun, 04 Jan 2015 12:00:00 GMT
+  Cache-Control: no-cache, must-revalidate
+  Content-Length: 1234567
+  ...
+</code></pre>
 
 <table><thead>
 <tr>
@@ -7527,15 +7756,6 @@ mobile | 手机号码
 <h6 id="返回说明">返回说明</h6>
 
 <p>和普通的http下载相同，请根据http头做相应的处理。</p>
-<pre class="highlight plaintext"><code>  HTTP/1.1 200: OK
-  Connection: close
-  Content-Type: image/jpeg
-  Content-disposition: attachment; filename="MEDIA_ID.jpg"
-  Date: Sun, 04 Jan 2015 12:00:00 GMT
-  Cache-Control: no-cache, must-revalidate
-  Content-Length: 1234567
-  ...
-</code></pre>
 
 <p>a)正确时返回：</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -7727,15 +7947,77 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="通过code换取普通钉钉用户的身份信息">通过CODE换取普通钉钉用户的身份信息</h3>
+<h2 id="普通钉钉用户账号开放">普通钉钉用户账号开放</h2>
 
-<p>第三方web服务提供商在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的钉钉用户信息。<strong>此接口只用于普通钉钉用户账号开放</strong></p>
+<h3 id="获取钉钉开放应用的access_token">获取钉钉开放应用的ACCESS_TOKEN</h3>
+
+<p>第三方web服务提供商取得钉钉开放应用的appid及appsecret后，可以获取开放应用的ACCESS_TOKEN</p>
 
 <h6 id="请求说明">请求说明</h6>
 
 <p>Https请求方式: GET</p>
 
-<p><code class="prettyprint">https://oapi.dingtalk.com/sns/getuserinfo?access_token=ACCESS_TOKEN&amp;code=CODE</code></p>
+<p><code class="prettyprint">https://oapi.dingtalk.com/sns/gettoken?appid=APPID&amp;appsecret=APPSECRET</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appid</td>
+<td>String</td>
+<td>是</td>
+<td>由钉钉开放平台提供给开放应用的唯一标识</td>
+</tr>
+<tr>
+<td>appsecret</td>
+<td>String</td>
+<td>是</td>
+<td>由钉钉开放平台提供的密钥</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+
+<p>正确时返回示例如下</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"070c171a26d633d1b631dxxxxxxxx"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>token的值</td>
+</tr>
+</tbody></table>
+
+<h3 id="获取用户授权的持久授权码">获取用户授权的持久授权码</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/sns/get_persistent_code?access_token=ACCESS_TOKEN</code></p>
+
+<p>POST 正文</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"tmp_auth_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23152698ea18304da4d0ce1xxxxx"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h6 id="参数说明">参数说明</h6>
 
@@ -7751,38 +8033,171 @@ mobile | 手机号码
 <td>access_token</td>
 <td>String</td>
 <td>是</td>
-<td>需要由appId及appSecret换取</td>
+<td>开放应用的token</td>
 </tr>
 <tr>
-<td>code</td>
+<td>tmp_auth_code</td>
 <td>String</td>
 <td>是</td>
-<td>通过Oauth认证给回调URL带上的CODE</td>
+<td>用户授权给钉钉开放应用的临时授权码</td>
 </tr>
 </tbody></table>
 
 <h6 id="返回结果">返回结果</h6>
 
-<p>正确时返回示例如下,具体返回字段取决于用户最终授权：</p>
+<p>正确时返回示例如下</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"persistent_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsa-d-asdasdadHIBIinoninINIn-ssdasd"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"unionid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7Huu46kk"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>openid</td>
+<td>用户在当前开放应用内的唯一标识</td>
+</tr>
+<tr>
+<td>unionid</td>
+<td>用户在当前钉钉开放平台账号范围内的唯一标识，同一个钉钉开放平台账号可以包含多个开放应用，同时也包含ISV的套件应用及企业应用</td>
+</tr>
+<tr>
+<td>persistent_code</td>
+<td>用户给开放应用授权的持久授权码，此码目前无过期时间</td>
+</tr>
+</tbody></table>
+
+<h3 id="获取用户授权的sns_token">获取用户授权的SNS_TOKEN</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: POST</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/sns/get_sns_token?access_token=ACCESS_TOKEN</code></p>
+
+<p>POST 正文</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"persistent_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsa-d-asdasdadHIBIinoninINIn-ssdasd"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>String</td>
+<td>是</td>
+<td>开放应用的token</td>
+</tr>
+<tr>
+<td>openid</td>
+<td>String</td>
+<td>是</td>
+<td>用户的openid</td>
+</tr>
+<tr>
+<td>persistent_code</td>
+<td>String</td>
+<td>是</td>
+<td>用户授权给钉钉开放应用的持久授权码</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+
+<p>正确时返回示例如下</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"sns_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c76dsc87ds6c876sd87csdcxxxxx"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>expires_in</td>
+<td>sns_token的过期时间</td>
+</tr>
+<tr>
+<td>sns_token</td>
+<td>用户授权的token</td>
+</tr>
+</tbody></table>
+
+<h3 id="获取用户授权的个人信息">获取用户授权的个人信息</h3>
+
+<h6 id="请求说明">请求说明</h6>
+
+<p>Https请求方式: GET</p>
+
+<p><code class="prettyprint">https://oapi.dingtalk.com/sns/getuserinfo?sns_token=SNS_TOKEN</code></p>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sns_token</td>
+<td>String</td>
+<td>是</td>
+<td>用户授权给开放应用的token</td>
+</tr>
+</tbody></table>
+
+<h6 id="返回结果">返回结果</h6>
+
+<p>正确时返回示例如下</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"corp_info"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"阿里巴巴"</span><span class="p">,</span><span class="w"> 
             </span><span class="nt">"is_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-            </span><span class="nt">"is_sys"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"钉钉"</span><span class="w">
+            </span><span class="nt">"is_manager"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"rights_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
         </span><span class="p">},</span><span class="w"> 
         </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DingTalk"</span><span class="p">,</span><span class="w"> 
             </span><span class="nt">"is_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-            </span><span class="nt">"is_sys"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"阿里巴巴"</span><span class="p">,</span><span class="w"> 
-            </span><span class="nt">"rights_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+            </span><span class="nt">"is_manager"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"rights_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w"> 
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
     </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
     </span><span class="nt">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13012345678"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="w">
+        </span><span class="nt">"maskedMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"130****1234"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"nick"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"unionid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7Huu46kk"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7802,8 +8217,8 @@ mobile | 手机号码
 <td>企业是否经过钉钉认证</td>
 </tr>
 <tr>
-<td>is_sys</td>
-<td>当前用户是否为该企业的管理员</td>
+<td>is_manager</td>
+<td>当前用户是否为该企业的管理人员</td>
 </tr>
 <tr>
 <td>rights_level</td>
@@ -7814,65 +8229,17 @@ mobile | 手机号码
 <td>企业名称</td>
 </tr>
 <tr>
-<td>mobile</td>
-<td>手机号</td>
+<td>maskedMobile</td>
+<td>经过处理的手机号</td>
 </tr>
 <tr>
-<td>name</td>
-<td>用户姓名</td>
+<td>nick</td>
+<td>用户在钉钉上面的昵称</td>
 </tr>
 </tbody></table>
 
-<p>出错时返回示例如下：</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">40029</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid code"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<!-- ### 通过CODE换取用户身份
-
-企业应用的服务器在拿到CODE后，需要将CODE发送到钉钉开放平台接口，如果验证通过，则返回CODE对应的用户信息。
-
-###### 请求说明
-
-Https请求方式: GET
-
-`https://oapi.dingtalk.com/user/getuserinfo?access_token=ACCESS_TOKEN&code=CODE`
-
-###### 参数说明
-
-参数 | 参数类型 | 必须 | 说明
----------- | ------- | ------- | ------
-access_token | String | 是 | 调用接口凭证
-code | String | 是 | 通过Oauth认证会给URL带上CODE
-
-###### 返回结果
-
-正确时返回示例如下：
-
-```
-{
-    "errcode": 40029,
-    "errmsg": "invalid code",
-    "userid": "USERID",
-    "deviceId":"DEVICEID"
-}
-```
-
-参数 | 说明
----------- | ------
-userId | 员工在企业内的UserID
-deviceId | 手机设备号,由钉钉在安装时随机产生
-
-出错时返回示例如下：
-
-```
-{
-    "errcode": 40029,
-    "errmsg": "invalid code"
-}
-``` -->
+<p>openid | 用户在当前开放应用内的唯一标识
+unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯一标识</p>
 
 <h2 id="统计数据">统计数据</h2>
 
@@ -10556,7 +10923,7 @@ dd.biz.util.chooseImage({
 
 <p>选择图片+上传，防止恶意上传</p>
 
-<p>将在成功上传之后回调onSuccess方法，返回alicdn上的图片链接。微应用也可以调用<code class="prettyprint">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot;&gt;</code>来自定义上传图片，此标签2.5及以上版本支持。</p>
+<p>将在成功上传之后回调onSuccess方法，返回alicdn上的图片链接。微应用也可以调用<code class="prettyprint">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot;&gt;</code>来自定义上传图片，此标签钉钉客户端版本2.5及以上支持。</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">uploadImage</span><span class="p">({</span>
     <span class="na">multiple</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//是否多选，默认false</span>
     <span class="na">max</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">//最多可选个数</span>
@@ -11506,7 +11873,7 @@ memberCount | 群聊成员总数
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
   <span class="na">startWithDepartmentId</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span> <span class="c1">//-1表示打开的通讯录从自己所在部门开始展示, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)</span>
   <span class="na">multiple</span><span class="p">:</span> <span class="nb">Boolean</span><span class="p">,</span> <span class="c1">//是否多选： true多选 false单选； 默认true</span>
-  <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="p">...],</span> <span class="c1">//默认选中的用户列表，工号；成功回调中应包含该信息</span>
+  <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="p">...],</span> <span class="c1">//默认选中的用户列表，userid；成功回调中应包含该信息</span>
   <span class="na">corpId</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">//企业id</span>
   <span class="na">max</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span> <span class="c1">//人数限制，当multiple为true才生效，可选范围1-1500</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -11515,7 +11882,7 @@ memberCount | 群聊成员总数
     [{
       "name": "张三", //姓名
       "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
-      "emplId": '0573', //工号
+      "emplId": '0573', //userid
      },
      ...
     ]
@@ -11549,7 +11916,7 @@ memberCount | 群聊成员总数
 <tr>
 <td>users</td>
 <td>Array[String]</td>
-<td>默认选中的用户列表，用户id；成功回调中应包含该信息</td>
+<td>默认选中的用户列表，userid；成功回调中应包含该信息</td>
 </tr>
 <tr>
 <td>corpId</td>
@@ -11586,7 +11953,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 </tr>
 <tr>
 <td>emplId</td>
-<td>用户id，<a href="#%B7%D6%10X%E6%C5"><font color=red>获取成员详情接口</font></a></td>
+<td>userid，<a href="#获取部门成员（详情）"><font color=red>获取成员详情接口</font></a></td>
 </tr>
 </tbody></table>
 
@@ -11596,7 +11963,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 
 <p>corpid必须是用户所属的企业的corpid</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">complexChoose</span><span class="p">({</span>
-  <span class="na">startWithDepartmentId</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span> <span class="c1">//-1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)</span>
+  <span class="na">startWithDepartmentId</span><span class="p">:</span> <span class="nb">Number</span><span class="p">,</span> <span class="c1">//-1表示从自己所在部门开始, 0表示从企业最上层开始，其他数字表示从该部门开始</span>
   <span class="na">selectedUsers</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">,</span> <span class="nb">String</span><span class="p">,</span> <span class="p">...],</span> <span class="c1">//预选用户</span>
   <span class="na">corpId</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">//企业id</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -11607,7 +11974,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
       {
         "name": "张三", //姓名
         "avatar": "htp://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
-        "emplId": "0573", //工号:
+        "emplId": "0573", //userid:
       },
       ...
       ],
@@ -11640,7 +12007,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 <tr>
 <td>startWithDepartmentId</td>
 <td>Number</td>
-<td>-1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)</td>
+<td>-1表示从自己所在部门开始, 0表示从企业最上层开始，其他数字表示从该部门开始</td>
 </tr>
 <tr>
 <td>selectedUsers</td>
@@ -11681,7 +12048,7 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 </tr>
 <tr>
 <td>users.emplId</td>
-<td>用户id,<a href="#%B7%D6%10X%E6%C5"><font color=red>获取成员详情接口</font></a></td>
+<td>userid,<a href="#获取部门成员（详情）"><font color=red>获取成员详情接口</font></a></td>
 </tr>
 <tr>
 <td>department</td>
@@ -11704,13 +12071,13 @@ selectedDepartments: [{name: '', id: ''}, ...],//预选部门 id必选，name可
 ```javascript
 dd.biz.contact.choose({
     multiple: true, //是否多选： true多选 false单选； 默认true
-    users: ['100','101'], //默认选中的用户列表，工号；成功回调中应包含该信息
+    users: ['100','101'], //默认选中的用户列表，userid；成功回调中应包含该信息
     corpId: '', //企业id
     max: 50, //人数限制，当multiple为true才生效，可选范围1-1500
     onSuccess : function(result) {
         /*
         [{
-            emplId: '0573', //工号
+            emplId: '0573', //userid
             name: '张三', //姓名
             nickNameCn: '三张', //花名
             mobilePhone: '****', //手机号 后续不再返回该字段
@@ -11837,205 +12204,10 @@ dd.biz.user.get({
 
 <h2 id="导航栏">导航栏</h2>
 
-<p>dd.biz</p>
+<p><strong>想要对导航栏更加个性化的定义，比如设置导航栏左侧按钮，右侧按钮，标题，可以查看</strong></p>
 
-<p>**</p>
-
-<h3 id="设置导航栏颜色">设置导航栏颜色</h3>
-<pre class="highlight html"><code>/**
- * 设置导航栏颜色为FF5E97F6
- */
-http://abc.xyz?dd_nav_bgcolor=FF5E97F6
-</code></pre>
-
-<h5 id="参数说明">参数说明</h5>
-
-<p>目前设置导航栏颜色是通过url参数进行配置, 其键为dd_nav_bgcolor，其值形式为AARRGGBB</p>
-
-<p>例如：微应用当前页面的链接为：https://abc.xyz/，设置导航栏颜色时增加参数，参数名是dd_nav_bgcolor，值为FF112233 其中前面两位默认是FF，后面6位是对应的色值，最终的页面url为：https://abc.xyz/?dd_nav_bgcolor=FF5E97F6</p>
-
-<h3 id="设置左侧导航按钮">设置左侧导航按钮</h3>
-
-<p>只支持iOS</p>
-<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setLeft</span><span class="p">({</span>
-    <span class="na">show</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span><span class="c1">//控制按钮显示， true 显示， false 隐藏， 默认true</span>
-    <span class="na">control</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span><span class="c1">//是否控制点击事件，true 控制，false 不控制， 默认false</span>
-    <span class="na">showIcon</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span><span class="c1">//是否显示icon，true 显示， false 不显示，默认true； 注：具体UI以客户端为准</span>
-    <span class="na">text</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span><span class="c1">//控制显示文本，空字符串表示显示默认文本</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cm">/*
-        {}
-        */</span>
-        <span class="c1">//如果control为true，则onSuccess将在发生按钮点击事件被回调</span>
-    <span class="p">},</span>
-    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
-<span class="p">});</span>
-</code></pre>
-
-<h5 id="参数说明">参数说明</h5>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>show</td>
-<td>Boolean</td>
-<td>控制按钮显示， true 显示， false 隐藏， 默认true</td>
-</tr>
-<tr>
-<td>control</td>
-<td>Boolean</td>
-<td>是否控制点击事件，true 控制，false 不控制， 默认false</td>
-</tr>
-<tr>
-<td>showIcon</td>
-<td>Boolean</td>
-<td>是否显示icon，true 显示，false 不显示，默认true； 注：具体UI以客户端为准</td>
-</tr>
-<tr>
-<td>text</td>
-<td>String</td>
-<td>控制显示文本，空字符串表示显示默认文本</td>
-</tr>
-</tbody></table>
-
-<h3 id="设置右侧导航单个按钮">设置右侧导航单个按钮</h3>
-<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setRight</span><span class="p">({</span>
-    <span class="na">show</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span><span class="c1">//控制按钮显示， true 显示， false 隐藏， 默认true</span>
-    <span class="na">control</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span><span class="c1">//是否控制点击事件，true 控制，false 不控制， 默认false</span>
-    <span class="na">text</span><span class="p">:</span> <span class="s1">'发送'</span><span class="p">,</span><span class="c1">//控制显示文本，空字符串表示显示默认文本</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cm">/*
-        {}
-        */</span>
-        <span class="c1">//如果control为true，则onSuccess将在发生按钮点击事件被回调</span>
-    <span class="p">},</span>
-    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
-<span class="p">});</span>
-</code></pre>
-
-<h5 id="参数说明">参数说明</h5>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>show</td>
-<td>Boolean</td>
-<td>控制按钮显示， true 显示， false 隐藏， 默认true</td>
-</tr>
-<tr>
-<td>control</td>
-<td>Boolean</td>
-<td>是否控制点击事件，true 控制，false 不控制， 默认false</td>
-</tr>
-<tr>
-<td>text</td>
-<td>String</td>
-<td>控制显示文本，空字符串表示显示默认文本</td>
-</tr>
-</tbody></table>
-
-<p>可通过拼接url方式隐藏 showmenu=false</p>
-
-<h3 id="设置右侧导航多个按钮">设置右侧导航多个按钮</h3>
-
-<p>想要对导航栏右侧进行更加个性化的定义，可以查看<a href="http://ddtalk.github.io/blog/2015/12/29/navbar/"><font color = red >自定义导航栏文档说明</font></a></p>
-
-<h3 id="设置标题">设置标题</h3>
-<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">({</span>
-    <span class="na">title</span> <span class="p">:</span> <span class="s1">'邮箱正文'</span><span class="p">,</span><span class="c1">//控制标题文本，空字符串表示显示默认文本</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cm">/*结构
-        {
-        }*/</span>
-    <span class="p">},</span>
-    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
-<span class="p">});</span>
-</code></pre>
-
-<h5 id="参数说明">参数说明</h5>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>title</td>
-<td>String</td>
-<td>控制标题文本，空字符串表示显示默认文本</td>
-</tr>
-</tbody></table>
-
-<h3 id="设置标题栏icon">设置标题栏Icon</h3>
-
-<p>调用此jsapi之后，icon的显示位置在Android和iOS上有所区别,如下图</p>
-
-<ul>
-<li>iOS：显示在导航栏标题的右边，紧靠着标题</li>
-<li>Android：显示在导航栏右侧按钮组的最左边</li>
-</ul>
-
-<p><img alt="setIcon" src="https://img.alicdn.com/tps/TB1ckCRKVXXXXXdXVXXXXXXXXXX-325-117.jpg" /></p>
-<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">setIcon</span><span class="p">({</span>
-    <span class="na">showIcon</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span><span class="c1">//是否显示icon</span>
-    <span class="na">iconIndex</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="c1">//显示的iconIndex,如图</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cm">/*结构
-        {
-        }*/</span>
-        <span class="c1">//点击icon之后将会回调这个函数</span>
-    <span class="p">},</span>
-    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//jsapi调用失败将会回调此函数</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre>
-
-<p><img src="https://img.alicdn.com/tps/TB16nmYKVXXXXXiXFXXXXXXXXXX-184-274.jpg" width = "184" height = "274" alt="图片名称" align=right /></p>
-
-<h5 id="参数说明">参数说明</h5>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>showIcon</td>
-<td>Boolean</td>
-<td>控制按钮显示， true 显示， false 隐藏， 默认false</td>
-</tr>
-<tr>
-<td>iconIndex</td>
-<td>int</td>
-<td>将要显示的icon的iconIndex（对应关系如右图,有三种icon可选）  注：具体UI以客户端为准</td>
-</tr>
-</tbody></table>
-
-<h3 id="触发关闭">触发关闭</h3>
-<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">navigation</span><span class="p">.</span><span class="nx">close</span><span class="p">({</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cm">/*result结构
-        {}
-        */</span>
-    <span class="p">},</span>
-    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
-<span class="p">})</span>
-</code></pre>
+<p><a href="http://ddtalk.github.io/blog/2015/12/29/navbar/" target="_blank"><font color = red >
+钉钉微应用定制化导航栏</font></a></p>
 
 <h2 id="分享到会话">分享到会话</h2>
 
@@ -13953,26 +14125,25 @@ title | 会话名称 -->
 
 [biz.customContact.multipleChoose](#多选自定义联系人) -->
 
-          <h1 id="微应用体验优化">微应用体验优化</h1>
+          <h1 id="调试工具-amp-性能优化">调试工具&amp;性能优化</h1>
 
-<h2 id="ui规范">UI规范</h2>
+<h2 id="调试工具">调试工具</h2>
 
-<p>对于钉钉中的微应用，要求能符合钉钉整体的UI规范。诸如字体，字号，颜色等。
-<img alt="UI" src="https://img.alicdn.com/tps/TB1.yF4KpXXXXcBXpXXXXXXXXXX-601-281.jpg" /></p>
-
-<p><a href="http://yunpan.taobao.com/s/k9w3LeGzmM"><font color=red>UI规范下载</font></a></p>
+<ul>
+<li><p><a href="https://debug.dingtalk.com"><font color=red >钉钉服务端API调试工具</font></a></p></li>
+<li><p><a href="https://debug.dingtalk.com/isv.html"><font color=red >ISV接入调试工具</font></a></p></li>
+<li><p><a href="http://wsdebug.dingtalk.com/"><font color=red >JSAPI调试工具</font></a>（打开页面后，手机扫描二维码，然后在页面上配置参数，即可调试）</p></li>
+</ul>
 
 <h2 id="h5性能优化方案">H5性能优化方案</h2>
 
-<p>对于一个H5的产品，功能无疑很重要，但是性能同样是用户体验中不可或缺的一环。原本H5的渲染性能就不及native的app，如果不把性能优化做起来，将极大地影响用户使用产品的积极性。所以我们提供了一份H5性能优化的方案，<a href="http://ddtalk.github.io/blog/2015/09/07/dingding-first/"><font color=red>地址</font></a>。</p>
+<p>在钉钉移动客户端上的微应用通过H5来实现，当前H5的渲染性能相较native的app有一定差距，为了提升H5的性能，从体验上与native app缩短差距，我们提供了一份H5性能优化的方案，详细内容见blog中的<a href="http://ddtalk.github.io/blog/2015/09/07/dingding-first/"><font color=red> H5性能优化方案</font></a>。</p>
 
 <h2 id="微应用性能评测">微应用性能评测</h2>
 
-<p>目前微应用性能评测流程还在优化阶段。<br></p>
-
 <p>微应用的性能测验主要是对微应用的整体性能进行评分，这其中包括但不仅限于首屏打开时间等指标。<br></p>
 
-<p>大概流程如下：<br></p>
+<p>流程如下：<br></p>
 
 <p>1、微应用进行性能评测前首先需要确保我们的测试帐号被加入到将要测验的企业里。目前的测试帐号有以下几个：<font color=blue > 13291824394, 15210137915，15810497158。 </font> <br></p>
 
@@ -13980,9 +14151,9 @@ title | 会话名称 -->
 
 <p>3、然后，按照提示，输入要测试的H5应用地址，下一步选择手机即可开始测验。<br></p>
 
-<p>4、测验完成之后，就可以看到测试报告了。测试报告会给出被测试的微应用的整体打分。这个打分机制我们还在不断优化，后续会根据大家的case制定出一套完善的评分机制。测试报告同时会给出被测验的微应用需要优化的地方，开发者可以根据测试报告的优化建议进行相关优化，待优化完成可以再次发起测验流程，并查看报告。<br></p>
+<p>4、测验完成之后，就可以看到测试报告了。测试报告会给出被测试的微应用的整体打分。（打分机制还在不断优化，欢迎大家针对特殊的case提出建议）。测试报告同时会给出被测验的微应用需要优化的内容，开发者可以根据测试报告的优化建议进行相关优化，待优化完成可以再次发起测验流程，并查看报告。<br></p>
 
-<h2 id="cdn">CDN</h2>
+<h2 id="cdn服务">CDN服务</h2>
 
 <p>钉钉开放平台为常用的js库提供了CDN加速服务，这样做不仅可以为您节省流量，还可以获得更快的访问速度。</p>
 
@@ -14014,19 +14185,9 @@ title | 会话名称 -->
 
 <p><a href="http://g.alicdn.com/ilw/cdnjs/zepto/1.1.6/zepto.js">http://g.alicdn.com/ilw/cdnjs/zepto/1.1.6/zepto.js</a></p>
 
-          <h1 id="调试工具">调试工具</h1>
-
-<ul>
-<li><p><a href="https://debug.dingtalk.com"><font color=red >钉钉服务端API调试工具</font></a></p></li>
-<li><p><a href="https://debug.dingtalk.com/isv.html"><font color=red >ISV接入调试工具</font></a></p></li>
-<li><p><a href="http://wsdebug.dingtalk.com/"><font color=red >JSAPI调试工具</font></a>（打开页面后，手机扫描二维码，然后在页面上配置参数，即可调试）</p></li>
-</ul>
-
           <h1 id="团队博客">团队博客</h1>
 
-<p>钉钉开放平台团队建立了一个博客，以提供更加详细的关于钉钉开放平台的信息，帮助钉钉开发者更好的进行开发</p>
-
-<p>如有兴趣，请查看：<a href="http://ddtalk.github.io/blog/"><font color=red>地址</font></a></p>
+<p>钉钉开放平台团队博客提供针对微应用开发的实践及建议，帮助钉钉开发者更好的进行开发，更多信息请查看：<a href="http://ddtalk.github.io/blog/"><font color=red>钉钉开放平台团队博客</font></a></p>
 
           <h1 id="faq">FAQ</h1>
 
