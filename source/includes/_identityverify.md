@@ -4,7 +4,7 @@
 
 具体流程为：
 
-1.获取CODE(免登授权码)，获取CODE的方式有两种，一种是调用js-api接口（推荐），一种是使用标准OAUTH2.0 HTTP 302跳转的方式。
+1.获取CODE(免登授权码)，获取CODE的方式是调用js-api接口。
 
 2.通过CODE换取用户身份。
 
@@ -17,7 +17,7 @@
 
 ##手机客户端微应用中调用免登
 
-### 使用JS-API(推荐使用)
+### 使用JS-API
 
 步骤一：首先需要获取当前用户的corpid。ISV开发者请在微应用主页地址使用$CORPID$模板参数表示corpid，用户访问微应用的时候钉钉服务器将把$CORPID$替换成用户所属企业的corpid，例如原本的主页地址是http://www.dingtalk.com/index，则能获取用户corpid的主页地址为http://www.dingtalk.com/index?corpid=$CORPID$
 
@@ -30,7 +30,7 @@ demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/mas
 
 ##钉钉PC版微应用中调用免登
 
-### 使用JS-API(推荐使用)
+### 使用JS-API
 
 步骤一：首先需要获取当前用户的corpid。ISV开发者请在微应用主页地址使用$CORPID$模板参数表示corpid，用户访问微应用的时候钉钉服务器将把$CORPID$替换成用户所属企业的corpid，例如原本的主页地址是http://www.dingtalk.com/index，则能获取用户corpid的主页地址为http://www.dingtalk.com/index?corpid=$CORPID$
 
@@ -71,7 +71,7 @@ demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkP
 **使用方法（钉钉管理员登陆态）** 
 
 
-步骤一：在OA后台，点击微应用的“进入后台”，自动跳转到准备工作1中配置的微应用后台地址，开发者从跳转的URL中解析code参数，获取CODE并保存下来
+步骤一：在OA后台，点击微应用的“进入后台”，自动跳转到准备工作1中配置的微应用后台地址，开发者从跳转的URL中解析code参数，获取CODE并保存下来，通过此CODE获取管理员的身份信息
 
 步骤二：通过[<font color=red >获取微应用后台管理Token</font>](#获取微应用后台管理token)获取AccessToken
 
