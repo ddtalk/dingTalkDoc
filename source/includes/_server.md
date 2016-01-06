@@ -2173,7 +2173,7 @@ encrypt  | "success"加密字符串
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
 sender | String | 是 | 消息发送者员工ID
-cid | String | 是 | 群消息或者个人聊天会话Id，(通过[<font color=red>JSAPI之pickConversation接口</font>](#获取会话信息)唤起联系人界面拿到会话ID）
+cid | String | 是 | 群消息或者个人聊天会话Id，(通过[<font color=red>JSAPI之pickConversation接口</font>](#获取会话信息)唤起联系人界面选择之后即可拿到会话ID，之后您可以使用获取到的cid调用此接口）
 
 普通会话消息样例：
 
