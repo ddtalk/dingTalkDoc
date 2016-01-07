@@ -52,7 +52,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 - 每个套件调用单个企业的单个接口频率不可超过1000次/分
 
 
-### 获取AccessToken
+#### 获取AccessToken
 
 AccessToken是企业访问钉钉开放平台接口的全局唯一票据，调用接口时需携带AccessToken。
 
@@ -97,8 +97,8 @@ b)错误的Json返回示例:
 }
 ```
 
-### 获取微应用后台管理Token
-本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>微应用后台管理免登</font>](#微应用后台管理员免登)服务中使用。
+#### 获取微应用后台管理Token
+本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>微应用后台管理免登</font>](#oa后台调用管理员免登)服务中使用。
 应用场景示例如下图：
 
 ![normalcorp](https://img.alicdn.com/tps/TB1iw.4KFXXXXXoXFXXXXXXXXXX-594-302.png)
@@ -1731,7 +1731,7 @@ modified_by  |String | 是  |  修改时间
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
 
-##通讯录变更事件回调接口
+##通讯录及群会话变更事件回调接口
 
 在使用回调接口之前您需要了解的是，
 
@@ -1772,7 +1772,7 @@ errmsg | 对返回码的文本描述内容
 
 如有需要，可以查看具体加解密步骤：[<font color=red >查看</font>](#12-加解密方案)
 
-### 事件回调
+### 通讯录事件回调
 
 当企业通讯录发生变化，并且事件类型包含在注册时填写的"call_back_tag"中时，比如call_back_tag字段为"["user_add_org","user_modify_org"]"，那么企业通讯录发生了"通讯录用户增加"和"讯录用户更改"，钉钉服务器会向url推送事件。
 
@@ -1833,6 +1833,69 @@ timeStamp | 时间戳
 nonce  | 随机字符串
 encrypt  | "success"加密字符串
 
+### 群会话事件回调
+
+当企业群会话发生变化，并且事件类型包含在注册时填写的"call_back_tag"中时，比如call_back_tag字段为"["chat_add_member","chat_remove_member"]"，那么企业群会话发生了"群会话添加人员"和"群会话删除人员"，钉钉服务器会向url推送事件。
+
+目前可以监听的事件类型分别为:
+
+- chat_add_member : 群会话添加人员
+- chat_remove_member : 群会话删除人员
+- chat_quit : 群会话用户主动退群
+- chat_update_owner ：群会话更换群主
+- chat_update_title ：群会话更换群名称
+- chat_disband ： 群会话解散群
+
+POST数据解密后示例
+接收到推送之后请务必返回经过加密的字符串"success"的json数据
+
+```
+{
+    "EventType": "chat_add_member",
+    "TimeStamp": 43535463645,
+    "CorpId": "corpid",
+    "ChatId": "chat90f29b737b56dc179df8w86t83d5f0f8",
+    "UserId": ["efefef" , "111111"],
+    "Operator": "manager0112",
+}
+```
+
+###### 参数说明
+
+参数 | 说明明
+----------  | ------
+EventType | 事件类型，有六种，"chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
+TimeStamp | 时间戳
+CorpId | 发生群会话变更的企业
+ChatId | 会话的ID
+UserId | 用户发生变更的userid列表
+Owner  | 已经更新的新的群主的userid
+Title  | 已经更新的新的群标题
+Operator | 操作人员的userid
+
+##### 返回说明
+
+服务提供商在收到此事件推送后务必返回包含经过加密的字符串"success"的json数据
+
+只有返回了对应的json数据，钉钉才会判断此事件推送成功，套件才能创建成功。
+
+```
+
+{
+  "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",
+  "timeStamp":"1783610513",
+  "nonce":"123456",
+  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"
+ }
+
+```
+
+参数      | 说明
+-------   | -------------
+msg_signature  | 消息体签名
+timeStamp | 时间戳
+nonce  | 随机字符串
+encrypt  | "success"加密字符串
 
 ###注册事件回调接口
 
@@ -1862,7 +1925,7 @@ Https请求方式: POST
 参数 | 参数类型 | 必须 | 说明
 ----------| ------- | ------- | ------
 access_token | String | 是 | 调用接口凭证
-call_back_tag | Array[String] | 是 |  需要监听的事件类型，有八种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove"
+call_back_tag | Array[String] | 是 |  需要监听的事件类型，有14种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
 token | String | 是 | 加解密需要用到的token，ISV(服务提供商)推荐使用注册套件时填写的token，普通企业可以随机填写
 aes_key  | String | 是 | 数据加密密钥。用于回调数据的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取,您可以随机生成，ISV(服务提供商)推荐使用注册套件时填写的EncodingAESKey
 url  | String | 是 | 接收事件回调的url
@@ -1916,7 +1979,7 @@ access_token | String | 是 | 调用接口凭证
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
 access_token  | 调用接口凭证
-call_back_tag |  需要监听的事件类型，有八种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove"
+call_back_tag |  需要监听的事件类型，有14种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
 token | 加解密需要用到的token，ISV(服务提供商)推荐使用注册套件时填写的token，普通企业可以随机填写
 aes_key  | 数据加密密钥。用于回调数据的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取,您可以随机生成，ISV(服务提供商)推荐使用注册套件时填写的EncodingAESKey
 url   | 接收事件回调的url
@@ -1946,7 +2009,7 @@ Https请求方式: POST
 参数 | 参数类型 | 必须 | 说明
 ----------| ------- | ------- | ------
 access_token | String | 是 | 调用接口凭证
-call_back_tag | Array[String] | 是 |  需要监听的事件类型，有八种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove"
+call_back_tag | Array[String] | 是 |  需要监听的事件类型，有14种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
 token | String | 是 | 加解密需要用到的token，ISV(服务提供商)推荐使用注册套件时填写的token，普通企业可以随机填写
 aes_key  | String | 是 | 数据加密密钥。用于回调数据的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取,您可以随机生成，ISV(服务提供商)推荐使用注册套件时填写的EncodingAESKey
 url  | String | 是 | 接收事件回调的url
@@ -2048,7 +2111,7 @@ errmsg | 对返回码的文本描述内容
 has_more | 是否还有推送失败的变更事件，若为true,则表示还有未回调的事件
 failed_list | 事件列表，一次最多200个
 event_time | 事件的时间戳
-call_back_tag | 事件类型，有八种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove"
+call_back_tag | 事件类型，有14种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
 userid | 相关员工列表
 deptid | 相关部门列表
 corpid | 相关企业id
@@ -2110,7 +2173,7 @@ encrypt  | "success"加密字符串
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
 sender | String | 是 | 消息发送者员工ID
-cid | String | 是 | 群消息或者个人聊天会话Id，(通过[<font color=red>JSAPI之pickConversation接口</font>](#获取会话信息)唤起联系人界面拿到会话ID）
+cid | String | 是 | 群消息或者个人聊天会话Id，(通过[<font color=red>JSAPI之pickConversation接口</font>](#获取会话信息)唤起联系人界面选择之后即可拿到会话ID，之后您可以使用获取到的cid调用此接口）
 
 普通会话消息样例：
 
@@ -2549,7 +2612,7 @@ Https请求方式: GET
 
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
-access_token | String | 是 | 再次强调，此token不同于一般的accesstoken，需要调用[<font color=red >获取微应用后台管理Token</font>](#获取微应用后台管理token)
+access_token | String | 是 | 再次强调，此token不同于一般的accesstoken，需要调用[<font color=red >获取微应用管理员免登需要的AccessToken</font>](#获取管理员免登token)
 code | String | 是 | 通过Oauth认证给URL带上的CODE
 
 ###### 返回结果

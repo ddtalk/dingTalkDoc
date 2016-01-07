@@ -3016,7 +3016,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <li><p>每个套件调用单个企业的单个接口频率不可超过1000次/分</p></li>
 </ul>
 
-<h3 id="获取accesstoken">获取AccessToken</h3>
+<h4 id="获取accesstoken">获取AccessToken</h4>
 
 <p>AccessToken是企业访问钉钉开放平台接口的全局唯一票据，调用接口时需携带AccessToken。</p>
 
@@ -3088,9 +3088,9 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="获取微应用后台管理token">获取微应用后台管理Token</h3>
+<h4 id="获取微应用后台管理token">获取微应用后台管理Token</h4>
 
-<p>本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在<a href="#微应用后台管理员免登"><font color=red>微应用后台管理免登</font></a>服务中使用。
+<p>本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在<a href="#oa后台调用管理员免登"><font color=red>微应用后台管理免登</font></a>服务中使用。
 应用场景示例如下图：</p>
 
 <p><img alt="normalcorp" src="https://img.alicdn.com/tps/TB1iw.4KFXXXXXoXFXXXXXXXXXX-594-302.png" /></p>
@@ -6384,7 +6384,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h2 id="通讯录变更事件回调接口">通讯录变更事件回调接口</h2>
+<h2 id="通讯录及群会话变更事件回调接口">通讯录及群会话变更事件回调接口</h2>
 
 <p>在使用回调接口之前您需要了解的是，</p>
 
@@ -6423,7 +6423,7 @@ mobile | 手机号码
 
 <p>如有需要，可以查看具体加解密步骤：<a href="#12-加解密方案"><font color=red >查看</font></a></p>
 
-<h3 id="事件回调">事件回调</h3>
+<h3 id="通讯录事件回调">通讯录事件回调</h3>
 
 <p>当企业通讯录发生变化，并且事件类型包含在注册时填写的&quot;call_back_tag&quot;中时，比如call_back_tag字段为&rdquo;[&ldquo;user_add_org&rdquo;,&ldquo;user_modify_org&rdquo;]&ldquo;，那么企业通讯录发生了&quot;通讯录用户增加&quot;和&quot;讯录用户更改&quot;，钉钉服务器会向url推送事件。</p>
 
@@ -6519,6 +6519,114 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
+<h3 id="群会话事件回调">群会话事件回调</h3>
+
+<p>当企业群会话发生变化，并且事件类型包含在注册时填写的&quot;call_back_tag&quot;中时，比如call_back_tag字段为&rdquo;[&ldquo;chat_add_member&rdquo;,&ldquo;chat_remove_member&rdquo;]&ldquo;，那么企业群会话发生了&quot;群会话添加人员&quot;和&quot;群会话删除人员&quot;，钉钉服务器会向url推送事件。</p>
+
+<p>目前可以监听的事件类型分别为:</p>
+
+<ul>
+<li>chat_add_member : 群会话添加人员</li>
+<li>chat_remove_member : 群会话删除人员</li>
+<li>chat_quit : 群会话用户主动退群</li>
+<li>chat_update_owner ：群会话更换群主</li>
+<li>chat_update_title ：群会话更换群名称</li>
+<li>chat_disband ： 群会话解散群</li>
+</ul>
+
+<p>POST数据解密后示例
+接收到推送之后请务必返回经过加密的字符串&quot;success&quot;的json数据</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"EventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chat_add_member"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"TimeStamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">43535463645</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"CorpId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"corpid"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ChatId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chat90f29b737b56dc179df8w86t83d5f0f8"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"efefef"</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"Operator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager0112"</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+<h6 id="参数说明">参数说明</h6>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>EventType</td>
+<td>事件类型，有六种，&quot;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+</tr>
+<tr>
+<td>TimeStamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>CorpId</td>
+<td>发生群会话变更的企业</td>
+</tr>
+<tr>
+<td>ChatId</td>
+<td>会话的ID</td>
+</tr>
+<tr>
+<td>UserId</td>
+<td>用户发生变更的userid列表</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>已经更新的新的群主的userid</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>已经更新的新的群标题</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td>操作人员的userid</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<p>服务提供商在收到此事件推送后务必返回包含经过加密的字符串&quot;success&quot;的json数据</p>
+
+<p>只有返回了对应的json数据，钉钉才会判断此事件推送成功，套件才能创建成功。</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"msg_signature"</span><span class="p">:</span><span class="s2">"111108bb8e6dbce3c9671d6fdb69d15066227608"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timeStamp"</span><span class="p">:</span><span class="s2">"1783610513"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>msg_signature</td>
+<td>消息体签名</td>
+</tr>
+<tr>
+<td>timeStamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>nonce</td>
+<td>随机字符串</td>
+</tr>
+<tr>
+<td>encrypt</td>
+<td>&ldquo;success&quot;加密字符串</td>
+</tr>
+</tbody></table>
+
 <h3 id="注册事件回调接口">注册事件回调接口</h3>
 
 <p>注册回调接口的时候，钉钉服务器会回调<a href="#测试回调url"><font color=red>测试回调url</font></a>，来验证填写的url的合法性，需要您再接收到回调之后返回加密字符串&quot;success&quot;的json数据,才能完成注册。</p>
@@ -6560,7 +6668,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有八种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>需要监听的事件类型，有14种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -6663,7 +6771,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>需要监听的事件类型，有八种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>需要监听的事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -6716,7 +6824,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有八种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>需要监听的事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -6892,7 +7000,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>事件类型，有八种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
 </tr>
 <tr>
 <td>userid</td>
@@ -6999,7 +7107,7 @@ mobile | 手机号码
 <td>cid</td>
 <td>String</td>
 <td>是</td>
-<td>群消息或者个人聊天会话Id，(通过<a href="#获取会话信息"><font color=red>JSAPI之pickConversation接口</font></a>唤起联系人界面拿到会话ID）</td>
+<td>群消息或者个人聊天会话Id，(通过<a href="#获取会话信息"><font color=red>JSAPI之pickConversation接口</font></a>唤起联系人界面选择之后即可拿到会话ID，之后您可以使用获取到的cid调用此接口）</td>
 </tr>
 </tbody></table>
 
@@ -7770,7 +7878,7 @@ mobile | 手机号码
 <td>access_token</td>
 <td>String</td>
 <td>是</td>
-<td>再次强调，此token不同于一般的accesstoken，需要调用<a href="#获取微应用后台管理token"><font color=red >获取微应用后台管理Token</font></a></td>
+<td>再次强调，此token不同于一般的accesstoken，需要调用<a href="#获取管理员免登token"><font color=red >获取微应用管理员免登需要的AccessToken</font></a></td>
 </tr>
 <tr>
 <td>code</td>
@@ -10819,7 +10927,7 @@ dd.biz.util.chooseImage({
 
 <p>选择图片+上传，防止恶意上传</p>
 
-<p>将在成功上传之后回调onSuccess方法，返回alicdn上的图片链接。微应用也可以调用<code class="prettyprint">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot;&gt;</code>来自定义上传图片，此标签2.5及以上版本支持。</p>
+<p>将在成功上传之后回调onSuccess方法，返回alicdn上的图片链接。微应用也可以调用<code class="prettyprint">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot;&gt;</code>来自定义上传图片，此标签钉钉客户端版本2.5及以上支持。</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">uploadImage</span><span class="p">({</span>
     <span class="na">multiple</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> <span class="c1">//是否多选，默认false</span>
     <span class="na">max</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="c1">//最多可选个数</span>
