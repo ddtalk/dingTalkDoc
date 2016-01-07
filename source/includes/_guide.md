@@ -42,7 +42,7 @@
 ### 新增微应用
 您登录钉钉管理后台后可以进入 *应用中心* 页面对添加微应用
 
-![enter_microapp_center](https://img.alicdn.com/tps/TB1lnfcJFXXXXc6XXXXXXXXXXXX-1110-783.png)
+![enter_microapp_center](https://img.alicdn.com/tps/TB1GqkTLXXXXXcsXFXXXXXXXXXX-1122-641.jpg)
 
 点击上图中 *新增微应用* 按钮，按下图填写微应用信息，点击确定后可以新增微应用。
 
