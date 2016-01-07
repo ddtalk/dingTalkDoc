@@ -41,6 +41,11 @@ ISV接入钉钉后有2种选择：
 
 完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 *钉小秘* 会话中收到管理员帐号和初始密码，该钉钉用户可以通过收到的帐号和密码登录 [<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 进入安全中心对初始密码进行修改。
 
+### 3.完成企业认证
+
+ 您可以通过管理员后台完成[<font color=red >企业认证</font>](https://oa.dingtalk.com/#/orgCheck)
+
+
 ## 二.注册钉钉开发者
 
 在注册钉钉开发者之前，您需要做好以下准备工作
@@ -1232,7 +1237,7 @@ Token：123456
 suitekey：suite4xxxxxxxxxxxxxxx
 
 
-ISV接入相关接口调试：[<font color=red >ISV接入调试工具</font>](https://debug.dingtalk.com/isv.html)
+ISV接入相关接口调试：[<font color=red >ISV接入调试工具</font>](https://debug.dingtalk.com)
 
 ## 套件上架操作流程
 ### 1. 云市场介绍 
