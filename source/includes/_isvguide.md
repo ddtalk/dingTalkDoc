@@ -117,7 +117,7 @@ ISV接入钉钉后有2种选择：
 
 ##### a.钉钉应用菜单-套件列表，点击“创建套件”
 
-![createtj](https://img.alicdn.com/tps/TB1fyqYJFXXXXcXXVXXXXXXXXXX-1346-479.jpg)
+![createtj](https://img.alicdn.com/tps/TB1IJQRLXXXXXb0XFXXXXXXXXXX-1421-196.jpg)
 
 ##### b．填写创建套件表单
 
@@ -160,11 +160,11 @@ IP白名单		| 调用钉钉API时的合法IP列表，多个IP请以“,”隔开
 
 ##### b 点击“创建微应用按钮”
 
-![createmini1](https://img.alicdn.com/tps/TB19X14JFXXXXc3XFXXXXXXXXXX-1164-326.jpg)
+![createmini1](https://img.alicdn.com/tps/TB1CNZ7LXXXXXXnXpXXXXXXXXXX-1240-299.jpg)
 
 ##### c 添加创建微应用表单，点击“确定”按钮
 
-![createmini2](https://img.alicdn.com/tps/TB1G0nnJFXXXXa8XXXXXXXXXXXX-705-649.jpg)
+![createmini2](https://img.alicdn.com/tps/TB18FoZLXXXXXXqXFXXXXXXXXXX-681-673.jpg)
 ##### 需要提供的数据项：
 
 字段  		| 属性
@@ -173,19 +173,20 @@ IP白名单		| 调用钉钉API时的合法IP列表，多个IP请以“,”隔开
 图标 		| 上传大小不超过1M，长宽等比且范围在50px至200px之间的png格式图片
 应用描述 		| 描述该应用的功能与特色，4-120个字内
 主页地址	 	| 以http://开头，用于接收托管企业应用的用户消息，URL支持使用$CORPID$模板参数表示corpid，用户访问应用的时候将把$CORPID$替换成用户所属企业的corpid，例如http://www.dingtalk.com/index?corpid=$CORPID$
+PC主页地址 | 微应用PC端主页地址
 权限设置		| 此处权限会在用户授权您的套件时进行显示告知用户您的套件所需要获取的企业员工信息，当企业用户授权后，您可以通过[<font color=red>获取部门成员（详情）</font>](#获取部门成员（详情）)接口获取员工的详细信息
 接口权限		| 此处权限会在用户授权您的套件时进行显示告知用户您的套件所需要获取的企业信息，当企业用户授权后，您的套件可以钉钉开放平台提供的对应接口
 
 
 ##### d 微应用列表添加一行记录
 
-![createmini3](https://img.alicdn.com/tps/TB1V7DoJFXXXXarXXXXXXXXXXXX-1164-440.jpg)
+![createmini3](https://img.alicdn.com/tps/TB1lC7QLXXXXXcJXFXXXXXXXXXX-1245-353.jpg)
 
 ### 3: 注册测试企业
 
 #### 3.1.描述（Description）
 
-钉钉套件在开发过程中，需要在钉钉移动端上登录绑定了相关企业的钉钉帐号来进行调试。在此之前，需要开发者对注册的测试企业"发起授权所有套件"，之后钉钉服务器会向您填写的回调url[<font color=red>推送临时授权码</font>](#2-回调接口（分为五个回调类型）)，您需要通过临时授权码一步一步到[<font color=red>激活授权套件</font>](#8-激活授权套件)，才能让测试企业的微应用列表出现您开发的微应用。
+钉钉套件在开发过程中，需要在钉钉移动端上登录绑定了相关企业的钉钉帐号来进行调试。在此之前，需要开发者在授权管理中对注册的测试企业"发起授权"，之后钉钉服务器会向您填写的回调url[<font color=red>推送临时授权码</font>](#2-回调接口（分为五个回调类型）)，您需要通过临时授权码一步一步到[<font color=red>激活授权套件</font>](#8-激活授权套件)，才能让测试企业的微应用列表出现您开发的微应用。
 
 备注：[<font color=red>钉钉当前支持最多创建10个测试企业</font>]
 
@@ -197,24 +198,24 @@ IP白名单		| 调用钉钉API时的合法IP列表，多个IP请以“,”隔开
 
 ###### a.钉钉应用菜单—开发环境列表，点击“注册测试企业”
 
-![signintest1](https://img.alicdn.com/tps/TB1VBWRJVXXXXXGaXXXXXXXXXXX-1022-78.jpg)
+![signintest1](https://img.alicdn.com/tps/TB1qYgPLXXXXXX.XVXXXXXXXXXX-1247-84.jpg)
 ##### b.填写企业相关信息
 
 ![signintest2](https://img.alicdn.com/tps/TB1p1H3IVXXXXX8aXXXXXXXXXXX-729-447.png)
 
 ##### c.点击“确定”后列表增加一行记录
 
-![signintest3](https://img.alicdn.com/tps/TB1pvqVJVXXXXahXVXXXXXXXXXX-1029-343.jpg)
+![signintest3](https://img.alicdn.com/tps/TB1SRoPLXXXXXXIXVXXXXXXXXXX-1230-272.jpg)
 
-##### d.点击“模拟测试企业发起授权所有套件”，弹窗提示微应用开通成功
+##### d.点击“授权”，对微应用进行授权
 
 注意：只有在微应用注册的回调接口能够接收推送，才能成功开通微应用，具体详情查看[<font color=red>回调接口</font>](#5-回调接口（分为五个回调类型）)
 
-![signintest4](https://img.alicdn.com/tps/TB1B2njJVXXXXaEXXXXXXXXXXXX-1048-158.jpg)
+![signintest4](https://img.alicdn.com/tps/TB1qxEULXXXXXaMXFXXXXXXXXXX-1233-341.jpg)
 
 ##### e.点击“登录管理”跳转钉钉登录后台
 
-![signintest5](https://img.alicdn.com/tps/TB1lEKUJVXXXXaSXVXXXXXXXXXX-1048-158.jpg)
+![signintest5](https://img.alicdn.com/tps/TB1cHQVLXXXXXazXFXXXXXXXXXX-1220-195.jpg)
 
 ![signintest6](https://img.alicdn.com/tps/TB1snUfIVXXXXbSXpXXXXXXXXXX-866-456.png)
 
