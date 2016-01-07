@@ -1,30 +1,12 @@
 # 企业接入指南
 
-企业接入指南重点介绍使用钉钉开放平台的开发微应用的流程，帮助企业快速接入钉钉开放平台。该节主要分为四个部分：第一部分介绍企业接入钉钉开放平台的准备工作；第二部介绍如何访问开放平台服务端接口；第三部分介绍钉钉开放平台提供的员工身份验证流程；第四部分介绍发送消息到微应用会话。
+此处为企业接入微应用的Getting Started，按照此处的实现步骤，您（企业）可以将已有系统快速接入钉钉。
 
 <br />
 
-## 开发环境准备
+## Step 1 -- 注册钉钉企业
 
-开发者在使用钉钉开放平台开发微应用前需做好以下准备：
-
-- 获取钉钉开放平台企业账号且未被其他阿里云账号绑定；
-- 获取阿里云开发者账号并认证通过；
-- 服务端环境准备且保证服务器固定IP；
-- 开发环境搭建；
-
-开发者可以从 [<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 获取必要的信息用于微应用开发，还可以利用该系统完成微应用配置相关的工作；开发者可以自己搭建服务器也可以购买云主机来搭建自己的服务端环境，开发者需要为自己的微应用注册合法有效的域名并配置在 [<font color=red >应用中心</font>](https://oa.dingtalk.com/#/microApp/microAppList) ；钉钉开放平台的服务端接口不区分语言和平台，开发者可以使用自己熟悉的技术搭建开发环境来开发微应用。
-
-[<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 系统为企业提供了企业通讯录管理、微应用、安全中心、员工数据统计和系统常用设置等功能。
-
-![oa_system.jpg](https://img.alicdn.com/tps/TB1b4jcJFXXXXXOXpXXXXXXXXXX-666-421.jpg)
-
-**钉钉管理后台管理员（以下简称钉钉后台管理员）** 在企业通讯录管理页面可以完成企业的组织结构和员工个人信息的添加、删除、查看和修改等操作；在微应用管理页面可以完成添加和删除微应用，获取CorpID和CorpSecret(接入钉钉开放平台的凭证)，查看微应用相关信息，管理微应用的运行状态等。开发者在使用该系统前需要注册成为钉钉后台管理员或者由钉钉后台管理员分配管理员子帐号。
-
-[<font color=red>企业认证</font>](https://oa.dingtalk.com/#/welcome) 完成的企业享有免费电话和Ding的最高限度、自定义启动页、绑定对公账号的企业分享等权益，具体的内容请参考[<font color=red>管理员秘籍</font>](http://s.dingtalk.com/market/dingtalk/glymj.php?spm=a3140.7832593.0.0.3oUcqn)。
-
-
-## 创建微应用
+### 注册钉钉企业
 
 一、进入 [<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 页面, 点击 [<font color=red >企业注册</font>](https://oa.dingtalk.com/register.html?spm=0.0.0.0.dL51oc)；（已经注册可跳过此步骤）
 
@@ -52,13 +34,17 @@
 
 完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 *钉小秘* 会话中收到管理员帐号和初始密码，该钉钉用户可以通过收到的帐号和密码登录 [<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 进入安全中心对初始密码进行修改。
 
-### 微应用管理和创建
+## Step 2 -- 新增微应用
 
-登录钉钉管理后台后可以进入 *应用中心* 页面对微应用进行运行状态管理，进入微应用后台，微应用信息查看与设置，微应用添加和删除等操作。
+- 您需要通过[<font color=red >Step 1 -- 注册钉钉企业</font>](#step-1-注册钉钉企业)完成钉钉企业账号注册；
+
+完成此步骤您就可以在钉钉上使用微应用了
+### 新增微应用
+您登录钉钉管理后台后可以进入 *应用中心* 页面对添加微应用
 
 ![enter_microapp_center](https://img.alicdn.com/tps/TB1lnfcJFXXXXc6XXXXXXXXXXXX-1110-783.png)
 
-点击 *新增微应用* 按钮，按下图填写微应用信息，点击确定后可以新增微应用。
+点击上图中 *新增微应用* 按钮，按下图填写微应用信息，点击确定后可以新增微应用。
 
 ![add_micro_app](https://img.alicdn.com/tps/TB1Qe_XJFXXXXalXpXXXXXXXXXX-598-477.png)
 
@@ -70,13 +56,9 @@
 <b>首页地址</b> 的URL域名务必保证真实有效，否则会导致钉钉用户无法正常使用微应用。
 </aside>
 
-每个微应用都有 *设置* 选项，点击后进入微应用的设置页面，开发者可以在这里修改微应用的常用信息设置
-
 ![get_micro_app_agentID](https://img.alicdn.com/tps/TB1N490JFXXXXceXFXXXXXXXXXX-602-524.png)
 
-开发者在应用中心创建微应用后，如上图所示可获取到微应用的AgentID，AgentID可用于发送企业会话消息等场景。
-
-开发者完成以上准备工作后就可以进入开发阶段。
+您在应用中心创建微应用后，如上图所示可获取到微应用的AgentID，AgentID可用于发送企业会话消息等场景。
 
 <br />
 
@@ -84,21 +66,36 @@
 
 ![createMi](https://img.alicdn.com/tps/TB1xStVKpXXXXbjXFXXXXXXXXXX-361-640.jpg)
 
+至此您已经可以在钉钉上使用微应用了，如果您需要对微应用与钉钉有进一步的融合，请进行定制开发，参考[<font color=red >开发微应用</font>](#step-3-开发微应用)
 
-## 使用免登服务
+## Step 3 -- 开发微应用
+
+- 您需要通过[<font color=red >新增微应用</font>](#新增微应用)获取微应用的AgentID，用来在微应用开发时调用开放平台的接口
+
+钉钉开放提供丰富的接口、工具供您使用，用以降低您的开发成本：
+
+- 钉钉开放平台提供了企业通讯录管理、文件管理、发送企业会话消息等功能，接口使用可以参考[<font color=red >服务端开发文档</font>](#服务端开发文档)；
+
+- 钉钉开放平台提供了定制的微应用在钉钉客户端的专用运行容器，并提供了一组可以调用钉钉的本地能力和业务能力的JSApi接口，您可以通过这些接口使用钉钉的本地能力或者钉钉的业务逻辑，进行微应用与钉钉功能的结合；接口使用可以参考[<font color=red >客户端开发文档</font>](#客户端开发文档)。
+
+- 钉钉开放平台提供了与钉钉PC版本集成的能力，接口使用可以参考[<font color=red >PC端开发文档</font>](#pc端开发文档)；
+
+- 钉钉开放平台提供了开发过程中需要的调试工具和性能优化的建议，您可以参考[<font color=red >调试工具&性能优化</font>](#调试工具-amp-性能优化)；
 
 
-假如在进入微应用的时候需要获取当前用户的信息，可以使用免登服务，实现账户打通。详细文档请参阅[<font color=red >免登服务</font>](#免登服务)。
+### 实现免登
+
+您的微应用接入钉钉后，通过钉钉实现免登无需让员工进行二次登录，员工在进入微应用的时可以获取当前用户的信息实现与原系统中的账户打通。详细文档请参阅[<font color=red >免登服务</font>](#免登服务)。
 
 
 <br />
 
 
-## 调用平台接口
+### 调用API接口
 
-开发者在调用钉钉开放平台接口时需要附加AccessToken，AccessToken可以通过CorpID和CorpSecret获取。
+您在调用钉钉开放平台接口时需要附加AccessToken，AccessToken可以通过CorpID和CorpSecret获取。
 
-### 获取CorpID和CorpSecret
+#### 获取CorpID和CorpSecret
 
 CorpID是企业的唯一标识，获取CorpID和CorpSecret的步骤如下:
 
@@ -114,7 +111,7 @@ CorpID是企业的唯一标识，获取CorpID和CorpSecret的步骤如下:
 钉钉开放平台提供了获取和修改企业(团队)的组织结构信息、人员信息等功能，所以请妥善保管CorpID和CorpSecret，避免外泄影响企业信息安全。
 </aside>
 
-### 获取AccessToken
+#### 获取AccessToken
 
 开发者在调用开放平台接口前需要通过CorpID和CorpSecret获取AccessToken。获取AccessToken的方法是向 `https://oapi.dingtalk.com/gettoken?corpid=id&corpsecret=secrect` GET请求。
 
@@ -133,7 +130,7 @@ CorpID是企业的唯一标识，获取CorpID和CorpSecret的步骤如下:
 <br />
 
 
-## 发送企业会话消息
+### 发送企业会话消息
 
 用户可以在企业会话中查看微应用发送的消息，开发者可以通过发送消息接口将消息发送到企业会话中。
 
