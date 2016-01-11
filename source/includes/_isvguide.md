@@ -333,7 +333,7 @@ ISV需要遵守统一的验收标准规范，请参考：[<font color=red>标准
 #### Step 4 – 获取企业邀请码
 ISV在接入之前需要通过联系钉钉ISV接入接口人获取ISV企业邀请码，联系方式：angle.lixy@alibaba-inc.com
 #### Step 5 – 提交ISV线下快速部署申请表
-填写“ISV线下快速部署申请表”，发送到open-dingtalk@list.alibaba-inc.com申请， 审核通过后，钉钉小二会发送链接&二维码给ISV, ISV可以生成H5页面，分享给用户扫码或者点击下载[<font color=red>ISV线下快速部署申请表</font>](http://download.taobaocdn.com/freedom/31112/xls/p1a8not904vro1l7r13qoa6mdr44.xls)
+填写“ISV线下快速部署申请表”，发送到open-dingtalk@list.alibaba-inc.com申请， 审核通过后，钉钉小二会发送链接&二维码给ISV, ISV可以生成H5页面，分享给用户扫码或者点击下载[<font color=red>ISV线下快速部署申请表</font>](http://download.taobaocdn.com/freedom/30712/xls/p1a8ns3o361p8c1n7o2610vqav84.xls)
 
 ![Application Form](https://img.alicdn.com/tps/TB1dSVMLpXXXXbsXFXXXXXXXXXX-1455-826.png)
 填写说明：
