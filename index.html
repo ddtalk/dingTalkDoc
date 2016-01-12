@@ -352,11 +352,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&ldquo;钉钉应用&rdquo;</td>
+<td>选择&quot;钉钉应用&quot;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&ldquo;容器服务&rdquo;</td>
+<td>选择&quot;容器服务&quot;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -1350,6 +1350,89 @@ http://s.dingtalk.com/market/dingtalk/download.php?lwfrom=20151223115042450</p>
 </tr>
 </tbody></table>
 
+<h4 id="g-quot-校验序列号-quot-事件">g.&quot;校验序列号&quot;事件</h4>
+
+<p>此事件的推送会发生在企业开通套件输入序列号的时候,要求请求立即返回。</p>
+
+<p>POST数据解密后示例</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"EventType"</span><span class="p">:</span><span class="s2">"check_suite_license_code"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"TimeStamp"</span><span class="p">:</span><span class="mi">15481221</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"SuiteKey"</span><span class="p">:</span><span class="s2">"suited6db0pze8yao1b1y"</span><span class="w">
+  </span><span class="s2">"AuthCorpId"</span><span class="err">:</span><span class="s2">"dingxxxxxxxx"</span><span class="w">
+  </span><span class="s2">"LicenseCode"</span><span class="err">:</span><span class="s2">"xxxxxxxx"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>服务提供商在收到&quot;校验序列号&quot;事件推送后,判断该LicenseCode是否合法,如果合法则返回加密&quot;success&quot;。返回其它值或者不返回视为LicenseCode不合法</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TimeStamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>EventType</td>
+<td>check_suite_license_code</td>
+</tr>
+<tr>
+<td>SuiteKey</td>
+<td>校验的SuiteKey(此处为套件的SuiteKey)</td>
+</tr>
+<tr>
+<td>AuthCorpId</td>
+<td>使用该套件企业的corpid</td>
+</tr>
+<tr>
+<td>LicenseCode</td>
+<td>企业使用套件输入的序列号</td>
+</tr>
+</tbody></table>
+
+<h5 id="返回说明">返回说明</h5>
+
+<p>服务提供商在收到&quot;校验序列号&quot;事件推送后,判断该LicenseCode是否合法,如果合法返回加密&quot;success&quot;。返回其它值或者不返回作为不合法处理</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"msg_signature"</span><span class="p">:</span><span class="s2">"111108bb8e6dbce3c9671d6fdb69d15066227608"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timeStamp"</span><span class="p">:</span><span class="s2">"1783610513"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"encrypt"</span><span class="p">:</span><span class="s2">"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="s2">"Random"</span><span class="err">字段的加密数据</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>msg_signature</td>
+<td>消息体签名</td>
+</tr>
+<tr>
+<td>timeStamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>nonce</td>
+<td>随机字符串</td>
+</tr>
+<tr>
+<td>encrypt</td>
+<td>加密字符串</td>
+</tr>
+</tbody></table>
+
 <h3 id="3-获取套件访问token（suite_access_token）">3: 获取套件访问Token（suite_access_token）</h3>
 
 <h4 id="使用场景">使用场景</h4>
@@ -1603,7 +1686,9 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
       </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="s2">"corpid"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"corpid"</span><span class="p">:</span><span class="s2">"auth_corpid_value"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"industry"</span><span class="p">:</span><span class="s2">"互联网"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"invite_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="w">
+      </span><span class="nt">"invite_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"license_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxx"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"invite_url"</span><span class="p">:</span><span class="s2">"invite_url:https://yfm.dingtalk.com/invite/index?code=xxxx"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"auth_user_info"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1655,6 +1740,14 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 <tr>
 <td>corp_name</td>
 <td>授权方企业名称</td>
+</tr>
+<tr>
+<td>license_code</td>
+<td>序列号</td>
+</tr>
+<tr>
+<td>invite_url</td>
+<td>企业邀请链接</td>
 </tr>
 <tr>
 <td>auth_user_info</td>
@@ -7274,8 +7367,7 @@ mobile | 手机号码
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/message/send?access_token=ACCESS_TOKEN</code></p>
 
-<h6 id="参数说明">参数说明</h6>
-
+<h6 id="参数说明">参数说明
 <table><thead>
 <tr>
 <th>参数</th>
@@ -7571,7 +7663,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h4 id="oa消息体内容">OA消息体内容</h4>
+oa消息体内容&rdquo;>OA消息体内容</h4>
 
 <h6 id="参数说明">参数说明</h6>
 
@@ -7687,8 +7779,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h4 id="oa消息截图">OA消息截图</h4>
-
+<h4 id="oa消息截图">OA消息截图
 <p><img alt="oames" src="https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg" /></p>
 
 <h2 id="管理多媒体文件">管理多媒体文件</h2>
@@ -7998,7 +8089,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>email</td>
-<td>email地址&rdquo;,</td>
+<td>email地址&quot;,</td>
 </tr>
 <tr>
 <td>name</td>
@@ -8017,9 +8108,8 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="普通钉钉用户账号开放">普通钉钉用户账号开放</h2>
-
-<h3 id="获取钉钉开放应用的access_token">获取钉钉开放应用的ACCESS_TOKEN</h3>
+<h2 id="普通钉钉用户账号开放">普通钉钉用户账号开放
+获取钉钉开放应用的access_token&quot;>获取钉钉开放应用的ACCESS_TOKEN</h3>
 
 <p>第三方web服务提供商取得钉钉开放应用的appid及appsecret后，可以获取开放应用的ACCESS_TOKEN</p>
 
@@ -8113,8 +8203,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h6 id="返回结果">返回结果</h6>
-
+<h6 id="返回结果">返回结果
 <p>正确时返回示例如下</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
@@ -8160,7 +8249,7 @@ mobile | 手机号码
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h6 id="参数说明">参数说明</h6>
+参数说明&quot;>参数说明</h6>
 
 <table><thead>
 <tr>
@@ -8421,7 +8510,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 
 <p>isv企业可以通过这个接口更新微应用数据，所更新的数据必须是通过/data/record接口插入的，现在只能更新module，callbackUrl，extension三个字段。</p>
 
-<h6 id="请求说明">请求说明</h6>
+请求说明&quot;>请求说明</h6>
 
 <p>Https请求方式：POST</p>
 
@@ -8499,7 +8588,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 </tr>
 </tbody></table>
 
-<h6 id="返回结果">返回结果</h6>
+返回结果&quot;>返回结果</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
 </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
 </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
@@ -9598,7 +9687,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 
 </span></code></pre>
 
-<h2 id="demo">Demo</h2>
+demo&quot;>Demo</h2>
 
 <p>提供了使用Java、PHP、Nodejs 接入钉钉开放平台API的代码示例，和在线调试工具</p>
 
@@ -12285,8 +12374,7 @@ dd.biz.user.get({
 
 <p>“分享到会话”功能为客户端调用功能，请将对应SDK集成至开发者移动端应用中。</p>
 
-<h3 id="场景介绍">场景介绍</h3>
-
+<h3 id="场景介绍">场景介绍
 <p>用户使用开发者制作的移动应用时，可以将自己喜欢的内容，通过该功能快速地转发给自己在钉钉内的好友。好友点击打开内容链接，
 将通过钉钉内置浏览器打开网页的形式进行呈现。在传播内容的同时，也会同时露出应用的名称与logo，起到品牌传播的效果。</p>
 
@@ -12310,8 +12398,7 @@ dd.biz.user.get({
 
 <h3 id="接入流程">接入流程</h3>
 
-<h4 id="android接入流程">Android接入流程</h4>
-
+<h4 id="android接入流程">Android接入流程
 <p>1、搭建开发环境</p>
 
 <p>[1] 推荐用Android Studio建立工程。</p>
@@ -13797,7 +13884,7 @@ f.唤起添加好友页面
 
 <p>DingTalkPC.biz</p>
 
-<h3 id="选人">选人</h3>
+选人&quot;>选人</h3>
 
 <p>此接口只能对用户进行选择，若要同时选择部门，请使用“选人，选部门”接口。</p>
 <pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
@@ -14083,7 +14170,7 @@ DingTalkPC.biz.chat.chooseConversation({
 id | 会话id
 title | 会话名称 -->
 
-<h2 id="附录">附录</h2>
+附录&quot;>附录</h2>
 
 <h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
 
