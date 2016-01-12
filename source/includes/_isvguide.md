@@ -811,6 +811,58 @@ nonce  | 随机字符串
 encrypt  | "success"字段的加密字符串
 
 
+#### g."校验序列号"事件
+
+此事件的推送会发生在企业开通套件输入序列号的时候,要求请求立即返回。
+
+POST数据解密后示例
+
+```
+
+{
+  "EventType":"check_suite_license_code",
+  "TimeStamp":15481221,
+  "SuiteKey":"suited6db0pze8yao1b1y"
+  "AuthCorpId":"dingxxxxxxxx"
+  "LicenseCode":"xxxxxxxx"
+}
+
+```
+
+服务提供商在收到"校验序列号"事件推送后,判断该LicenseCode是否合法,如果合法则返回加密"success"。返回其它值或者不返回视为LicenseCode不合法
+
+
+参数			| 说明
+-------		| -------------
+TimeStamp	| 时间戳
+EventType	| check_suite_license_code
+SuiteKey	| 校验的SuiteKey(此处为套件的SuiteKey)
+AuthCorpId	| 使用该套件企业的corpid
+LicenseCode	| 企业使用套件输入的序列号
+##### 返回说明
+
+服务提供商在收到"校验序列号"事件推送后,判断该LicenseCode是否合法,如果合法返回加密"success"。返回其它值或者不返回作为不合法处理
+
+
+```
+
+{
+  "msg_signature":"111108bb8e6dbce3c9671d6fdb69d15066227608",
+  "timeStamp":"1783610513",
+  "nonce":"123456",
+  "encrypt":"1ojQf0NSvw2WPvW7LijxS8UvISr8pdDP+rXpPbcLGOmIBNbWetRg7IP0vdhVgkVwSoZBJeQwY2zhROsJq/HJ+q6tp1qhl9L1+ccC9ZjKs1wV5bmA9NoAWQiZ+7MpzQVq+j74rJQljdVyBdI/dGOvsnBSCxCVW0ISWX0vn9lYTuuHSoaxwCGylH9xRhYHL9bRDskBc7bO0FseHQQasdfghjkl" // "Random"字段的加密数据
+}
+
+```
+
+参数      | 说明
+-------   | -------------
+msg_signature  | 消息体签名
+timeStamp | 时间戳
+nonce  | 随机字符串
+encrypt  | 加密字符串
+
+
 ### 3: 获取套件访问Token（suite_access_token）
 #### 使用场景
 
@@ -988,7 +1040,9 @@ permanent_code		| 永久授权码，通过get_permanent_code获取
 	  "corp_name":"corpid",
 	  "corpid":"auth_corpid_value",
 	  "industry":"互联网",
-	  "invite_code" : "1001"
+	  "invite_code" : "1001",
+	  "license_code": "xxxxx",
+	  "invite_url":"invite_url:https://yfm.dingtalk.com/invite/index?code=xxxx"
 	},
 	"auth_user_info":
     {
@@ -1022,6 +1076,8 @@ corpid				| 授权方企业id
 invite_code         | 表示邀请码，只有填写过且是ISV自己邀请码的数据才会返回,否则值为空字符串
 industry			| 表示企业所属行业
 corp_name			| 授权方企业名称
+license_code		| 序列号
+invite_url			| 企业邀请链接
 auth_user_info      | 授权方管理员信息
 corp_logo_url		| 企业logo
 auth_info			| 授权信息
