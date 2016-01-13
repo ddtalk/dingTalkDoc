@@ -352,11 +352,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&quot;钉钉应用&quot;</td>
+<td>选择&ldquo;钉钉应用&rdquo;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&quot;容器服务&quot;</td>
+<td>选择&ldquo;容器服务&rdquo;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -4650,7 +4650,7 @@ mobile | 手机号码
 <td>微应用的PC端主页，必须以http开头或https开头，如果不为空则必须与homepageUrl的域名一致</td>
 </tr>
 <tr>
-<td>ompUrl</td>
+<td>ompLink</td>
 <td>String</td>
 <td>否</td>
 <td>微应用的OA后台管理主页，必须以http开头或https开头</td>
@@ -7367,7 +7367,8 @@ mobile | 手机号码
 
 <p><code class="prettyprint">https://oapi.dingtalk.com/message/send?access_token=ACCESS_TOKEN</code></p>
 
-<h6 id="参数说明">参数说明
+<h6 id="参数说明">参数说明</h6>
+
 <table><thead>
 <tr>
 <th>参数</th>
@@ -7663,7 +7664,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-oa消息体内容&rdquo;>OA消息体内容</h4>
+<h4 id="oa消息体内容">OA消息体内容</h4>
 
 <h6 id="参数说明">参数说明</h6>
 
@@ -7779,7 +7780,8 @@ oa消息体内容&rdquo;>OA消息体内容</h4>
 </tr>
 </tbody></table>
 
-<h4 id="oa消息截图">OA消息截图
+<h4 id="oa消息截图">OA消息截图</h4>
+
 <p><img alt="oames" src="https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg" /></p>
 
 <h2 id="管理多媒体文件">管理多媒体文件</h2>
@@ -8089,7 +8091,7 @@ oa消息体内容&rdquo;>OA消息体内容</h4>
 </tr>
 <tr>
 <td>email</td>
-<td>email地址&quot;,</td>
+<td>email地址&rdquo;,</td>
 </tr>
 <tr>
 <td>name</td>
@@ -8108,8 +8110,9 @@ oa消息体内容&rdquo;>OA消息体内容</h4>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="普通钉钉用户账号开放">普通钉钉用户账号开放
-获取钉钉开放应用的access_token&quot;>获取钉钉开放应用的ACCESS_TOKEN</h3>
+<h2 id="普通钉钉用户账号开放">普通钉钉用户账号开放</h2>
+
+<h3 id="获取钉钉开放应用的access_token">获取钉钉开放应用的ACCESS_TOKEN</h3>
 
 <p>第三方web服务提供商取得钉钉开放应用的appid及appsecret后，可以获取开放应用的ACCESS_TOKEN</p>
 
@@ -8203,7 +8206,8 @@ oa消息体内容&rdquo;>OA消息体内容</h4>
 </tr>
 </tbody></table>
 
-<h6 id="返回结果">返回结果
+<h6 id="返回结果">返回结果</h6>
+
 <p>正确时返回示例如下</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
@@ -8249,7 +8253,7 @@ oa消息体内容&rdquo;>OA消息体内容</h4>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-参数说明&quot;>参数说明</h6>
+<h6 id="参数说明">参数说明</h6>
 
 <table><thead>
 <tr>
@@ -8510,7 +8514,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 
 <p>isv企业可以通过这个接口更新微应用数据，所更新的数据必须是通过/data/record接口插入的，现在只能更新module，callbackUrl，extension三个字段。</p>
 
-请求说明&quot;>请求说明</h6>
+<h6 id="请求说明">请求说明</h6>
 
 <p>Https请求方式：POST</p>
 
@@ -8588,7 +8592,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 </tr>
 </tbody></table>
 
-返回结果&quot;>返回结果</h6>
+<h6 id="返回结果">返回结果</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
 </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
 </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
@@ -9687,7 +9691,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 
 </span></code></pre>
 
-demo&quot;>Demo</h2>
+<h2 id="demo">Demo</h2>
 
 <p>提供了使用Java、PHP、Nodejs 接入钉钉开放平台API的代码示例，和在线调试工具</p>
 
@@ -12374,7 +12378,8 @@ dd.biz.user.get({
 
 <p>“分享到会话”功能为客户端调用功能，请将对应SDK集成至开发者移动端应用中。</p>
 
-<h3 id="场景介绍">场景介绍
+<h3 id="场景介绍">场景介绍</h3>
+
 <p>用户使用开发者制作的移动应用时，可以将自己喜欢的内容，通过该功能快速地转发给自己在钉钉内的好友。好友点击打开内容链接，
 将通过钉钉内置浏览器打开网页的形式进行呈现。在传播内容的同时，也会同时露出应用的名称与logo，起到品牌传播的效果。</p>
 
@@ -12398,7 +12403,8 @@ dd.biz.user.get({
 
 <h3 id="接入流程">接入流程</h3>
 
-<h4 id="android接入流程">Android接入流程
+<h4 id="android接入流程">Android接入流程</h4>
+
 <p>1、搭建开发环境</p>
 
 <p>[1] 推荐用Android Studio建立工程。</p>
@@ -13884,7 +13890,7 @@ f.唤起添加好友页面
 
 <p>DingTalkPC.biz</p>
 
-选人&quot;>选人</h3>
+<h3 id="选人">选人</h3>
 
 <p>此接口只能对用户进行选择，若要同时选择部门，请使用“选人，选部门”接口。</p>
 <pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">contact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
@@ -14170,7 +14176,7 @@ DingTalkPC.biz.chat.chooseConversation({
 id | 会话id
 title | 会话名称 -->
 
-附录&quot;>附录</h2>
+<h2 id="附录">附录</h2>
 
 <h3 id="js-api权限签名算法">JS-API权限签名算法</h3>
 
