@@ -791,7 +791,7 @@ appName | String | 是 | 微应用的名称。长度限制为1~10个字符
 appDesc  | String | 是 | 微应用的描述。长度限制为1~20个字符
 homepageUrl | String | 是 | 微应用的移动端主页，必须以http开头或https开头
 pcHomepageUrl | String | 否 | 微应用的PC端主页，必须以http开头或https开头，如果不为空则必须与homepageUrl的域名一致
-ompUrl | String | 否 | 微应用的OA后台管理主页，必须以http开头或https开头
+ompLink | String | 否 | 微应用的OA后台管理主页，必须以http开头或https开头
 
 ###### 返回结果
 
