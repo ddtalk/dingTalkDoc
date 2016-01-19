@@ -807,7 +807,7 @@ ompLink | String | 否 | 微应用的OA后台管理主页，必须以http开头�
 ----------  | ------
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
-id | 创建的部门id
+id | 创建的微应用id
 
 
 
