@@ -434,8 +434,8 @@ name | 成员名称
 tel  | 分机号（ISV不可见）
 workPlace | 办公地点（ISV不可见）
 remark | 备注（ISV不可见）
-mobile | 手机号码
-email | 电子邮箱
+mobile | 手机号码（ISV不可见）
+email | 电子邮箱（ISV不可见）
 active | 是否已经激活, true表示已激活, false表示未激活
 orderInDepts | 在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值
 isAdmin | 是否为企业的管理员, true表示是, false表示不是
