@@ -398,11 +398,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&ldquo;钉钉应用&rdquo;</td>
+<td>选择&quot;钉钉应用&quot;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&ldquo;容器服务&rdquo;</td>
+<td>选择&quot;容器服务&quot;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -4454,12 +4454,31 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>是</td>
 <td>获取的部门id</td>
 </tr>
+<tr>
+<td>offset</td>
+<td>long</td>
+<td>否</td>
+<td>支持分页查询，与size参数同时设置时才生效，此参数代表偏移量</td>
+</tr>
+<tr>
+<td>size</td>
+<td>int</td>
+<td>否</td>
+<td>支持分页查询，与offset参数同时设置时才生效，此参数代表分页大小，最大100</td>
+</tr>
+<tr>
+<td>order</td>
+<td>String</td>
+<td>否</td>
+<td>支持分页查询，部门成员的排序规则，默认不传是按自定义排序；entry_asc代表按照进入部门的时间升序，entry_desc代表按照进入部门的时间降序，modify_asc代表按照部门信息修改时间升序，modify_desc代表按照部门信息修改时间降序，custom代表用户定义(未定义时按照拼音)排序</td>
+</tr>
 </tbody></table>
 
 <h6 id="返回结果">返回结果</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"userlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
@@ -4483,6 +4502,10 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <tr>
 <td>errmsg</td>
 <td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>hasMore</td>
+<td>在分页查询时返回，代表是否还有下一页更多数据</td>
 </tr>
 <tr>
 <td>userlist</td>
@@ -4530,12 +4553,31 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>是</td>
 <td>获取的部门id</td>
 </tr>
+<tr>
+<td>offset</td>
+<td>long</td>
+<td>否</td>
+<td>支持分页查询，与size参数同时设置时才生效，此参数代表偏移量</td>
+</tr>
+<tr>
+<td>size</td>
+<td>int</td>
+<td>否</td>
+<td>支持分页查询，与offset参数同时设置时才生效，此参数代表分页大小，最大100</td>
+</tr>
+<tr>
+<td>order</td>
+<td>String</td>
+<td>否</td>
+<td>支持分页查询，部门成员的排序规则，默认不传是按自定义排序；entry_asc代表按照进入部门的时间升序，entry_desc代表按照进入部门的时间降序，modify_asc代表按照部门信息修改时间升序，modify_desc代表按照部门信息修改时间降序，custom代表用户定义(未定义时按照拼音)排序</td>
+</tr>
 </tbody></table>
 
 <h6 id="返回结果">返回结果</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"userlist"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
@@ -4578,6 +4620,10 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <tr>
 <td>errmsg</td>
 <td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>hasMore</td>
+<td>在分页查询时返回，代表是否还有下一页更多数据</td>
 </tr>
 <tr>
 <td>userlist</td>
@@ -8978,6 +9024,18 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <tr>
 <td>40067</td>
 <td>标题长度不合法</td>
+</tr>
+<tr>
+<td>40068</td>
+<td>不合法的偏移量</td>
+</tr>
+<tr>
+<td>40069</td>
+<td>不合法的分页大小</td>
+</tr>
+<tr>
+<td>40070</td>
+<td>不合法的排序参数</td>
 </tr>
 <tr>
 <td>40073</td>
