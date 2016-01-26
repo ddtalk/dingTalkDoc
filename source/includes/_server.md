@@ -654,6 +654,9 @@ Https请求方式: GET
 ---------- | ------- | ------- | ------
 access_token | String | 是 | 调用接口凭证
 department_id | long | 是 | 获取的部门id
+offset | long | 否 | 支持分页查询，与size参数同时设置时才生效，此参数代表偏移量
+size | int | 否 | 支持分页查询，与offset参数同时设置时才生效，此参数代表分页大小，最大100
+order | String | 否 | 支持分页查询，部门成员的排序规则，默认不传是按自定义排序；entry_asc代表按照进入部门的时间升序，entry_desc代表按照进入部门的时间降序，modify_asc代表按照部门信息修改时间升序，modify_desc代表按照部门信息修改时间降序，custom代表用户定义(未定义时按照拼音)排序
 
 ###### 返回结果
 
@@ -661,6 +664,7 @@ department_id | long | 是 | 获取的部门id
 {
     "errcode": 0,
     "errmsg": "ok",
+    "hasMore": false,
     "userlist": [
         {
             "userid": "zhangsan",
@@ -675,6 +679,7 @@ department_id | long | 是 | 获取的部门id
 ---------- | ------
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
+hasMore | 在分页查询时返回，代表是否还有下一页更多数据
 userlist | 成员列表
 userid | 员工唯一标识ID（不可修改）
 name | 成员名称
@@ -692,6 +697,9 @@ Https请求方式: GET
 ---------- | -------  | ------- | ------
 access_token |String | 是 | 调用接口凭证
 department_id | long | 是 | 获取的部门id
+offset | long | 否 | 支持分页查询，与size参数同时设置时才生效，此参数代表偏移量
+size | int | 否 | 支持分页查询，与offset参数同时设置时才生效，此参数代表分页大小，最大100
+order | String | 否 | 支持分页查询，部门成员的排序规则，默认不传是按自定义排序；entry_asc代表按照进入部门的时间升序，entry_desc代表按照进入部门的时间降序，modify_asc代表按照部门信息修改时间升序，modify_desc代表按照部门信息修改时间降序，custom代表用户定义(未定义时按照拼音)排序
 
 ###### 返回结果
 
@@ -699,6 +707,7 @@ department_id | long | 是 | 获取的部门id
 {
     "errcode": 0,
     "errmsg": "ok",
+    "hasMore": false,
     "userlist":[
         {
             "userid": "zhangsan",
@@ -732,6 +741,7 @@ department_id | long | 是 | 获取的部门id
 ---------- | ------
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
+hasMore | 在分页查询时返回，代表是否还有下一页更多数据
 userlist | 成员列表
 userid | 员工唯一标识ID（不可修改）
 order | 表示人员在此部门中的排序，列表是按order的倒序排列输出的，即从大到小排列输出的
@@ -3034,6 +3044,9 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 40065 | 不合法的备注  
 40066 | 不合法的部门列表
 40067 | 标题长度不合法
+40068 | 不合法的偏移量
+40069 | 不合法的分页大小
+40070 | 不合法的排序参数
 40073 | 不存在的openid
 40077 | 不存在的预授权码
 40078 | 不存在的临时授权码
