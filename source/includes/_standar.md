@@ -49,6 +49,15 @@
 商品上架前，提供产品的下一阶段的迭代计划；例如：
 ![product_plan](https://img.alicdn.com/tps/TB17mSwLXXXXXXeXXXXXXXXXXXX-419-505.png)
 
+### PC桌面版
+ISV在10家企业共创阶段，如提供PC版，必须完成钉钉桌面版免登接入，并且需要按照以下标准进行产品验收
+#### 1.全部页面嵌入钉钉桌面版，如审批和通达应用
+![product_PC1](https://img.alicdn.com/tps/TB1WAkELpXXXXXjXFXXXXXXXXXX-865-588.png)
+#### 2.跳出钉钉桌面版，新开浏览器窗口，免登进入ISV web版页面
+- 在保持较好体验前提下，建议ISV web版页面，全部嵌入钉钉桌面版，并实现免登，如果嵌入体验较差，可以点击具体功能后，跳出到浏览器- 从钉钉桌面跳出，必须从对用户有业务意义的页面，点击具体功能后，无缝跳出，不能有业务断点，比如可以嵌入报表导航页面，在进行查询/新增/编辑/删除时，跳出到浏览器，不允许通过只有登录按钮的空页面，进行跳出
+
+![product_PC2](https://img.alicdn.com/tps/TB1nJcCLpXXXXamXFXXXXXXXXXX-865-588.png)
+
 ## 技术标准
 
 ### 质量标准#### TC验收标准：覆盖率大于等于95%- 必要的输入：ISV开开发阶段提供《TC文档》，《需求规格说明书》- TC中必须包含但不限于场景要求：
