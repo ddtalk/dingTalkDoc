@@ -1663,7 +1663,6 @@ d)ISV套件授权系统获取企业永久授权码并进行存储
 
 - 方案二：ISV独立部署应用数据请求先发送至ISV套件服务器，ISV套件服务器使用授权码调用钉钉开放平台API
 
-5，	完成授权开始使用
 ##### 系统交互图：
 ![system_design](https://img.alicdn.com/tps/TB1TgCgLXXXXXXqXVXXXXXXXXXX-802-514.png)
 
