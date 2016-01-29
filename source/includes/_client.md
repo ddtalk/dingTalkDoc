@@ -399,16 +399,18 @@ dd.biz
 				name:"文件名",         
 				onSuccess: function(data) {
 				 /* data结构
-    			[{
+				 {"data":
+    				[
+    				{
      				"corpId": "", //公司id
       				"spaceId": "" //空间id
       				"fileId": "", //文件id
       				"fileName": "", //文件名
       				"fileSize": 111111, //文件大小
       				"fileType": "", //文件类型
-     				},
-    			 ...
-   				 ]
+     				}
+   					]
+   				 }
  				 */
 		        },
 	            onFail: function(err) {
