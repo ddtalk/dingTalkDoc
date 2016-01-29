@@ -398,11 +398,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&ldquo;钉钉应用&rdquo;</td>
+<td>选择&quot;钉钉应用&quot;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&ldquo;容器服务&rdquo;</td>
+<td>选择&quot;容器服务&quot;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -4036,6 +4036,8 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"remark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan@gzdev.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isHide"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isSenior"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"extattr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"爱好"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"年龄"</span><span class="p">:</span><span class="s2">"24"</span><span class="w">
@@ -4073,9 +4075,9 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 </tr>
 <tr>
 <td>orderInDepts</td>
+<td>JSONObject</td>
+<td>否</td>
 <td>在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>department</td>
@@ -4124,6 +4126,18 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>String</td>
 <td>否</td>
 <td>员工工号。对应显示到OA后台和客户端个人资料的工号栏目。长度为0~64个字符</td>
+</tr>
+<tr>
+<td>isHide</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否号码隐藏, true表示隐藏, false表示不隐藏。隐藏手机号后，手机号在个人资料页隐藏，但仍可对其发DING、发起钉钉免费商务电话。</td>
+</tr>
+<tr>
+<td>isSenior</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否高管模式，true表示是，false表示不是。开启后，手机号码对所有员工隐藏。普通员工无法对其发DING、发起钉钉免费商务电话。高管之间不受影响。</td>
 </tr>
 <tr>
 <td>extattr</td>
@@ -4182,6 +4196,8 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"remark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan@gzdev.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isHide"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isSenior"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"extattr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"爱好"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"年龄"</span><span class="p">:</span><span class="s2">"24"</span><span class="w">
@@ -4270,6 +4286,18 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>String</td>
 <td>否</td>
 <td>员工工号，对应显示到OA后台和客户端个人资料的工号栏目。长度为0~64个字符</td>
+</tr>
+<tr>
+<td>isHide</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否号码隐藏, true表示隐藏, false表示不隐藏。隐藏手机号后，手机号在个人资料页隐藏，但仍可对其发DING、发起钉钉免费商务电话。</td>
+</tr>
+<tr>
+<td>isSenior</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否高管模式，true表示是，false表示不是。开启后，手机号码对所有员工隐藏。普通员工无法对其发DING、发起钉钉免费商务电话。高管之间不受影响。</td>
 </tr>
 <tr>
 <td>extattr</td>
