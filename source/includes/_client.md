@@ -9,7 +9,7 @@
 我们提供了Demo和调试工具给您的开发提供方便，如果对调用参数有疑问，请使用调试工具。对jsapi用法有疑问，可查看Demo.
 
 [<font color=red >调试工具</font>](http://wsdebug.dingtalk.com/):[http://wsdebug.dingtalk.com](http://wsdebug.dingtalk.com)
-打开左边的超链接后，手机扫描二维码，然后在PC页面上配置jsapi参数，点击执行手机就会给予相应反馈
+打开左边的超链接之后，手机扫描二维码，然后在PC页面上配置jsapi参数，点击执行手机就会给予相应反馈
 
 [<font color=red >jsapi使用样例地址</font>](http://h5.m.laiwang.com/home/ding.html):[http://h5.m.laiwang.com/home/ding.html](http://h5.m.laiwang.com/home/ding.html)
 
@@ -384,6 +384,46 @@ document.addEventListener('backbutton', function(e) {
     });
 }, false);
 ```
+
+
+## 钉盘
+
+dd.biz
+
+###转存文件到钉盘
+
+```javascript
+	dd.biz.cspace.saveFile({
+				corpId:"dingf8b3508f3073b265",
+				url:"https://ringnerippca.files.wordpress.com/20.pdf",
+				name:"文件名",         
+				onSuccess: function(data) {
+				 /* data结构
+    			[{
+     				"corpId": "", //公司id
+      				"spaceId": "" //空间id
+      				"fileId": "", //文件id
+      				"fileName": "", //文件名
+      				"fileSize": 111111, //文件大小
+      				"fileType": "", //文件类型
+     				},
+    			 ...
+   				 ]
+ 				 */
+		        },
+	            onFail: function(err) {
+	                alert(JSON.stringify(err));
+	            }
+			});
+```
+##### 参数说明
+
+参数 | 参数类型 | 说明
+----- | ----- | -----
+corpId | String | 用户当前的corpid，将只能存储到当前corpid对应企业的钉盘和个人钉盘
+url | String | 文件地址
+name | String | 文件保存的名字
+
 
 
 ## 弹窗

@@ -398,11 +398,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&quot;钉钉应用&quot;</td>
+<td>选择&ldquo;钉钉应用&rdquo;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&quot;容器服务&quot;</td>
+<td>选择&ldquo;容器服务&rdquo;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -9919,7 +9919,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <p>我们提供了Demo和调试工具给您的开发提供方便，如果对调用参数有疑问，请使用调试工具。对jsapi用法有疑问，可查看Demo.</p>
 
 <p><a href="http://wsdebug.dingtalk.com/"><font color=red >调试工具</font></a>:<a href="http://wsdebug.dingtalk.com">http://wsdebug.dingtalk.com</a>
-打开左边的超链接后，手机扫描二维码，然后在PC页面上配置jsapi参数，点击执行手机就会给予相应反馈</p>
+打开左边的超链接之后，手机扫描二维码，然后在PC页面上配置jsapi参数，点击执行手机就会给予相应反馈</p>
 
 <p><a href="http://h5.m.laiwang.com/home/ding.html"><font color=red >jsapi使用样例地址</font></a>:<a href="http://h5.m.laiwang.com/home/ding.html">http://h5.m.laiwang.com/home/ding.html</a></p>
 
@@ -10401,6 +10401,61 @@ document.addEventListener('backbutton', function(e) {
     });
 }, false);
 </code></pre>
+
+<h2 id="钉盘">钉盘</h2>
+
+<p>dd.biz</p>
+
+<h3 id="转存文件到钉盘">转存文件到钉盘</h3>
+<pre class="highlight javascript"><code>    <span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">cspace</span><span class="p">.</span><span class="nx">saveFile</span><span class="p">({</span>
+                <span class="na">corpId</span><span class="p">:</span><span class="s2">"dingf8b3508f3073b265"</span><span class="p">,</span>
+                <span class="na">url</span><span class="p">:</span><span class="s2">"https://ringnerippca.files.wordpress.com/20.pdf"</span><span class="p">,</span>
+                <span class="na">name</span><span class="p">:</span><span class="s2">"文件名"</span><span class="p">,</span>         
+                <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="cm">/* data结构
+                [{
+                    "corpId": "", //公司id
+                    "spaceId": "" //空间id
+                    "fileId": "", //文件id
+                    "fileName": "", //文件名
+                    "fileSize": 111111, //文件大小
+                    "fileType": "", //文件类型
+                    },
+                 ...
+                 ]
+                 */</span>
+                <span class="p">},</span>
+                <span class="na">onFail</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>用户当前的corpid，将只能存储到当前corpid对应企业的钉盘和个人钉盘</td>
+</tr>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>文件地址</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>文件保存的名字</td>
+</tr>
+</tbody></table>
 
 <h2 id="弹窗">弹窗</h2>
 
