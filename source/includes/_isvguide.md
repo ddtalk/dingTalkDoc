@@ -242,6 +242,9 @@ ISV推广套件将有2种方式可以选择，不同的方式要求不同，见�
 
 想要将开发的应用在钉钉应用中心上架，可以申请加入“第三发应用上架沟通组”，这里有详细的流程指导及公告说明，帮助您提升整体上架的效率，申请时的备注信息，请务必填写所开发的应用＋公司名，否则无法加入。点击申请加入[<font color=red >https://t.dingtalk.com/invite/index?code=40ad61c51a</font>](https://t.dingtalk.com/invite/index?code=40ad61c51a)
 
+整体流程见下图：
+![market_flow](https://img.alicdn.com/tps/TB1_4BELFXXXXajXFXXXXXXXXXX-800-480.jpg)
+
 通过钉钉应用中心推广套件您需要经过以下几步：
 
 -  [<font color=red >Step 1 – 入驻云市场服务商并发布商品</font>](#step-1-–-入驻云市场服务商并发布商品) 
