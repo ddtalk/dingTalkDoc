@@ -240,11 +240,6 @@ ISV推广套件将有2种方式可以选择，不同的方式要求不同，见�
 
 此处为ISV套件通过钉钉应用中心推广的指南，按照此处描述步骤，您（ISV）可以将您开发好的套件通过阿里云市场上架，在上架前您需要成为阿里云市场服务商并根据要求缴纳保证金，经过钉钉验收之后就可开始共创及灰度，满足用户使用数据之后即可按照规则开放给钉钉企业用户。如需进行进一步合作，您可以通过联系钉钉ISV接入接口人进行合作洽谈及商务合作签订，请通过联系方式：angle.lixy@alibaba-inc.com 进行联系。
 
-想要将开发的应用在钉钉应用中心上架，可以申请加入“第三发应用上架沟通组”，这里有详细的流程指导及公告说明，帮助您提升整体上架的效率，申请时的备注信息，请务必填写所开发的应用＋公司名，否则无法加入。点击申请加入[<font color=red >https://t.dingtalk.com/invite/index?code=40ad61c51a</font>](https://t.dingtalk.com/invite/index?code=40ad61c51a)
-
-整体流程见下图：
-![market_flow](https://img.alicdn.com/tps/TB1_4BELFXXXXajXFXXXXXXXXXX-800-480.jpg)
-
 通过钉钉应用中心推广套件您需要经过以下几步：
 
 -  [<font color=red >Step 1 – 入驻云市场服务商并发布商品</font>](#step-1-–-入驻云市场服务商并发布商品) 
@@ -1343,6 +1338,11 @@ suitekey：suite4xxxxxxxxxxxxxxx
 ISV接入相关接口调试：[<font color=red >ISV接入调试工具</font>](https://debug.dingtalk.com/isv.html)
 
 ## 套件上架操作流程
+### 第三发应用上架沟通组
+想要将开发的应用在钉钉应用中心上架，可以申请加入“第三发应用上架沟通组”，这里有详细的流程指导及公告说明，帮助您提升整体上架的效率，申请时的备注信息，请务必填写所开发的应用＋公司名，否则无法加入。点击申请加入[<font color=red >https://t.dingtalk.com/invite/index?code=40ad61c51a</font>](https://t.dingtalk.com/invite/index?code=40ad61c51a)
+
+整体流程见下图：
+![market_flow](https://img.alicdn.com/tps/TB1_4BELFXXXXajXFXXXXXXXXXX-800-480.jpg)
 ### 1. 云市场介绍 
 
 - 1.1 背景介绍
@@ -1381,7 +1381,7 @@ ISV接入相关接口调试：[<font color=red >ISV接入调试工具</font>](ht
 您首次入驻时，需要选择需要入驻的市场(钉钉类商品选择 软件市场)，填写信息后提交审核。
 当您已经入驻某个市场后，可以从此页面入驻其他市场，此时不需要重新填写资料，直接提交审核即可。
 
-您提交入驻申请后，云市场小二将会联系您。
+您提交入驻申请后，需在 “第三发应用上架沟通组“ 的审批里面提交审核审批之后[<font color=red >点击加入第三发应用上架沟通组</font>](https://t.dingtalk.com/invite/index?code=40ad61c51a) ，钉钉小二将会联系您。
 
 - 2.2 补充供应商资料
 
