@@ -12605,6 +12605,180 @@ dd.biz.user.get({
 ```
 -->
 
+<h2 id="自定义联系人">自定义联系人</h2>
+
+<p>dd.biz</p>
+
+<h3 id="单选自定义联系人">单选自定义联系人</h3>
+
+<p>选取单个自定义联系人</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">customContact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'选人的标题'</span><span class="p">,</span> <span class="c1">//标题</span>
+    <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="s1">'10001'</span><span class="p">,</span> <span class="s1">'10002'</span><span class="p">,</span> <span class="p">...],</span><span class="c1">//一组员工工号</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'dingb4ff1079f84f8d54'</span><span class="p">,</span><span class="c1">//加密的企业 ID，</span>
+    <span class="na">isShowCompanyName</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">//true|false，默认为 false</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* data结构
+      [{
+        "name": "张三", //姓名
+        "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+        "emplId": '0573', //工号
+       },
+       ...
+      ]
+    */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+<tr>
+<td>users</td>
+<td>Array[String]</td>
+<td>一组员工工号</td>
+</tr>
+<tr>
+<td>isShowCompanyName</td>
+<td>Boolean</td>
+<td>是否显示公司名称</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>标题</td>
+</tr>
+</tbody></table>
+
+<h5 id="　返回说明">　返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>头像图片url，可能为空</td>
+</tr>
+<tr>
+<td>emplId</td>
+<td>工号</td>
+</tr>
+</tbody></table>
+
+<h3 id="多选自定义联系人">多选自定义联系人</h3>
+
+<p>选取多个自定义联系人</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">customContact</span><span class="p">.</span><span class="nx">multipleChoose</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'多选人的标题'</span><span class="p">,</span> <span class="c1">//标题</span>
+    <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="s1">'10001'</span><span class="p">,</span> <span class="s1">'10002'</span><span class="p">,</span> <span class="p">...],</span><span class="c1">//一组员工工号</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'dingb4ff1079f84f8d54'</span><span class="p">,</span><span class="c1">//企业 ID，</span>
+    <span class="na">isShowCompanyName</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">//true|false，默认为 false</span>
+    <span class="na">selectedUsers</span><span class="p">:</span> <span class="p">[</span><span class="s2">"18658"</span><span class="p">],</span> <span class="c1">//默认选中的人</span>
+    <span class="na">disabledUsers</span><span class="p">:</span> <span class="p">[</span><span class="s2">"78308"</span><span class="p">],</span> <span class="c1">//不能选的人</span>
+    <span class="na">max</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">//人数限制</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* data结构
+      [{
+        "name": "张三", //姓名
+        "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+        "emplId": '0573', //工号
+       },
+       ...
+      ]
+    */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+<tr>
+<td>users</td>
+<td>Array[String]</td>
+<td>是否多选： true多选，false单选； 默认true</td>
+</tr>
+<tr>
+<td>isShowCompanyName</td>
+<td>Boolean</td>
+<td>默认选中的用户列表，工号；成功回调中应包含该信息</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>选择窗口的标题</td>
+</tr>
+<tr>
+<td>selectedUsers</td>
+<td>Array[String]</td>
+<td>默认选中的人</td>
+</tr>
+<tr>
+<td>disabledUsers</td>
+<td>Array[String]</td>
+<td>不能选的人</td>
+</tr>
+<tr>
+<td>max</td>
+<td>Number</td>
+<td>人数限制</td>
+</tr>
+</tbody></table>
+
+<h5 id="　返回说明">　返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>头像图片url，可能为空</td>
+</tr>
+<tr>
+<td>emplId</td>
+<td>工号</td>
+</tr>
+</tbody></table>
+
 <h2 id="导航栏">导航栏</h2>
 
 <p><strong>想要对导航栏更加个性化的定义，比如设置导航栏左侧按钮，右侧按钮，标题，可以查看</strong></p>
