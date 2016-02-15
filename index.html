@@ -10481,21 +10481,15 @@ document.addEventListener('backbutton', function(e) {
 <h3 id="钉盘文件预览">钉盘文件预览</h3>
 <pre class="highlight javascript"><code>    <span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">cspace</span><span class="p">.</span><span class="nx">preview</span><span class="p">({</span>
                 <span class="na">corpId</span><span class="p">:</span><span class="s2">"dingf8b3508f3073b265"</span><span class="p">,</span>
-                <span class="na">spaceId</span><span class="p">:</span><span class="err">”</span><span class="mi">13557022</span><span class="s2">",
-                fileId:"</span><span class="mi">11452819</span><span class="s2">",   
-                fileName:"</span><span class="err">钉盘快速入门</span><span class="p">.</span><span class="nx">pdf</span><span class="s2">",
-                fileSize:1024,
-                fileType:"</span><span class="nx">pdf</span><span class="s2">", 
-                onSuccess: function(data) {
-                 /* data结构
-                 {"</span><span class="nx">data</span><span class="err">"</span><span class="p">:[</span>
-                       <span class="p">{</span> 
-                    <span class="c1">//无，直接在native页面显示文件详细信息</span>
-                       <span class="p">}]</span>
-                 <span class="p">}</span>
-                 <span class="o">*</span><span class="sr">/</span><span class="err">
-</span>                <span class="p">},</span>
-                <span class="nx">onFail</span><span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="na">spaceId</span><span class="p">:</span><span class="s2">"13557022"</span><span class="p">,</span>
+                <span class="na">fileId</span><span class="p">:</span><span class="s2">"11452819"</span><span class="p">,</span>   
+                <span class="na">fileName</span><span class="p">:</span><span class="s2">"钉盘快速入门.pdf"</span><span class="p">,</span>
+                <span class="na">fileSize</span><span class="p">:</span><span class="mi">1024</span><span class="p">,</span>
+                <span class="na">fileType</span><span class="p">:</span><span class="s2">"pdf"</span><span class="p">,</span> 
+                <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="c1">//无，直接在native显示文件详细信息</span>
+                <span class="p">},</span>
+                <span class="na">onFail</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
                     <span class="c1">// 无，直接在native页面显示具体的错误</span>
                 <span class="p">}</span>
             <span class="p">});</span>
