@@ -440,19 +440,13 @@ name | String | 文件保存的名字
 ```javascript
 	dd.biz.cspace.preview({
 				corpId:"dingf8b3508f3073b265",
-				spaceId:”13557022",
+				spaceId:"13557022",
 				fileId:"11452819",   
 				fileName:"钉盘快速入门.pdf",
 				fileSize:1024,
 				fileType:"pdf", 
-				onSuccess: function(data) {
-				 /* data结构
-				 {"data":[
-    				   { 
-					//无，直接在native页面显示文件详细信息
-     			   	   }]
-   				 }
- 				 */
+				onSuccess: function() {
+					//无，直接在native显示文件详细信息
 		        },
 	            onFail: function(err) {
 	                // 无，直接在native页面显示具体的错误
