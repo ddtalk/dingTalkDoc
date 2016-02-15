@@ -442,9 +442,9 @@ name | String | 文件保存的名字
 				corpId:"dingf8b3508f3073b265",
 				spaceId:”13557022",
 				fileId:"11452819",   
-				fileName:”钉盘快速入门.pdf",
+				fileName:"钉盘快速入门.pdf",
 				fileSize:1024,
-				fileType:”pdf", 
+				fileType:"pdf", 
 				onSuccess: function(data) {
 				 /* data结构
 				 {"data":[
