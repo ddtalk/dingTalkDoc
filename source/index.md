@@ -23,6 +23,8 @@ includes:
   
   - cdn
 
+  - share
+
   - blog
     
   - faq
