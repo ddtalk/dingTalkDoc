@@ -10478,6 +10478,70 @@ document.addEventListener('backbutton', function(e) {
 </tr>
 </tbody></table>
 
+<h3 id="钉盘文件预览">钉盘文件预览</h3>
+<pre class="highlight javascript"><code>    <span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">cspace</span><span class="p">.</span><span class="nx">preview</span><span class="p">({</span>
+                <span class="na">corpId</span><span class="p">:</span><span class="s2">"dingf8b3508f3073b265"</span><span class="p">,</span>
+                <span class="na">spaceId</span><span class="p">:</span><span class="err">”</span><span class="mi">13557022</span><span class="s2">",
+                fileId:"</span><span class="mi">11452819</span><span class="s2">",   
+                fileName:”钉盘快速入门.pdf"</span><span class="p">,</span>
+                <span class="na">fileSize</span><span class="p">:</span><span class="mi">1024</span><span class="p">,</span>
+                <span class="na">fileType</span><span class="p">:</span><span class="err">”</span><span class="nx">pdf</span><span class="s2">", 
+                onSuccess: function(data) {
+                 /* data结构
+                 {"</span><span class="nx">data</span><span class="err">"</span><span class="p">:[</span>
+                       <span class="p">{</span> 
+                    <span class="c1">//无，直接在native页面显示文件详细信息</span>
+                       <span class="p">}]</span>
+                 <span class="p">}</span>
+                 <span class="o">*</span><span class="sr">/</span><span class="err">
+</span>                <span class="p">},</span>
+                <span class="nx">onFail</span><span class="err">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// 无，直接在native页面显示具体的错误</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>用户当前的corpid，此文件预览成功后只能转发或保存到此corpId对应的企业群和个人</td>
+</tr>
+<tr>
+<td>spaceId</td>
+<td>String</td>
+<td>空间ID</td>
+</tr>
+<tr>
+<td>fileId</td>
+<td>String</td>
+<td>文件ID</td>
+</tr>
+<tr>
+<td>fileName</td>
+<td>String</td>
+<td>文件名称</td>
+</tr>
+<tr>
+<td>fileSize</td>
+<td>long</td>
+<td>文件大小，字节数</td>
+</tr>
+<tr>
+<td>fileType</td>
+<td>String</td>
+<td>文件扩展名</td>
+</tr>
+</tbody></table>
+
 <h2 id="弹窗">弹窗</h2>
 
 <p>dd.device</p>
