@@ -398,11 +398,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&ldquo;钉钉应用&rdquo;</td>
+<td>选择&quot;钉钉应用&quot;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&ldquo;容器服务&rdquo;</td>
+<td>选择&quot;容器服务&quot;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -3546,6 +3546,10 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptHiding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3|4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"userid1|userid2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerDept"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerPermitDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1|2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerPermitUsers"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"userid3|userid4"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orgDeptOwner"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptManagerUseridList"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122|manager3211"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3596,6 +3600,22 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <tr>
 <td>deptPerimits</td>
 <td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用&rsquo; &#124; &lsquo;符号进行分割</td>
+</tr>
+<tr>
+<td>userPerimits</td>
+<td>可以查看指定隐藏部门的其他人员列表，如果部门隐藏，则此值生效，取值为其他的人员userid组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>outerDept</td>
+<td>是否本部门的员工仅可见员工自己, 为true时，本部门员工默认只能看到员工自己</td>
+</tr>
+<tr>
+<td>outerPermitDepts</td>
+<td>本部门的员工仅可见员工自己为true时，可以配置额外可见部门，值为部门id组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>outerPermitUsers</td>
+<td>本部门的员工仅可见员工自己为true时，可以配置额外可见人员，值为userid组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
 </tr>
 <tr>
 <td>orgDeptOwner</td>
@@ -3711,8 +3731,12 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptManagerUseridList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1111|2222"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deptHiding"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deptPerimits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12|23"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptHiding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3|4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"userid1|userid2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerDept"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerPermitDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1|2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerPermitUsers"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"userid3|userid4"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orgDeptOwner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1111"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3779,13 +3803,37 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>deptHiding</td>
 <td>Boolean</td>
 <td>否</td>
-<td>是否隐藏部门</td>
+<td>是否隐藏部门, true表示隐藏, false表示显示</td>
 </tr>
 <tr>
 <td>deptPerimits</td>
 <td>String</td>
 <td>否</td>
 <td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>userPerimits</td>
+<td>String</td>
+<td>否</td>
+<td>可以查看指定隐藏部门的其他人员列表，如果部门隐藏，则此值生效，取值为其他的人员userid组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>outerDept</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否本部门的员工仅可见员工自己, 为true时，本部门员工默认只能看到员工自己</td>
+</tr>
+<tr>
+<td>outerPermitDepts</td>
+<td>String</td>
+<td>否</td>
+<td>本部门的员工仅可见员工自己为true时，可以配置额外可见部门，值为部门id组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>outerPermitUsers</td>
+<td>String</td>
+<td>否</td>
+<td>本部门的员工仅可见员工自己为true时，可以配置额外可见人员，值为userid组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
 </tr>
 <tr>
 <td>orgDeptOwner</td>
