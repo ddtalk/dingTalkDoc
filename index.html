@@ -398,11 +398,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&quot;钉钉应用&quot;</td>
+<td>选择&ldquo;钉钉应用&rdquo;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&quot;容器服务&quot;</td>
+<td>选择&ldquo;容器服务&rdquo;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -13109,6 +13109,8 @@ dd.biz.user.get({
 
 <!-- github:`待补充` -->
 
+<p>通过Ctrl+Shift+I可以唤出钉钉PC/Mac客户端的浏览器页面调试窗口，开发者可以通过这个工具调试微应用页面。注意：在使用快捷键时需要把光标移除输入框。</p>
+
 <h2 id="配置展示形式">配置展示形式</h2>
 
 <h3 id="企业接入">企业接入</h3>
@@ -13126,6 +13128,7 @@ dd.biz.user.get({
 <h2 id="应用设计">应用设计</h2>
 
 <!--
+
 #### 样式库
 
 钉钉不限制第三方微应用的表现形式，但是需要引入钉钉的默认基础样式，基础样式确保了字体，字体颜色，行间距等基础的样式统一。
@@ -13142,13 +13145,15 @@ dd.biz.user.get({
 
 <h5 id="基础尺寸-企业会话详情">基础尺寸 - 企业会话详情</h5>
 
-<p><img src="https://static.dingtalk.com/media/lALOArO7PM0CWs0DhA_900_602.png" />
-企业会话详情目前是定宽设计（360px），但不排除未来该宽度可以调整，所以需要开发者将此页面进行响应式设计。</p>
+<p><img src="https://static.dingtalk.com/media/lALOArO7PM0CWs0DhA_900_602.png" /></p>
+
+<p>企业会话详情目前是定宽设计（360px），但不排除未来该宽度可以调整，所以需要开发者将此页面进行响应式设计。</p>
 
 <h5 id="基础尺寸-微应用首页">基础尺寸 - 微应用首页</h5>
 
-<p><img src="https://static.dingtalk.com/media/lALOArO6j80CWs0DhA_900_602.png" />
-微应用首页默认宽度是585px，支持用户拖拽更改宽高，所以需要开发者将此页面进行响应式设计。</p>
+<p><img src="https://static.dingtalk.com/media/lALOArO6j80CWs0DhA_900_602.png" /></p>
+
+<p>微应用首页默认宽度是585px，支持用户拖拽更改宽高，所以需要开发者将此页面进行响应式设计。</p>
 
 <h2 id="通用">通用</h2>
 
@@ -13681,9 +13686,10 @@ dd.biz.user.get({
 </tbody></table>
 
 <!--
+
 b.聊天页面
 
-```javascript
+``` javascript
 // 页面名称：
     chat
 // 传参：
@@ -13693,7 +13699,7 @@ b.聊天页面
 
 c.免费电话页面
 
-```javascript
+``` javascript
 // 页面名称：
     call
 // 传参：
@@ -13701,7 +13707,7 @@ c.免费电话页面
 
 d.联系人添加页面
 
-```javascript
+``` javascript
 // 页面名称：
     contactAdd
 // 传参：
@@ -13710,27 +13716,30 @@ d.联系人添加页面
 f.唤起添加好友页面
 
 
-```
+
+``` 
 // 页面名称：
     friendAdd
 // 传参：
-``` -->
+​``` -->
 
 <h3 id="打开模态框（modal）">打开模态框（modal）</h3>
 
 <p>打开一个模态框</p>
-<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">openModal</span><span class="p">({</span>
-    <span class="na">size</span><span class="p">:</span><span class="s1">'middle'</span><span class="p">,</span>  <span class="c1">// modal的尺寸</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://test.dingtalk.com/modal.html'</span><span class="p">,</span> <span class="c1">//打开modal的内容的url</span>
-    <span class="na">title</span><span class="p">:</span> <span class="s1">'modal title'</span><span class="p">,</span> <span class="c1">//顶部标题</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cm">/*
 
-        */</span>
-    <span class="p">},</span>
-    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
-<span class="p">})</span>
-</code></pre>
+<p>​`&ldquo;javascript
+DingTalkPC.biz.util.openModal({
+    size:&lsquo;middle&rsquo;,  // modal的尺寸
+    url: &#39;https://test.dingtalk.com/modal.html&rsquo;, //打开modal的内容的url
+    title: &#39;modal title&rsquo;, //顶部标题
+    onSuccess : function(result) {
+        /*</p>
+
+<p>*/
+    },
+    onFail : function() {}
+})
+&rdquo;`</p>
 
 <p><img src="http://gtms02.alicdn.com/tps/i2/TB1PqPwKFXXXXa8XFXXsaR5YpXX-1880-1276.png" width = "350" height = "" alt="图片名称" align=right /></p>
 
@@ -14118,7 +14127,7 @@ f.唤起添加好友页面
 
 <h4 id="设置左侧按钮点击后的回调">设置左侧按钮点击后的回调</h4>
 
-<p>DingTalkPC.addEventListener(&lsquo;leftBtnClick&rsquo;, handleFn);</p>
+<p>DingTalkPC.addEventListener(&#39;leftBtnClick&rsquo;, handleFn);</p>
 <pre class="highlight javascript"><code><span class="c1">//添加监听回调函数</span>
 <span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'leftBtnClick'</span><span class="p">,</span> <span class="nx">handleFn</span><span class="p">);</span>
 
@@ -14319,8 +14328,11 @@ f.唤起添加好友页面
 </tbody></table>
 
 <!--
+
 startWithDepartmentId: Number, //-1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
+
 startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
+
 -->
 
 <h5 id="　返回说明">　返回说明</h5>
@@ -14519,36 +14531,45 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 </tr>
 </tbody></table>
 
-<!-- ## 聊天
-DingTalkPC.biz
+<p>&lt;!&ndash; ## 聊天</p>
 
-### 选择会话
+<p>DingTalkPC.biz</p>
 
-```javascript
-DingTalkPC.biz.chat.chooseConversation({
-    onSuccess: function(data) {
-    /* data结构
+<h3 id="选择会话">选择会话</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">chooseConversation</span><span class="p">({</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* data结构
       {
         "id":"25001:2442003", //会话id
         "title":"钉钉-轻浅-pc专业户" // 会话名称
       }
-    */
-    },
-    onFail : function(err) {}
-});
-```
+    */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
 
-#### 参数说明
+<h4 id="参数说明">参数说明</h4>
 
-空
+<p>空</p>
 
+<h4 id="返回说明">返回说明</h4>
 
-#### 返回说明
-
-参数 | 说明
-------|------
-id | 会话id
-title | 会话名称 -->
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>会话名称 &ndash;&gt;</td>
+</tr>
+</tbody></table>
 
 <h2 id="附录">附录</h2>
 
@@ -14557,16 +14578,17 @@ title | 会话名称 -->
 <p>如果开发者想使用钉钉容器开放的jsapi接口，需要经过以下流程：</p>
 
 <ul>
-<li><p>首先需要<a href="#获取jsapi_ticket"><font color=red >获取jsapi_ticket</font></a>。</p></li>
-<li><p>然后在web页面加载到钉钉容器时，通过<a href="#页面引入js文件"><font color=red >jsapi权限验证配置接口</font></a>验证可用的jsapi。这个接口使用的参数signature，在下文中有详细的说明。</p></li>
+<li>首先需要<a href="#获取jsapi_ticket"><font color=red >获取jsapi_ticket</font></a>。</li>
+<li>然后在web页面加载到钉钉容器时，通过<a href="#页面引入js文件"><font color=red >jsapi权限验证配置接口</font></a>验证可用的jsapi。这个接口使用的参数signature，在下文中有详细的说明。</li>
 </ul>
 
 <h4 id="1-获取jsapi_ticket">1.获取jsapi_ticket</h4>
 
 <p>jsapi_ticket,是开发者调用钉钉JS接口的临时授权码，其作用主要用于生成签名，这个签名在<a href="http://open.dingtalk.com/#页面引入js文件"><font color=red >jsapi权限验证配置接口</font></a>中使用。</p>
 
-<p>正常的情况下，jsapi_ticket的有效期为7200秒，通过access_token来获取。由于频繁刷新jsapi_ticket会导致api调用受限，影响自身业务，开发者必须在自己的服务全局缓存jsapi_ticket。
-获取jsapi_ticket，具体可以<a href="#js接口api"><font color=red >参考文档</font></a></p>
+<p>正常的情况下，jsapi_ticket的有效期为7200秒，通过access_token来获取。由于频繁刷新jsapi_ticket会导致api调用受限，影响自身业务，开发者必须在自己的服务全局缓存jsapi_ticket。</p>
+
+<p>获取jsapi_ticket，具体可以<a href="#js接口api"><font color=red >参考文档</font></a></p>
 
 <h4 id="2-签名生成算法">2.签名生成算法</h4>
 
@@ -14616,6 +14638,7 @@ title | 会话名称 -->
 <p>310x310 =&gt; _310x310.jpg</p>
 
 <!--
+
 ### 容器能力
 
 [runtime.permission.requestAuthCode](#获取免登授权码)
