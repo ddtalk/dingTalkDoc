@@ -692,8 +692,7 @@ order | String | 否 | 支持分页查询，部门成员的排序规则，默认
     "userlist": [
         {
             "userid": "zhangsan",
-            "name": "张三",
-            "active": true
+            "name": "张三"
         }
     ]
 }
@@ -707,7 +706,6 @@ hasMore | 在分页查询时返回，代表是否还有下一页更多数据
 userlist | 成员列表
 userid | 员工唯一标识ID（不可修改）
 name | 成员名称
-active | 表示该用户是否激活了钉钉
 
 ### 获取部门成员（详情）
 
