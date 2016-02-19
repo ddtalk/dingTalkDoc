@@ -25,8 +25,12 @@
 <aside class="notice">
 通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程注册管理员帐号。
 </aside>
+### 设置企业通讯录
+- 您可以通过进入 [<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 页面，登陆成功后，点击点击 [<font color=red >通讯录</font>](https://oa.dingtalk.com/#/home#deptId=-1)可以看到如下图所示的组织架构操作进行添加或导入员工进行设置
+![input_communication_info](https://img.alicdn.com/tps/TB1E.TpLFXXXXcpXpXXXXXXXXXX-301-184.png)
+- 您也可以通过[<font color=red >调用通讯录接口</font>](#管理通讯录)进行创建、更新、删除、获取进行企业通讯录设置
 
-## Step 2 -- 新增微应用
+## Step 2 -- 创建微应用
 
 - 如果您还没有注册钉钉企业账号，您需要通过[<font color=red >Step 1 -- 注册钉钉企业</font>](#step-1-注册钉钉企业)完成钉钉企业账号注册；已注册则继续完成当前步骤您就可以在钉钉上使用微应用了
 ### 新增微应用
@@ -52,9 +56,12 @@
 
 <br />
 
+您也可以通过调用[<font color=red >创建微应用</font>](#创建微应用)接口进行微应用创建。
+
 创建成功之后将会在手机的工作tab上显示出来
 
 ![createMi](https://img.alicdn.com/tps/TB1xStVKpXXXXbjXFXXXXXXXXXX-361-640.jpg)
+
 
 至此您已经可以在钉钉上使用微应用了，如果您需要对微应用与钉钉有进一步的融合，请进行定制开发，参考[<font color=red >开发微应用</font>](#step-3-开发微应用)
 
