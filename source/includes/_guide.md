@@ -27,7 +27,9 @@
 </aside>
 ### 设置企业通讯录
 - 您可以通过进入 [<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 页面，登陆成功后，点击点击 [<font color=red >通讯录</font>](https://oa.dingtalk.com/#/home#deptId=-1)可以看到如下图所示的组织架构操作进行添加或导入员工进行设置
+
 ![input_communication_info](https://img.alicdn.com/tps/TB1E.TpLFXXXXcpXpXXXXXXXXXX-301-184.png)
+
 - 您也可以通过[<font color=red >调用通讯录接口</font>](#管理通讯录)进行创建、更新、删除、获取进行企业通讯录设置
 
 ## Step 2 -- 创建微应用
