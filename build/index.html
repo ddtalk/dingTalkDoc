@@ -10368,6 +10368,7 @@ jsApilist | 授权的JsApi列表
 <p>0.0.5</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">launcher</span><span class="p">.</span><span class="nx">launchApp</span><span class="p">({</span>
     <span class="na">app</span><span class="p">:</span> <span class="s1">'taobao'</span><span class="p">,</span> <span class="c1">//iOS:应用scheme;Android:应用包名</span>
+    <span class="na">activity</span> <span class="p">:</span><span class="s1">'DetailActivity'</span><span class="p">,</span> <span class="c1">//仅限Android，打开指定Activity，可不传。如果为空，就打开App的Main入口Activity</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
         <span class="cm">/*
         {

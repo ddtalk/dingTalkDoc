@@ -319,6 +319,7 @@ installed | 安装过的应用列表
 ```javascript
 dd.device.launcher.launchApp({
     app: 'taobao', //iOS:应用scheme;Android:应用包名
+    activity :'DetailActivity', //仅限Android，打开指定Activity，可不传。如果为空，就打开App的Main入口Activity
     onSuccess : function(data) {
         /*
         {
