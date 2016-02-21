@@ -10336,6 +10336,8 @@ jsApilist | 授权的JsApi列表
 <h3 id="检测应用是否安装">检测应用是否安装</h3>
 
 <p>0.0.5</p>
+
+<p>iOS平台仅对iOS9之前的系统有效</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">launcher</span><span class="p">.</span><span class="nx">checkInstalledApps</span><span class="p">({</span>
     <span class="na">apps</span><span class="p">:</span> <span class="p">[</span><span class="s1">'taobao'</span><span class="p">,</span> <span class="s1">'tmall'</span><span class="p">],</span> <span class="c1">//iOS:应用scheme;Android:应用包名</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
