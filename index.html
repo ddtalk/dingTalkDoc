@@ -124,7 +124,19 @@
 通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程注册管理员帐号。
 </aside>
 
-<h2 id="step-2-新增微应用">Step 2 &ndash; 新增微应用</h2>
+<h3 id="设置企业通讯录">设置企业通讯录</h3>
+
+<ul>
+<li>您可以通过进入 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 页面，登陆成功后，点击点击 <a href="https://oa.dingtalk.com/#/home#deptId=-1"><font color=red >通讯录</font></a>可以看到如下图所示的组织架构操作进行添加或导入员工进行设置</li>
+</ul>
+
+<p><img alt="input_communication_info" src="https://img.alicdn.com/tps/TB1E.TpLFXXXXcpXpXXXXXXXXXX-301-184.png" /></p>
+
+<ul>
+<li>您也可以通过<a href="#管理通讯录"><font color=red >调用通讯录接口</font></a>进行创建、更新、删除、获取进行企业通讯录设置</li>
+</ul>
+
+<h2 id="step-2-创建微应用">Step 2 &ndash; 创建微应用</h2>
 
 <ul>
 <li>如果您还没有注册钉钉企业账号，您需要通过<a href="#step-1-注册钉钉企业"><font color=red >Step 1 &ndash; 注册钉钉企业</font></a>完成钉钉企业账号注册；已注册则继续完成当前步骤您就可以在钉钉上使用微应用了
@@ -151,6 +163,8 @@
 <p>您在应用中心创建微应用后，如上图所示可获取到微应用的AgentID，AgentID可用于发送企业会话消息等场景。</p>
 
 <p><br /></p>
+
+<p>您也可以通过调用<a href="#创建微应用"><font color=red >创建微应用</font></a>接口进行微应用创建。</p>
 
 <p>创建成功之后将会在手机的工作tab上显示出来</p>
 
@@ -414,7 +428,7 @@
 
 <h5 id="9-绑定钉钉认证企业">9. 绑定钉钉认证企业</h5>
 
-<p>注册成功之后您需要开通钉钉服务能力，此时您需要绑定ISV当前注册并通过认证的钉钉企业[<font color=red >(注意：此企业未与其它阿里云账号绑定，当前不支持账号解绑，请注意不要绑定错误)</font>]，并完成企业主页的设置，见下图中所示，点击左侧菜单“服务能力”－&gt;钉钉，点击页面右侧按钮开通使用，输入钉钉企业管理员账号与密码完成绑定。
+<p>注册成功之后您需要开通钉钉服务能力，此时您需要绑定ISV当前注册并通过认证的钉钉企业[<font color=red >(注意：此企业未与其它阿里云账号绑定，当前不支持账号解绑，请注意不要绑定错误;如果您计划通过钉钉应用中心推广您的套件，您需要绑定您所在企业钉钉认证企业，若您绑定的企业还未认证，请务必在推广前完成认证)</font>]，并完成企业主页的设置，见下图中所示，点击左侧菜单“服务能力”－&gt;钉钉，点击页面右侧按钮开通使用，输入钉钉企业管理员账号与密码完成绑定。
 <img alt="kfzbinddd" src="https://img.alicdn.com/tps/TB1gRBMLpXXXXXaaXXXXXXXXXXX-1261-583.png" /></p>
 
 <h2 id="step-3-开发套件（微应用）">Step 3 &ndash; 开发套件（微应用）</h2>
@@ -454,12 +468,12 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>套件Logo</td>
-<td>上传大小不超过1M，长宽等比且范围在50px至200px之间的png格式图片</td>
+<td>名称</td>
+<td>套件的名称</td>
 </tr>
 <tr>
-<td>回调URL</td>
-<td>以http://开头，系统将会把此套件的SuiteTicket，临时授权码以及授权变更事件推送给此URL，详细请看<a href="#2-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a></td>
+<td>套件Logo</td>
+<td>上传大小不超过1M，长宽等比且范围在50px至200px之间的png格式图片</td>
 </tr>
 <tr>
 <td>Token</td>
@@ -474,8 +488,8 @@
 <td>调用钉钉API时的合法IP列表，多个IP请以“,”隔开，如IP有变化，请立即更新</td>
 </tr>
 <tr>
-<td>部署方式</td>
-<td>选择ACE，系统接下来将自动开通基于ACE的开发环境，选择其他则需要自行准备开发环境</td>
+<td>回调URL</td>
+<td>以http://开头，系统将会把此套件的SuiteTicket，临时授权码以及授权变更事件推送给此URL，详细请看<a href="#2-回调接口（分为五个回调类型）"><font color=red >回调接口</font></a></td>
 </tr>
 <tr>
 <td>当前状态</td>
@@ -594,7 +608,7 @@
 <h4 id="step-4-1-钉钉应用中心推广套件">Step 4.1 &ndash; 钉钉应用中心推广套件</h4>
 
 <ul>
-<li>套件通过钉钉应用中心推广（精品套件），符合接入<a href="#isv接入整体流程"><font color=red>整体流程</font></a>中的要求，并满足<a href="#标准规范"><font color=red>标准规范</font></a>中的要求，需要通过钉钉应用中心推广必须与钉钉进行商务洽谈，商务洽谈联系方式：<a href="#商务洽谈"><font color=red>商务洽谈</font></a></li>
+<li>套件通过钉钉应用中心推广（精品套件），符合接入<a href="#isv接入整体流程"><font color=red>整体流程</font></a>中的要求，并满足<a href="#标准规范"><font color=red>标准规范</font></a>中的要求，需要通过钉钉应用中心推广必须与钉钉进行商务洽谈，商务洽谈联系方式（邮件）：angle.lixy@alibaba-inc.com</li>
 </ul>
 
 <h4 id="step-4-2-线下快速部署推广套件">Step 4.2 &ndash; 线下快速部署推广套件</h4>
@@ -606,6 +620,8 @@
 </ul>
 
 <h3 id="step-4-1-–-钉钉应用中心推广套件">Step 4.1 – 钉钉应用中心推广套件</h3>
+
+<p><font color=red>当前应用中心整体策略为邀请入驻，因此如果您未收到邀请，请直接跳过此章节，进行<a href="#step-4-2-–-线下快速部署推广套件">线下快速部署推广套件</a></font></p>
 
 <p>此处为ISV套件通过钉钉应用中心推广的指南，按照此处描述步骤，您（ISV）可以将您开发好的套件通过阿里云市场上架，在上架前您需要成为阿里云市场服务商并根据要求缴纳保证金，经过钉钉验收之后就可开始共创及灰度，满足用户使用数据之后即可按照规则开放给钉钉企业用户。如需进行进一步合作，您可以通过联系钉钉ISV接入接口人进行合作洽谈及商务合作签订，请通过联系方式：angle.lixy@alibaba-inc.com 进行联系。</p>
 
@@ -621,6 +637,9 @@
 </ul>
 
 <h4 id="step-1-–-入驻云市场服务商并上架套件">Step 1 – 入驻云市场服务商并上架套件</h4>
+
+<p>在上架套件前，您需要确认：
+- 在开发者平台绑定的钉钉企业是否已认证，如未认证，请尽快完成认证，且此认证企业需设置企业主页，这个认证企业主页将会在应用中心增加入口链接而被用户访问</p>
 
 <p>当前钉钉应用中心的商品信息由阿里云市场进行支撑，因此您需要先进行<a href="#套件上架操作流程"><font color=red >套件上架</font></a>操作。</p>
 
@@ -2129,6 +2148,13 @@ Token：123456</p>
 
 <h2 id="套件上架操作流程">套件上架操作流程</h2>
 
+<h3 id="第三发应用上架沟通组">第三发应用上架沟通组</h3>
+
+<p>想要将开发的应用在钉钉应用中心上架，可以申请加入“第三发应用上架沟通组”，这里有详细的流程指导及公告说明，帮助您提升整体上架的效率，申请时的备注信息，请务必填写所开发的应用＋公司名，否则无法加入。点击申请加入<a href="https://t.dingtalk.com/invite/index?code=40ad61c51a"><font color=red >https://t.dingtalk.com/invite/index?code=40ad61c51a</font></a></p>
+
+<p>整体流程见下图：
+<img alt="market_flow" src="https://img.alicdn.com/tps/TB1_4BELFXXXXajXFXXXXXXXXXX-800-480.jpg" /></p>
+
 <h3 id="1-云市场介绍">1. 云市场介绍</h3>
 
 <ul>
@@ -2210,7 +2236,8 @@ Token：123456</p>
 <p>您首次入驻时，需要选择需要入驻的市场(钉钉类商品选择 软件市场)，填写信息后提交审核。
 当您已经入驻某个市场后，可以从此页面入驻其他市场，此时不需要重新填写资料，直接提交审核即可。</p>
 
-<p>您提交入驻申请后，云市场小二将会联系您。</p>
+<p>您提交入驻申请后，需在 “第三发应用上架沟通组“ 的审批里面提交审核审批之后，钉钉小二将会联系您。
+<a href="https://t.dingtalk.com/invite/index?code=40ad61c51a"><font color=red >点击加入第三发应用上架沟通组</font></a> </p>
 
 <ul>
 <li>2.2 补充供应商资料</li>
@@ -2541,21 +2568,15 @@ ISV可与企业用户协商进行线下退款</li>
 <p>ISV套件授权系统：ISV用于与钉钉开放平台进行授权的独立系统，部署在阿里云的通用授权服务
 ISV独立部署应用系统：ISV为企业独立部署的软件系统</p>
 
-<h5 id="实现流程说明：">实现流程说明：</h5>
+<h5 id="实现说明：">实现说明：</h5>
 
-<p>1，ISV开发完成套件并获取钉钉颁发的二维码</p>
+<p>本方案要求ISV在企业进行套件使用授权时提供统一的授权服务</p>
 
-<p>2，ISV为企业进行独立软件部署完成</p>
-
-<p>3，企业扫码注册成功后输入ISV系统的关联码（如：序列号、企业ID等）用于钉钉企业与ISV系统用户进行关联</p>
-
-<p>4，企业进行套件使用授权</p>
-
-<p>a)ISV套件授权系统通过钉钉开放平台完成授权，参考钉钉isv（服务提供商）应用授权和接口说明</p>
+<p>a)ISV套件授权系统通过钉钉开放平台完成授权，参考<a href="#1-isv接口调用整体流程"><font color=red >ISV接口调用整体流程</font></a></p>
 
 <p>b)ISV套件授权系统通过钉钉开放平台接口获取企业输入的关联码与ISV独立部署系统进行关联</p>
 
-<p>c)ISV套件授权系统调用钉钉开放平台接口完成企业独立部署软件IP白名单设置，参考为授权方的企业单独设置ip白名单</p>
+<p>c)ISV套件授权系统调用钉钉开放平台接口完成企业独立部署软件IP白名单设置，参考<a href="#10-isv为授权方的企业单独设置ip白名单"><font color=red >为授权方的企业单独设置ip白名单</font></a></p>
 
 <p>d)ISV套件授权系统获取企业永久授权码并进行存储</p>
 
@@ -2563,8 +2584,6 @@ ISV独立部署应用系统：ISV为企业独立部署的软件系统</p>
 <li><p>方案一：ISV将获取到的永久授权码回传至独立部署的应用系统，独立部署应用系统通过授权码直接调用钉钉开放平台API</p></li>
 <li><p>方案二：ISV独立部署应用数据请求先发送至ISV套件服务器，ISV套件服务器使用授权码调用钉钉开放平台API</p></li>
 </ul>
-
-<p>5，    完成授权开始使用</p>
 
 <h5 id="系统交互图：">系统交互图：</h5>
 
@@ -2683,6 +2702,23 @@ ISV独立部署应用系统：ISV为企业独立部署的软件系统</p>
 
 <p>商品上架前，提供产品的下一阶段的迭代计划；例如：
 <img alt="product_plan" src="https://img.alicdn.com/tps/TB17mSwLXXXXXXeXXXXXXXXXXXX-419-505.png" /></p>
+
+<h3 id="pc桌面版">PC桌面版</h3>
+
+<p>ISV在10家企业共创阶段，如提供PC版，必须完成钉钉桌面版免登接入，并且需要按照以下标准进行产品验收</p>
+
+<h4 id="1-全部页面嵌入钉钉桌面版，如审批和通达应用">1.全部页面嵌入钉钉桌面版，如审批和通达应用</h4>
+
+<p><img alt="product_PC1" src="https://img.alicdn.com/tps/TB1WAkELpXXXXXjXFXXXXXXXXXX-865-588.png" /></p>
+
+<h4 id="2-跳出钉钉桌面版，新开浏览器窗口，免登进入isv-web版页面">2.跳出钉钉桌面版，新开浏览器窗口，免登进入ISV web版页面</h4>
+
+<ul>
+<li>在保持较好体验前提下，建议ISV web版页面，全部嵌入钉钉桌面版，并实现免登，如果嵌入体验较差，可以点击具体功能后，跳出到浏览器</li>
+<li>从钉钉桌面跳出，必须从对用户有业务意义的页面，点击具体功能后，无缝跳出，不能有业务断点，比如可以嵌入报表导航页面，在进行查询/新增/编辑/删除时，跳出到浏览器，不允许通过只有登录按钮的空页面，进行跳出</li>
+</ul>
+
+<p><img alt="product_PC2" src="https://img.alicdn.com/tps/TB1nJcCLpXXXXamXFXXXXXXXXXX-865-588.png" /></p>
 
 <h2 id="技术标准">技术标准</h2>
 
@@ -3526,6 +3562,10 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptHiding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3|4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"userid1|userid2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerDept"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerPermitDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1|2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerPermitUsers"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"userid3|userid4"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orgDeptOwner"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptManagerUseridList"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122|manager3211"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3576,6 +3616,22 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <tr>
 <td>deptPerimits</td>
 <td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用&rsquo; &#124; &lsquo;符号进行分割</td>
+</tr>
+<tr>
+<td>userPerimits</td>
+<td>可以查看指定隐藏部门的其他人员列表，如果部门隐藏，则此值生效，取值为其他的人员userid组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>outerDept</td>
+<td>是否本部门的员工仅可见员工自己, 为true时，本部门员工默认只能看到员工自己</td>
+</tr>
+<tr>
+<td>outerPermitDepts</td>
+<td>本部门的员工仅可见员工自己为true时，可以配置额外可见部门，值为部门id组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>outerPermitUsers</td>
+<td>本部门的员工仅可见员工自己为true时，可以配置额外可见人员，值为userid组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
 </tr>
 <tr>
 <td>orgDeptOwner</td>
@@ -3691,8 +3747,12 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"createDeptGroup"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"autoAddUser"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"deptManagerUseridList"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1111|2222"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deptHiding"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deptPerimits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12|23"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptHiding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deptPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3|4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userPerimits"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"userid1|userid2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerDept"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerPermitDepts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1|2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"outerPermitUsers"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"userid3|userid4"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"orgDeptOwner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1111"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3759,13 +3819,37 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>deptHiding</td>
 <td>Boolean</td>
 <td>否</td>
-<td>是否隐藏部门</td>
+<td>是否隐藏部门, true表示隐藏, false表示显示</td>
 </tr>
 <tr>
 <td>deptPerimits</td>
 <td>String</td>
 <td>否</td>
 <td>可以查看指定隐藏部门的其他部门列表，如果部门隐藏，则此值生效，取值为其他的部门id组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>userPerimits</td>
+<td>String</td>
+<td>否</td>
+<td>可以查看指定隐藏部门的其他人员列表，如果部门隐藏，则此值生效，取值为其他的人员userid组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>outerDept</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否本部门的员工仅可见员工自己, 为true时，本部门员工默认只能看到员工自己</td>
+</tr>
+<tr>
+<td>outerPermitDepts</td>
+<td>String</td>
+<td>否</td>
+<td>本部门的员工仅可见员工自己为true时，可以配置额外可见部门，值为部门id组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
+</tr>
+<tr>
+<td>outerPermitUsers</td>
+<td>String</td>
+<td>否</td>
+<td>本部门的员工仅可见员工自己为true时，可以配置额外可见人员，值为userid组成的的字符串，使用&rsquo; &#124; &#39;符号进行分割</td>
 </tr>
 <tr>
 <td>orgDeptOwner</td>
@@ -4025,6 +4109,8 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"remark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan@gzdev.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isHide"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isSenior"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"extattr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"爱好"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"年龄"</span><span class="p">:</span><span class="s2">"24"</span><span class="w">
@@ -4062,9 +4148,9 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 </tr>
 <tr>
 <td>orderInDepts</td>
+<td>JSONObject</td>
+<td>否</td>
 <td>在对应的部门中的排序, Map结构的json字符串, key是部门的Id, value是人员在这个部门的排序值</td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td>department</td>
@@ -4113,6 +4199,18 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>String</td>
 <td>否</td>
 <td>员工工号。对应显示到OA后台和客户端个人资料的工号栏目。长度为0~64个字符</td>
+</tr>
+<tr>
+<td>isHide</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否号码隐藏, true表示隐藏, false表示不隐藏。隐藏手机号后，手机号在个人资料页隐藏，但仍可对其发DING、发起钉钉免费商务电话。</td>
+</tr>
+<tr>
+<td>isSenior</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否高管模式，true表示是，false表示不是。开启后，手机号码对所有员工隐藏。普通员工无法对其发DING、发起钉钉免费商务电话。高管之间不受影响。</td>
 </tr>
 <tr>
 <td>extattr</td>
@@ -4171,6 +4269,8 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"remark"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan@gzdev.com"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"jobnumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111111"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isHide"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isSenior"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"extattr"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"爱好"</span><span class="p">:</span><span class="s2">"旅游"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"年龄"</span><span class="p">:</span><span class="s2">"24"</span><span class="w">
@@ -4259,6 +4359,18 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>String</td>
 <td>否</td>
 <td>员工工号，对应显示到OA后台和客户端个人资料的工号栏目。长度为0~64个字符</td>
+</tr>
+<tr>
+<td>isHide</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否号码隐藏, true表示隐藏, false表示不隐藏。隐藏手机号后，手机号在个人资料页隐藏，但仍可对其发DING、发起钉钉免费商务电话。</td>
+</tr>
+<tr>
+<td>isSenior</td>
+<td>Boolean</td>
+<td>否</td>
+<td>是否高管模式，true表示是，false表示不是。开启后，手机号码对所有员工隐藏。普通员工无法对其发DING、发起钉钉免费商务电话。高管之间不受影响。</td>
 </tr>
 <tr>
 <td>extattr</td>
@@ -4437,17 +4549,35 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>是</td>
 <td>获取的部门id</td>
 </tr>
+<tr>
+<td>offset</td>
+<td>long</td>
+<td>否</td>
+<td>支持分页查询，与size参数同时设置时才生效，此参数代表偏移量</td>
+</tr>
+<tr>
+<td>size</td>
+<td>int</td>
+<td>否</td>
+<td>支持分页查询，与offset参数同时设置时才生效，此参数代表分页大小，最大100</td>
+</tr>
+<tr>
+<td>order</td>
+<td>String</td>
+<td>否</td>
+<td>支持分页查询，部门成员的排序规则，默认不传是按自定义排序；entry_asc代表按照进入部门的时间升序，entry_desc代表按照进入部门的时间降序，modify_asc代表按照部门信息修改时间升序，modify_desc代表按照部门信息修改时间降序，custom代表用户定义(未定义时按照拼音)排序</td>
+</tr>
 </tbody></table>
 
 <h6 id="返回结果">返回结果</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"userlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4468,6 +4598,10 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>对返回码的文本描述内容</td>
 </tr>
 <tr>
+<td>hasMore</td>
+<td>在分页查询时返回，代表是否还有下一页更多数据</td>
+</tr>
+<tr>
 <td>userlist</td>
 <td>成员列表</td>
 </tr>
@@ -4478,10 +4612,6 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <tr>
 <td>name</td>
 <td>成员名称</td>
-</tr>
-<tr>
-<td>active</td>
-<td>表示该用户是否激活了钉钉</td>
 </tr>
 </tbody></table>
 
@@ -4513,12 +4643,31 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <td>是</td>
 <td>获取的部门id</td>
 </tr>
+<tr>
+<td>offset</td>
+<td>long</td>
+<td>否</td>
+<td>支持分页查询，与size参数同时设置时才生效，此参数代表偏移量</td>
+</tr>
+<tr>
+<td>size</td>
+<td>int</td>
+<td>否</td>
+<td>支持分页查询，与offset参数同时设置时才生效，此参数代表分页大小，最大100</td>
+</tr>
+<tr>
+<td>order</td>
+<td>String</td>
+<td>否</td>
+<td>支持分页查询，部门成员的排序规则，默认不传是按自定义排序；entry_asc代表按照进入部门的时间升序，entry_desc代表按照进入部门的时间降序，modify_asc代表按照部门信息修改时间升序，modify_desc代表按照部门信息修改时间降序，custom代表用户定义(未定义时按照拼音)排序</td>
+</tr>
 </tbody></table>
 
 <h6 id="返回结果">返回结果</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hasMore"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"userlist"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
@@ -4561,6 +4710,10 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
 <tr>
 <td>errmsg</td>
 <td>对返回码的文本描述内容</td>
+</tr>
+<tr>
+<td>hasMore</td>
+<td>在分页查询时返回，代表是否还有下一页更多数据</td>
 </tr>
 <tr>
 <td>userlist</td>
@@ -5699,9 +5852,9 @@ mobile | 手机号码
 
 <p><img alt="oames" src="https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg" /></p>
 
-<h2 id="crm接口（暂未开放）">CRM接口（暂未开放）</h2>
+<h2 id="客户通讯录接口（暂未开放）">客户通讯录接口（暂未开放）</h2>
 
-<p>您可以通过使用CRM接口，将您的CRM应用中的员工与客户的关系、客户与客户联系人的关系在钉钉客户端通讯录中展现，与钉钉有更深入的功能融合，对于用户来说客户关系与通讯录的紧密结合，更容易管理和联系核心客户</p>
+<p>您可以通过使用客户通讯接口，将您的CRM应用中的员工与客户的关系、客户与客户联系人的关系在钉钉客户端通讯录中展现，与钉钉有更深入的功能融合，对于用户来说客户关系与通讯录的紧密结合，更容易管理和联系核心客户</p>
 
 <h3 id="员工新增客户信息">员工新增客户信息</h3>
 
@@ -8963,6 +9116,18 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <td>标题长度不合法</td>
 </tr>
 <tr>
+<td>40068</td>
+<td>不合法的偏移量</td>
+</tr>
+<tr>
+<td>40069</td>
+<td>不合法的分页大小</td>
+</tr>
+<tr>
+<td>40070</td>
+<td>不合法的排序参数</td>
+</tr>
+<tr>
 <td>40073</td>
 <td>不存在的openid</td>
 </tr>
@@ -9822,17 +9987,19 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <p>我们提供了Demo和调试工具给您的开发提供方便，如果对调用参数有疑问，请使用调试工具。对jsapi用法有疑问，可查看Demo.</p>
 
 <p><a href="http://wsdebug.dingtalk.com/"><font color=red >调试工具</font></a>:<a href="http://wsdebug.dingtalk.com">http://wsdebug.dingtalk.com</a>
-打开左边的超链接后，手机扫描二维码，然后在PC页面上配置jsapi参数，点击执行手机就会给予相应反馈</p>
+打开左边的超链接之后，手机扫描二维码，然后在PC页面上配置jsapi参数，点击执行手机就会给予相应反馈</p>
 
 <p><a href="http://h5.m.laiwang.com/home/ding.html"><font color=red >jsapi使用样例地址</font></a>:<a href="http://h5.m.laiwang.com/home/ding.html">http://h5.m.laiwang.com/home/ding.html</a></p>
 
 <p><a href="https://github.com/outlookxie/app-todolist"><font color=red >微应用Demo地址</font></a>:<a href="https://github.com/outlookxie/app-todolist">https://github.com/outlookxie/app-todolist</a></p>
 
-<h2 id="开发版钉钉客户端（android）">开发版钉钉客户端（Android）</h2>
+<h2 id="开发版钉钉客户端">开发版钉钉客户端</h2>
 
-<p>版本：2.7.3</p>
+<p>版本：2.7.6</p>
 
-<p><a href="http://mupppub.cn-hangzhou.oss.aliyun-inc.com/24661/1286421/1286421/f7b2da3b5230dadfa646bf723b667e48/702553%40Rimet-dingtalk-dev-2.7.3.apk">下载地址</a></p>
+<h4 id="android">Android</h4>
+
+<p><a href="http://mupppub.cn-hangzhou.oss.aliyun-inc.com/25197/1315294/1315294/66d02c0966c8abedb5199c9a745e844b/702553%40Rimet-dingtalk-dev-2.7.6.apk">下载地址</a></p>
 
 <p>启用开发者模式后即可使用chrome inspector进行调试。开发版客户端仅供微应用开发调试使用。</p>
 
@@ -9846,17 +10013,25 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <li>打开“微应用调试”</li>
 </ul>
 
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en#remote-debugging-on-android-with-chrome-devtools">Remote debugging on Android with Chrome DevTools</a></p>
+
+<h4 id="ios">iOS</h4>
+
+<p><a href="http://yunpan.taobao.com/s/12fdWyQ05BM">下载地址</a> (提取码：nj6LVK)</p>
+
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en#remote-debugging-on-ios-with-safari-web-inspector">Remote debugging on iOS with Safari Web Inspector</a></p>
+
 <h2 id="通用">通用</h2>
 
 <h3 id="页面引入js文件">页面引入js文件</h3>
 
 <p>js文件版本在添加升级功能时地址会变化，如有需要（比如要使用新增的js-api）,请随时关注地址变更。但是旧版本js文件也将一直可用。</p>
 
-<p><code class="prettyprint">http://g.alicdn.com/ilw/ding/0.6.6/scripts/dingtalk.js</code></p>
+<p><code class="prettyprint">http://g.alicdn.com/ilw/ding/0.7.5/scripts/dingtalk.js</code></p>
 
 <p>或者</p>
 
-<p><code class="prettyprint">https://g.alicdn.com/ilw/ding/0.6.6/scripts/dingtalk.js</code></p>
+<p><code class="prettyprint">https://g.alicdn.com/ilw/ding/0.7.5/scripts/dingtalk.js</code></p>
 
 <h3 id="全局变量、命名空间">全局变量、命名空间</h3>
 
@@ -10161,6 +10336,8 @@ jsApilist | 授权的JsApi列表
 <h3 id="检测应用是否安装">检测应用是否安装</h3>
 
 <p>0.0.5</p>
+
+<p>iOS平台仅对iOS9之前的系统有效</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">launcher</span><span class="p">.</span><span class="nx">checkInstalledApps</span><span class="p">({</span>
     <span class="na">apps</span><span class="p">:</span> <span class="p">[</span><span class="s1">'taobao'</span><span class="p">,</span> <span class="s1">'tmall'</span><span class="p">],</span> <span class="c1">//iOS:应用scheme;Android:应用包名</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
@@ -10209,6 +10386,7 @@ jsApilist | 授权的JsApi列表
 <p>0.0.5</p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">launcher</span><span class="p">.</span><span class="nx">launchApp</span><span class="p">({</span>
     <span class="na">app</span><span class="p">:</span> <span class="s1">'taobao'</span><span class="p">,</span> <span class="c1">//iOS:应用scheme;Android:应用包名</span>
+    <span class="na">activity</span> <span class="p">:</span><span class="s1">'DetailActivity'</span><span class="p">,</span> <span class="c1">//仅限Android，打开指定Activity，可不传。如果为空，就打开App的Main入口Activity</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
         <span class="cm">/*
         {
@@ -10304,6 +10482,121 @@ document.addEventListener('backbutton', function(e) {
     });
 }, false);
 </code></pre>
+
+<h2 id="钉盘">钉盘</h2>
+
+<p>dd.biz</p>
+
+<h3 id="转存文件到钉盘">转存文件到钉盘</h3>
+<pre class="highlight javascript"><code>    <span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">cspace</span><span class="p">.</span><span class="nx">saveFile</span><span class="p">({</span>
+                <span class="na">corpId</span><span class="p">:</span><span class="s2">"dingf8b3508f3073b265"</span><span class="p">,</span>
+                <span class="na">url</span><span class="p">:</span><span class="s2">"https://ringnerippca.files.wordpress.com/20.pdf"</span><span class="p">,</span>
+                <span class="na">name</span><span class="p">:</span><span class="s2">"文件名"</span><span class="p">,</span>         
+                <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="cm">/* data结构
+                 {"data":
+                    [
+                    {
+                    "corpId": "", //公司id
+                    "spaceId": "" //空间id
+                    "fileId": "", //文件id
+                    "fileName": "", //文件名
+                    "fileSize": 111111, //文件大小
+                    "fileType": "", //文件类型
+                    }
+                    ]
+                 }
+                 */</span>
+                <span class="p">},</span>
+                <span class="na">onFail</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">alert</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>用户当前的corpid，将只能存储到当前corpid对应企业的钉盘和个人钉盘</td>
+</tr>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>文件地址</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>文件保存的名字</td>
+</tr>
+</tbody></table>
+
+<h3 id="钉盘文件预览">钉盘文件预览</h3>
+<pre class="highlight javascript"><code>    <span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">cspace</span><span class="p">.</span><span class="nx">preview</span><span class="p">({</span>
+                <span class="na">corpId</span><span class="p">:</span><span class="s2">"dingf8b3508f3073b265"</span><span class="p">,</span>
+                <span class="na">spaceId</span><span class="p">:</span><span class="s2">"13557022"</span><span class="p">,</span>
+                <span class="na">fileId</span><span class="p">:</span><span class="s2">"11452819"</span><span class="p">,</span>   
+                <span class="na">fileName</span><span class="p">:</span><span class="s2">"钉盘快速入门.pdf"</span><span class="p">,</span>
+                <span class="na">fileSize</span><span class="p">:</span><span class="mi">1024</span><span class="p">,</span>
+                <span class="na">fileType</span><span class="p">:</span><span class="s2">"pdf"</span><span class="p">,</span> 
+                <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="c1">//无，直接在native显示文件详细信息</span>
+                <span class="p">},</span>
+                <span class="na">onFail</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// 无，直接在native页面显示具体的错误</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>用户当前的corpid，此文件预览成功后只能转发或保存到此corpId对应的企业群和个人</td>
+</tr>
+<tr>
+<td>spaceId</td>
+<td>String</td>
+<td>空间ID</td>
+</tr>
+<tr>
+<td>fileId</td>
+<td>String</td>
+<td>文件ID</td>
+</tr>
+<tr>
+<td>fileName</td>
+<td>String</td>
+<td>文件名称</td>
+</tr>
+<tr>
+<td>fileSize</td>
+<td>long</td>
+<td>文件大小，字节数</td>
+</tr>
+<tr>
+<td>fileType</td>
+<td>String</td>
+<td>文件扩展名</td>
+</tr>
+</tbody></table>
 
 <h2 id="弹窗">弹窗</h2>
 
@@ -12432,170 +12725,198 @@ dd.biz.user.get({
 ```
 -->
 
+<h2 id="自定义联系人">自定义联系人</h2>
+
+<p>dd.biz</p>
+
+<h3 id="单选自定义联系人">单选自定义联系人</h3>
+
+<p>选取单个自定义联系人</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">customContact</span><span class="p">.</span><span class="nx">choose</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'选人的标题'</span><span class="p">,</span> <span class="c1">//标题</span>
+    <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="s1">'10001'</span><span class="p">,</span> <span class="s1">'10002'</span><span class="p">,</span> <span class="p">...],</span><span class="c1">//一组员工工号</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'dingb4ff1079f84f8d54'</span><span class="p">,</span><span class="c1">//加密的企业 ID，</span>
+    <span class="na">isShowCompanyName</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">//true|false，默认为 false</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* data结构
+      [{
+        "name": "张三", //姓名
+        "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+        "emplId": '0573', //工号
+       },
+       ...
+      ]
+    */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+<tr>
+<td>users</td>
+<td>Array[String]</td>
+<td>一组员工工号</td>
+</tr>
+<tr>
+<td>isShowCompanyName</td>
+<td>Boolean</td>
+<td>是否显示公司名称</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>标题</td>
+</tr>
+</tbody></table>
+
+<h5 id="　返回说明">　返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>头像图片url，可能为空</td>
+</tr>
+<tr>
+<td>emplId</td>
+<td>工号</td>
+</tr>
+</tbody></table>
+
+<h3 id="多选自定义联系人">多选自定义联系人</h3>
+
+<p>选取多个自定义联系人</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">customContact</span><span class="p">.</span><span class="nx">multipleChoose</span><span class="p">({</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'多选人的标题'</span><span class="p">,</span> <span class="c1">//标题</span>
+    <span class="na">users</span><span class="p">:</span> <span class="p">[</span><span class="s1">'10001'</span><span class="p">,</span> <span class="s1">'10002'</span><span class="p">,</span> <span class="p">...],</span><span class="c1">//一组员工工号</span>
+    <span class="na">corpId</span><span class="p">:</span> <span class="s1">'dingb4ff1079f84f8d54'</span><span class="p">,</span><span class="c1">//企业 ID，</span>
+    <span class="na">isShowCompanyName</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>   <span class="c1">//true|false，默认为 false</span>
+    <span class="na">selectedUsers</span><span class="p">:</span> <span class="p">[</span><span class="s2">"18658"</span><span class="p">],</span> <span class="c1">//默认选中的人</span>
+    <span class="na">disabledUsers</span><span class="p">:</span> <span class="p">[</span><span class="s2">"78308"</span><span class="p">],</span> <span class="c1">//不能选的人</span>
+    <span class="na">max</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">//人数限制</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* data结构
+      [{
+        "name": "张三", //姓名
+        "avatar": "http://g.alicdn.com/avatar/zhangsan.png" //头像图片url，可能为空
+        "emplId": '0573', //工号
+       },
+       ...
+      ]
+    */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>corpId</td>
+<td>String</td>
+<td>企业ID</td>
+</tr>
+<tr>
+<td>users</td>
+<td>Array[String]</td>
+<td>是否多选： true多选，false单选； 默认true</td>
+</tr>
+<tr>
+<td>isShowCompanyName</td>
+<td>Boolean</td>
+<td>默认选中的用户列表，工号；成功回调中应包含该信息</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>选择窗口的标题</td>
+</tr>
+<tr>
+<td>selectedUsers</td>
+<td>Array[String]</td>
+<td>默认选中的人</td>
+</tr>
+<tr>
+<td>disabledUsers</td>
+<td>Array[String]</td>
+<td>不能选的人</td>
+</tr>
+<tr>
+<td>max</td>
+<td>Number</td>
+<td>人数限制</td>
+</tr>
+</tbody></table>
+
+<h5 id="　返回说明">　返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>头像图片url，可能为空</td>
+</tr>
+<tr>
+<td>emplId</td>
+<td>工号</td>
+</tr>
+</tbody></table>
+
 <h2 id="导航栏">导航栏</h2>
 
-<p><strong>想要对导航栏更加个性化的定义，比如设置导航栏左侧按钮，右侧按钮，标题，可以查看</strong></p>
+<p>关于导航栏包含的jsapi如下：</p>
+
+<ul>
+<li>设置导航栏颜色 ：在url后面拼接dd_nav_bgcolor参数即可</li>
+<li>设置标题 ： dd.biz.navigation.setTitle</li>
+<li>设置标题栏问号Icon ： dd.biz.navigation.setIcon</li>
+<li>设置左侧导航按钮 ：dd.biz.navigation.setLeft</li>
+<li>触发关闭 ： dd.biz.navigation.close</li>
+<li>设置导航栏右侧单个按钮 ：dd.biz.navigation.setRight</li>
+<li>设置导航栏右侧多个按钮 ：dd.biz.navigation.setMenu</li>
+</ul>
+
+<p><strong>由于篇幅比较长，自定义的内容比较多，所以关于每个jsapi详细的调用方法放在了钉钉的Blog之中，地址如下</strong></p>
 
 <p><a href="http://ddtalk.github.io/blog/2015/12/29/navbar/" target="_blank"><font color = red >
 钉钉微应用定制化导航栏</font></a></p>
-
-<h2 id="分享到会话">分享到会话</h2>
-
-<p>该功能是钉钉团队为开发者提供，帮助移动应用通过用户社交快速传播的功能。</p>
-
-<p>“分享到会话”功能为客户端调用功能，请将对应SDK集成至开发者移动端应用中。</p>
-
-<h3 id="场景介绍">场景介绍</h3>
-
-<p>用户使用开发者制作的移动应用时，可以将自己喜欢的内容，通过该功能快速地转发给自己在钉钉内的好友。好友点击打开内容链接，
-将通过钉钉内置浏览器打开网页的形式进行呈现。在传播内容的同时，也会同时露出应用的名称与logo，起到品牌传播的效果。</p>
-
-<h3 id="应用范例">应用范例</h3>
-
-<h4 id="支付宝">支付宝</h4>
-
-<p>从支付宝发送红包可以分享给钉钉同事，用户分享后，钉钉好友可以通过这个分享直接打开支付宝抢红包。</p>
-
-<h3 id="渠道显示说明">渠道显示说明</h3>
-
-<p>1、当用户手机安装钉钉2.7及以上版本，正常分享；</p>
-
-<p>2、当用户手机没有安装钉钉，点击分享渠道可以弹出提示，也可以引导用户下载钉钉。IOS引导至appstore，安卓引导至：http://www.dingtalk.com/index-b.html</p>
-
-<p>3、当用户手机安装钉钉版本低于2.7，点击分享渠道出提示升级钉钉。</p>
-
-<h3 id="分享sdk接入前准备">分享sdk接入前准备</h3>
-
-<p>分享到钉钉好友的所有接口功能，均需要使用在开放平台上创建的应用进行调用。目前仅支持阿里内部渠道的线下接入。线上的应用创建流程还在开发中。请随时关注文档更新。</p>
-
-<h3 id="接入流程">接入流程</h3>
-
-<h4 id="android接入流程">Android接入流程</h4>
-
-<p>1、搭建开发环境</p>
-
-<p>[1] 推荐用Android Studio建立工程。</p>
-
-<p>[2] 在工程中新建一个libs目录，将开发工具包中libs目录下的libddshare.jar复制到该目录中（如下图所示，建立了一个名为DDShareDemo 的工程，并把jar包复制到libs目录下）。</p>
-
-<p><img src="https://img.alicdn.com/tps/TB1gMLMKVXXXXbFXFXXXXXXXXXX-1082-690.png"  /></p>
-
-<p>[3] 将libs目录下的libddshare.jar文件添加到工程依赖中。</p>
-
-<p>2、 在代码中使用开发工具包</p>
-
-<p>[1] 具体可参考demo的代码。</p>
-
-<p>[2] 接收钉钉的回调
-如果你的程序需要接收钉钉发送的请求，或者接收发送到钉钉请求的响应结果，需要下面3步操作：</p>
-
-<p>a. 在你的包名相应目录下新建一个ddshare包，并在该ddshare目录下新增一个DDShareActivity类，该类继承自Activity（例如应用程序的包名为com.laiwang.ding.share.openapi.ddshareopenapi，则新添加的类如下图所示）</p>
-
-<p><img src="https://img.alicdn.com/tps/TB1s0PEKVXXXXa.aXXXXXXXXXXX-1000-468.png"  /></p>
-
-<p>并在AndroidManifest文件里面加上exported属性，设置为true，例如：</p>
-
-<p><img src="https://img.alicdn.com/tps/TB1jGn8KVXXXXa6XXXXXXXXXXXX-1030-322.png"  /></p>
-
-<p>b. 实现IDDAPIEventHandler接口，发送到定递给你请求的响应结果将回调到onResp方法</p>
-
-<p>c. 在DDShareActivity中将接收到的intent及实现了IDDAPIEventHandler接口的对象传递给IDDShareApi接口的handleIntent方法，示例如下图：</p>
-
-<p><img src="https://img.alicdn.com/tps/TB1SXrSKVXXXXaWXFXXXXXXXXXX-952-220.png"  /></p>
-
-<p>应用请求钉钉的响应结果将通过onResp回调。
-注意
-如果需要混淆代码，为了保证sdk的正常使用，需要在proguard.cfg加上下面两行配置：
--keep class  com.android.dingtalk.share.ddsharemodule.** {
-   *;
-}</p>
-
-<p>3、 判断当前设备是否支持分享</p>
-
-<p>钉钉从2.7版本开始支持分享，api中提供了接口来判断当前设备是否能够支持分享到钉钉</p>
-
-<p>[1]判断当前设备是否已经安装钉钉</p>
-
-<p>boolean isInstalled = iddShareApi.isDDAppInstalled();</p>
-
-<p>[2]判断当前设备是否支持分享到钉钉（已经安装钉钉&amp;&amp;钉钉版本支持分享）</p>
-
-<p>boolean isSupport = iddShareApi.isDDSupportAPI();</p>
-
-<p>4、 分享支持的类型</p>
-
-<p>支持文本、图片、链接以及特殊的支付宝红包类型，具体使用可参考Demo</p>
-
-<h4 id="ios接入流程">iOS接入流程</h4>
-
-<p>准备工作</p>
-
-<ul>
-<li>申请AppID, 申请时请提供，应用的BundleID，应用名称和应用图标，图标需要提供两个尺寸：28x28px和 108x108px，格式为PNG；</li>
-<li>下载DTShareSDK；DTShareSDK最低部署系统版本为iOS7.0，包含 <code class="prettyprint">armv7, i386, x86_64, arm64</code> 架构；</li>
-<li>安装钉钉iOS客户端2.7.0及以后的版本；</li>
-</ul>
-
-<p>步骤1：将SDK的下列文件导入到工程中；</p>
-
-<p><img alt="share_sdk_import" src="https://img.alicdn.com/tps/TB1hydHLXXXXXXFXXXXXXXXXXXX-290-97.png" /></p>
-
-<p>步骤2：配置工程</p>
-
-<ul>
-<li>在Other Linker Flags添加 <code class="prettyprint">-all_load</code>选项;</li>
-</ul>
-
-<p><img alt="other_linker_flags" src="https://img.alicdn.com/tps/TB118c9KVXXXXcIaXXXXXXXXXXX-808-201.png" /></p>
-
-<ul>
-<li>将申请的appId添加到URL Types中作为钉钉回调的scheme, <code class="prettyprint">identifier</code> 填写<code class="prettyprint">dingtalk</code>; <code class="prettyprint">URL Schemes</code>填写申请的AppId。 iOS9及以后的系统需要将钉钉和分享SDK的scheme配置在Info.plist的LSApplicationQueriesSchemes列表中，scheme分别为 <code class="prettyprint">dingtalk, dingtalk-open</code></li>
-</ul>
-
-<p><img alt="Alt text" src="https://img.alicdn.com/tps/TB1QyhdLXXXXXbZXVXXXXXXXXXX-973-709.png" /></p>
-
-<p>步骤4：注册应用并添加必要的URL Handler</p>
-
-<p>如示例中，在AppDelegate.m文件中引用<code class="prettyprint">AppDelegate.h</code>，在@implementation AppDelegate中增加如下代码：</p>
-
-<p><img alt="share_sdk_code_sample" src="https://img.alicdn.com/tps/TB1F7xvLXXXXXbHXpXXXXXXXXXX-999-554.png" /></p>
-
-<p>步骤4：分享数据到钉钉客户端</p>
-
-<p>发送分享请求的过程主要分为两部分：</p>
-
-<ul>
-<li>组装DTMediaMessage对象；</li>
-<li>调用+[DTOpenAPI sendReq:]发送数据；</li>
-</ul>
-
-<p>不同类型的分享数据通过DTMediaMessage的mediaObject区分：</p>
-
-<ul>
-<li>DTMediaTextObject 纯文本数据；</li>
-<li>DTMediaImageObject 纯图片数据；</li>
-<li>DTMediaWebObject Web页面数据；</li>
-</ul>
-
-<p>下面是分享文本部分代码，其它类型请参考Demo示例：</p>
-
-<p><img alt="share_sdk_text_sample_code" src="https://img.alicdn.com/tps/TB1ZWthLXXXXXbxXVXXXXXXXXXX-595-257.png" /></p>
-
-<p><strong>注意：分享纯图片数据和Web页面缩略图时，可以使用两种形式：图片URL和图片Data，钉钉内优先使用图片Data形式；分享数据的数据量限制在SDK的头文件中均有描述，超过限制的数据不会发送到钉钉客户端。</strong></p>
-
-<h4 id="判断当前设备是否支持分享到钉钉">判断当前设备是否支持分享到钉钉</h4>
-
-<p>钉钉从2.7版本开始支持分享，SDK中提供了接口来判断当前设备是否能够支持分享到钉钉。</p>
-
-<p><img alt="share_sdk_check_dingtalk_api" src="https://img.alicdn.com/tps/TB1zfhBLXXXXXXpXpXXXXXXXXXX-556-288.png" /></p>
-
-<p><strong>注意：在iOS9上需要将钉钉SDK相关的Scheme注册到Info.plist的LSApplicationQueriesSchemes明代中，否则会导致检测方法总是返回NO。</strong></p>
-
-<h3 id="demo下载">Demo下载</h3>
-
-<p><a href="http://download.taobaocdn.com/freedom/31112/compress/p1a71dcqcqen6g7e2joobd1bdm4.zip"><font color=blue >Android Demo 下载</font></a></p>
-
-<p><a href="http://download.taobaocdn.com/freedom/31112/compress/DTShareKit.zip"><font color=blue >iOS Demo 下载</font></a></p>
 
 <h2 id="附录">附录</h2>
 
@@ -12802,6 +13123,8 @@ dd.biz.user.get({
 
 <!-- github:`待补充` -->
 
+<p>通过Ctrl+Shift+I可以唤出钉钉PC/Mac客户端的浏览器页面调试窗口，开发者可以通过这个工具调试微应用页面。注意：在使用快捷键时需要把光标移除输入框。</p>
+
 <h2 id="配置展示形式">配置展示形式</h2>
 
 <h3 id="企业接入">企业接入</h3>
@@ -12819,6 +13142,7 @@ dd.biz.user.get({
 <h2 id="应用设计">应用设计</h2>
 
 <!--
+
 #### 样式库
 
 钉钉不限制第三方微应用的表现形式，但是需要引入钉钉的默认基础样式，基础样式确保了字体，字体颜色，行间距等基础的样式统一。
@@ -12835,13 +13159,15 @@ dd.biz.user.get({
 
 <h5 id="基础尺寸-企业会话详情">基础尺寸 - 企业会话详情</h5>
 
-<p><img src="https://static.dingtalk.com/media/lALOArO7PM0CWs0DhA_900_602.png" />
-企业会话详情目前是定宽设计（360px），但不排除未来该宽度可以调整，所以需要开发者将此页面进行响应式设计。</p>
+<p><img src="https://static.dingtalk.com/media/lALOArO7PM0CWs0DhA_900_602.png" /></p>
+
+<p>企业会话详情目前是定宽设计（360px），但不排除未来该宽度可以调整，所以需要开发者将此页面进行响应式设计。</p>
 
 <h5 id="基础尺寸-微应用首页">基础尺寸 - 微应用首页</h5>
 
-<p><img src="https://static.dingtalk.com/media/lALOArO6j80CWs0DhA_900_602.png" />
-微应用首页默认宽度是585px，支持用户拖拽更改宽高，所以需要开发者将此页面进行响应式设计。</p>
+<p><img src="https://static.dingtalk.com/media/lALOArO6j80CWs0DhA_900_602.png" /></p>
+
+<p>微应用首页默认宽度是585px，支持用户拖拽更改宽高，所以需要开发者将此页面进行响应式设计。</p>
 
 <h2 id="通用">通用</h2>
 
@@ -13374,9 +13700,10 @@ dd.biz.user.get({
 </tbody></table>
 
 <!--
+
 b.聊天页面
 
-```javascript
+``` javascript
 // 页面名称：
     chat
 // 传参：
@@ -13386,7 +13713,7 @@ b.聊天页面
 
 c.免费电话页面
 
-```javascript
+``` javascript
 // 页面名称：
     call
 // 传参：
@@ -13394,7 +13721,7 @@ c.免费电话页面
 
 d.联系人添加页面
 
-```javascript
+``` javascript
 // 页面名称：
     contactAdd
 // 传参：
@@ -13403,27 +13730,30 @@ d.联系人添加页面
 f.唤起添加好友页面
 
 
-```
+
+``` 
 // 页面名称：
     friendAdd
 // 传参：
-``` -->
+​``` -->
 
 <h3 id="打开模态框（modal）">打开模态框（modal）</h3>
 
 <p>打开一个模态框</p>
-<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">openModal</span><span class="p">({</span>
-    <span class="na">size</span><span class="p">:</span><span class="s1">'middle'</span><span class="p">,</span>  <span class="c1">// modal的尺寸</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s1">'https://test.dingtalk.com/modal.html'</span><span class="p">,</span> <span class="c1">//打开modal的内容的url</span>
-    <span class="na">title</span><span class="p">:</span> <span class="s1">'modal title'</span><span class="p">,</span> <span class="c1">//顶部标题</span>
-    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cm">/*
 
-        */</span>
-    <span class="p">},</span>
-    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
-<span class="p">})</span>
-</code></pre>
+<p>​`&ldquo;javascript
+DingTalkPC.biz.util.openModal({
+    size:&lsquo;middle&rsquo;,  // modal的尺寸
+    url: &#39;https://test.dingtalk.com/modal.html&rsquo;, //打开modal的内容的url
+    title: &#39;modal title&rsquo;, //顶部标题
+    onSuccess : function(result) {
+        /*</p>
+
+<p>*/
+    },
+    onFail : function() {}
+})
+&rdquo;`</p>
 
 <p><img src="http://gtms02.alicdn.com/tps/i2/TB1PqPwKFXXXXa8XFXXsaR5YpXX-1880-1276.png" width = "350" height = "" alt="图片名称" align=right /></p>
 
@@ -13811,7 +14141,7 @@ f.唤起添加好友页面
 
 <h4 id="设置左侧按钮点击后的回调">设置左侧按钮点击后的回调</h4>
 
-<p>DingTalkPC.addEventListener(&lsquo;leftBtnClick&rsquo;, handleFn);</p>
+<p>DingTalkPC.addEventListener(&#39;leftBtnClick&rsquo;, handleFn);</p>
 <pre class="highlight javascript"><code><span class="c1">//添加监听回调函数</span>
 <span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'leftBtnClick'</span><span class="p">,</span> <span class="nx">handleFn</span><span class="p">);</span>
 
@@ -14012,8 +14342,11 @@ f.唤起添加好友页面
 </tbody></table>
 
 <!--
+
 startWithDepartmentId: Number, //-1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
+
 startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
+
 -->
 
 <h5 id="　返回说明">　返回说明</h5>
@@ -14212,36 +14545,45 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 </tr>
 </tbody></table>
 
-<!-- ## 聊天
-DingTalkPC.biz
+<p>&lt;!&ndash; ## 聊天</p>
 
-### 选择会话
+<p>DingTalkPC.biz</p>
 
-```javascript
-DingTalkPC.biz.chat.chooseConversation({
-    onSuccess: function(data) {
-    /* data结构
+<h3 id="选择会话">选择会话</h3>
+<pre class="highlight javascript"><code><span class="nx">DingTalkPC</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">chooseConversation</span><span class="p">({</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* data结构
       {
         "id":"25001:2442003", //会话id
         "title":"钉钉-轻浅-pc专业户" // 会话名称
       }
-    */
-    },
-    onFail : function(err) {}
-});
-```
+    */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
 
-#### 参数说明
+<h4 id="参数说明">参数说明</h4>
 
-空
+<p>空</p>
 
+<h4 id="返回说明">返回说明</h4>
 
-#### 返回说明
-
-参数 | 说明
-------|------
-id | 会话id
-title | 会话名称 -->
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>会话id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>会话名称 &ndash;&gt;</td>
+</tr>
+</tbody></table>
 
 <h2 id="附录">附录</h2>
 
@@ -14250,16 +14592,17 @@ title | 会话名称 -->
 <p>如果开发者想使用钉钉容器开放的jsapi接口，需要经过以下流程：</p>
 
 <ul>
-<li><p>首先需要<a href="#获取jsapi_ticket"><font color=red >获取jsapi_ticket</font></a>。</p></li>
-<li><p>然后在web页面加载到钉钉容器时，通过<a href="#页面引入js文件"><font color=red >jsapi权限验证配置接口</font></a>验证可用的jsapi。这个接口使用的参数signature，在下文中有详细的说明。</p></li>
+<li>首先需要<a href="#获取jsapi_ticket"><font color=red >获取jsapi_ticket</font></a>。</li>
+<li>然后在web页面加载到钉钉容器时，通过<a href="#页面引入js文件"><font color=red >jsapi权限验证配置接口</font></a>验证可用的jsapi。这个接口使用的参数signature，在下文中有详细的说明。</li>
 </ul>
 
 <h4 id="1-获取jsapi_ticket">1.获取jsapi_ticket</h4>
 
 <p>jsapi_ticket,是开发者调用钉钉JS接口的临时授权码，其作用主要用于生成签名，这个签名在<a href="http://open.dingtalk.com/#页面引入js文件"><font color=red >jsapi权限验证配置接口</font></a>中使用。</p>
 
-<p>正常的情况下，jsapi_ticket的有效期为7200秒，通过access_token来获取。由于频繁刷新jsapi_ticket会导致api调用受限，影响自身业务，开发者必须在自己的服务全局缓存jsapi_ticket。
-获取jsapi_ticket，具体可以<a href="#js接口api"><font color=red >参考文档</font></a></p>
+<p>正常的情况下，jsapi_ticket的有效期为7200秒，通过access_token来获取。由于频繁刷新jsapi_ticket会导致api调用受限，影响自身业务，开发者必须在自己的服务全局缓存jsapi_ticket。</p>
+
+<p>获取jsapi_ticket，具体可以<a href="#js接口api"><font color=red >参考文档</font></a></p>
 
 <h4 id="2-签名生成算法">2.签名生成算法</h4>
 
@@ -14309,6 +14652,7 @@ title | 会话名称 -->
 <p>310x310 =&gt; _310x310.jpg</p>
 
 <!--
+
 ### 容器能力
 
 [runtime.permission.requestAuthCode](#获取免登授权码)
@@ -14414,6 +14758,164 @@ title | 会话名称 -->
 <p><a href="http://g.alicdn.com/ilw/cdnjs/zepto/1.1.6/zepto.min.js">http://g.alicdn.com/ilw/cdnjs/zepto/1.1.6/zepto.min.js</a></p>
 
 <p><a href="http://g.alicdn.com/ilw/cdnjs/zepto/1.1.6/zepto.js">http://g.alicdn.com/ilw/cdnjs/zepto/1.1.6/zepto.js</a></p>
+
+          <h1 id="分享sdk">分享SDK</h1>
+
+<p>该功能是钉钉团队为开发者提供，帮助移动应用通过用户社交快速传播的功能。</p>
+
+<p>“分享SDK”需要客户端接入，请将对应SDK集成至开发者移动端应用中。</p>
+
+<h2 id="场景介绍">场景介绍</h2>
+
+<p>用户使用开发者制作的移动应用时，可以将自己喜欢的内容，通过该功能快速地转发给自己在钉钉内的好友。好友点击打开内容链接，
+将通过钉钉内置浏览器打开网页的形式进行呈现。在传播内容的同时，也会同时露出应用的名称与logo，起到品牌传播的效果。</p>
+
+<h2 id="应用范例">应用范例</h2>
+
+<h3 id="支付宝">支付宝</h3>
+
+<p>从支付宝发送红包可以分享给钉钉同事，用户分享后，钉钉好友可以通过这个分享直接打开支付宝抢红包。</p>
+
+<h2 id="渠道显示说明">渠道显示说明</h2>
+
+<p>1、当用户手机安装钉钉2.7及以上版本，正常分享；</p>
+
+<p>2、当用户手机没有安装钉钉，点击分享渠道可以弹出提示，也可以引导用户下载钉钉。IOS引导至appstore，安卓引导至：http://www.dingtalk.com/index-b.html</p>
+
+<p>3、当用户手机安装钉钉版本低于2.7，点击分享渠道出提示升级钉钉。</p>
+
+<h2 id="分享sdk接入前准备">分享sdk接入前准备</h2>
+
+<p>分享到钉钉好友的所有接口功能，均需要使用在开放平台上创建的应用进行调用。目前仅支持阿里内部渠道的线下接入。线上的应用创建流程还在开发中。请随时关注文档更新。</p>
+
+<h2 id="接入流程">接入流程</h2>
+
+<h3 id="android接入流程">Android接入流程</h3>
+
+<p>1、搭建开发环境</p>
+
+<p>[1] 推荐用Android Studio建立工程。</p>
+
+<p>[2] 在工程中新建一个libs目录，将开发工具包中libs目录下的libddshare.jar复制到该目录中（如下图所示，建立了一个名为DDShareDemo 的工程，并把jar包复制到libs目录下）。</p>
+
+<p><img src="https://img.alicdn.com/tps/TB1gMLMKVXXXXbFXFXXXXXXXXXX-1082-690.png"  /></p>
+
+<p>[3] 将libs目录下的libddshare.jar文件添加到工程依赖中。</p>
+
+<p>2、 在代码中使用开发工具包</p>
+
+<p>[1] 具体可参考demo的代码。</p>
+
+<p>[2] 接收钉钉的回调
+如果你的程序需要接收钉钉发送的请求，或者接收发送到钉钉请求的响应结果，需要下面3步操作：</p>
+
+<p>a. 在你的包名相应目录下新建一个ddshare包，并在该ddshare目录下新增一个DDShareActivity类，该类继承自Activity（例如应用程序的包名为com.laiwang.ding.share.openapi.ddshareopenapi，则新添加的类如下图所示）</p>
+
+<p><img src="https://img.alicdn.com/tps/TB1s0PEKVXXXXa.aXXXXXXXXXXX-1000-468.png"  /></p>
+
+<p>并在AndroidManifest文件里面加上exported属性，设置为true，例如：</p>
+
+<p><img src="https://img.alicdn.com/tps/TB1jGn8KVXXXXa6XXXXXXXXXXXX-1030-322.png"  /></p>
+
+<p>b. 实现IDDAPIEventHandler接口，发送到定递给你请求的响应结果将回调到onResp方法</p>
+
+<p>c. 在DDShareActivity中将接收到的intent及实现了IDDAPIEventHandler接口的对象传递给IDDShareApi接口的handleIntent方法，示例如下图：</p>
+
+<p><img src="https://img.alicdn.com/tps/TB1SXrSKVXXXXaWXFXXXXXXXXXX-952-220.png"  /></p>
+
+<p>应用请求钉钉的响应结果将通过onResp回调。
+注意
+如果需要混淆代码，为了保证sdk的正常使用，需要在proguard.cfg加上下面两行配置：
+-keep class  com.android.dingtalk.share.ddsharemodule.** {
+   *;
+}</p>
+
+<p>3、 判断当前设备是否支持分享</p>
+
+<p>钉钉从2.7版本开始支持分享，api中提供了接口来判断当前设备是否能够支持分享到钉钉</p>
+
+<p>[1]判断当前设备是否已经安装钉钉</p>
+
+<p>boolean isInstalled = iddShareApi.isDDAppInstalled();</p>
+
+<p>[2]判断当前设备是否支持分享到钉钉（已经安装钉钉&amp;&amp;钉钉版本支持分享）</p>
+
+<p>boolean isSupport = iddShareApi.isDDSupportAPI();</p>
+
+<p>4、 分享支持的类型</p>
+
+<p>支持文本、图片、链接以及特殊的支付宝红包类型，具体使用可参考Demo</p>
+
+<h3 id="ios接入流程">iOS接入流程</h3>
+
+<p>准备工作</p>
+
+<ul>
+<li>申请AppID, 申请时请提供，应用的BundleID，应用名称和应用图标，图标需要提供两个尺寸：28x28px和 108x108px，格式为PNG；</li>
+<li>下载DTShareSDK；DTShareSDK最低部署系统版本为iOS7.0，包含 <code class="prettyprint">armv7, i386, x86_64, arm64</code> 架构；</li>
+<li>安装钉钉iOS客户端2.7.0及以后的版本；</li>
+</ul>
+
+<p>步骤1：将SDK的下列文件导入到工程中；</p>
+
+<p><img alt="share_sdk_import" src="https://img.alicdn.com/tps/TB1hydHLXXXXXXFXXXXXXXXXXXX-290-97.png" /></p>
+
+<p>步骤2：配置工程</p>
+
+<ul>
+<li>在Other Linker Flags添加 <code class="prettyprint">-all_load</code>选项;</li>
+</ul>
+
+<p><img alt="other_linker_flags" src="https://img.alicdn.com/tps/TB118c9KVXXXXcIaXXXXXXXXXXX-808-201.png" /></p>
+
+<ul>
+<li>将申请的appId添加到URL Types中作为钉钉回调的scheme, <code class="prettyprint">identifier</code> 填写<code class="prettyprint">dingtalk</code>; <code class="prettyprint">URL Schemes</code>填写申请的AppId。 iOS9及以后的系统需要将钉钉和分享SDK的scheme配置在Info.plist的LSApplicationQueriesSchemes列表中，scheme分别为 <code class="prettyprint">dingtalk, dingtalk-open</code></li>
+</ul>
+
+<p><img alt="Alt text" src="https://img.alicdn.com/tps/TB1QyhdLXXXXXbZXVXXXXXXXXXX-973-709.png" /></p>
+
+<p>步骤4：注册应用并添加必要的URL Handler</p>
+
+<p>如示例中，在AppDelegate.m文件中引用<code class="prettyprint">AppDelegate.h</code>，在@implementation AppDelegate中增加如下代码：</p>
+
+<p><img alt="share_sdk_code_sample" src="https://img.alicdn.com/tps/TB1F7xvLXXXXXbHXpXXXXXXXXXX-999-554.png" /></p>
+
+<p>步骤4：分享数据到钉钉客户端</p>
+
+<p>发送分享请求的过程主要分为两部分：</p>
+
+<ul>
+<li>组装DTMediaMessage对象；</li>
+<li>调用+[DTOpenAPI sendReq:]发送数据；</li>
+</ul>
+
+<p>不同类型的分享数据通过DTMediaMessage的mediaObject区分：</p>
+
+<ul>
+<li>DTMediaTextObject 纯文本数据；</li>
+<li>DTMediaImageObject 纯图片数据；</li>
+<li>DTMediaWebObject Web页面数据；</li>
+</ul>
+
+<p>下面是分享文本部分代码，其它类型请参考Demo示例：</p>
+
+<p><img alt="share_sdk_text_sample_code" src="https://img.alicdn.com/tps/TB1ZWthLXXXXXbxXVXXXXXXXXXX-595-257.png" /></p>
+
+<p><strong>注意：分享纯图片数据和Web页面缩略图时，可以使用两种形式：图片URL和图片Data，钉钉内优先使用图片Data形式；分享数据的数据量限制在SDK的头文件中均有描述，超过限制的数据不会发送到钉钉客户端。</strong></p>
+
+<h4 id="判断当前设备是否支持分享到钉钉">判断当前设备是否支持分享到钉钉</h4>
+
+<p>钉钉从2.7版本开始支持分享，SDK中提供了接口来判断当前设备是否能够支持分享到钉钉。</p>
+
+<p><img alt="share_sdk_check_dingtalk_api" src="https://img.alicdn.com/tps/TB1zfhBLXXXXXXpXpXXXXXXXXXX-556-288.png" /></p>
+
+<p><strong>注意：在iOS9上需要将钉钉SDK相关的Scheme注册到Info.plist的LSApplicationQueriesSchemes明代中，否则会导致检测方法总是返回NO。</strong></p>
+
+<h2 id="demo下载">Demo下载</h2>
+
+<p><a href="http://download.taobaocdn.com/freedom/31112/compress/p1a71dcqcqen6g7e2joobd1bdm4.zip"><font color=blue >Android Demo 下载</font></a></p>
+
+<p><a href="http://download.taobaocdn.com/freedom/31112/compress/DTShareKit.zip"><font color=blue >iOS Demo 下载</font></a></p>
 
           <h1 id="团队博客">团队博客</h1>
 

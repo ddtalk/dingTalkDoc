@@ -286,6 +286,8 @@ dd.device
 
 0.0.5
 
+iOS平台仅对iOS9之前的系统有效
+
 ```javascript
 dd.device.launcher.checkInstalledApps({
     apps: ['taobao', 'tmall'], //iOS:应用scheme;Android:应用包名
