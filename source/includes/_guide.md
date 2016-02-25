@@ -144,7 +144,7 @@ CorpID是企业的唯一标识，获取CorpID和CorpSecret的步骤如下:
 如果在使用开放平台中遇到困难请浏览[<font color=red >《常见问题》</font>](#faq)一节，若仍不能解决请按概述中的提供的反馈方式联系我们。
 
 
-## 服务端网段
+<!--## 服务端网段
 
 如果您的企业无法直接访问外部域名，需要设置ip白名单，钉钉提供服务端网段，列表如下：
 
@@ -204,4 +204,4 @@ space.dingtalk.com
 static.dingtalk.com
 
 www.laiwang.com
-
+-->
