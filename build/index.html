@@ -4905,952 +4905,463 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h2 id="群会话接口（暂未开放）">群会话接口（暂未开放）</h2>
-
-<h3 id="创建会话">创建会话</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/chat/create?access_token=ACCESS_TOKEN</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"群名称"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="s2">"lisi"</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>是</td>
-<td>群名称。长度限制为1~20个字符</td>
-</tr>
-<tr>
-<td>owner</td>
-<td>String</td>
-<td>是</td>
-<td>群主userId，员工唯一标识ID；必须为该会话useridlist的成员之一</td>
-</tr>
-<tr>
-<td>useridlist</td>
-<td>String[]</td>
-<td>是</td>
-<td>群成员列表，每次最多操作40人，群人数上限为1000</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxxxxxxxxxxxx"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-<tr>
-<td>chatid</td>
-<td>群会话的标识ID</td>
-</tr>
-</tbody></table>
-
-<h3 id="修改会话">修改会话</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/chat/update?access_token=ACCESS_TOKEN</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"群名称"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"add_useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"lisi"</span><span class="p">],</span><span class="w">
-    </span><span class="nt">"del_useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"wangwu"</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>否</td>
-<td>群名称。长度限制为1~20个字符，不传则不修改</td>
-</tr>
-<tr>
-<td>owner</td>
-<td>String</td>
-<td>否</td>
-<td>群主userId，员工唯一标识ID；必须为该会话成员之一；不传则不修改</td>
-</tr>
-<tr>
-<td>add_useridlist</td>
-<td>String[]</td>
-<td>否</td>
-<td>添加成员列表，每次最多操作40人，群人数上限为1000</td>
-</tr>
-<tr>
-<td>del_useridlist</td>
-<td>String[]</td>
-<td>否</td>
-<td>删除成员列表，每次最多操作40人，群人数上限为1000</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h3 id="获取会话">获取会话</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: GET</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/chat/get?access_token=ACCESS_TOKEN</code></p>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"chat_info"</span><span class="p">:</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"群名称"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"useridlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="s2">"lisi"</span><span class="p">],</span><span class="w">
-            </span><span class="nt">"agentidlist"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"12345"</span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-<tr>
-<td>chat_info</td>
-<td>群会话信息</td>
-</tr>
-<tr>
-<td>name</td>
-<td>群名称</td>
-</tr>
-<tr>
-<td>owner</td>
-<td>群主userid</td>
-</tr>
-<tr>
-<td>useridlist</td>
-<td>群成员userId列表</td>
-</tr>
-<tr>
-<td>agentidlist</td>
-<td>群绑定的微应用agentId列表</td>
-</tr>
-</tbody></table>
-
-<h3 id="绑定微应用和群会话">绑定微应用和群会话</h3>
-
-<p>此接口仅限ISV接入使用</p>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: GET</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/chat/bind?access_token=ACCESS_TOKEN</code></p>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>agentid</td>
-<td>String</td>
-<td>是</td>
-<td>微应用agentId，每个群最多绑定5个微应用，一个群只能被一个ISV套件绑定一次</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h3 id="解绑微应用和群会话">解绑微应用和群会话</h3>
-
-<p>此接口仅限ISV接入使用</p>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: GET</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/chat/unbind?access_token=ACCESS_TOKEN</code></p>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>agentid</td>
-<td>String</td>
-<td>是</td>
-<td>微应用agentId</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h3 id="发送消息到群会话">发送消息到群会话</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/chat/send?access_token=ACCESS_TOKEN</code></p>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回说明">返回说明</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h4 id="消息类型及数据格式">消息类型及数据格式</h4>
-
-<h5 id="text消息">text消息</h5>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三的请假申请"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>sender</td>
-<td>String</td>
-<td>是</td>
-<td>发送者的userid</td>
-</tr>
-<tr>
-<td>msgtype</td>
-<td>String</td>
-<td>是</td>
-<td>消息类型，此时固定为：text</td>
-</tr>
-</tbody></table>
-
-<h6 id="text消息体格式">text消息体格式</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>text.content</td>
-<td>String</td>
-<td>是</td>
-<td>消息内容</td>
-</tr>
-</tbody></table>
-
-<h5 id="image消息">image消息</h5>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>sender</td>
-<td>String</td>
-<td>是</td>
-<td>发送者的userid</td>
-</tr>
-<tr>
-<td>msgtype</td>
-<td>String</td>
-<td>是</td>
-<td>消息类型，此时固定为：image</td>
-</tr>
-</tbody></table>
-
-<h6 id="image消息体格式">image消息体格式</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>image.media_id</td>
-<td>String</td>
-<td>是</td>
-<td>图片媒体文件id，可以调用上传媒体文件接口获取。建议宽600像素 x 400像素，宽高比3：2</td>
-</tr>
-</tbody></table>
-
-<h5 id="voice消息">voice消息</h5>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"voice"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"voice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-       </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>sender</td>
-<td>String</td>
-<td>是</td>
-<td>发送者的userid</td>
-</tr>
-<tr>
-<td>msgtype</td>
-<td>String</td>
-<td>是</td>
-<td>消息类型，此时固定为：voice</td>
-</tr>
-</tbody></table>
-
-<h6 id="voice消息体格式">voice消息体格式</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>voice.media_id</td>
-<td>String</td>
-<td>是</td>
-<td>语音媒体文件id，可以调用上传媒体文件接口获取。2MB，播放长度不超过60s，AMR格式</td>
-</tr>
-</tbody></table>
-
-<h5 id="file消息">file消息</h5>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"file"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-       </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>sender</td>
-<td>String</td>
-<td>是</td>
-<td>发送者的userid</td>
-</tr>
-<tr>
-<td>msgtype</td>
-<td>String</td>
-<td>是</td>
-<td>消息类型，此时固定为：file</td>
-</tr>
-</tbody></table>
-
-<h6 id="file消息体格式">file消息体格式</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>file.media_id</td>
-<td>String</td>
-<td>是</td>
-<td>媒体文件id，可以调用上传媒体文件接口获取。10MB</td>
-</tr>
-</tbody></table>
-
-<h5 id="link消息">link消息</h5>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pic_url"</span><span class="p">:</span><span class="s2">"https://gw.alicdn.com/tps/TB1FN16LFXXXXXJXpXXXXXXXXXX-256-130.png"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"message_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.dingtalk.com"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>sender</td>
-<td>String</td>
-<td>是</td>
-<td>发送者的userid</td>
-</tr>
-<tr>
-<td>msgtype</td>
-<td>String</td>
-<td>是</td>
-<td>消息类型，此时固定为：link</td>
-</tr>
-</tbody></table>
-
-<h6 id="link消息体格式">link消息体格式</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>link.title</td>
-<td>String</td>
-<td>是</td>
-<td>消息标题</td>
-</tr>
-<tr>
-<td>link.text</td>
-<td>String</td>
-<td>是</td>
-<td>消息描述</td>
-</tr>
-<tr>
-<td>link.pic_url</td>
-<td>String</td>
-<td>是</td>
-<td>图片媒体文件id，可以调用上传媒体文件接口获取</td>
-</tr>
-<tr>
-<td>link.message_url</td>
-<td>String</td>
-<td>是</td>
-<td>消息点击链接地址</td>
-</tr>
-</tbody></table>
-
-<h5 id="oa消息">OA消息</h5>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-     </span><span class="nt">"chatid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatxxxxxxxxx"</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oa"</span><span class="p">,</span><span class="w">
-     </span><span class="nt">"oa"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"message_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.dingtalk.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pc_message_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://oa.dingtalk.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"head"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"bgcolor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FFBBBBBB"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"头部标题"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"正文标题"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"form"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"姓名:"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"年龄:"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"身高:"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.8米"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"体重:"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"130斤"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"学历:"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"本科"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"爱好:"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"打球、听音乐"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="nt">"rich"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"num"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15.6"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"元"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@lADOADmaWMzazQKA"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"file_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"李四 "</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>chatid</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>sender</td>
-<td>String</td>
-<td>是</td>
-<td>发送者的userid</td>
-</tr>
-<tr>
-<td>msgtype</td>
-<td>String</td>
-<td>是</td>
-<td>消息类型，此时固定为：oa</td>
-</tr>
-</tbody></table>
-
-<h6 id="oa消息体格式">OA消息体格式</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>oa.message_url</td>
-<td>String</td>
-<td>是</td>
-<td>客户端点击消息时跳转到的H5地址</td>
-</tr>
-<tr>
-<td>oa.pc_message_url</td>
-<td>String</td>
-<td>否</td>
-<td>PC端点击消息时跳转到的URL地址</td>
-</tr>
-<tr>
-<td>oa.head</td>
-<td>String</td>
-<td>是</td>
-<td>消息头部内容</td>
-</tr>
-<tr>
-<td>oa.head.bgcolor</td>
-<td>String</td>
-<td>是</td>
-<td>消息头部的背景颜色。长度限制为8个英文字符，其中前2为表示透明度，后6位表示颜色值。不要添加0x</td>
-</tr>
-<tr>
-<td>oa.head.text</td>
-<td>String</td>
-<td>是</td>
-<td>消息的头部标题</td>
-</tr>
-<tr>
-<td>oa.body</td>
-<td>Array[JSON Object]</td>
-<td>是</td>
-<td>消息体</td>
-</tr>
-<tr>
-<td>oa.body.title</td>
-<td>String</td>
-<td>否</td>
-<td>消息体的标题</td>
-</tr>
-<tr>
-<td>oa.body.form</td>
-<td>Array[JSON Object]</td>
-<td>否</td>
-<td>消息体的表单，最多显示6个，超过会被隐藏</td>
-</tr>
-<tr>
-<td>oa.body.form.key</td>
-<td>String</td>
-<td>否</td>
-<td>消息体的关键字</td>
-</tr>
-<tr>
-<td>oa.body.form.value</td>
-<td>String</td>
-<td>否</td>
-<td>消息体的关键字对应的值</td>
-</tr>
-<tr>
-<td>oa.body.rich</td>
-<td>Array[JSON Object]</td>
-<td>否</td>
-<td>单行富文本信息</td>
-</tr>
-<tr>
-<td>oa.body.rich.num</td>
-<td>String</td>
-<td>否</td>
-<td>单行富文本信息的数目</td>
-</tr>
-<tr>
-<td>oa.body.rich.unit</td>
-<td>String</td>
-<td>否</td>
-<td>单行富文本信息的单位</td>
-</tr>
-<tr>
-<td>oa.body.content</td>
-<td>String</td>
-<td>否</td>
-<td>消息体的内容，最多显示3行</td>
-</tr>
-<tr>
-<td>oa.body.image</td>
-<td>String</td>
-<td>否</td>
-<td>消息体中的图片media_id</td>
-</tr>
-<tr>
-<td>oa.body.file_count</td>
-<td>String</td>
-<td>否</td>
-<td>自定义的附件数目。此数字仅供显示，钉钉不作验证</td>
-</tr>
-<tr>
-<td>oa.body.author</td>
-<td>String</td>
-<td>否</td>
-<td>自定义的作者名字</td>
-</tr>
-</tbody></table>
-
-<h4 id="oa消息截图">OA消息截图</h4>
-
-<p><img alt="oames" src="https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg" /></p>
+<!--##群会话接口（暂未开放）
+
+
+### 创建会话
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/chat/create?access_token=ACCESS_TOKEN`
+
+###### 请求包结构体
+
+```
+{
+    "name": "群名称",
+    "owner": "zhangsan",
+    "useridlist": ["zhangsan","lisi"]
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----------| ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+name | String | 是 |  群名称。长度限制为1~20个字符
+owner | String | 是 | 群主userId，员工唯一标识ID；必须为该会话useridlist的成员之一
+useridlist  | String[] | 是 | 群成员列表，每次最多操作40人，群人数上限为1000
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok",
+    "chatid": "chatxxxxxxxxxxxxxxxxxxx"
+}
+```
+
+参数 | 说明
+----------  | ------
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+chatid | 群会话的标识ID
+
+### 修改会话
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/chat/update?access_token=ACCESS_TOKEN`
+
+###### 请求包结构体
+
+```
+{
+    "chatid": "chatxxxxxxxxxxxxxxxxxxx",
+    "name": "群名称",
+    "owner": "zhangsan",
+    "add_useridlist": ["lisi"],
+    "del_useridlist": ["wangwu"]
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----------| ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+chatid | String | 是 | 会话id
+name | String | 否 |  群名称。长度限制为1~20个字符，不传则不修改
+owner | String | 否 | 群主userId，员工唯一标识ID；必须为该会话成员之一；不传则不修改
+add_useridlist  | String[] | 否 | 添加成员列表，每次最多操作40人，群人数上限为1000
+del_useridlist  | String[] | 否 | 删除成员列表，每次最多操作40人，群人数上限为1000
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+
+参数 | 说明
+----------  | ------
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 获取会话
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/chat/get?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+chatid | String | 是 | 会话id
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok",
+    "chat_info":
+        {
+            "name": "群名称",
+            "owner": "zhangsan",
+            "useridlist": ["zhangsan","lisi"],
+            "agentidlist": ["12345"]
+        }
+}
+```
+
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+chat_info | 群会话信息
+name | 群名称
+owner | 群主userid
+useridlist | 群成员userId列表
+agentidlist | 群绑定的微应用agentId列表
+
+
+### 绑定微应用和群会话
+
+此接口仅限ISV接入使用
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/chat/bind?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+chatid | String | 是 | 会话id
+agentid | String | 是 | 微应用agentId，每个群最多绑定5个微应用，一个群只能被一个ISV套件绑定一次
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 解绑微应用和群会话
+
+此接口仅限ISV接入使用
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/chat/unbind?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+chatid | String | 是 | 会话id
+agentid | String | 是 | 微应用agentId
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 发送消息到群会话
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/chat/send?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token |String | 是 | 调用接口凭证
+
+###### 返回说明
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+#### 消息类型及数据格式
+
+##### text消息
+
+```
+{
+    "chatid": "chatxxxxxxxxx",
+    "sender": "manager1122",
+    "msgtype": "text",
+    "text": {
+        "content": "张三的请假申请"
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype |String | 是 | 消息类型，此时固定为：text
+
+###### text消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+text.content |String | 是 | 消息内容
+
+##### image消息
+
+```
+{
+    "chatid": "chatxxxxxxxxx",
+    "sender": "manager1122",
+    "msgtype": "image",
+    "image": {
+        "media_id": "MEDIA_ID"
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype |String | 是 | 消息类型，此时固定为：image
+
+###### image消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+image.media_id | String | 是 | 图片媒体文件id，可以调用上传媒体文件接口获取。建议宽600像素 x 400像素，宽高比3：2
+
+##### voice消息
+
+```
+{
+    "chatid": "chatxxxxxxxxx",
+    "sender": "manager1122",
+    "msgtype": "voice",
+    "voice": {
+       "media_id": "MEDIA_ID"
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype |String | 是 | 消息类型，此时固定为：voice
+
+###### voice消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+voice.media_id |String | 是 | 语音媒体文件id，可以调用上传媒体文件接口获取。2MB，播放长度不超过60s，AMR格式
+
+##### file消息
+
+```
+{
+    "chatid": "chatxxxxxxxxx",
+    "sender": "manager1122",
+    "msgtype": "file",
+    "file": {
+       "media_id": "MEDIA_ID"
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype | String| 是 | 消息类型，此时固定为：file
+
+###### file消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+file.media_id |String | 是 | 媒体文件id，可以调用上传媒体文件接口获取。10MB
+
+
+##### link消息
+
+```
+{
+    "chatid": "chatxxxxxxxxx",
+    "sender": "manager1122",
+    "msgtype": "link",
+    "link": {
+        "title": "测试",
+        "text": "测试",
+        "pic_url":"https://gw.alicdn.com/tps/TB1FN16LFXXXXXJXpXXXXXXXXXX-256-130.png",
+        "message_url": "http://www.dingtalk.com"
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype | String | 是 | 消息类型，此时固定为：link
+
+###### link消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+link.title | String | 是 | 消息标题
+link.text | String | 是 | 消息描述
+link.pic_url | String | 是 | 图片媒体文件id，可以调用上传媒体文件接口获取
+link.message_url | String | 是 | 消息点击链接地址
+
+##### OA消息
+
+```
+{
+     "chatid": "chatxxxxxxxxx",
+     "sender": "manager1122",
+     "msgtype": "oa",
+     "oa": {
+        "message_url": "https://www.dingtalk.com",
+        "pc_message_url": "https://oa.dingtalk.com",
+        "head": {
+            "bgcolor": "FFBBBBBB",
+            "text": "头部标题"
+        },
+        "body": {
+            "title": "正文标题",
+            "form": [
+                {
+                    "key": "姓名:",
+                    "value": "张三"
+                },
+                {
+                    "key": "年龄:",
+                    "value": "20"
+                },
+                {
+                    "key": "身高:",
+                    "value": "1.8米"
+                },
+                {
+                    "key": "体重:",
+                    "value": "130斤"
+                },
+                {
+                    "key": "学历:",
+                    "value": "本科"
+                },
+                {
+                    "key": "爱好:",
+                    "value": "打球、听音乐"
+                }
+            ],
+            "rich": {
+                "num": "15.6",
+                "unit": "元"
+            },
+            "content": "大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本大段文本",
+            "image": "@lADOADmaWMzazQKA",
+            "file_count": "3",
+            "author": "李四 "
+        }
+    }
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----- | ------- | ------- | ------
+chatid | String | 是 | 会话id
+sender | String | 是 | 发送者的userid
+msgtype |String | 是 | 消息类型，此时固定为：oa
+
+###### OA消息体格式
+
+参数 | 参数类型 | 必须 | 说明
+------ | ------- | ------- | ------
+oa.message_url| String | 是 | 客户端点击消息时跳转到的H5地址
+oa.pc_message_url| String | 否 | PC端点击消息时跳转到的URL地址
+oa.head | String | 是 | 消息头部内容
+oa.head.bgcolor | String | 是 | 消息头部的背景颜色。长度限制为8个英文字符，其中前2为表示透明度，后6位表示颜色值。不要添加0x
+oa.head.text | String | 是 | 消息的头部标题
+oa.body | Array[JSON Object] | 是 | 消息体
+oa.body.title | String | 否 | 消息体的标题
+oa.body.form | Array[JSON Object] | 否 | 消息体的表单，最多显示6个，超过会被隐藏
+oa.body.form.key | String | 否 | 消息体的关键字
+oa.body.form.value | String | 否 | 消息体的关键字对应的值
+oa.body.rich | Array[JSON Object] | 否 | 单行富文本信息
+oa.body.rich.num | String | 否 | 单行富文本信息的数目
+oa.body.rich.unit | String | 否| 单行富文本信息的单位
+oa.body.content | String | 否 | 消息体的内容，最多显示3行
+oa.body.image | String | 否 | 消息体中的图片media_id
+oa.body.file_count | String | 否 | 自定义的附件数目。此数字仅供显示，钉钉不作验证
+oa.body.author | String | 否 | 自定义的作者名字
+
+#### OA消息截图
+
+![oames](https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg)
+-->
 
 <h2 id="客户通讯录接口（暂未开放）">客户通讯录接口（暂未开放）</h2>
 
