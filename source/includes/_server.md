@@ -1188,8 +1188,8 @@ file.media_id |String | 是 | 媒体文件id，可以调用上传媒体文件接
     "link": {
         "title": "测试",
         "text": "测试",
-        "picUrl":"@lALOACZwe2Rk",
-        "messageUrl": "http://s.dingtalk.com/market/dingtalk/error_code.php"
+        "pic_url":"https://gw.alicdn.com/tps/TB1FN16LFXXXXXJXpXXXXXXXXXX-256-130.png",
+        "message_url": "http://www.dingtalk.com"
     }
 }
 ```
