@@ -1877,6 +1877,7 @@ encrypt  | "success"加密字符串
 - chat_update_owner ：群会话更换群主
 - chat_update_title ：群会话更换群名称
 - chat_disband ： 群会话解散群
+- chat_disband_microapp ： 绑定了微应用的群会话，在解散时回调
 
 POST数据解密后示例
 接收到推送之后请务必返回经过加密的字符串"success"的json数据
@@ -1896,7 +1897,7 @@ POST数据解密后示例
 
 参数 | 说明明
 ----------  | ------
-EventType | 事件类型，有六种，"chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
+EventType | 事件类型，有七种，"chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband","chat_disband_microapp"
 TimeStamp | 时间戳
 CorpId | 发生群会话变更的企业
 ChatId | 会话的ID
@@ -1904,6 +1905,7 @@ UserId | 用户发生变更的userid列表
 Owner  | 已经更新的新的群主的userid
 Title  | 已经更新的新的群标题
 Operator | 操作人员的userid
+agentId  | 群会话绑定的微应用agentId
 
 ##### 返回说明
 
@@ -1957,7 +1959,7 @@ Https请求方式: POST
 参数 | 参数类型 | 必须 | 说明
 ----------| ------- | ------- | ------
 access_token | String | 是 | 调用接口凭证
-call_back_tag | Array[String] | 是 |  需要监听的事件类型，有14种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
+call_back_tag | Array[String] | 是 |  需要监听的事件类型，有15种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband", "chat_disband_microapp"
 token | String | 是 | 加解密需要用到的token，ISV(服务提供商)推荐使用注册套件时填写的token，普通企业可以随机填写
 aes_key  | String | 是 | 数据加密密钥。用于回调数据的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取,您可以随机生成，ISV(服务提供商)推荐使用注册套件时填写的EncodingAESKey
 url  | String | 是 | 接收事件回调的url
@@ -2011,7 +2013,7 @@ access_token | String | 是 | 调用接口凭证
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
 access_token  | 调用接口凭证
-call_back_tag |  需要监听的事件类型，有14种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
+call_back_tag |  需要监听的事件类型，有15种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband", "chat_disband_microapp"
 token | 加解密需要用到的token，ISV(服务提供商)推荐使用注册套件时填写的token，普通企业可以随机填写
 aes_key  | 数据加密密钥。用于回调数据的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取,您可以随机生成，ISV(服务提供商)推荐使用注册套件时填写的EncodingAESKey
 url   | 接收事件回调的url
@@ -2041,7 +2043,7 @@ Https请求方式: POST
 参数 | 参数类型 | 必须 | 说明
 ----------| ------- | ------- | ------
 access_token | String | 是 | 调用接口凭证
-call_back_tag | Array[String] | 是 |  需要监听的事件类型，有14种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
+call_back_tag | Array[String] | 是 |  需要监听的事件类型，有15种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband","chat_disband_microapp"
 token | String | 是 | 加解密需要用到的token，ISV(服务提供商)推荐使用注册套件时填写的token，普通企业可以随机填写
 aes_key  | String | 是 | 数据加密密钥。用于回调数据的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取,您可以随机生成，ISV(服务提供商)推荐使用注册套件时填写的EncodingAESKey
 url  | String | 是 | 接收事件回调的url
@@ -2143,7 +2145,7 @@ errmsg | 对返回码的文本描述内容
 has_more | 是否还有推送失败的变更事件，若为true,则表示还有未回调的事件
 failed_list | 事件列表，一次最多200个
 event_time | 事件的时间戳
-call_back_tag | 事件类型，有14种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband"
+call_back_tag | 事件类型，有15种，"user_add_org", "user_modify_org", "user_leave_org","org_admin_add", "org_admin_remove", "org_dept_create", "org_dept_modify", "org_dept_remove", "chat_add_member", "chat_remove_member", "chat_quit", "chat_update_owner", "chat_update_title", "chat_disband","chat_disband_microapp"
 userid | 相关员工列表
 deptid | 相关部门列表
 corpid | 相关企业id
