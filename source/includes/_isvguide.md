@@ -12,16 +12,18 @@
 ### 1.注册钉钉企业账号
 一、进入 [<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 页面, 点击 [<font color=red >企业注册</font>](https://oa.dingtalk.com/register.html?spm=0.0.0.0.dL51oc)；（已经注册可跳过此步骤）
 
-![enterprise_register_entry](https://img.alicdn.com/tps/TB14kI8IFXXXXciapXXXXXXXXXX.jpg)
+![enterprise_register_entry](https://img.alicdn.com/tps/TB1qthwLVXXXXXqXpXXXXXXXXXX-1119-584.png)
 
 二、填写注册手机号码和短信验证码；
 
-三、输入企业基本信息和管理员帐号和密码，点击 *注册* 按钮完成注册过程。
+![input_enterprise_info](https://img.alicdn.com/tps/TB1TYtxLVXXXXc7XXXXXXXXXXXX-1274-625.png)
 
-![input_enterprise_info](https://img.alicdn.com/tps/TB1bru8JFXXXXXcXFXXXXXXXXXX-1171-807.png)
+三、输入企业基本信息和管理密码，点击 *注册* 按钮完成注册过程。
+
+![input_enterprise_info](https://img.alicdn.com/tps/TB10PRkLVXXXXckXFXXXXXXXXXX-1211-686.png)
 
 <aside class="notice">
-通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程注册管理员帐号。
+通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程设置管理密码。
 </aside>
 
 ### 2.分配管理员子账号
@@ -32,14 +34,17 @@
 
 二、按下图提示填写子帐号信息
 
-![set_sub_manager_account](https://img.alicdn.com/tps/TB16euYJFXXXXcRXFXXXXXXXXXX-601-336.png)
+![set_sub_manager_account](https://img.alicdn.com/tps/TB11RA7LFXXXXbJaXXXXXXXXXXX-1162-460.png)
 
-完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 *钉小秘* 会话中收到管理员帐号和初始密码，该钉钉用户可以通过收到的帐号和密码登录 [<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 进入安全中心对初始密码进行修改。
+完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 *钉小秘* 会话中收到已将您设置为管理员的通知，该钉钉用户可以通过收到通知中的链接地址登录管理后台，设置管理员密码 [<font color=red >钉钉管理后台</font>](https://oa.dingtalk.com) 。
+
+![set_sub_manager_account](https://img.alicdn.com/tps/TB12ndbLVXXXXcOXVXXXXXXXXXX-1062-523.png)
 
 ### 3.完成企业认证
 
  您可以通过管理员后台完成[<font color=red >企业认证</font>](https://oa.dingtalk.com/#/orgCheck)
 
+![set_org_check](https://img.alicdn.com/tps/TB1DXNjLVXXXXXfXVXXXXXXXXXX-1153-614.png)
 
 ## Step 2 -- 成为钉钉开发者
 
@@ -95,8 +100,8 @@
 ##### 8. 显示申请开发者成功
 
 ##### 9. 绑定钉钉认证企业
-注册成功之后您需要开通钉钉服务能力，此时您需要绑定ISV当前注册并通过认证的钉钉企业[<font color=red >(注意：此企业未与其它阿里云账号绑定，当前不支持账号解绑，请注意不要绑定错误;如果您计划通过钉钉应用中心推广您的套件，您需要绑定您所在企业钉钉认证企业，若您绑定的企业还未认证，请务必在推广前完成认证)</font>]，并完成企业主页的设置，见下图中所示，点击左侧菜单“服务能力”－>钉钉，点击页面右侧按钮开通使用，输入钉钉企业管理员账号与密码完成绑定。
-![kfzbinddd](https://img.alicdn.com/tps/TB1gRBMLpXXXXXaaXXXXXXXXXXX-1261-583.png)
+注册成功之后您需要开通钉钉服务能力，此时您需要绑定ISV当前注册并通过认证的钉钉企业[<font color=red >(注意：此企业未与其它阿里云账号绑定，当前不支持账号解绑，请注意不要绑定错误;如果您计划通过钉钉应用中心推广您的套件，您需要绑定您所在企业钉钉认证企业，若您绑定的企业还未认证，请务必在推广前完成认证)</font>]，并完成企业主页的设置，见下图中所示，点击左侧菜单“服务能力”－>钉钉，点击页面右侧按钮开通使用，输入钉钉企业管理员的手机号、企业的CorpID和管理员密码来完成绑定。
+![kfzbinddd](https://img.alicdn.com/tps/TB1BrpDLVXXXXXKXXXXXXXXXXXX-590-482.png)
 
 ## Step 3 -- 开发套件（微应用）
 在您开始开发套件时，为了减少您的验收时间，建议您提供以下信息至邮件组
