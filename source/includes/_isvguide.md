@@ -103,6 +103,14 @@
 注册成功之后您需要开通钉钉服务能力，此时您需要绑定ISV当前注册并通过认证的钉钉企业[<font color=red >(注意：此企业未与其它阿里云账号绑定，当前不支持账号解绑，请注意不要绑定错误;如果您计划通过钉钉应用中心推广您的套件，您需要绑定您所在企业钉钉认证企业，若您绑定的企业还未认证，请务必在推广前完成认证)</font>]，并完成企业主页的设置，见下图中所示，点击左侧菜单“服务能力”－>钉钉，点击页面右侧按钮开通使用，输入钉钉企业管理员的手机号、企业的CorpID和管理员密码来完成绑定。
 ![kfzbinddd](https://img.alicdn.com/tps/TB1BrpDLVXXXXXKXXXXXXXXXXXX-590-482.png)
 
+<aside class="notice">
+企业的CorpID可以通过如下途径获取到：
+</aside>
+![get_corpID](https://img.alicdn.com/tps/TB1nvhDLVXXXXXzXXXXXXXXXXXX-1226-549.png)
+
+![get_corpID](https://img.alicdn.com/tps/TB1ZM4lLVXXXXbmXFXXXXXXXXXX-1152-579.png)
+
+
 ## Step 3 -- 开发套件（微应用）
 在您开始开发套件时，为了减少您的验收时间，建议您提供以下信息至邮件组
 ：open-dingtalk@list.alibaba-inc.com
