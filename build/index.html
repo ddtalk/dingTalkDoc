@@ -4911,7 +4911,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h2 id="群会话接口（暂未开放）">群会话接口（暂未开放）</h2>
+<h2 id="群会话接口">群会话接口</h2>
 
 <h3 id="创建会话">创建会话</h3>
 
@@ -6917,6 +6917,7 @@ mobile | 手机号码
 <li>chat_update_owner ：群会话更换群主</li>
 <li>chat_update_title ：群会话更换群名称</li>
 <li>chat_disband ： 群会话解散群</li>
+<li>chat_disband_microapp ： 绑定了微应用的群会话，在解散时回调</li>
 </ul>
 
 <p>POST数据解密后示例
@@ -6941,7 +6942,7 @@ mobile | 手机号码
 </thead><tbody>
 <tr>
 <td>EventType</td>
-<td>事件类型，有六种，&quot;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>事件类型，有七种，&quot;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -6970,6 +6971,10 @@ mobile | 手机号码
 <tr>
 <td>Operator</td>
 <td>操作人员的userid</td>
+</tr>
+<tr>
+<td>agentId</td>
+<td>群会话绑定的微应用agentId</td>
 </tr>
 </tbody></table>
 
@@ -7053,7 +7058,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有14种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>需要监听的事件类型，有15种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;, &ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -7156,7 +7161,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>需要监听的事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>需要监听的事件类型，有15种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;, &ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -7209,7 +7214,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>需要监听的事件类型，有15种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -7385,7 +7390,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>事件类型，有15种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>userid</td>
@@ -15091,7 +15096,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 
 <h2 id="demo下载">Demo下载</h2>
 
-<p><a href="http://download.taobaocdn.com/freedom/31112/compress/p1a71dcqcqen6g7e2joobd1bdm4.zip"><font color=blue >Android Demo 下载</font></a></p>
+<p><a href="http://download.taobaocdn.com/freedom/31112/compress/p1acmghvmm1sfd2oe167ih5617o34.zip"><font color=blue >Android Demo 下载</font></a></p>
 
 <p><a href="http://download.taobaocdn.com/freedom/31112/compress/DTShareKit.zip"><font color=blue >iOS Demo 下载</font></a></p>
 
