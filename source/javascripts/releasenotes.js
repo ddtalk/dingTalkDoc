@@ -221,7 +221,21 @@
 		$.each(data.labels, function(i, label){   labels += _this.label(label);	});
 
 
+		if (data.body !== null && data.body !== undefined && data.body !== '' && data.body.substring(0,1) == "#"){
+			return $('<div id="issue'+data.number+'" >\
+				<ul >\
+					<li><p><a href="'+ data.body +'">'+labels+' '+$("<span>").html(data.title).text()+' </a></p></li>\
+				</ul>\
+				').data("issue", data);
 
+		}else{
+			return $('<div id="issue'+data.number+'" >\
+				<ul >\
+					<li><p>'+labels+' '+$("<span>").html(data.title).text()+'</p></li>\
+				</ul>\
+				').data("issue", data);
+
+		}
 
 		return $('<div id="issue'+data.number+'" >\
 				<ul >\
