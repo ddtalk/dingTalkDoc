@@ -12,6 +12,8 @@
 		 pedantic: false,
 		 sanitize: true
 	});
+	var issueClick = function issueOnclick(hashValue)
+	{location.hash = "#" + hashValue;}
 
 	// Default setting
 	 var defaultSettings = {
@@ -123,6 +125,7 @@
 				$.each(issues, function(i, issue){
 					issue.prettyDate = _this.getPrettyDate(issue.closed_at);
 					jqMilestoneIssues.append(components.issue(issue));
+					//$('#issue'+issue.number).onclick = issueClick(issue.body);
 				});
 				jqMilestone.addClass("separator");
 				if(settings.showDescription) jqMilestone.find(".issue").addClass("cursor");
@@ -222,9 +225,13 @@
 
 		return $('<div id="issue'+data.number+'" >\
 				<ul >\
-					<li><p>'+labels+' '+$("<span>").html(data.title).text()+' </p></li>\
+					<li><p><a href="'+ data.body +'">'+labels+' '+$("<span>").html(data.title).text()+' </a></p></li>\
 				</ul>\
 				').data("issue", data);
+		//return $('<div id="issue'+data.number+'" >\
+		//			<a href="#获取会话信息">'+labels+' '+$("<span>").html(data.title).text()+' </a>\
+		//		').data("issue", data);
+
 
 
 		// return $('<div id="issue'+data.number+'" class="issue" >\
