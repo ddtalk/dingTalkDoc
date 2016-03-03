@@ -3369,7 +3369,7 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
  public class Env {
   public static final String OAPI_HOST = "https://oapi.dingtalk.com";
     public static final String CORP_ID = "corpid";
-    public static final String SECRET = "secret";
+    public static final String CORP_SECRET = "secret";
  }
 
 ```
@@ -3378,8 +3378,8 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 
 2.启动您的服务器，如果配置正确，则会成功启动。
 
-[<font color=red >Demo地址：</font>](https://github.com/injekt/openapi-demo-java)
-[<font color=red >https://github.com/injekt/openapi-demo-java</font>](https://github.com/injekt/openapi-demo-java)
+[<font color=red >Demo地址：</font>](https://github.com/ddtalk/HarleyCorp)
+[<font color=red >https://github.com/ddtalk/HarleyCorp</font>](https://github.com/ddtalk/HarleyCorp)
 
 ### PHP版本
 
