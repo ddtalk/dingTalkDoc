@@ -6831,6 +6831,7 @@ mobile | 手机号码
 <li>org_dept_create ： 通讯录企业部门创建</li>
 <li>org_dept_modify ： 通讯录企业部门修改</li>
 <li>org_dept_remove ： 通讯录企业部门删除</li>
+<li>org_remove ： 企业被解散</li>
 </ul>
 
 <p>POST数据解密后示例
@@ -6853,7 +6854,7 @@ mobile | 手机号码
 </thead><tbody>
 <tr>
 <td>EventType</td>
-<td>事件类型，有八种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>事件类型，有八种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -7066,7 +7067,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有15种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;, &ldquo;chat_disband_microapp&rdquo;</td>
+<td>需要监听的事件类型，有16种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;, &ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -7169,7 +7170,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>需要监听的事件类型，有15种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;, &ldquo;chat_disband_microapp&rdquo;</td>
+<td>需要监听的事件类型，有16种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;, &ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -7195,7 +7196,7 @@ mobile | 手机号码
 
 <h6 id="请求包结构体">请求包结构体</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"call_back_tag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user_add_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_modify_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_leave_org"</span><span class="p">,</span><span class="s2">"org_admin_add"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_admin_remove"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_create"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_modify"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_remove"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"call_back_tag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user_add_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_modify_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_leave_org"</span><span class="p">,</span><span class="s2">"org_admin_add"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_admin_remove"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_create"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_modify"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_remove"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_remove"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aes_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111lvdhntotr3x9qhlbytb18zyz5z111111111"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.dingtalk.com"</span><span class="w">
@@ -7222,7 +7223,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有15种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
+<td>需要监听的事件类型，有16种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -7398,7 +7399,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>事件类型，有15种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
+<td>事件类型，有16种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>userid</td>
