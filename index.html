@@ -245,67 +245,67 @@
 
 <p>如果在使用开放平台中遇到困难请浏览<a href="#faq"><font color=red >《常见问题》</font></a>一节，若仍不能解决请按概述中的提供的反馈方式联系我们。</p>
 
-<h2 id="服务端网段">服务端网段</h2>
+<!--## 服务端网段
 
-<p>如果您的企业无法直接访问外部域名，需要设置ip白名单，钉钉提供服务端网段，列表如下：</p>
+如果您的企业无法直接访问外部域名，需要设置ip白名单，钉钉提供服务端网段，列表如下：
 
-<p>42.120.0.0/15</p>
+42.120.0.0/15
 
-<p>110.75.0.0/16</p>
+110.75.0.0/16
 
-<p>110.76.0.0/19</p>
+110.76.0.0/19
 
-<p>110.76.32.0/21</p>
+110.76.32.0/21
 
-<p>110.76.48.0/20</p>
+110.76.48.0/20
 
-<p>140.205.0.0/16</p>
+140.205.0.0/16
 
-<h2 id="域名白名单">域名白名单</h2>
+## 域名白名单
+如果您的企业对外部域名访问有限制，则需要将钉钉域名添加到您的域名控制白名单，路由器防火墙好像不能设置域名白名单，除非买专业的防火墙
 
-<p>如果您的企业对外部域名访问有限制，则需要将钉钉域名添加到您的域名控制白名单，路由器防火墙好像不能设置域名白名单，除非买专业的防火墙</p>
+i01.lw.aliimg.com
 
-<p>i01.lw.aliimg.com</p>
+wkvip.laiwang.com
 
-<p>wkvip.laiwang.com</p>
+i01.lw.aliimg.com
 
-<p>i01.lw.aliimg.com</p>
+dingtalk.com
 
-<p>dingtalk.com</p>
+www.dingtalk.com
 
-<p>www.dingtalk.com</p>
+m.dingtalk.com
 
-<p>m.dingtalk.com</p>
+s.dingtalk.com
 
-<p>s.dingtalk.com</p>
+oa.dingtalk.com
 
-<p>oa.dingtalk.com</p>
+qr.dingtalk.com
 
-<p>qr.dingtalk.com</p>
+login.dingtalk.com
 
-<p>login.dingtalk.com</p>
+im.dingtalk.com
 
-<p>im.dingtalk.com</p>
+httpdns.dingtalk.com
 
-<p>httpdns.dingtalk.com</p>
+g.alicdn.com
 
-<p>g.alicdn.com</p>
+gtms02.alicdn.com
 
-<p>gtms02.alicdn.com</p>
+gtms03.alicdn.com
 
-<p>gtms03.alicdn.com</p>
+at.alicdn.com
 
-<p>at.alicdn.com</p>
+wswukong.laiwang.com
 
-<p>wswukong.laiwang.com</p>
+assets.alicdn.com
 
-<p>assets.alicdn.com</p>
+space.dingtalk.com
 
-<p>space.dingtalk.com</p>
+static.dingtalk.com
 
-<p>static.dingtalk.com</p>
-
-<p>www.laiwang.com</p>
+www.laiwang.com
+-->
 
           <h1 id="isv接入指南">ISV接入指南</h1>
 
@@ -326,16 +326,18 @@
 
 <p>一、进入 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 页面, 点击 <a href="https://oa.dingtalk.com/register.html?spm=0.0.0.0.dL51oc"><font color=red >企业注册</font></a>；（已经注册可跳过此步骤）</p>
 
-<p><img alt="enterprise_register_entry" src="https://img.alicdn.com/tps/TB14kI8IFXXXXciapXXXXXXXXXX.jpg" /></p>
+<p><img alt="enterprise_register_entry" src="https://img.alicdn.com/tps/TB1qthwLVXXXXXqXpXXXXXXXXXX-1119-584.png" /></p>
 
 <p>二、填写注册手机号码和短信验证码；</p>
 
-<p>三、输入企业基本信息和管理员帐号和密码，点击 <em>注册</em> 按钮完成注册过程。</p>
+<p><img alt="input_enterprise_info" src="https://img.alicdn.com/tps/TB1TYtxLVXXXXc7XXXXXXXXXXXX-1274-625.png" /></p>
 
-<p><img alt="input_enterprise_info" src="https://img.alicdn.com/tps/TB1bru8JFXXXXXcXFXXXXXXXXXX-1171-807.png" /></p>
+<p>三、输入企业基本信息和管理密码，点击 <em>注册</em> 按钮完成注册过程。</p>
+
+<p><img alt="input_enterprise_info" src="https://img.alicdn.com/tps/TB10PRkLVXXXXckXFXXXXXXXXXX-1211-686.png" /></p>
 
 <aside class="notice">
-通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程注册管理员帐号。
+通过钉钉移动客户端创建的企业默认没有设置钉钉后台管理员，需要通过以上流程设置管理密码。
 </aside>
 
 <h3 id="2-分配管理员子账号">2.分配管理员子账号</h3>
@@ -346,13 +348,17 @@
 
 <p>二、按下图提示填写子帐号信息</p>
 
-<p><img alt="set_sub_manager_account" src="https://img.alicdn.com/tps/TB16euYJFXXXXcRXFXXXXXXXXXX-601-336.png" /></p>
+<p><img alt="set_sub_manager_account" src="https://img.alicdn.com/tps/TB11RA7LFXXXXbJaXXXXXXXXXXX-1162-460.png" /></p>
 
-<p>完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 <em>钉小秘</em> 会话中收到管理员帐号和初始密码，该钉钉用户可以通过收到的帐号和密码登录 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 进入安全中心对初始密码进行修改。</p>
+<p>完成管理员子帐号设置后，子帐号关联的钉钉用户会在钉钉客户端的 <em>钉小秘</em> 会话中收到已将您设置为管理员的通知，该钉钉用户可以通过收到通知中的链接地址登录管理后台，设置管理员密码 <a href="https://oa.dingtalk.com"><font color=red >钉钉管理后台</font></a> 。</p>
+
+<p><img alt="set_sub_manager_account" src="https://img.alicdn.com/tps/TB12ndbLVXXXXcOXVXXXXXXXXXX-1062-523.png" /></p>
 
 <h3 id="3-完成企业认证">3.完成企业认证</h3>
 
 <p>您可以通过管理员后台完成<a href="https://oa.dingtalk.com/#/orgCheck"><font color=red >企业认证</font></a></p>
+
+<p><img alt="set_org_check" src="https://img.alicdn.com/tps/TB1DXNjLVXXXXXfXVXXXXXXXXXX-1153-614.png" /></p>
 
 <h2 id="step-2-成为钉钉开发者">Step 2 &ndash; 成为钉钉开发者</h2>
 
@@ -428,8 +434,16 @@
 
 <h5 id="9-绑定钉钉认证企业">9. 绑定钉钉认证企业</h5>
 
-<p>注册成功之后您需要开通钉钉服务能力，此时您需要绑定ISV当前注册并通过认证的钉钉企业[<font color=red >(注意：此企业未与其它阿里云账号绑定，当前不支持账号解绑，请注意不要绑定错误;如果您计划通过钉钉应用中心推广您的套件，您需要绑定您所在企业钉钉认证企业，若您绑定的企业还未认证，请务必在推广前完成认证)</font>]，并完成企业主页的设置，见下图中所示，点击左侧菜单“服务能力”－&gt;钉钉，点击页面右侧按钮开通使用，输入钉钉企业管理员账号与密码完成绑定。
-<img alt="kfzbinddd" src="https://img.alicdn.com/tps/TB1gRBMLpXXXXXaaXXXXXXXXXXX-1261-583.png" /></p>
+<p>注册成功之后您需要开通钉钉服务能力，此时您需要绑定ISV当前注册并通过认证的钉钉企业[<font color=red >(注意：此企业未与其它阿里云账号绑定，当前不支持账号解绑，请注意不要绑定错误;如果您计划通过钉钉应用中心推广您的套件，您需要绑定您所在企业钉钉认证企业，若您绑定的企业还未认证，请务必在推广前完成认证)</font>]，并完成企业主页的设置，见下图中所示，点击左侧菜单“服务能力”－&gt;钉钉，点击页面右侧按钮开通使用，输入钉钉企业管理员的手机号、企业的CorpID和管理员密码来完成绑定。
+<img alt="kfzbinddd" src="https://img.alicdn.com/tps/TB1BrpDLVXXXXXKXXXXXXXXXXXX-590-482.png" /></p>
+
+<aside class="notice">
+企业的CorpID可以通过如下途径获取到：
+</aside>
+
+<p><img alt="get_corpID" src="https://img.alicdn.com/tps/TB1nvhDLVXXXXXzXXXXXXXXXXXX-1226-549.png" /></p>
+
+<p><img alt="get_corpID" src="https://img.alicdn.com/tps/TB1ZM4lLVXXXXbmXFXXXXXXXXXX-1152-579.png" /></p>
 
 <h2 id="step-3-开发套件（微应用）">Step 3 &ndash; 开发套件（微应用）</h2>
 
@@ -4905,7 +4919,7 @@ mobile | 手机号码
 </tr>
 </tbody></table>
 
-<h2 id="群会话接口（暂未开放）">群会话接口（暂未开放）</h2>
+<h2 id="群会话接口">群会话接口</h2>
 
 <h3 id="创建会话">创建会话</h3>
 
@@ -5579,8 +5593,8 @@ mobile | 手机号码
     </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"picUrl"</span><span class="p">:</span><span class="s2">"@lALOACZwe2Rk"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"messageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://s.dingtalk.com/market/dingtalk/error_code.php"</span><span class="w">
+        </span><span class="nt">"pic_url"</span><span class="p">:</span><span class="s2">"https://gw.alicdn.com/tps/TB1FN16LFXXXXXJXpXXXXXXXXXX-256-130.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"message_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.dingtalk.com"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -6817,6 +6831,7 @@ mobile | 手机号码
 <li>org_dept_create ： 通讯录企业部门创建</li>
 <li>org_dept_modify ： 通讯录企业部门修改</li>
 <li>org_dept_remove ： 通讯录企业部门删除</li>
+<li>org_remove ： 企业被解散</li>
 </ul>
 
 <p>POST数据解密后示例
@@ -6839,7 +6854,7 @@ mobile | 手机号码
 </thead><tbody>
 <tr>
 <td>EventType</td>
-<td>事件类型，有八种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;</td>
+<td>事件类型，有八种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -6911,6 +6926,7 @@ mobile | 手机号码
 <li>chat_update_owner ：群会话更换群主</li>
 <li>chat_update_title ：群会话更换群名称</li>
 <li>chat_disband ： 群会话解散群</li>
+<li>chat_disband_microapp ： 绑定了微应用的群会话，在解散时回调</li>
 </ul>
 
 <p>POST数据解密后示例
@@ -6935,7 +6951,7 @@ mobile | 手机号码
 </thead><tbody>
 <tr>
 <td>EventType</td>
-<td>事件类型，有六种，&quot;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>事件类型，有七种，&quot;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>TimeStamp</td>
@@ -6964,6 +6980,10 @@ mobile | 手机号码
 <tr>
 <td>Operator</td>
 <td>操作人员的userid</td>
+</tr>
+<tr>
+<td>agentId</td>
+<td>群会话绑定的微应用agentId</td>
 </tr>
 </tbody></table>
 
@@ -7047,7 +7067,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有14种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>需要监听的事件类型，有16种，&quot;user_add_org&rdquo;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;, &ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -7150,7 +7170,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>需要监听的事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>需要监听的事件类型，有16种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;, &ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -7176,7 +7196,7 @@ mobile | 手机号码
 
 <h6 id="请求包结构体">请求包结构体</h6>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"call_back_tag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user_add_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_modify_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_leave_org"</span><span class="p">,</span><span class="s2">"org_admin_add"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_admin_remove"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_create"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_modify"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_remove"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"call_back_tag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user_add_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_modify_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_leave_org"</span><span class="p">,</span><span class="s2">"org_admin_add"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_admin_remove"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_create"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_modify"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_dept_remove"</span><span class="p">,</span><span class="w"> </span><span class="s2">"org_remove"</span><span class="p">],</span><span class="w">
     </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aes_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11111111lvdhntotr3x9qhlbytb18zyz5z111111111"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.dingtalk.com"</span><span class="w">
@@ -7203,7 +7223,7 @@ mobile | 手机号码
 <td>call_back_tag</td>
 <td>Array[String]</td>
 <td>是</td>
-<td>需要监听的事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>需要监听的事件类型，有16种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>token</td>
@@ -7379,7 +7399,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>call_back_tag</td>
-<td>事件类型，有14种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;</td>
+<td>事件类型，有16种，&quot;user_add_org&quot;, &ldquo;user_modify_org&rdquo;, &ldquo;user_leave_org&rdquo;,&ldquo;org_admin_add&rdquo;, &ldquo;org_admin_remove&rdquo;, &ldquo;org_dept_create&rdquo;, &ldquo;org_dept_modify&rdquo;, &ldquo;org_dept_remove&rdquo;, &ldquo;org_remove&rdquo;, &ldquo;chat_add_member&rdquo;, &ldquo;chat_remove_member&rdquo;, &ldquo;chat_quit&rdquo;, &ldquo;chat_update_owner&rdquo;, &ldquo;chat_update_title&rdquo;, &ldquo;chat_disband&rdquo;,&ldquo;chat_disband_microapp&rdquo;</td>
 </tr>
 <tr>
 <td>userid</td>
@@ -8952,6 +8972,98 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <td>请求成功</td>
 </tr>
 <tr>
+<td>404</td>
+<td>请求的URI地址不存在</td>
+</tr>
+<tr>
+<td>33001</td>
+<td>无效的企业ID</td>
+</tr>
+<tr>
+<td>33002</td>
+<td>无效的微应用的名称</td>
+</tr>
+<tr>
+<td>33003</td>
+<td>无效的微应用的描述</td>
+</tr>
+<tr>
+<td>33004</td>
+<td>无效的微应用的ICON</td>
+</tr>
+<tr>
+<td>33005</td>
+<td>无效的微应用的移动端主页</td>
+</tr>
+<tr>
+<td>33006</td>
+<td>无效的微应用的PC端主页</td>
+</tr>
+<tr>
+<td>33007</td>
+<td>微应用的移动端的主页与PC端主页不同</td>
+</tr>
+<tr>
+<td>33008</td>
+<td>无效的微应用OA后台的主页</td>
+</tr>
+<tr>
+<td>34001</td>
+<td>无效的会话id</td>
+</tr>
+<tr>
+<td>34002</td>
+<td>无效的会话消息的发送者</td>
+</tr>
+<tr>
+<td>34003</td>
+<td>无效的会话消息的发送者的企业Id</td>
+</tr>
+<tr>
+<td>34004</td>
+<td>无效的会话消息的类型</td>
+</tr>
+<tr>
+<td>34005</td>
+<td>无效的会话音频消息的播放时间</td>
+</tr>
+<tr>
+<td>34006</td>
+<td>发送者不在企业中</td>
+</tr>
+<tr>
+<td>34007</td>
+<td>发送者不在会话中</td>
+</tr>
+<tr>
+<td>34008</td>
+<td>图片不能为空</td>
+</tr>
+<tr>
+<td>34009</td>
+<td>链接内容不能为空</td>
+</tr>
+<tr>
+<td>34010</td>
+<td>文件不能为空</td>
+</tr>
+<tr>
+<td>34011</td>
+<td>音频文件不能为空</td>
+</tr>
+<tr>
+<td>34012</td>
+<td>找不到发送者的企业</td>
+</tr>
+<tr>
+<td>34013</td>
+<td>找不到群会话对象</td>
+</tr>
+<tr>
+<td>34014</td>
+<td>会话消息的json结构无效或不完整</td>
+</tr>
+<tr>
 <td>40001</td>
 <td>获取access_token时Secret错误，或者access_token无效</td>
 </tr>
@@ -9038,6 +9150,14 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <tr>
 <td>40022</td>
 <td>企业中的手机号码和登陆钉钉的手机号码不一致,暂时不支持修改用户信息,可以删除后重新添加</td>
+</tr>
+<tr>
+<td>40023</td>
+<td>部门人数达到上限</td>
+</tr>
+<tr>
+<td>40025</td>
+<td>无效的部门JSONArray对象,合法格式需要用中括号括起来,且如果属于多部门,部门id需要用逗号分隔</td>
 </tr>
 <tr>
 <td>60107</td>
@@ -9153,7 +9273,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 </tr>
 <tr>
 <td>40083</td>
-<td>不合法的suitekey</td>
+<td>不合法的suiteid</td>
 </tr>
 <tr>
 <td>40084</td>
@@ -9182,6 +9302,10 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <tr>
 <td>40090</td>
 <td>套件已经不存在</td>
+</tr>
+<tr>
+<td>40091</td>
+<td>用户授权码创建失败,需要用户重新授权</td>
 </tr>
 <tr>
 <td>41001</td>
@@ -9265,11 +9389,11 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 </tr>
 <tr>
 <td>41025</td>
-<td>缺少permanent_code（永久授权码）</td>
+<td>缺少permanent_code</td>
 </tr>
 <tr>
 <td>41026</td>
-<td>缺少tmp_auth_code（临时授权码）</td>
+<td>缺少tmp_auth_code</td>
 </tr>
 <tr>
 <td>41027</td>
@@ -9480,6 +9604,10 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <td>群成员列表必须包含群主</td>
 </tr>
 <tr>
+<td>49007</td>
+<td>超过创建群的个数上限</td>
+</tr>
+<tr>
 <td>50001</td>
 <td>redirect_uri未授权</td>
 </tr>
@@ -9656,6 +9784,18 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <td>访问ip不在白名单之中</td>
 </tr>
 <tr>
+<td>60066</td>
+<td>企业的设置不存在</td>
+</tr>
+<tr>
+<td>60067</td>
+<td>部门的企业群群主不存在</td>
+</tr>
+<tr>
+<td>60068</td>
+<td>部门的管理员不存在</td>
+</tr>
+<tr>
 <td>60102</td>
 <td>UserID在公司中已存在</td>
 </tr>
@@ -9674,6 +9814,10 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <tr>
 <td>60106</td>
 <td>邮箱已存在</td>
+</tr>
+<tr>
+<td>60107</td>
+<td>使用该手机登录钉钉的用户已经在企业中</td>
 </tr>
 <tr>
 <td>60110</td>
@@ -9718,6 +9862,22 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <tr>
 <td>60123</td>
 <td>不合法的jobnumber</td>
+</tr>
+<tr>
+<td>60124</td>
+<td>用户不在此群中</td>
+</tr>
+<tr>
+<td>60125</td>
+<td>CRM配置信息创建失败</td>
+</tr>
+<tr>
+<td>60126</td>
+<td>CRM配置信息更新失败</td>
+</tr>
+<tr>
+<td>60127</td>
+<td>CRM人员配置信息删除失败</td>
 </tr>
 <tr>
 <td>70001</td>
@@ -9772,8 +9932,40 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 <td>此域名或IP不能注册或者接收回调事件</td>
 </tr>
 <tr>
+<td>72001</td>
+<td>获取钉盘空间失败</td>
+</tr>
+<tr>
+<td>72002</td>
+<td>授权钉盘空间访问权限失败</td>
+</tr>
+<tr>
 <td>80001</td>
 <td>可信域名没有IPC备案，后续将不能在该域名下正常使用jssdk</td>
+</tr>
+<tr>
+<td>81001</td>
+<td>两个用户没有任何关系，请先相互成为好友</td>
+</tr>
+<tr>
+<td>81002</td>
+<td>用户拒收消息</td>
+</tr>
+<tr>
+<td>88005</td>
+<td>管理日历个人日历操作失败</td>
+</tr>
+<tr>
+<td>89001</td>
+<td>管理日历启动导出任务失败</td>
+</tr>
+<tr>
+<td>89011</td>
+<td>管理日历写入数据失败</td>
+</tr>
+<tr>
+<td>89012</td>
+<td>管理日历更新数据失败</td>
 </tr>
 <tr>
 <td>90001</td>
@@ -9869,7 +10061,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 </tr>
 <tr>
 <td>900010</td>
-<td>计算解密文字suitekey或者corpid不匹配</td>
+<td>计算解密文字corpid不匹配</td>
 </tr>
 </tbody></table>
 
@@ -10017,7 +10209,7 @@ unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯�
 
 <h4 id="ios">iOS</h4>
 
-<p><a href="http://yunpan.taobao.com/s/12fdWyQ05BM">下载地址</a> (提取码：nj6LVK)</p>
+<p><a href="http://yunpan.taobao.com/s/1xwkgKtNPDw">下载地址</a> (提取码：mreF3E)</p>
 
 <p><a href="https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en#remote-debugging-on-ios-with-safari-web-inspector">Remote debugging on iOS with Safari Web Inspector</a></p>
 
@@ -14913,7 +15105,7 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 
 <h2 id="demo下载">Demo下载</h2>
 
-<p><a href="http://download.taobaocdn.com/freedom/31112/compress/p1a71dcqcqen6g7e2joobd1bdm4.zip"><font color=blue >Android Demo 下载</font></a></p>
+<p><a href="http://download.taobaocdn.com/freedom/31112/compress/p1acmghvmm1sfd2oe167ih5617o34.zip"><font color=blue >Android Demo 下载</font></a></p>
 
 <p><a href="http://download.taobaocdn.com/freedom/31112/compress/DTShareKit.zip"><font color=blue >iOS Demo 下载</font></a></p>
 
