@@ -1079,6 +1079,7 @@ permanent_code		| 永久授权码，通过get_permanent_code获取
 	  "industry":"互联网",
 	  "invite_code" : "1001",
 	  "license_code": "xxxxx",
+	  "is_authenticated":true,
 	  "invite_url":"invite_url:https://yfm.dingtalk.com/invite/index?code=xxxx"
 	},
 	"auth_user_info":
@@ -1114,6 +1115,7 @@ invite_code         | 表示邀请码，只有填写过且是ISV自己邀请码�
 industry			| 表示企业所属行业
 corp_name			| 授权方企业名称
 license_code		| 序列号
+is_authenticated	| 企业是否认证
 invite_url			| 企业邀请链接
 auth_user_info      | 授权方管理员信息
 corp_logo_url		| 企业logo
