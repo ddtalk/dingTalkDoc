@@ -2647,7 +2647,7 @@ Https请求方式: GET
 
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
-access_token | String | 是 | 再次强调，此token不同于一般的accesstoken，需要调用[<font color=red >获取微应用管理员免登需要的AccessToken</font>](#获取管理员免登token)
+access_token | String | 是 | 再次强调，此token不同于一般的accesstoken，需要调用[<font color=red >获取微应用管理员免登需要的AccessToken</font>](#微应用后台管理员免登)
 code | String | 是 | 通过Oauth认证给URL带上的CODE
 
 ###### 返回结果
