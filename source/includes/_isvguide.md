@@ -1302,7 +1302,10 @@ AES加密的buf由16个字节的随机字符串、4个字节的msg长度、明�
 * 去掉rand_msg头部的16个随机字节，4个字节的msg_len,和尾部的$CorpID即为最终的消息体原文msg
 
 ### 加解密库和demo下载
-#### Java库和demo
+
+ISV开发demo地址：[https://github.com/injekt/openapi-demo-java](https://github.com/injekt/openapi-demo-java)
+
+#### 加解密库-Java库和demo
 首先，您需要做以下准备工作
 
 1.请开发者使用jdk1.6或以上版本，针对加解密包中使用的org.apache.commons.codec.binary.Base64，须导入jar包commons-codec-1.10(或comm ons-codec-1.9等其他版本)，在java-demo的WebContent/WEB_INF/lib目录中我们也提供了commons-codec-1.10.jar。
