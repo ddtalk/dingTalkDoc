@@ -1772,6 +1772,7 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
       </span><span class="nt">"industry"</span><span class="p">:</span><span class="s2">"互联网"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"invite_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"license_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxx"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"is_authenticated"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"invite_url"</span><span class="p">:</span><span class="s2">"invite_url:https://yfm.dingtalk.com/invite/index?code=xxxx"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"auth_user_info"</span><span class="p">:</span><span class="w">
@@ -1828,6 +1829,10 @@ https://oapi.dingtalk.com/service/get_corp_token?suite_access_token=xxxx</p>
 <tr>
 <td>license_code</td>
 <td>序列号</td>
+</tr>
+<tr>
+<td>is_authenticated</td>
+<td>企业是否认证</td>
 </tr>
 <tr>
 <td>invite_url</td>
@@ -4999,7 +5004,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>chatid</td>
-<td>群会话的标识ID</td>
+<td>群会话的id</td>
 </tr>
 </tbody></table>
 
@@ -5041,7 +5046,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 <tr>
 <td>name</td>
@@ -5120,7 +5125,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 </tbody></table>
 
@@ -5204,7 +5209,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 <tr>
 <td>agentid</td>
@@ -5267,7 +5272,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 <tr>
 <td>agentid</td>
@@ -5376,7 +5381,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 <tr>
 <td>sender</td>
@@ -5435,7 +5440,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 <tr>
 <td>sender</td>
@@ -5494,7 +5499,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 <tr>
 <td>sender</td>
@@ -5553,7 +5558,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 <tr>
 <td>sender</td>
@@ -5615,7 +5620,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 <tr>
 <td>sender</td>
@@ -5734,7 +5739,7 @@ mobile | 手机号码
 <td>chatid</td>
 <td>String</td>
 <td>是</td>
-<td>会话id</td>
+<td>群会话的id</td>
 </tr>
 <tr>
 <td>sender</td>
@@ -5822,7 +5827,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>oa.body.rich</td>
-<td>Array[JSON Object]</td>
+<td>JSON Object</td>
 <td>否</td>
 <td>单行富文本信息</td>
 </tr>
@@ -7980,7 +7985,7 @@ mobile | 手机号码
 </tr>
 <tr>
 <td>oa.body.rich</td>
-<td>Array[JSON Object]</td>
+<td>JSON Object</td>
 <td>否</td>
 <td>单行富文本信息</td>
 </tr>
@@ -8279,7 +8284,7 @@ mobile | 手机号码
 <td>access_token</td>
 <td>String</td>
 <td>是</td>
-<td>再次强调，此token不同于一般的accesstoken，需要调用<a href="#获取管理员免登token"><font color=red >获取微应用管理员免登需要的AccessToken</font></a></td>
+<td>再次强调，此token不同于一般的accesstoken，需要调用<a href="#微应用后台管理员免登"><font color=red >获取微应用管理员免登需要的AccessToken</font></a></td>
 </tr>
 <tr>
 <td>code</td>
