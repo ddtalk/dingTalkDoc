@@ -994,6 +994,9 @@ DingTalkPC.biz.chat.chooseConversation({
 | title | 会话名称 --> |
 
 ## 附录
+### PC UI规范
+
+PC UI规范：[<font color=red >地址</font>](https://img.alicdn.com/tps/TB1G75xLVXXXXXjaXXXXXXXXXXX-4416-3528.jpg)
 
 ### JS-API权限签名算法
 
