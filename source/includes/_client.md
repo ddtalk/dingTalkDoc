@@ -1669,7 +1669,7 @@ dd.ui.webViewBounce.enable()
 dd.ui.webViewBounce.disable()
 ```
 
-##扫码
+## 扫码
 
 dd.biz
 

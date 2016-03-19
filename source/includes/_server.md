@@ -843,7 +843,7 @@ id | 创建的微应用id
 
 
 
-##群会话接口
+## 群会话接口
 
 
 ### 创建会话
@@ -1300,7 +1300,7 @@ oa.body.author | String | 否 | 自定义的作者名字
 
 ![oames](https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg)
 
-##客户通讯录接口（暂未开放）
+## 客户通讯录接口（暂未开放）
 
 您可以通过使用客户通讯接口，将您的CRM应用中的员工与客户的关系、客户与客户联系人的关系在钉钉客户端通讯录中展现，与钉钉有更深入的功能融合，对于用户来说客户关系与通讯录的紧密结合，更容易管理和联系核心客户
 
@@ -1763,7 +1763,7 @@ modified_by  |String | 是  |  修改时间
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
 
-##通讯录及群会话变更事件回调接口
+## 通讯录及群会话变更事件回调接口
 
 在使用回调接口之前您需要了解的是，
 
@@ -2504,6 +2504,8 @@ access_token | String | 是 | 调用接口凭证
 type |String | 是 | 媒体文件类型，分别有图片（image）、语音（voice）、普通文件(file)
 media |String | 是 | form-data中媒体文件标识，有filename、filelength、content-type等信息
 
+代码示例:[mediademo](https://github.com/ddtalk/HarleyCorp/blob/master/src/com/alibaba/dingtalk/openapi/demo/utils/HttpHelper.java)
+
 ###### 返回结果
 
 ```
@@ -2692,7 +2694,7 @@ userid | 员工在企业内的UserID
 }
 ```
 
-##普通钉钉用户账号开放
+## 普通钉钉用户账号开放
 
 ###获取钉钉开放应用的ACCESS_TOKEN
 
@@ -2876,9 +2878,9 @@ openid | 用户在当前开放应用内的唯一标识
 unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯一标识
 
 
-##统计数据
+## 统计数据
 
-###记录统计数据
+### 记录统计数据
 
 用户在使用微应用的时候，企业可以通过这个接口记录微应用使用的相关信息，比如调用时间，结束时间等等。钉钉的数据分析工具会对这些数据进行汇总。
 

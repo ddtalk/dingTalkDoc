@@ -15,7 +15,7 @@
 2. 如果没有获取到cookie，调用免登服务，获取用户身份后，由企业生成代表用户身份的cookie
 3. 根据cookie获取用户身份，进入相应的页面
 
-##手机客户端微应用中调用免登
+## 手机客户端微应用中调用免登
 
 ### 使用JS-API
 
@@ -28,7 +28,7 @@
 demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js</font>](https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js)
 
 
-##钉钉PC版微应用中调用免登
+## 钉钉PC版微应用中调用免登
 
 ### 使用JS-API
 
@@ -42,7 +42,7 @@ demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkP
 
 
 
-##微应用后台管理员免登
+## 微应用后台管理员免登
 实现微应用后台管理系统与钉钉OA后台的免登
 
 应用场景示例如下图：
@@ -100,7 +100,7 @@ REDIRECT_URL为微应用后台地址，首先跳转到钉钉OA管理后台登录
 
 demo查看:[https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet](https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet)
 
-##普通钉钉用户账号开放及免登(暂未开放，敬请期待)
+## 普通钉钉用户账号开放及免登(暂未开放，敬请期待)
 第三方web服务提供者，通过此项服务，可以使用普通钉钉用户账号登录自有的系统，并可将自有系统的账号与钉钉账号进行绑定，同时还能够获取钉钉用户的个人及企业数据，如姓名、手机号、对应企业的名称、企业是否认证过、企业的权益等级、其在企业内是否为管理人员等信息(取决于用户最终授权)。
 
 <font color=red >注:此功能与ISV没有关系，任何外部系统都可以使用。</font>
