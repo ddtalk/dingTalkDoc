@@ -10630,7 +10630,7 @@ document.addEventListener('backbutton', function(e) {
 <pre class="highlight javascript"><code>    <span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">cspace</span><span class="p">.</span><span class="nx">saveFile</span><span class="p">({</span>
                 <span class="na">corpId</span><span class="p">:</span><span class="s2">"dingf8b3508f3073b265"</span><span class="p">,</span>
                 <span class="na">url</span><span class="p">:</span><span class="s2">"https://ringnerippca.files.wordpress.com/20.pdf"</span><span class="p">,</span>
-                <span class="na">name</span><span class="p">:</span><span class="s2">"文件名"</span><span class="p">,</span>         
+                <span class="na">name</span><span class="p">:</span><span class="s2">"文件名"</span><span class="p">,</span>
                 <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
                  <span class="cm">/* data结构
                  {"data":
@@ -10683,10 +10683,10 @@ document.addEventListener('backbutton', function(e) {
 <pre class="highlight javascript"><code>    <span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">cspace</span><span class="p">.</span><span class="nx">preview</span><span class="p">({</span>
                 <span class="na">corpId</span><span class="p">:</span><span class="s2">"dingf8b3508f3073b265"</span><span class="p">,</span>
                 <span class="na">spaceId</span><span class="p">:</span><span class="s2">"13557022"</span><span class="p">,</span>
-                <span class="na">fileId</span><span class="p">:</span><span class="s2">"11452819"</span><span class="p">,</span>   
+                <span class="na">fileId</span><span class="p">:</span><span class="s2">"11452819"</span><span class="p">,</span>
                 <span class="na">fileName</span><span class="p">:</span><span class="s2">"钉盘快速入门.pdf"</span><span class="p">,</span>
                 <span class="na">fileSize</span><span class="p">:</span><span class="mi">1024</span><span class="p">,</span>
-                <span class="na">fileType</span><span class="p">:</span><span class="s2">"pdf"</span><span class="p">,</span> 
+                <span class="na">fileType</span><span class="p">:</span><span class="s2">"pdf"</span><span class="p">,</span>
                 <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
                     <span class="c1">//无，直接在native显示文件详细信息</span>
                 <span class="p">},</span>
@@ -12345,6 +12345,254 @@ memberCount | 群聊成员总数
 <td>corpId</td>
 <td>String</td>
 <td>企业id</td>
+</tr>
+</tbody></table>
+
+<h2 id="音频">音频</h2>
+
+<p>device.audio</p>
+
+<h3 id="开始录音">开始录音</h3>
+
+<p>启动语音录制，支持最长为60秒（包括）的音频录制。</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">startRecord</span><span class="p">({</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<h3 id="停止录音">停止录音</h3>
+
+<p>停止语音录制，同时将录制的语音上传到服务端，返回音频资源的MediaID。返回音频的MediaID，可用于本地播放和音频下载</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">stopRecord</span><span class="p">({</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">){</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">mediaId</span><span class="p">;</span> <span class="c1">// 返回音频的MediaID，可用于本地播放和音频下载</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<h3 id="监听录音自动停止">监听录音自动停止</h3>
+
+<p>当语音录制时间超过60秒时，钉钉会自动停止语音录制，同时将录制的语音上传到服务端，返回音频资源的MediaID。推荐在调用 <code class="prettyprint">dd.device.audio.startRecord</code> 前设置监听录音自动停止的回调。</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">onRecordEnd</span><span class="p">({</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">mediaId</span><span class="p">;</span> <span class="c1">// 停止播放音频MediaID</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<h3 id="下载音频">下载音频</h3>
+
+<p>使用 <code class="prettyprint">dd.device.audio.stopRecord</code> 或者 <code class="prettyprint">dd.device.audio.onRecordEnd</code> 获取的MediaId下载音频资源。下载完成后返回音频在本地的MediaId。</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">download</span><span class="p">({</span>
+    <span class="na">mediaId</span> <span class="p">:</span> <span class="s2">"@lATOCLhLfc46kUl8zlUmRlM"</span><span class="p">,</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">localAudioId</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mediaId</td>
+<td>String</td>
+<td>音频在服务端的标识</td>
+</tr>
+</tbody></table>
+
+<h3 id="播放语音">播放语音</h3>
+
+<p>播放音频，在播放语音前可以使用<code class="prettyprint">dd.device.audio.startRecord</code>开启录音，通过<code class="prettyprint">dd.device.audio.stopRecord</code>、<code class="prettyprint">dd.device.audio.onRecordEnd</code>获取录制的音频的MediaId 或者 通过<code class="prettyprint">dd.device.audio.download</code>下载服务端音频资源获取localAudioId。</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">play</span><span class="p">({</span>
+    <span class="na">localAudioId</span> <span class="p">:</span> <span class="s2">"localAudioId"</span><span class="p">,</span>
+
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="p">},</span>
+
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>localAudioId</td>
+<td>String</td>
+<td>音频在设备本地的标识</td>
+</tr>
+</tbody></table>
+
+<h3 id="暂停播放语音">暂停播放语音</h3>
+
+<p>暂停正在播放的语音。</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">pause</span><span class="p">({</span>
+    <span class="na">localAudioId</span> <span class="p">:</span> <span class="s2">"localAudioId"</span><span class="p">,</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>localAudioId</td>
+<td>String</td>
+<td>正在播放的音频的本地标识</td>
+</tr>
+</tbody></table>
+
+<h3 id="恢复暂停播放的语音">恢复暂停播放的语音</h3>
+
+<p>恢复播放处于暂停状态的语音</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">resume</span><span class="p">({</span>
+    <span class="na">localAudioId</span> <span class="p">:</span> <span class="s2">"localAudioId"</span><span class="p">,</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>localAudioId</td>
+<td>String</td>
+<td>处于暂停状态的语音的本地标识</td>
+</tr>
+</tbody></table>
+
+<h3 id="停止播放语音">停止播放语音</h3>
+
+<p>停止播放语音。</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">stop</span><span class="p">({</span>
+    <span class="na">localAudioId</span> <span class="p">:</span> <span class="s2">"localAudioId"</span><span class="p">,</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>localAudioId</td>
+<td>String</td>
+<td>处于播放或者暂停状态的语音的本地标识</td>
+</tr>
+</tbody></table>
+
+<h3 id="监听播放自动停止">监听播放自动停止</h3>
+
+<p>语音播放完毕时自动调用该方法设置的回调，并返回音频的的本地标识</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">audio</span><span class="p">.</span><span class="nx">onPlayEnd</span><span class="p">({</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">localAudioId</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>None</td>
+<td>None</td>
+<td>None</td>
 </tr>
 </tbody></table>
 
