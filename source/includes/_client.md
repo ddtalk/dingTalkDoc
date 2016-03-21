@@ -408,7 +408,7 @@ dd.biz
 	dd.biz.cspace.saveFile({
 				corpId:"dingf8b3508f3073b265",
 				url:"https://ringnerippca.files.wordpress.com/20.pdf",
-				name:"文件名",         
+				name:"文件名",
 				onSuccess: function(data) {
 				 /* data结构
 				 {"data":
@@ -444,10 +444,10 @@ name | String | 文件保存的名字
 	dd.biz.cspace.preview({
 				corpId:"dingf8b3508f3073b265",
 				spaceId:"13557022",
-				fileId:"11452819",   
+				fileId:"11452819",
 				fileName:"钉盘快速入门.pdf",
 				fileSize:1024,
-				fileType:"pdf", 
+				fileType:"pdf",
 				onSuccess: function() {
 					//无，直接在native显示文件详细信息
 		        },
@@ -1562,6 +1562,181 @@ dd.biz.telephone.call({
 users | Array[String] | 用户列表，工号
 corpId | String | 企业id
 
+## 音频
+
+device.audio
+
+### 开始录音
+
+启动语音录制，支持最长为60秒（包括）的音频录制。
+
+```javascript
+dd.device.audio.startRecord({
+    onSuccess : function () {
+    },
+    onFail : function (err) {
+    }
+});
+```
+
+##### 参数说明
+
+参数 | 参数类型 |说明
+----- | ----- | -----
+None | None | None
+
+### 停止录音
+
+停止语音录制，同时将录制的语音上传到服务端，返回音频资源的MediaID。返回音频的MediaID，可用于本地播放和音频下载
+
+```javascript
+dd.device.audio.stopRecord({
+    onSuccess : function(res){
+        res.mediaId; // 返回音频的MediaID，可用于本地播放和音频下载
+    },
+    onFail : function (err) {
+    }
+});
+```
+
+##### 参数说明
+
+参数 | 参数类型 |说明
+----- | ----- | -----
+None | None | None
+
+### 监听录音自动停止
+
+当语音录制时间超过60秒时，钉钉会自动停止语音录制，同时将录制的语音上传到服务端，返回音频资源的MediaID。推荐在调用 `dd.device.audio.startRecord` 前设置监听录音自动停止的回调。
+
+```javascript
+dd.device.audio.onRecordEnd({
+    onSuccess : function(res) {
+        res.mediaId; // 停止播放音频MediaID
+    },
+    onFail : function (err) {
+
+    }
+});
+```
+
+##### 参数说明
+
+参数 | 参数类型 |说明
+----- | ----- | -----
+None | None | None
+
+### 下载音频
+
+使用 `dd.device.audio.stopRecord` 或者 `dd.device.audio.onRecordEnd` 获取的MediaId下载音频资源。下载完成后返回音频在本地的MediaId。
+
+```javascript
+dd.device.audio.download({
+    mediaId : "@lATOCLhLfc46kUl8zlUmRlM",
+    onSuccess : function(res) {
+        res.localAudioId;
+    },
+    onFail : function (err) {
+    }
+});
+```
+
+参数 | 参数类型 |说明
+----- | ----- | -----
+mediaId | String | 音频在服务端的标识
+
+### 播放语音
+
+播放音频，在播放语音前可以使用`dd.device.audio.startRecord`开启录音，通过`dd.device.audio.stopRecord`、`dd.device.audio.onRecordEnd`获取录制的音频的MediaId 或者 通过`dd.device.audio.download`下载服务端音频资源获取localAudioId。
+
+```javascript
+dd.device.audio.play({
+    localAudioId : "localAudioId",
+
+    onSuccess : function () {
+
+    },
+
+    onFail : function (err) {
+    }
+});
+```
+
+参数 | 参数类型 |说明
+----- | ----- | -----
+localAudioId | String | 音频在设备本地的标识
+
+### 暂停播放语音
+
+暂停正在播放的语音。
+
+```javascript
+dd.device.audio.pause({
+    localAudioId : "localAudioId",
+    onSuccess : function() {
+    },
+    onFail : function(err) {
+    }
+});
+```
+
+参数 | 参数类型 |说明
+----- | ----- | -----
+localAudioId | String | 正在播放的音频的本地标识
+
+### 恢复暂停播放的语音
+
+恢复播放处于暂停状态的语音
+
+```javascript
+dd.device.audio.resume({
+    localAudioId : "localAudioId",
+    onSuccess : function() {
+    },
+    onFail : function(err) {
+    }
+});
+```
+
+参数 | 参数类型 |说明
+----- | ----- | -----
+localAudioId | String | 处于暂停状态的语音的本地标识
+
+### 停止播放语音
+
+停止播放语音。
+
+```javascript
+dd.device.audio.stop({
+    localAudioId : "localAudioId",
+    onSuccess : function (res) {
+    },
+    onFail : function () {
+    }
+});
+```
+
+参数 | 参数类型 |说明
+----- | ----- | -----
+localAudioId | String | 处于播放或者暂停状态的语音的本地标识
+
+### 监听播放自动停止
+
+语音播放完毕时自动调用该方法设置的回调，并返回音频的的本地标识
+
+```javascript
+dd.device.audio.onPlayEnd({
+    onSuccess : function (res) {
+        res.localAudioId;
+    },
+    onFail : function (err) {
+    }
+});
+```
+
+参数 | 参数类型 |说明
+----- | ----- | -----
+None | None | None
 
 ## UI控件
 
