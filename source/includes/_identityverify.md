@@ -68,7 +68,7 @@ demo： 可参考手机客户端免登demo，但全局变量dd替换成DingTalkP
 
 
 
-**使用方法（钉钉管理员登陆态）** 
+**使用方法（钉钉管理员登陆态）**
 
 
 步骤一：在OA后台，点击微应用的“进入后台”，自动跳转到准备工作1中配置的微应用后台地址，开发者从跳转的URL中解析code参数，获取CODE并保存下来，通过此CODE获取管理员的身份信息
@@ -100,14 +100,13 @@ REDIRECT_URL为微应用后台地址，首先跳转到钉钉OA管理后台登录
 
 demo查看:[https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet](https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet)
 
-## 普通钉钉用户账号开放及免登(暂未开放，敬请期待)
+##普通钉钉用户账号开放及免登
+
 第三方web服务提供者，通过此项服务，可以使用普通钉钉用户账号登录自有的系统，并可将自有系统的账号与钉钉账号进行绑定，同时还能够获取钉钉用户的个人及企业数据，如姓名、手机号、对应企业的名称、企业是否认证过、企业的权益等级、其在企业内是否为管理人员等信息(取决于用户最终授权)。
 
 <font color=red >注:此功能与ISV没有关系，任何外部系统都可以使用。</font>
 
 1: 获取完成免登过程中验证身份的appId及appSecret。
-
-<font color=red >暂未开放，敬请期待</font>
 
 2: 使用appid及appSecret访问如下接口，获取accesstoken，此处获取的token有效期为2小时，有效期内重复获取，返回相同值，并自动续期，如果在有效期外获取会获得新的token值，建议定时获取本token，不需要用户登录时再获取。
 
@@ -136,5 +135,96 @@ scope | 固定为snsapi_login，必填
 [<font color=red >https://oapi.dingtalk.com/sns/get_sns_token?access_token=ACCESS_TOKEN</font>](#获取用户授权的sns_token)
 
 7:在获得钉钉用户的SNS_TOKEN后，通过以下接口获取该用户的个人信息。
+
+[<font color=red >https://oapi.dingtalk.com/sns/getuserinfo?sns_token=SNS_TOKEN</font>](#获取用户授权的个人信息)
+
+##网站应用钉钉扫码登录开发指南
+
+第三方web服务提供者，通过此项服务，可以使用钉钉用户扫码登录自有的系统，并可将自有系统的账号与钉钉账号进行绑定，同时还能够获取钉钉用户的个人及企业数据，如姓名、手机号、对应企业的名称、企业是否认证过、企业的权益等级、其在企业内是否为管理人员等信息(取决于用户最终授权)。
+
+<font color=red >注:此功能与ISV没有关系，任何外部系统都可以使用。</font>
+
+1: 获取完成免登过程中验证身份的appId及appSecret。
+
+暂未开放线上申请流程，请向开放平台邮件组(open-dingtalk@list.alibaba-inc.com)发送一封申请邮件：
+
+邮件标题：网站应用钉钉扫码登录申请；<br>
+邮件内容：公司名称、对接接口人的联系方式(请优先选择钉钉或者邮件)；
+
+
+2: 使用appid及appSecret访问如下接口，获取accesstoken，此处获取的token有效期为2小时，有效期内重复获取，返回相同值，并自动续期，如果在有效期外获取会获得新的token值，建议定时获取本token，不需要用户登录时再获取。
+
+[<font color=red >https://oapi.dingtalk.com/sns/gettoken?appid=APPID&appsecret=APPSECRET</font>](#获取钉钉开放应用的access_token)
+
+3: 你的Web系统可以通过两种方式实现钉钉扫码登录，如下：
+
+3.1: 第一种方式是直接使用钉钉提供的扫码登录页面，在企业Web系统里，用户点击使用钉钉扫描登录，第三方Web系统跳转到如下地址：
+
+https://oapi.dingtalk.com/connect/qrconnect?appid=APPID&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=REDIRECT_URI
+
+url里的参数需要换成第三方Web系统对应的参数。
+
+在钉钉用户扫码登录并确认后，会302到你指定的redirect_uri，并向url参数中追加code及state两个参数。
+
+3.2: 第二种方式是支持网站将钉钉登录二维码内嵌到自己页面中，用户使用钉钉扫码登录后JS会将loginTmpCode返回给网站。
+
+JS钉钉登录主要用途：网站希望用户在网站内就能完成登录，无需跳转到钉钉域下登录后再返回，提升钉钉登录的流畅性与成功率。 网站内嵌二维码钉钉登录JS实现办法：
+
+步骤1：在页面中先引入如下JS文件（支持https）：
+
+
+```<script src="g.alicdn.com/dingding/dinglogin/0.0.1／ddLogin.js"></script>
+```
+
+步骤2：在需要使用钉钉登录的地方实例以下JS对象：
+
+<code>
+var obj = DDLogin({<br>
+     &nbsp;&nbsp;&nbsp;id:"login_container",<br>
+     &nbsp;&nbsp;&nbsp;goto: "",<br>
+     &nbsp;&nbsp;&nbsp;style: "",<br>
+     &nbsp;&nbsp;&nbsp;href: "",<br>
+     &nbsp;&nbsp;&nbsp;width : "300px",<br>
+     &nbsp;&nbsp;&nbsp;height: "300px"<br>
+ });<br>
+</code>
+
+您引入的js会在获取用户扫描之后将获取的loginTmpCode通过window.parent.postMessage(loginTmpCode,'*');返回给您的网站。您可以通过以下代码获取这个code：
+<code>
+<br>
+var hanndleMessage = function (event) {<br>
+    &nbsp;&nbsp;&nbsp;var data = event.data;<br>
+    &nbsp;&nbsp;&nbsp;var origin = event.origin;<br>
+};<br>
+if (typeof window.addEventListener != 'undefined') {<br>
+    &nbsp;&nbsp;&nbsp;window.addEventListener('message', hanndleMessage, false);<br>
+} else if (typeof window.attachEvent != 'undefined') {<br>
+    &nbsp;&nbsp;&nbsp;window.attachEvent('onmessage', hanndleMessage);<br>
+}<br>
+</code>
+
+通过JS获取到loginTmpCode后，需要由你构造并跳转到如下链接。
+https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&response_type=code&scope=snsapi_login
+&state=STATE&redirect_uri=REDIRECT_URI&loginTmpCode=loginTmpCode
+
+参数 | 说明
+---------- | ------
+appid | 需要在第1步获取,代表了你提供的服务，必填
+redirect_uri | 重定向地址(需要urlencode编码),该地址所在域名需要配置为appid对应的安全域名，必填
+state | 用于防止重放攻击，选填
+response_type | 固定为code，必填
+scope | 固定为snsapi_login，必填
+loginTmpCode | 通过js获取到的code，必填
+
+
+4:在你的web系统获取到代表用户的code之后，使用第2步获取的AccessToken及code获取当前钉钉用户授权给你的持久授权码，此授权码目前无过期时间，可反复使用，参数code只能使用一次。
+
+[<font color=red >https://oapi.dingtalk.com/sns/get_persistent_code?access_token=ACCESS_TOKEN</font>](#获取用户授权的持久授权码)
+
+5:在获得钉钉用户的持久授权码后，通过以下接口获取该用户授权的SNS_TOKEN，此token的有效时间为2小时，重复获取不会续期。
+
+[<font color=red >https://oapi.dingtalk.com/sns/get_sns_token?access_token=ACCESS_TOKEN</font>](#获取用户授权的sns_token)
+
+6:在获得钉钉用户的SNS_TOKEN后，通过以下接口获取该用户的个人信息。
 
 [<font color=red >https://oapi.dingtalk.com/sns/getuserinfo?sns_token=SNS_TOKEN</font>](#获取用户授权的个人信息)
