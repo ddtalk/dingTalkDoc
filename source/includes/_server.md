@@ -2859,7 +2859,8 @@ sns_token | String | 是 | 用户授权给开放应用的token
         "maskedMobile": "130****1234", 
         "nick": "张三", 
         "openid": "liSii8KCxxxxx", 
-        "unionid": "7Huu46kk"
+        "unionid": "7Huu46kk",
+        "dingId": "dingId"
     }
 }
 ```
@@ -2873,9 +2874,9 @@ rights_level | 该企业的权益等级
 corp_name | 企业名称
 maskedMobile | 经过处理的手机号
 nick | 用户在钉钉上面的昵称
-
 openid | 用户在当前开放应用内的唯一标识
 unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯一标识
+dingId | 钉钉Id
 
 
 ## 统计数据

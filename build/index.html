@@ -356,11 +356,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&ldquo;钉钉应用&rdquo;</td>
+<td>选择&quot;钉钉应用&quot;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&ldquo;容器服务&rdquo;</td>
+<td>选择&quot;容器服务&quot;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -3229,9 +3229,12 @@ var obj = DDLogin({<br>
      &nbsp;&nbsp;&nbsp;width : &quot;300px&quot;,<br>
      &nbsp;&nbsp;&nbsp;height: &quot;300px&quot;<br>
  });<br>
-</code></p>
+</code>
+其中goto参数需要这样构造：https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_type=code&amp;scope=snsapi_login&amp;state=STATE&amp;redirect_uri=REDIRECT_URI</p>
 
-<p>您引入的js会在获取用户扫描之后将获取的loginTmpCode通过window.parent.postMessage(loginTmpCode,&rsquo;*&rsquo;);返回给您的网站。您可以通过以下代码获取这个code：
+<p>参数说明见下方</p>
+
+<p>您引入的js会在获取用户扫描之后将获取的loginTmpCode通过window.parent.postMessage(loginTmpCode,&rsquo;*&rsquo;);返回给您的网站。您可以通过以下代码获取这个loginTmpCode：
 <code>
 <br>
 var hanndleMessage = function (event) {<br>
@@ -3245,8 +3248,8 @@ if (typeof window.addEventListener != &#39;undefined&#39;) {<br>
 }<br>
 </code></p>
 
-<p>通过JS获取到loginTmpCode后，需要由你构造并跳转到如下链接。
-https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_type=code&amp;scope=snsapi_login
+<p>通过JS获取到loginTmpCode后，需要调用如下接口获取临时授权码code和state。
+https://oapi.dingtalk.com/connect/oauth2/sns_get_code?appid=APPID&amp;response_type=code&amp;scope=snsapi_login
 &amp;state=STATE&amp;redirect_uri=REDIRECT_URI&amp;loginTmpCode=loginTmpCode</p>
 
 <table><thead>
@@ -3277,7 +3280,7 @@ https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_
 </tr>
 <tr>
 <td>loginTmpCode</td>
-<td>通过js获取到的code，必填</td>
+<td>通过js获取到的loginTmpCode，必填</td>
 </tr>
 </tbody></table>
 
@@ -8656,7 +8659,8 @@ mobile | 手机号码
         </span><span class="nt">"maskedMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"130****1234"</span><span class="p">,</span><span class="w"> 
         </span><span class="nt">"nick"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w"> 
         </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"unionid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7Huu46kk"</span><span class="w">
+        </span><span class="nt">"unionid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7Huu46kk"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dingId"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8695,10 +8699,19 @@ mobile | 手机号码
 <td>nick</td>
 <td>用户在钉钉上面的昵称</td>
 </tr>
+<tr>
+<td>openid</td>
+<td>用户在当前开放应用内的唯一标识</td>
+</tr>
+<tr>
+<td>unionid</td>
+<td>用户在当前开放应用所属的钉钉开放平台账号内的唯一标识</td>
+</tr>
+<tr>
+<td>dingId</td>
+<td>钉钉Id</td>
+</tr>
 </tbody></table>
-
-<p>openid | 用户在当前开放应用内的唯一标识
-unionid | 用户在当前开放应用所属的钉钉开放平台账号内的唯一标识</p>
 
 <h2 id="统计数据">统计数据</h2>
 

@@ -188,8 +188,11 @@ var obj = DDLogin({<br>
      &nbsp;&nbsp;&nbsp;height: "300px"<br>
  });<br>
 </code>
+其中goto参数需要这样构造：https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=REDIRECT_URI
 
-您引入的js会在获取用户扫描之后将获取的loginTmpCode通过window.parent.postMessage(loginTmpCode,'*');返回给您的网站。您可以通过以下代码获取这个code：
+参数说明见下方
+
+您引入的js会在获取用户扫描之后将获取的loginTmpCode通过window.parent.postMessage(loginTmpCode,'*');返回给您的网站。您可以通过以下代码获取这个loginTmpCode：
 <code>
 <br>
 var hanndleMessage = function (event) {<br>
@@ -203,8 +206,8 @@ if (typeof window.addEventListener != 'undefined') {<br>
 }<br>
 </code>
 
-通过JS获取到loginTmpCode后，需要由你构造并跳转到如下链接。
-https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&response_type=code&scope=snsapi_login
+通过JS获取到loginTmpCode后，需要调用如下接口获取临时授权码code和state。
+https://oapi.dingtalk.com/connect/oauth2/sns_get_code?appid=APPID&response_type=code&scope=snsapi_login
 &state=STATE&redirect_uri=REDIRECT_URI&loginTmpCode=loginTmpCode
 
 参数 | 说明
@@ -214,7 +217,7 @@ redirect_uri | 重定向地址(需要urlencode编码),该地址所在域名需�
 state | 用于防止重放攻击，选填
 response_type | 固定为code，必填
 scope | 固定为snsapi_login，必填
-loginTmpCode | 通过js获取到的code，必填
+loginTmpCode | 通过js获取到的loginTmpCode，必填
 
 
 4:在你的web系统获取到代表用户的code之后，使用第2步获取的AccessToken及code获取当前钉钉用户授权给你的持久授权码，此授权码目前无过期时间，可反复使用，参数code只能使用一次。
