@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 /tmp
+=======
+/.buildpath
+/.project
+/.idea
+.DS_Store
+>>>>>>> e71e501342eedb21fc515b33274618da3f9157c0
