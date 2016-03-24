@@ -206,8 +206,8 @@ if (typeof window.addEventListener != 'undefined') {<br>
 }<br>
 </code>
 
-通过JS获取到loginTmpCode后，需要调用如下接口获取临时授权码code和state。
-https://oapi.dingtalk.com/connect/oauth2/sns_get_code?appid=APPID&response_type=code&scope=snsapi_login
+通过JS获取到loginTmpCode后，需要由你构造并跳转到如下链接。
+https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&response_type=code&scope=snsapi_login
 &state=STATE&redirect_uri=REDIRECT_URI&loginTmpCode=loginTmpCode
 
 参数 | 说明
