@@ -33,6 +33,11 @@ A:首先检查用来生成签名(signature)的jsapi_ticket是否过期（jsapi_t
 
 可以使用[<font color=red >调试工具</font>](https://debug.dingtalk.com)来生成jsapi_ticket和signature，并和你实际使用的进行对比。
 
+### Q:jsapi调用时返回{errorCode:7}
+
+首先检查dd.config是否配置了相应的jsapi，再检查dd.ready是否已经进入
+
+
 ### Q:上传文件不成功
 A:使用multipart/form-data请求上传文件，需要附加文件标示信息，参数名为media，java示例代码为
 

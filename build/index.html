@@ -15453,6 +15453,10 @@ startWithDepartmentId | Number | -1表示从自己所在部门开始, 0表示从
 
 <p>可以使用<a href="https://debug.dingtalk.com"><font color=red >调试工具</font></a>来生成jsapi_ticket和signature，并和你实际使用的进行对比。</p>
 
+<h3 id="q-jsapi调用时返回-errorcode-7">Q:jsapi调用时返回{errorCode:7}</h3>
+
+<p>首先检查dd.config是否配置了相应的jsapi，再检查dd.ready是否已经进入</p>
+
 <h3 id="q-上传文件不成功">Q:上传文件不成功</h3>
 
 <p>A:使用multipart/form-data请求上传文件，需要附加文件标示信息，参数名为media，java示例代码为</p>
