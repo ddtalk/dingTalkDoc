@@ -356,11 +356,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&ldquo;钉钉应用&rdquo;</td>
+<td>选择&quot;钉钉应用&quot;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&ldquo;容器服务&rdquo;</td>
+<td>选择&quot;容器服务&quot;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -3248,8 +3248,8 @@ if (typeof window.addEventListener != &#39;undefined&#39;) {<br>
 }<br>
 </code></p>
 
-<p>通过JS获取到loginTmpCode后，需要调用如下接口获取临时授权码code和state。
-https://oapi.dingtalk.com/connect/oauth2/sns_get_code?appid=APPID&amp;response_type=code&amp;scope=snsapi_login
+<p>通过JS获取到loginTmpCode后，需要由你构造并跳转到如下链接。
+https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_type=code&amp;scope=snsapi_login
 &amp;state=STATE&amp;redirect_uri=REDIRECT_URI&amp;loginTmpCode=loginTmpCode</p>
 
 <table><thead>
