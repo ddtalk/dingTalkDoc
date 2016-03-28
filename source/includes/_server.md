@@ -841,7 +841,47 @@ errcode | 返回码
 errmsg | 对返回码的文本描述内容
 id | 创建的微应用id
 
+### 获取企业设置的微应用可见范围
 
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/microapp/visible_scopes?access_token=ACCESS_TOKEN`
+
+###### 请求包结构体
+
+```
+{
+    "agentId": 16691682,
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----------| ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+agentId | Long | 是 |  需要查询询的微应用agentId
+
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "created",
+    "deptVisibleScopes": [1265,9634],
+    "userVisibleScopes": ["manager6577","766578"]
+}
+```
+
+参数 | 说明
+----------  | ------
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+deptVisibleScopes | 查询的该微应用的可见部门列表
+userVisibleScopes | 查询的该微应用的可见用户列表 
 
 ## 群会话接口
 
