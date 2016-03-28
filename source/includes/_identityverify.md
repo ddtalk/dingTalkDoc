@@ -173,7 +173,7 @@ JS钉钉登录主要用途：网站希望用户在网站内就能完成登录，
 步骤1：在页面中先引入如下JS文件（支持https）：
 
 
-```<script src="g.alicdn.com/dingding/dinglogin/0.0.2／ddLogin.js"></script>
+```<script src="g.alicdn.com/dingding/dinglogin/0.0.2/ddLogin.js"></script>
 ```
 
 步骤2：在需要使用钉钉登录的地方实例以下JS对象：
