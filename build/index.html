@@ -4238,7 +4238,7 @@ POST请求请在HTTP Header中设置 Content-Type:application/json，否则接�
     </span><span class="nt">"userid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zhangsan"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"department"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w">
-    </span><span class="nt">"orderInDepts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:10}"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"orderInDepts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{1:10}"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"position"</span><span class="p">:</span><span class="w"> </span><span class="s2">"产品经理"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15913215421"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"tel"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"010-123333"</span><span class="p">,</span><span class="w">
@@ -5507,7 +5507,8 @@ mobile | 手机号码
     </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manager1122"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"voice"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"voice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-       </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="w">
+       </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -5557,6 +5558,12 @@ mobile | 手机号码
 <td>String</td>
 <td>是</td>
 <td>语音媒体文件id，可以调用上传媒体文件接口获取。2MB，播放长度不超过60s，AMR格式</td>
+</tr>
+<tr>
+<td>voice.duration</td>
+<td>String</td>
+<td>是</td>
+<td>正整数，小于60，表示音频时长</td>
 </tr>
 </tbody></table>
 
@@ -6509,7 +6516,7 @@ mobile | 手机号码
 </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"客户联系人名称"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"客户联系人手机"</span><span class="p">,</span><span class="w">
 </span><span class="nt">"attached"</span><span class="p">:</span><span class="s2">"客户联系人备注"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"modified_by"</span><span class="p">:</span><span class="s2">"修改时间"</span><span class="w">      
+</span><span class="nt">"modified_by"</span><span class="p">:</span><span class="s2">"修改时间"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -7173,7 +7180,7 @@ mobile | 手机号码
 </tbody></table>
 
 <h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">   
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"call_back_tag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"user_add_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_modify_org"</span><span class="p">,</span><span class="w"> </span><span class="s2">"user_leave_org"</span><span class="p">],</span><span class="w">
@@ -7742,7 +7749,8 @@ mobile | 手机号码
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"msgtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"voice"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"voice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-       </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="w">
+       </span><span class="nt">"media_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEDIA_ID"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -7768,6 +7776,12 @@ mobile | 手机号码
 <td>String</td>
 <td>是</td>
 <td>语音媒体文件id，可以调用上传媒体文件接口获取。2MB，播放长度不超过60s，AMR格式</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>String</td>
+<td>是</td>
+<td>正整数，小于60，表示音频时长</td>
 </tr>
 </tbody></table>
 
@@ -8426,8 +8440,8 @@ mobile | 手机号码
 
 <p>正确时返回示例如下</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"070c171a26d633d1b631dxxxxxxxx"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"070c171a26d633d1b631dxxxxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8486,10 +8500,10 @@ mobile | 手机号码
 
 <p>正确时返回示例如下</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"persistent_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsa-d-asdasdadHIBIinoninINIn-ssdasd"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"persistent_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsa-d-asdasdadHIBIinoninINIn-ssdasd"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"unionid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7Huu46kk"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8524,7 +8538,7 @@ mobile | 手机号码
 
 <p>POST 正文</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"persistent_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dsa-d-asdasdadHIBIinoninINIn-ssdasd"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8563,9 +8577,9 @@ mobile | 手机号码
 
 <p>正确时返回示例如下</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
     </span><span class="nt">"sns_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c76dsc87ds6c876sd87csdcxxxxx"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -8618,24 +8632,24 @@ mobile | 手机号码
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"corp_info"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"阿里巴巴"</span><span class="p">,</span><span class="w"> 
-            </span><span class="nt">"is_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-            </span><span class="nt">"is_manager"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"阿里巴巴"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_manager"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nt">"rights_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
-        </span><span class="p">},</span><span class="w"> 
+        </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DingTalk"</span><span class="p">,</span><span class="w"> 
-            </span><span class="nt">"is_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-            </span><span class="nt">"is_manager"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+            </span><span class="nt">"corp_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DingTalk"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"is_manager"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nt">"rights_level"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w"> 
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w"> 
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"maskedMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"130****1234"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"nick"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"maskedMobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"130****1234"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"nick"</span><span class="p">:</span><span class="w"> </span><span class="s2">"张三"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"openid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liSii8KCxxxxx"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"unionid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7Huu46kk"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"dingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dingId"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -8991,7 +9005,7 @@ mobile | 手机号码
 由于不同接入方的业务不完全一致，如果接入方希望以与本文档不同的形式接入，可以向我们提出合作邀请，我们也提供定制化接入支持。（联系邮箱：pstar.zhangp@alibaba-inc.com）
 
 管理日历目前已接入多个微应用，例如：签到、审批、考勤、日志、拜访计划等。
-    
+
 具体接入文档查看：[管理日历接入指南](http://download.taobaocdn.com/freedom/31112/pdf/p1a6htv7hq1o3p63g9ahpq51n5q4.pdf)
 -->
 
@@ -10155,7 +10169,7 @@ mobile | 手机号码
         </span><span class="s2">"duty"</span><span class="err">:</span><span class="w"> </span><span class="s2">"上下班,0-上班，1-下班"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"absentTime"</span><span class="err">:</span><span class="w"> </span><span class="s2">"迟到或早退的时长，格式为数字，单位毫秒"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"supplement"</span><span class="err">:</span><span class="w"> </span><span class="s2">"是否已补签，0-否，1-是"</span><span class="w">
-    </span><span class="p">]</span><span class="w">   
+    </span><span class="p">]</span><span class="w">
 
 </span><span class="p">}</span><span class="w">
 

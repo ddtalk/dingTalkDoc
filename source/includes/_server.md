@@ -548,7 +548,7 @@ Https请求方式: POST
     "userid": "zhangsan",
     "name": "张三",
     "department": [1, 2],
-    "orderInDepts": "{1:10}", 
+    "orderInDepts": "{1:10}",
     "position": "产品经理",
     "mobile": "15913215421",
     "tel" : "010-123333",
@@ -881,7 +881,7 @@ agentId | Long | 是 |  需要查询询的微应用agentId
 errcode | 返回码
 errmsg | 对返回码的文本描述内容
 deptVisibleScopes | 查询的该微应用的可见部门列表
-userVisibleScopes | 查询的该微应用的可见用户列表 
+userVisibleScopes | 查询的该微应用的可见用户列表
 
 ## 群会话接口
 
@@ -1171,7 +1171,8 @@ image.media_id | String | 是 | 图片媒体文件id，可以调用上传媒体�
 	"sender": "manager1122",
     "msgtype": "voice",
     "voice": {
-       "media_id": "MEDIA_ID"
+       "media_id": "MEDIA_ID",
+       "duration": "10"
     }
 }
 ```
@@ -1189,6 +1190,7 @@ msgtype |String | 是 | 消息类型，此时固定为：voice
 参数 | 参数类型 | 必须 | 说明
 ---------- | ------- | ------- | ------
 voice.media_id |String | 是 | 语音媒体文件id，可以调用上传媒体文件接口获取。2MB，播放长度不超过60s，AMR格式
+voice.duration | String | 是 | 正整数，小于60，表示音频时长
 
 ##### file消息
 
@@ -1654,7 +1656,7 @@ Https请求方式: POST
 "name":"客户联系人名称",
 "mobile":"客户联系人手机",
 "attached":"客户联系人备注",
-"modified_by":"修改时间"	  
+"modified_by":"修改时间"
 }
 
 ```
@@ -2038,7 +2040,7 @@ access_token | String | 是 | 调用接口凭证
 ###### 返回结果
 
 ```
-{   
+{
     "errcode": 0,
     "errmsg": "ok",
     "call_back_tag": ["user_add_org", "user_modify_org", "user_leave_org"],
@@ -2376,7 +2378,8 @@ media_id | String | 是 | 图片媒体文件id，可以调用上传媒体文件�
 {
     "msgtype": "voice",
     "voice": {
-       "media_id": "MEDIA_ID"
+       "media_id": "MEDIA_ID",
+       "duration": "10"
     }
 }
 ```
@@ -2387,6 +2390,7 @@ media_id | String | 是 | 图片媒体文件id，可以调用上传媒体文件�
 ---------- | ------- | ------- | ------
 msgtype |String | 是 | 消息类型，此时固定为：voice
 media_id |String | 是 | 语音媒体文件id，可以调用上传媒体文件接口获取。2MB，播放长度不超过60s，AMR格式
+duration | String | 是 | 正整数，小于60，表示音频时长
 
 ### file消息
 
@@ -2761,8 +2765,8 @@ appsecret | String | 是 | 由钉钉开放平台提供的密钥
 
 ```
 {
-    "access_token": "070c171a26d633d1b631dxxxxxxxx", 
-    "errcode": 0, 
+    "access_token": "070c171a26d633d1b631dxxxxxxxx",
+    "errcode": 0,
     "errmsg": "ok"
 }
 ```
@@ -2801,10 +2805,10 @@ tmp_auth_code | String | 是 | 用户授权给钉钉开放应用的临时授权�
 
 ```
 {
-    "errcode": 0, 
-    "errmsg": "ok", 
-    "openid": "liSii8KCxxxxx", 
-    "persistent_code": "dsa-d-asdasdadHIBIinoninINIn-ssdasd", 
+    "errcode": 0,
+    "errmsg": "ok",
+    "openid": "liSii8KCxxxxx",
+    "persistent_code": "dsa-d-asdasdadHIBIinoninINIn-ssdasd",
     "unionid": "7Huu46kk"
 }
 ```
@@ -2828,7 +2832,7 @@ POST 正文
 
 ```
 {
-    "openid": "liSii8KCxxxxx", 
+    "openid": "liSii8KCxxxxx",
     "persistent_code": "dsa-d-asdasdadHIBIinoninINIn-ssdasd"
 }
 ```
@@ -2847,9 +2851,9 @@ persistent_code | String | 是 | 用户授权给钉钉开放应用的持久授�
 
 ```
 {
-    "errcode": 0, 
-    "errmsg": "ok", 
-    "expires_in": 7200, 
+    "errcode": 0,
+    "errmsg": "ok",
+    "expires_in": 7200,
     "sns_token": "c76dsc87ds6c876sd87csdcxxxxx"
 }
 ```
@@ -2881,24 +2885,24 @@ sns_token | String | 是 | 用户授权给开放应用的token
 {
     "corp_info": [
         {
-            "corp_name": "阿里巴巴", 
-            "is_auth": true, 
-            "is_manager": false, 
+            "corp_name": "阿里巴巴",
+            "is_auth": true,
+            "is_manager": false,
             "rights_level": 100
-        }, 
+        },
         {
-            "corp_name": "DingTalk", 
-            "is_auth": true, 
-            "is_manager": false, 
+            "corp_name": "DingTalk",
+            "is_auth": true,
+            "is_manager": false,
             "rights_level": 200
         }
-    ], 
-    "errcode": 0, 
-    "errmsg": "ok", 
+    ],
+    "errcode": 0,
+    "errmsg": "ok",
     "user_info": {
-        "maskedMobile": "130****1234", 
-        "nick": "张三", 
-        "openid": "liSii8KCxxxxx", 
+        "maskedMobile": "130****1234",
+        "nick": "张三",
+        "openid": "liSii8KCxxxxx",
         "unionid": "7Huu46kk",
         "dingId": "dingId"
     }
@@ -3057,7 +3061,7 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 由于不同接入方的业务不完全一致，如果接入方希望以与本文档不同的形式接入，可以向我们提出合作邀请，我们也提供定制化接入支持。（联系邮箱：pstar.zhangp@alibaba-inc.com）
 
 管理日历目前已接入多个微应用，例如：签到、审批、考勤、日志、拜访计划等。
-    
+
 具体接入文档查看：[管理日历接入指南](http://download.taobaocdn.com/freedom/31112/pdf/p1a6htv7hq1o3p63g9ahpq51n5q4.pdf)
 -->
 ## 附录
@@ -3133,9 +3137,9 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 40057 | 不合法的callbackurl
 40061 | 设置应用头像失败
 40062 | 不合法的应用模式
-40063 | 不合法的分机号	
-40064 | 不合法的工作地址	
-40065 | 不合法的备注	
+40063 | 不合法的分机号
+40064 | 不合法的工作地址
+40065 | 不合法的备注
 40066 | 不合法的部门列表
 40067 | 标题长度不合法
 40068 | 不合法的偏移量
@@ -3293,17 +3297,17 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
 60119 | 不合法的position
 60120 | 用户已禁用
 60121 | 找不到该用户
-60122 | 不合法的extattr 
+60122 | 不合法的extattr
 60123 | 不合法的jobnumber
 60124 | 用户不在此群中
 60125 | CRM配置信息创建失败
 60126 | CRM配置信息更新失败
 60127 | CRM人员配置信息删除失败
 70001 | 企业不存在或者已经被解散
-70002 | 获取套件下的微应用失败 
+70002 | 获取套件下的微应用失败
 70003 | agentid对应微应用不存在
-70004 | 企业下没有对应该agentid的微应用 
-70005 | ISV激活套件失败 
+70004 | 企业下没有对应该agentid的微应用
+70005 | ISV激活套件失败
 71006 | 回调地址已经存在
 71007 | 回调地址已不存在
 71008 | 回调call_back_tag必须在指定的call_back_tag列表中
@@ -3392,7 +3396,7 @@ JS-SDK 为H5页面提供了一系列原生UI控件或者服务的JS接口，文�
         "duty": "上下班,0-上班，1-下班",
         "absentTime": "迟到或早退的时长，格式为数字，单位毫秒",
         "supplement": "是否已补签，0-否，1-是"
-    ]   
+    ]
 
 }
 
