@@ -189,6 +189,7 @@ var obj = DDLogin({<br>
  });<br>
 </code>
 其中goto参数需要这样构造：https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=REDIRECT_URI
+并且要将goto参数urlencode编码
 
 参数说明见下方
 
