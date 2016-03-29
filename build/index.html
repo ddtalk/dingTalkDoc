@@ -3230,7 +3230,8 @@ var obj = DDLogin({<br>
      &nbsp;&nbsp;&nbsp;height: &quot;300px&quot;<br>
  });<br>
 </code>
-其中goto参数需要这样构造：https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_type=code&amp;scope=snsapi_login&amp;state=STATE&amp;redirect_uri=REDIRECT_URI</p>
+其中goto参数需要这样构造：https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_type=code&amp;scope=snsapi_login&amp;state=STATE&amp;redirect_uri=REDIRECT_URI
+并且要将goto参数urlencode编码</p>
 
 <p>参数说明见下方</p>
 
@@ -12404,7 +12405,7 @@ memberCount | 群聊成员总数
 <tr>
 <td>users</td>
 <td>Array[String]</td>
-<td>用户列表，工号</td>
+<td>用户列表，员工UserID</td>
 </tr>
 <tr>
 <td>corpId</td>
