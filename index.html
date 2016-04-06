@@ -5923,916 +5923,474 @@ mobile | 手机号码
 
 <p><img alt="oames" src="https://img.alicdn.com/tps/TB1gVcFIFXXXXcGXXXXXXXXXXXX.jpg" /></p>
 
-<h2 id="客户通讯录接口（暂未开放）">客户通讯录接口（暂未开放）</h2>
-
-<p>您可以通过使用客户通讯接口，将您的CRM应用中的员工与客户的关系、客户与客户联系人的关系在钉钉客户端通讯录中展现，与钉钉有更深入的功能融合，对于用户来说客户关系与通讯录的紧密结合，更容易管理和联系核心客户</p>
-
-<h3 id="员工新增客户信息">员工新增客户信息</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/customer/create?access_token=ACCESS_TOKEN&amp;user_id=USER_ID</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"customer"</span><span class="p">:[</span><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"姓名"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"address"</span><span class="p">:</span><span class="s2">"地址"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"描述"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"telephone"</span><span class="p">:</span><span class="s2">"电话"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">],</span><span class="w">
-</span><span class="nt">"contacts"</span><span class="p">:[</span><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"姓名"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"手机"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"attached"</span><span class="p">:</span><span class="s2">"备注"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">],</span><span class="w">
-</span><span class="nt">"userIds"</span><span class="p">:[</span><span class="w">
-</span><span class="s2">"USER_ID"</span><span class="p">,</span><span class="s2">"USER_ID"</span><span class="w">
-</span><span class="p">],</span><span class="w">
-</span><span class="nt">"create_by"</span><span class="p">:</span><span class="s2">"创建时间"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>user_id</td>
-<td>String</td>
-<td>是</td>
-<td>员工在企业内的userid</td>
-</tr>
-<tr>
-<td>customer</td>
-<td>JSONObject</td>
-<td>是</td>
-<td>客户信息</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>是</td>
-<td>客户名称</td>
-</tr>
-<tr>
-<td>address</td>
-<td>String</td>
-<td>是</td>
-<td>客户地址</td>
-</tr>
-<tr>
-<td>description</td>
-<td>String</td>
-<td>是</td>
-<td>客户描述</td>
-</tr>
-<tr>
-<td>telephone</td>
-<td>String</td>
-<td>是</td>
-<td>客户电话</td>
-</tr>
-<tr>
-<td>contacts</td>
-<td>JSONObject</td>
-<td>否</td>
-<td>客户联系人信息</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>否</td>
-<td>客户联系人名称</td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>String</td>
-<td>否</td>
-<td>客户联系人手机</td>
-</tr>
-<tr>
-<td>attached</td>
-<td>String</td>
-<td>否</td>
-<td>客户联系人备注</td>
-</tr>
-<tr>
-<td>userIds</td>
-<td>String[]</td>
-<td>否</td>
-<td>跟进客户的员工信息</td>
-</tr>
-<tr>
-<td>create_by</td>
-<td>String</td>
-<td>是</td>
-<td>创建时间</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"customerid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxxxxxxxxxxxxxxxxx"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-<tr>
-<td>customerid</td>
-<td>客户id</td>
-</tr>
-</tbody></table>
-
-<h3 id="员工修改客户信息">员工修改客户信息</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/customer/update?access_token=ACCESS_TOKEN&amp;user_id=USER_ID</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"客户id"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"客户名称"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"address"</span><span class="p">:</span><span class="s2">"客户地址"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"客户描述"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"telephone"</span><span class="p">:</span><span class="s2">"电话"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"modified_by"</span><span class="p">:</span><span class="s2">"修改时间"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>user_id</td>
-<td>String</td>
-<td>是</td>
-<td>员工id</td>
-</tr>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>是</td>
-<td>客户id</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>否</td>
-<td>客户名称</td>
-</tr>
-<tr>
-<td>address</td>
-<td>String</td>
-<td>否</td>
-<td>客户地址信息</td>
-</tr>
-<tr>
-<td>description</td>
-<td>String</td>
-<td>否</td>
-<td>客户描述信息</td>
-</tr>
-<tr>
-<td>telephone</td>
-<td>String</td>
-<td>否</td>
-<td>客户联系电话</td>
-</tr>
-<tr>
-<td>modified_by</td>
-<td>String</td>
-<td>否</td>
-<td>修改时间</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h3 id="员工删除客户">员工删除客户</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/customer/delete?access_token=ACCESS_TOKEN&amp;user_id=USER_ID</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"id[]"</span><span class="p">:</span><span class="s2">"客户id"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>user_id</td>
-<td>String</td>
-<td>是</td>
-<td>会话id</td>
-</tr>
-<tr>
-<td>id</td>
-<td>String[]</td>
-<td>是</td>
-<td>客户id</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
- </span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h3 id="获取客户详细信息">获取客户详细信息</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: GET</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/customer/get?access_token=ACCESS_TOKEN&amp;id=CUSTOMER_ID</code></p>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>是</td>
-<td>客户id</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"customer"</span><span class="p">:{</span><span class="w">
-
-</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"客户名称"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"address"</span><span class="p">:</span><span class="s2">"客户地址"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"客户描述"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"telephone"</span><span class="p">:</span><span class="s2">"客户电话"</span><span class="w">
-</span><span class="p">},</span><span class="w">
-</span><span class="nt">"contactList"</span><span class="p">:[</span><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"客户联系人名称"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"客户联系人电话"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"attached"</span><span class="p">:</span><span class="s2">"客户联系人备注"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">],</span><span class="w">
-</span><span class="nt">"userIds"</span><span class="p">:[</span><span class="w">
-                </span><span class="s2">"USER_ID"</span><span class="p">,</span><span class="s2">"USER_ID"</span><span class="w">
-</span><span class="p">],</span><span class="w">
-</span><span class="nt">"create_by"</span><span class="p">:</span><span class="s2">"创建时间"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>customer</td>
-<td>客户信息</td>
-</tr>
-<tr>
-<td>name</td>
-<td>客户名称</td>
-</tr>
-<tr>
-<td>address</td>
-<td>客户地址</td>
-</tr>
-<tr>
-<td>description</td>
-<td>客户描述</td>
-</tr>
-<tr>
-<td>telephone</td>
-<td>客户电话</td>
-</tr>
-<tr>
-<td>contacts</td>
-<td>客户联系人信息</td>
-</tr>
-<tr>
-<td>name</td>
-<td>客户联系人名称</td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>客户联系人手机</td>
-</tr>
-<tr>
-<td>attached</td>
-<td>客户联系人备注</td>
-</tr>
-<tr>
-<td>userIds</td>
-<td>跟进客户的员工信息</td>
-</tr>
-<tr>
-<td>create_by</td>
-<td>创建时间</td>
-</tr>
-</tbody></table>
-
-<h3 id="获取客户列表">获取客户列表</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: GET</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/customer/get?access_token=ACCESS_TOKEN</code></p>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回结果">返回结果</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"customerlist"</span><span class="p">:[</span><span class="w">
-</span><span class="p">{</span><span class="w">
-</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"客户名称"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"address"</span><span class="p">:</span><span class="s2">"客户地址"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"description"</span><span class="p">:</span><span class="s2">"客户描述"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"telephone"</span><span class="p">:</span><span class="s2">"客户电话"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>customerlist</td>
-<td>客户列表信息</td>
-</tr>
-<tr>
-<td>name</td>
-<td>客户名称</td>
-</tr>
-<tr>
-<td>address</td>
-<td>客户地址</td>
-</tr>
-<tr>
-<td>description</td>
-<td>客户描述</td>
-</tr>
-<tr>
-<td>telephone</td>
-<td>客户电话</td>
-</tr>
-</tbody></table>
-
-<h3 id="员工新增客户联系人">员工新增客户联系人</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/contact/create?access_token=ACCESS_TOKEN&amp;user_id=USER_ID</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"customerid"</span><span class="p">:</span><span class="s2">"客户id"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"客户联系人名称"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"客户联系人手机"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"attached"</span><span class="p">:</span><span class="s2">"客户联系人备注"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"create_by"</span><span class="p">:</span><span class="s2">"创建时间"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>user_id</td>
-<td>String</td>
-<td>是</td>
-<td>员工id</td>
-</tr>
-<tr>
-<td>customerid</td>
-<td>客户id</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>name</td>
-<td>客户联系人名称</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>客户联系人手机</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>attached</td>
-<td>客户联系人备注</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>create_by</td>
-<td>创建时间</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h6 id="返回说明">返回说明</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h3 id="员工修改客户联系人">员工修改客户联系人</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/contact/create?access_token=ACCESS_TOKEN&amp;user_id=USER_ID</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"contactid"</span><span class="p">:</span><span class="s2">"客户联系人id"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"客户联系人名称"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"mobile"</span><span class="p">:</span><span class="s2">"客户联系人手机"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"attached"</span><span class="p">:</span><span class="s2">"客户联系人备注"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"modified_by"</span><span class="p">:</span><span class="s2">"修改时间"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>user_id</td>
-<td>String</td>
-<td>是</td>
-<td>员工id</td>
-</tr>
-<tr>
-<td>contactid</td>
-<td>String</td>
-<td>是</td>
-<td>客户id</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>是</td>
-<td>客户联系人名称</td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>String</td>
-<td>是</td>
-<td>客户联系人手机</td>
-</tr>
-<tr>
-<td>attached</td>
-<td>String</td>
-<td>是</td>
-<td>客户联系人备注</td>
-</tr>
-<tr>
-<td>modified_by</td>
-<td>String</td>
-<td>是</td>
-<td>修改时间</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回说明">返回说明</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h3 id="员工删除客户联系人">员工删除客户联系人</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/contact/delete?access_token=ACCESS_TOKEN&amp;user_id=USER_ID</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"contactid[]"</span><span class="p">:</span><span class="s2">"客户联系人id1"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>user_id</td>
-<td>String</td>
-<td>是</td>
-<td>员工id</td>
-</tr>
-<tr>
-<td>contactid</td>
-<td>String[]</td>
-<td>是</td>
-<td>客户id</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回说明">返回说明</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h3 id="员工客户关系新增">员工客户关系新增</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/empcustomer/create?access_token=ACCESS_TOKEN</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"customerId"</span><span class="p">:</span><span class="s2">"客户id"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"userId"</span><span class="p">:</span><span class="s2">"员工id"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"create_by"</span><span class="p">:</span><span class="s2">"创建时间"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>customerId</td>
-<td>String</td>
-<td>是</td>
-<td>客户id</td>
-</tr>
-<tr>
-<td>userId</td>
-<td>String</td>
-<td>是</td>
-<td>员工id</td>
-</tr>
-<tr>
-<td>create_by</td>
-<td>String</td>
-<td>是</td>
-<td>创建时间</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回说明">返回说明</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
-
-<h3 id="员工客户关系删除">员工客户关系删除</h3>
-
-<h6 id="请求说明">请求说明</h6>
-
-<p>Https请求方式: POST</p>
-
-<p><code class="prettyprint">https://oapi.dingtalk.com/crm/empcustomer/delete?access_token=ACCESS_TOKEN</code></p>
-
-<h6 id="请求包结构体">请求包结构体</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-</span><span class="nt">"customerId"</span><span class="p">:</span><span class="s2">"客户id"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"userId"</span><span class="p">:</span><span class="s2">"员工id"</span><span class="p">,</span><span class="w">
-</span><span class="nt">"modified_by"</span><span class="p">:</span><span class="s2">"修改时间"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<h6 id="参数说明">参数说明</h6>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>参数类型</th>
-<th>必须</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_token</td>
-<td>String</td>
-<td>是</td>
-<td>调用接口凭证</td>
-</tr>
-<tr>
-<td>customerId</td>
-<td>String</td>
-<td>是</td>
-<td>客户id</td>
-</tr>
-<tr>
-<td>userId</td>
-<td>String</td>
-<td>是</td>
-<td>员工id</td>
-</tr>
-<tr>
-<td>modified_by</td>
-<td>String</td>
-<td>是</td>
-<td>修改时间</td>
-</tr>
-</tbody></table>
-
-<h6 id="返回说明">返回说明</h6>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"errcode"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errmsg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errcode</td>
-<td>返回码</td>
-</tr>
-<tr>
-<td>errmsg</td>
-<td>对返回码的文本描述内容</td>
-</tr>
-</tbody></table>
+<!-- 客户通讯录接口 开始 -->
+
+<!--
+## 客户通讯录接口（暂未开放）
+
+您可以通过使用客户通讯接口，将您的CRM应用中的员工与客户的关系、客户与客户联系人的关系在钉钉客户端通讯录中展现，与钉钉有更深入的功能融合，对于用户来说客户关系与通讯录的紧密结合，更容易管理和联系核心客户
+
+### 员工新增客户信息
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/crm/customer/create?access_token=ACCESS_TOKEN&user_id=USER_ID`
+
+###### 请求包结构体
+
+```
+{
+"customer":[
+{
+"name":"姓名",
+"address":"地址",
+"description":"描述",
+"telephone":"电话"
+}
+],
+"contacts":[
+{
+"name":"姓名",
+"mobile":"手机",
+"attached":"备注"
+}
+],
+"userIds":[
+"USER_ID","USER_ID"
+],
+"create_by":"创建时间"
+}
+
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----------| ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+user_id | String | 是 |  员工在企业内的userid
+customer | JSONObject | 是 |  客户信息
+name | String | 是 |  客户名称
+address | String | 是 |  客户地址
+description | String | 是 |  客户描述
+telephone | String | 是 |  客户电话
+contacts | JSONObject | 否 |  客户联系人信息
+name | String | 否 |  客户联系人名称
+mobile | String | 否 |  客户联系人手机
+attached | String | 否 |  客户联系人备注
+userIds | String[] | 否 |  跟进客户的员工信息
+create_by | String | 是 |  创建时间
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok",
+    "customerid": "xxxxxxxxxxxxxxxxxx"
+}
+```
+
+参数 | 说明
+----------  | ------
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+customerid | 客户id
+
+### 员工修改客户信息
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/crm/customer/update?access_token=ACCESS_TOKEN&user_id=USER_ID`
+
+###### 请求包结构体
+
+```
+{
+"id":"客户id",
+"name":"客户名称",
+"address":"客户地址",
+"description":"客户描述",
+"telephone":"电话",
+"modified_by":"修改时间"
+}
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+----------| ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+user_id | String | 是 | 员工id
+id | String | 是 |  客户id
+name | String | 否 | 客户名称
+address  | String | 否 | 客户地址信息
+description  | String | 否 | 客户描述信息
+telephone  | String | 否 | 客户联系电话
+modified_by  | String | 否 | 修改时间
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+
+参数 | 说明
+----------  | ------
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 员工删除客户
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/crm/customer/delete?access_token=ACCESS_TOKEN&user_id=USER_ID`
+
+###### 请求包结构体
+
+```
+{
+"id[]":"客户id"
+}
+
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+user_id | String | 是 | 会话id
+id | String[] | 是 | 客户id
+
+###### 返回结果
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+ }
+```
+
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+
+### 获取客户详细信息
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/crm/customer/get?access_token=ACCESS_TOKEN&id=CUSTOMER_ID`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+id | String | 是 | 客户id
+
+###### 返回结果
+
+```
+{
+"customer":{
+
+"name":"客户名称",
+"address":"客户地址",
+"description":"客户描述",
+"telephone":"客户电话"
+},
+"contactList":[
+{
+"name":"客户联系人名称",
+"mobile":"客户联系人电话",
+"attached":"客户联系人备注"
+}
+],
+"userIds":[
+                "USER_ID","USER_ID"
+],
+"create_by":"创建时间"
+}
+```
+
+参数 | 说明
+---- | -----
+customer  |  客户信息
+name |  客户名称
+address  |  客户地址
+description |  客户描述
+telephone  |  客户电话
+contacts  |  客户联系人信息
+name  |  客户联系人名称
+mobile  |  客户联系人手机
+attached  |  客户联系人备注
+userIds  |  跟进客户的员工信息
+create_by  |  创建时间
+
+### 获取客户列表
+
+###### 请求说明
+
+Https请求方式: GET
+
+`https://oapi.dingtalk.com/crm/customer/get?access_token=ACCESS_TOKEN`
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token | String | 是 | 调用接口凭证
+
+###### 返回结果
+
+```
+{
+"customerlist":[
+{
+"name":"客户名称",
+"address":"客户地址",
+"description":"客户描述",
+"telephone":"客户电话"
+}
+]
+}
+```
+
+参数 | 说明
+---- | -----
+customerlist  |  客户列表信息
+name |  客户名称
+address  |  客户地址
+description |  客户描述
+telephone  |  客户电话
+
+### 员工新增客户联系人
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/crm/contact/create?access_token=ACCESS_TOKEN&user_id=USER_ID`
+
+###### 请求包结构体
+
+```
+{
+"customerid":"客户id",
+"name":"客户联系人名称",
+"mobile":"客户联系人手机",
+"attached":"客户联系人备注",
+"create_by":"创建时间"
+}
+
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token |String | 是 | 调用接口凭证
+user_id |String | 是 | 员工id
+customerid  |  客户id
+name  |  客户联系人名称
+mobile  |  客户联系人手机
+attached  |  客户联系人备注
+create_by  |  创建时间
+
+###### 返回说明
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 员工修改客户联系人
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/crm/contact/create?access_token=ACCESS_TOKEN&user_id=USER_ID`
+
+###### 请求包结构体
+
+```
+{
+"contactid":"客户联系人id",
+"name":"客户联系人名称",
+"mobile":"客户联系人手机",
+"attached":"客户联系人备注",
+"modified_by":"修改时间"
+}
+
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token |String | 是 | 调用接口凭证
+user_id |String | 是 | 员工id
+contactid |String | 是  |  客户id
+name |String | 是  |  客户联系人名称
+mobile  |String | 是 |  客户联系人手机
+attached |String | 是   |  客户联系人备注
+modified_by |String | 是   |  修改时间
+
+###### 返回说明
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 员工删除客户联系人
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/crm/contact/delete?access_token=ACCESS_TOKEN&user_id=USER_ID`
+
+###### 请求包结构体
+
+```
+{
+"contactid[]":"客户联系人id1"
+}
+
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token |String | 是 | 调用接口凭证
+user_id |String | 是 | 员工id
+contactid  |String[] | 是  |  客户id
+###### 返回说明
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 员工客户关系新增
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/crm/empcustomer/create?access_token=ACCESS_TOKEN`
+
+###### 请求包结构体
+
+```
+{
+    "customerId":"客户id",
+    "userId":"员工id",
+    "create_by":"创建时间"
+}
+
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token |String | 是 | 调用接口凭证
+customerId |String | 是 | 客户id
+userId  |String | 是  |  员工id
+create_by  |String | 是  |  创建时间
+
+###### 返回说明
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+
+### 员工客户关系删除
+
+###### 请求说明
+
+Https请求方式: POST
+
+`https://oapi.dingtalk.com/crm/empcustomer/delete?access_token=ACCESS_TOKEN`
+
+###### 请求包结构体
+
+```
+{
+"customerId":"客户id",
+"userId":"员工id",
+"modified_by":"修改时间"
+}
+
+```
+
+###### 参数说明
+
+参数 | 参数类型 | 必须 | 说明
+---------- | ------- | ------- | ------
+access_token |String | 是 | 调用接口凭证
+customerId |String | 是 | 客户id
+userId  |String | 是  |  员工id
+modified_by  |String | 是  |  修改时间
+
+###### 返回说明
+
+```
+{
+    "errcode": 0,
+    "errmsg": "ok"
+}
+```
+参数 | 说明
+---- | -----
+errcode | 返回码
+errmsg | 对返回码的文本描述内容
+-->
+
+<!-- 客户通讯录接口 结束 -->
 
 <h2 id="通讯录及群会话变更事件回调接口">通讯录及群会话变更事件回调接口</h2>
 
