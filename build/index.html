@@ -10845,25 +10845,34 @@ document.addEventListener('backbutton', function(e) {
 
 <h3 id="获取当前地理位置">获取当前地理位置</h3>
 
-<p>钉钉Android2.1及之前版本返回的数据会多嵌套一层location字段,2.2版本会改成和钉钉iOS客户端一致，请注意，建议对返回的数据先判断存在location，做向后兼容处理。</p>
+<p>钉钉Android客户端2.1及之前版本返回的数据结构比iOS客户端多嵌套一层location字段，2.2及之后的版本返回的数据结构与钉钉iOS客户端一致，建议对返回的数据先判断存在location，做向后兼容处理。</p>
 
-<p>目前androidJSAPI返回的坐标是高德坐标，ios是标准坐标，如果服务端调用的是高德API，则需要对ios返回的经纬度做下处理，详细请见<a href="http://lbsbbs.amap.com/forum.php?mod=viewthread&amp;tid=724&amp;page=2"><font color=red >http://lbsbbs.amap.com/forum.php?mod=viewthread&amp;tid=724&amp;page=2</font></a>。坐标转换API <a href="http://lbs.amap.com/api/javascript-api/example/p/1602-2/"><font color=red >http://lbs.amap.com/api/javascript-api/example/p/1602-2/</font></a></p>
+<p>Android客户端返回的坐标是高德坐标；iOS 2.7.6开始支持返回标准坐标和高德坐标。2.7.6之前的版本只支持返回标准坐标，如果需要在iOS 2.6.7之前的版本上使用高德坐标，则需要对返回的坐标做转换，请见链接<a href="http://lbsbbs.amap.com/forum.php?mod=viewthread&amp;tid=724&amp;page=1"><font color=red >http://lbsbbs.amap.com/forum.php?mod=viewthread&amp;tid=724&amp;page=1</font></a>；坐标转换APIDemo演示页面：<a href="http://lbs.amap.com/api/javascript-api/example/p/1602-2/"><font color=red >http://lbs.amap.com/api/javascript-api/example/p/1602-2/</font></a></p>
 <pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">get</span><span class="p">({</span>
     <span class="na">targetAccuracy</span> <span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+    <span class="na">coordinate</span> <span class="p">:</span> <span class="nb">Number</span><span class="p">,</span>
+    <span class="na">withReGeocode</span> <span class="p">:</span> <span class="nb">Boolean</span>
     <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cm">/*
+        <span class="cm">/* result 结构
         {
             longitude : Number,
             latitude : Number,
             accuracy : Number,
+            address : String,
+            province : String,
+            city : String,
+            district : String,
+            road : String,
+            netType : String,
+            operatorType : String,
+            errorMessage : String,
+            errorCode : Number,
             isWifiEnabled : Boolean,
             isGpsEnabled : Boolean,
             isFromMock : Boolean,
             provider : wifi|lbs|gps,
             accuracy : Number,
-            isMobileEnabled : Boolean,
-            errorMessage : String,
-            errorCode : Number
+            isMobileEnabled : Boolean
         }
         */</span>
     <span class="p">},</span>
@@ -10871,7 +10880,7 @@ document.addEventListener('backbutton', function(e) {
 <span class="p">});</span>
 </code></pre>
 
-<h5 id="参数说明">参数说明</h5>
+<p>参数说明：</p>
 
 <table><thead>
 <tr>
@@ -10883,11 +10892,21 @@ document.addEventListener('backbutton', function(e) {
 <tr>
 <td>targetAccuracy</td>
 <td>Number</td>
-<td>期望定位精度半径（单位米），定位结果尽量满足该参数要求，但是不一定能保证小于该误差</td>
+<td>期望定位精度半径（单位米），定位结果尽量满足该参数要求，但是不一定能保证小于该误差，开发者需要读取返回结果的 accuracy 字段校验坐标精度；建议按照业务需求设置定位精度，推荐采用200m，可获得较好的精度和较短的响应时长；</td>
+</tr>
+<tr>
+<td>coordinate</td>
+<td>Number</td>
+<td>仅iOS支持，0：获取标准坐标，1：获取高德坐标；为兼容现有微应用默认值采用0；推荐使用高德坐标；</td>
+</tr>
+<tr>
+<td>withReGeocode</td>
+<td>Boolean</td>
+<td>是否需要带有逆地理编码信息；该功能需要网络请求，请更具自己的业务场景使用</td>
 </tr>
 </tbody></table>
 
-<h5 id="返回说明">返回说明</h5>
+<p>返回值说明：</p>
 
 <table><thead>
 <tr>
@@ -10908,24 +10927,32 @@ document.addEventListener('backbutton', function(e) {
 <td>实际的定位精度半径（单位米）</td>
 </tr>
 <tr>
-<td>isWifiEnabled</td>
-<td>wifi设置是否开启，不保证已连接上</td>
+<td>address</td>
+<td>格式化地址，如：北京市朝阳区南磨房镇北京国家广告产业园区</td>
 </tr>
 <tr>
-<td>isGpsEnabled</td>
-<td>gps设置是否开启，不保证已经连接上</td>
+<td>province</td>
+<td>省份，如：北京市</td>
 </tr>
 <tr>
-<td>isFromMock</td>
-<td>定位返回的经纬度是否是模拟的结果</td>
+<td>city</td>
+<td>城市，直辖市会返回空</td>
 </tr>
 <tr>
-<td>provider</td>
-<td>我们使用的是混合定位，具体定位提供者有wifi/lbs/gps&quot; 这三种</td>
+<td>district</td>
+<td>行政区，如：朝阳区</td>
 </tr>
 <tr>
-<td>isMobileEnabled</td>
-<td>移动网络是设置是否开启，不保证已经连接上</td>
+<td>road</td>
+<td>街道，如：西大望路甲12-2号楼</td>
+</tr>
+<tr>
+<td>netType</td>
+<td>当前设备网络类型，如：wifi、3g等</td>
+</tr>
+<tr>
+<td>operatorType</td>
+<td>当前设备使用移动运营商，如：CMCC等</td>
 </tr>
 <tr>
 <td>errorMessage</td>
@@ -10934,6 +10961,279 @@ document.addEventListener('backbutton', function(e) {
 <tr>
 <td>errorCode</td>
 <td>错误码</td>
+</tr>
+<tr>
+<td>isWifiEnabled</td>
+<td>仅Android支持，wifi设置是否开启，不保证已连接上</td>
+</tr>
+<tr>
+<td>isGpsEnabled</td>
+<td>仅Android支持，gps设置是否开启，不保证已经连接上</td>
+</tr>
+<tr>
+<td>isFromMock</td>
+<td>仅Android支持，定位返回的经纬度是否是模拟的结果</td>
+</tr>
+<tr>
+<td>provider</td>
+<td>仅Android支持，我们使用的是混合定位，具体定位提供者有wifi/lbs/gps&quot; 这三种</td>
+</tr>
+<tr>
+<td>isMobileEnabled</td>
+<td>仅Android支持，移动网络是设置是否开启，不保证已经连接上</td>
+</tr>
+</tbody></table>
+
+<h3 id="地图定位">地图定位</h3>
+
+<p>唤起地图页面，获取设备位置及设备附近的POI信息；若传入的合法经纬度则显示出入的位置信息及其附近的POI信息。</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">locate</span><span class="p">({</span>
+    <span class="na">latitude</span><span class="p">:</span> <span class="mf">39.903578</span><span class="p">,</span> <span class="c1">// 纬度</span>
+    <span class="na">longitude</span><span class="p">:</span> <span class="mf">116.473565</span><span class="p">,</span> <span class="c1">// 经度</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/* result 结构 */</span>
+        <span class="p">{</span>
+            <span class="nx">province</span><span class="p">;</span> <span class="c1">// POI所在省会</span>
+            <span class="nx">provinceCode</span><span class="p">;</span> <span class="c1">// POI所在省会编码</span>
+            <span class="nx">city</span><span class="p">;</span> <span class="c1">// POI所在城市</span>
+            <span class="nx">cityCode</span><span class="p">;</span> <span class="c1">// POI所在城市</span>
+            <span class="nx">adName</span><span class="p">;</span> <span class="c1">// POI所在区名称</span>
+            <span class="nx">adCode</span><span class="p">;</span> <span class="c1">// POI所在区编码</span>
+            <span class="nx">distance</span><span class="p">;</span> <span class="c1">// POI与设备位置的距离</span>
+            <span class="nx">postCode</span><span class="p">;</span> <span class="c1">// POI的邮编</span>
+            <span class="nx">snippet</span><span class="p">;</span> <span class="c1">// POI的街道地址</span>
+            <span class="nx">title</span><span class="p">;</span> <span class="c1">// POI的名称</span>
+            <span class="nx">latitude</span><span class="p">;</span> <span class="c1">// POI的纬度</span>
+            <span class="nx">longitude</span><span class="p">;</span> <span class="c1">// POI的经度</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<p><img src="https://img.alicdn.com/tps/TB1RhXqMpXXXXahXVXXXXXXXXXX-750-1334.png" width = "200" height = "355" alt="图片名称" align=right /></p>
+
+<p>参数说明：</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>latitude</td>
+<td>Number</td>
+<td>非必须字段，需要和longitude组合成合法经纬度，高德坐标</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Number</td>
+<td>非必须字段，需要和latitude组合成合法经纬度，高德坐标</td>
+</tr>
+</tbody></table>
+
+<p>返回值说明：</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>longitude</td>
+<td>POI的经度，高德坐标</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>POI的纬度，高德坐标</td>
+</tr>
+<tr>
+<td>title</td>
+<td>POI的名称</td>
+</tr>
+<tr>
+<td>province</td>
+<td>POI所在省会，可能为空</td>
+</tr>
+<tr>
+<td>provinceCode</td>
+<td>POI所在省会编码，，可能为空</td>
+</tr>
+<tr>
+<td>city</td>
+<td>POI所在城市，可能为空</td>
+</tr>
+<tr>
+<td>cityCode</td>
+<td>POI所在城市的编码，可能为空</td>
+</tr>
+<tr>
+<td>adName</td>
+<td>POI所在区，可能为空</td>
+</tr>
+<tr>
+<td>adCode</td>
+<td>POI所在区的编码，可能为空</td>
+</tr>
+<tr>
+<td>postCode</td>
+<td>POI的邮编，可能为空</td>
+</tr>
+<tr>
+<td>snippet</td>
+<td>POI的街道地址，可能为空</td>
+</tr>
+</tbody></table>
+
+<h3 id="poi搜索">POI搜索</h3>
+
+<p>唤起地图页面，根据设备位置或者传入的经纬度搜索POI。</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">search</span><span class="p">({</span>
+    <span class="na">latitude</span><span class="p">:</span> <span class="mf">39.903578</span><span class="p">,</span> <span class="c1">// 纬度</span>
+    <span class="na">longitude</span><span class="p">:</span> <span class="mf">116.473565</span><span class="p">,</span> <span class="c1">// 经度</span>
+    <span class="na">scope</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="c1">// 限制搜索POI的范围；设备位置为中心，scope为搜索半径</span>
+
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">poi</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/* result 结构 */</span>
+        <span class="p">{</span>
+            <span class="nx">province</span><span class="p">;</span> <span class="c1">// POI所在省会</span>
+            <span class="nx">provinceCode</span><span class="p">;</span> <span class="c1">// POI所在省会编码</span>
+            <span class="nx">city</span><span class="p">;</span> <span class="c1">// POI所在城市</span>
+            <span class="nx">cityCode</span><span class="p">;</span> <span class="c1">// POI所在城市</span>
+            <span class="nx">adName</span><span class="p">;</span> <span class="c1">// POI所在区名称</span>
+            <span class="nx">adCode</span><span class="p">;</span> <span class="c1">// POI所在区编码</span>
+            <span class="nx">distance</span><span class="p">;</span> <span class="c1">// POI与设备位置的距离</span>
+            <span class="nx">postCode</span><span class="p">;</span> <span class="c1">// POI的邮编</span>
+            <span class="nx">snippet</span><span class="p">;</span> <span class="c1">// POI的街道地址</span>
+            <span class="nx">title</span><span class="p">;</span> <span class="c1">// POI的名称</span>
+            <span class="nx">latitude</span><span class="p">;</span> <span class="c1">// POI的纬度</span>
+            <span class="nx">longitude</span><span class="p">;</span> <span class="c1">// POI的经度</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<p>参数说明：</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>latitude</td>
+<td>Number</td>
+<td>非必须字段，需要和longitude组合成合法经纬度，高德坐标</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Number</td>
+<td>非必须字段，需要和latitude组合成合法经纬度，高德坐标</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>Number</td>
+<td>搜索范围，建议不要设置过低，否则可能搜索不到POI</td>
+</tr>
+</tbody></table>
+
+<p>返回值说明：</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>longitude</td>
+<td>POI的经度，高德坐标</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>POI的纬度，高德坐标</td>
+</tr>
+<tr>
+<td>title</td>
+<td>POI的名称</td>
+</tr>
+<tr>
+<td>province</td>
+<td>POI所在省会，可能为空</td>
+</tr>
+<tr>
+<td>provinceCode</td>
+<td>POI所在省会编码，，可能为空</td>
+</tr>
+<tr>
+<td>city</td>
+<td>POI所在城市，可能为空</td>
+</tr>
+<tr>
+<td>cityCode</td>
+<td>POI所在城市的编码，可能为空</td>
+</tr>
+<tr>
+<td>adName</td>
+<td>POI所在区，可能为空</td>
+</tr>
+<tr>
+<td>adCode</td>
+<td>POI所在区的编码，可能为空</td>
+</tr>
+<tr>
+<td>postCode</td>
+<td>POI的邮编，可能为空</td>
+</tr>
+<tr>
+<td>snippet</td>
+<td>POI的街道地址，可能为空</td>
+</tr>
+</tbody></table>
+
+<h3 id="展示位置">展示位置</h3>
+
+<p>唤起地图页面，展示传入的经纬度位置。</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">view</span><span class="p">({</span>
+    <span class="na">latitude</span><span class="p">:</span> <span class="mf">39.903578</span><span class="p">,</span> <span class="c1">// 纬度</span>
+    <span class="na">longitude</span><span class="p">:</span> <span class="mf">116.473565</span><span class="p">,</span> <span class="c1">// 经度</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s2">"北京国家广告产业园"</span> <span class="c1">// 地址/POI名称</span>
+<span class="p">});</span>
+</code></pre>
+
+<p><img src="https://img.alicdn.com/tps/TB1OFJwMpXXXXX6XFXXXXXXXXXX-750-1334.png" width = "200" height = "355" alt="图片名称" align=right /></p>
+
+<p>参数说明：</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>latitude</td>
+<td>Number</td>
+<td>需要和longitude组合成合法经纬度，高德坐标</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>Number</td>
+<td>需要和latitude组合成合法经纬度，高德坐标</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Number</td>
+<td>需要在地图锚点气泡显示的文案</td>
 </tr>
 </tbody></table>
 
