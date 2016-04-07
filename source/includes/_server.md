@@ -1324,7 +1324,7 @@ oa.message_url| String | 是 | 客户端点击消息时跳转到的H5地址
 oa.pc_message_url| String | 否 | PC端点击消息时跳转到的URL地址
 oa.head | String | 是 | 消息头部内容
 oa.head.bgcolor | String | 是 | 消息头部的背景颜色。长度限制为8个英文字符，其中前2为表示透明度，后6位表示颜色值。不要添加0x
-oa.head.text | String | 是 | 消息的头部标题
+oa.head.text | String | 是 | 消息的头部标题（仅适用于发送普通场景）
 oa.body | Array[JSON Object] | 是 | 消息体
 oa.body.title | String | 否 | 消息体的标题
 oa.body.form | Array[JSON Object] | 否 | 消息体的表单，最多显示6个，超过会被隐藏
