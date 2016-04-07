@@ -728,27 +728,36 @@ dd.device
 
 ### 获取当前地理位置
 
-钉钉Android2.1及之前版本返回的数据会多嵌套一层location字段,2.2版本会改成和钉钉iOS客户端一致，请注意，建议对返回的数据先判断存在location，做向后兼容处理。
+钉钉Android客户端2.1及之前版本返回的数据结构比iOS客户端多嵌套一层location字段，2.2及之后的版本返回的数据结构与钉钉iOS客户端一致，建议对返回的数据先判断存在location，做向后兼容处理。
 
-目前androidJSAPI返回的坐标是高德坐标，ios是标准坐标，如果服务端调用的是高德API，则需要对ios返回的经纬度做下处理，详细请见[<font color=red >http://lbsbbs.amap.com/forum.php?mod=viewthread&tid=724&page=2</font>](http://lbsbbs.amap.com/forum.php?mod=viewthread&tid=724&page=2)。坐标转换API [<font color=red >http://lbs.amap.com/api/javascript-api/example/p/1602-2/</font>](http://lbs.amap.com/api/javascript-api/example/p/1602-2/)
+Android客户端返回的坐标是高德坐标；iOS 2.7.6开始支持返回标准坐标和高德坐标。2.7.6之前的版本只支持返回标准坐标，如果需要在iOS 2.6.7之前的版本上使用高德坐标，则需要对返回的坐标做转换，请见链接[<font color=red >http://lbsbbs.amap.com/forum.php?mod=viewthread&tid=724&page=1</font>](http://lbsbbs.amap.com/forum.php?mod=viewthread&tid=724&page=1)；坐标转换APIDemo演示页面：[<font color=red >http://lbs.amap.com/api/javascript-api/example/p/1602-2/</font>](http://lbs.amap.com/api/javascript-api/example/p/1602-2/)
 
 ```javascript
 dd.device.geolocation.get({
-	targetAccuracy : Number,
+    targetAccuracy : Number,
+    coordinate : Number,
+    withReGeocode : Boolean
     onSuccess : function(result) {
-        /*
+        /* result 结构
         {
             longitude : Number,
             latitude : Number,
             accuracy : Number,
+            address : String,
+            province : String,
+            city : String,
+            district : String,
+            road : String,
+            netType : String,
+            operatorType : String,
+            errorMessage : String,
+            errorCode : Number,
             isWifiEnabled : Boolean,
             isGpsEnabled : Boolean,
             isFromMock : Boolean,
             provider : wifi|lbs|gps,
             accuracy : Number,
-            isMobileEnabled : Boolean,
-            errorMessage : String,
-			errorCode : Number
+            isMobileEnabled : Boolean
         }
         */
     },
@@ -756,27 +765,170 @@ dd.device.geolocation.get({
 });
 ```
 
-##### 参数说明
+参数说明：
 
-参数 | 参数类型 | 说明
------ | ----- | -----
-targetAccuracy | Number | 期望定位精度半径（单位米），定位结果尽量满足该参数要求，但是不一定能保证小于该误差
+| 参数             | 参数类型    | 说明                                       |
+| -------------- | ------- | ---------------------------------------- |
+| targetAccuracy | Number  | 期望定位精度半径（单位米），定位结果尽量满足该参数要求，但是不一定能保证小于该误差，开发者需要读取返回结果的 accuracy 字段校验坐标精度；建议按照业务需求设置定位精度，推荐采用200m，可获得较好的精度和较短的响应时长； |
+| coordinate     | Number  | 仅iOS支持，0：获取标准坐标，1：获取高德坐标；为兼容现有微应用默认值采用0；推荐使用高德坐标； |
+| withReGeocode  | Boolean | 是否需要带有逆地理编码信息；该功能需要网络请求，请更具自己的业务场景使用     |
+
+返回值说明：
+
+| 参数              | 说明                                       |
+| --------------- | ---------------------------------------- |
+| longitude       | 经度                                       |
+| latitude        | 纬度                                       |
+| accuracy        | 实际的定位精度半径（单位米）                           |
+| address         | 格式化地址，如：北京市朝阳区南磨房镇北京国家广告产业园区             |
+| province        | 省份，如：北京市                                 |
+| city            | 城市，直辖市会返回空                               |
+| district        | 行政区，如：朝阳区                                |
+| road            | 街道，如：西大望路甲12-2号楼                         |
+| netType         | 当前设备网络类型，如：wifi、3g等                      |
+| operatorType    | 当前设备使用移动运营商，如：CMCC等                      |
+| errorMessage    | 对错误码的描述                                  |
+| errorCode       | 错误码                                      |
+| isWifiEnabled   | 仅Android支持，wifi设置是否开启，不保证已连接上            |
+| isGpsEnabled    | 仅Android支持，gps设置是否开启，不保证已经连接上            |
+| isFromMock      | 仅Android支持，定位返回的经纬度是否是模拟的结果              |
+| provider        | 仅Android支持，我们使用的是混合定位，具体定位提供者有wifi/lbs/gps" 这三种 |
+| isMobileEnabled | 仅Android支持，移动网络是设置是否开启，不保证已经连接上          |
+
+### 地图定位
+
+唤起地图页面，获取设备位置及设备附近的POI信息；若传入的合法经纬度则显示出入的位置信息及其附近的POI信息。
+
+```javascript
+dd.biz.map.locate({
+    latitude: 39.903578, // 纬度
+    longitude: 116.473565, // 经度
+    onSuccess: function (result) {
+        /* result 结构 */
+        {
+            province; // POI所在省会
+            provinceCode; // POI所在省会编码
+            city; // POI所在城市
+            cityCode; // POI所在城市
+            adName; // POI所在区名称
+            adCode; // POI所在区编码
+            distance; // POI与设备位置的距离
+            postCode; // POI的邮编
+            snippet; // POI的街道地址
+            title; // POI的名称
+            latitude; // POI的纬度
+            longitude; // POI的经度
+        }
+    },
+    onFail: function (err) {
+    }
+});
+```
+<img src="https://img.alicdn.com/tps/TB1RhXqMpXXXXahXVXXXXXXXXXX-750-1334.png" width = "200" height = "355" alt="图片名称" align=right />
+
+参数说明：
+
+| 参数            | 参数类型  | 说明                                      |
+| -------------- | ------- | ----------------------------------------   |
+| latitude       | Number  | 非必须字段，需要和longitude组合成合法经纬度，高德坐标 |
+| longitude      | Number  | 非必须字段，需要和latitude组合成合法经纬度，高德坐标  |
+
+返回值说明：
+
+| 参数              | 说明                                       |
+| --------------- | ---------------------------------------- |
+| longitude       | POI的经度，高德坐标                            |
+| latitude        | POI的纬度，高德坐标                            |
+| title           | POI的名称                                     |
+| province        | POI所在省会，可能为空                         |
+| provinceCode    | POI所在省会编码，，可能为空          |
+| city            | POI所在城市，可能为空 |
+| cityCode        | POI所在城市的编码，可能为空|
+| adName          | POI所在区，可能为空                 |
+| adCode          | POI所在区的编码，可能为空                     |
+| postCode        | POI的邮编，可能为空                      |
+| snippet         | POI的街道地址，可能为空                                |
 
 
-##### 返回说明
+### POI搜索
 
-参数 | 说明
------ | -----
-longitude | 经度
-latitude | 纬度
-accuracy | 实际的定位精度半径（单位米）
-isWifiEnabled | wifi设置是否开启，不保证已连接上
-isGpsEnabled | gps设置是否开启，不保证已经连接上
-isFromMock | 定位返回的经纬度是否是模拟的结果
-provider | 我们使用的是混合定位，具体定位提供者有wifi/lbs/gps" 这三种
-isMobileEnabled | 移动网络是设置是否开启，不保证已经连接上
-errorMessage | 对错误码的描述
-errorCode | 错误码
+唤起地图页面，根据设备位置或者传入的经纬度搜索POI。
+
+```javascript
+dd.biz.map.search({
+    latitude: 39.903578, // 纬度
+    longitude: 116.473565, // 经度
+    scope: 500, // 限制搜索POI的范围；设备位置为中心，scope为搜索半径
+
+    onSuccess: function (poi) {
+        /* result 结构 */
+        {
+            province; // POI所在省会
+            provinceCode; // POI所在省会编码
+            city; // POI所在城市
+            cityCode; // POI所在城市
+            adName; // POI所在区名称
+            adCode; // POI所在区编码
+            distance; // POI与设备位置的距离
+            postCode; // POI的邮编
+            snippet; // POI的街道地址
+            title; // POI的名称
+            latitude; // POI的纬度
+            longitude; // POI的经度
+        }
+    },
+    onFail: function (err) {
+    }
+});
+```
+
+参数说明：
+
+| 参数            | 参数类型  | 说明                                      |
+| -------------- | ------- | ----------------------------------------   |
+| latitude       | Number  | 非必须字段，需要和longitude组合成合法经纬度，高德坐标     |
+| longitude      | Number  | 非必须字段，需要和latitude组合成合法经纬度，高德坐标      |
+| scope          | Number  | 搜索范围，建议不要设置过低，否则可能搜索不到POI  |
+
+返回值说明：
+
+| 参数              | 说明                                       |
+| --------------- | ---------------------------------------- |
+| longitude       | POI的经度，高德坐标                              |
+| latitude        | POI的纬度，高德坐标                              |
+| title           | POI的名称                                      |
+| province        | POI所在省会，可能为空                         |
+| provinceCode    | POI所在省会编码，，可能为空          |
+| city            | POI所在城市，可能为空 |
+| cityCode        | POI所在城市的编码，可能为空|
+| adName          | POI所在区，可能为空                 |
+| adCode          | POI所在区的编码，可能为空                     |
+| postCode        | POI的邮编，可能为空                      |
+| snippet         | POI的街道地址，可能为空                                |
+
+
+### 展示位置
+
+唤起地图页面，展示传入的经纬度位置。
+
+```javascript
+dd.biz.map.view({
+    latitude: 39.903578, // 纬度
+    longitude: 116.473565, // 经度
+    title: "北京国家广告产业园" // 地址/POI名称
+});
+```
+<img src="https://img.alicdn.com/tps/TB1OFJwMpXXXXX6XFXXXXXXXXXX-750-1334.png" width = "200" height = "355" alt="图片名称" align=right />
+
+参数说明：
+
+| 参数            | 参数类型  | 说明                                      |
+| -------------- | ------- | ----------------------------------------   |
+| latitude       | Number  | 需要和longitude组合成合法经纬度，高德坐标     |
+| longitude      | Number  | 需要和latitude组合成合法经纬度，高德坐标      |
+| title          | Number  | 需要在地图锚点气泡显示的文案  |
+
+
 <!--
 
 ### 搜索
