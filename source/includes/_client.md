@@ -806,18 +806,18 @@ dd.biz.map.locate({
     onSuccess: function (result) {
         /* result 结构 */
         {
-            province; // POI所在省会
-            provinceCode; // POI所在省会编码
-            city; // POI所在城市
-            cityCode; // POI所在城市
-            adName; // POI所在区名称
-            adCode; // POI所在区编码
-            distance; // POI与设备位置的距离
-            postCode; // POI的邮编
-            snippet; // POI的街道地址
-            title; // POI的名称
-            latitude; // POI的纬度
-            longitude; // POI的经度
+            province: 'xxx', // POI所在省会
+            provinceCode: 'xxx', // POI所在省会编码
+            city: 'xxx', // POI所在城市
+            cityCode: 'xxx', // POI所在城市
+            adName: 'xxx', // POI所在区名称
+            adCode: 'xxx', // POI所在区编码
+            distance: 'xxx', // POI与设备位置的距离
+            postCode: 'xxx', // POI的邮编
+            snippet: 'xxx', // POI的街道地址
+            title: 'xxx', // POI的名称
+            latitude: 39.903578, // POI的纬度
+            longitude: 116.473565, // POI的经度
         }
     },
     onFail: function (err) {
@@ -863,18 +863,18 @@ dd.biz.map.search({
     onSuccess: function (poi) {
         /* result 结构 */
         {
-            province; // POI所在省会
-            provinceCode; // POI所在省会编码
-            city; // POI所在城市
-            cityCode; // POI所在城市
-            adName; // POI所在区名称
-            adCode; // POI所在区编码
-            distance; // POI与设备位置的距离
-            postCode; // POI的邮编
-            snippet; // POI的街道地址
-            title; // POI的名称
-            latitude; // POI的纬度
-            longitude; // POI的经度
+            province: 'xxx', // POI所在省会
+            provinceCode: 'xxx', // POI所在省会编码
+            city: 'xxx', // POI所在城市
+            cityCode: 'xxx', // POI所在城市
+            adName: 'xxx', // POI所在区名称
+            adCode: 'xxx', // POI所在区编码
+            distance: 'xxx', // POI与设备位置的距离
+            postCode: 'xxx', // POI的邮编
+            snippet: 'xxx', // POI的街道地址
+            title: 'xxx', // POI的名称
+            latitude: 39.903578, // POI的纬度
+            longitude: 116.473565, // POI的经度
         }
     },
     onFail: function (err) {
@@ -927,111 +927,6 @@ dd.biz.map.view({
 | latitude       | Number  | 需要和longitude组合成合法经纬度，高德坐标     |
 | longitude      | Number  | 需要和latitude组合成合法经纬度，高德坐标      |
 | title          | Number  | 需要在地图锚点气泡显示的文案  |
-
-
-<!--
-
-### 搜索
-0.0.6
-
-```javascript
-dd.biz.map.search({
-  scope: Number, //定位范围
-  extraInfo: {
-	  prompt: "提示信息"
-  }
-  onSuccess: function(data) {
-  /* data结构
-	  {
-	  "province": ""//省
-	  "provinceCode": "" //省份编码
-	  "city": "" //城市
-	  "cityCode": "" //城市编码
-	  "adCode": "" // POI的行政区划代码
-	  "adName": "" // POI的行政区划名称
-	  "distance": "" //获取POI距离中心点的距离
-	  "postCode": "" //返回POI的邮编
-	  "title": "" //POI的名称
-	  "snippet": "" //POI的地址
-	  "longitude": 11.11, //该点经度
-	  "latitude": 11.11, //该点纬度
-	  }
-  */
-  },
-  onFail : function(err) {
-  }
-})
-```
-##### 参数说明
-
-参数 | 参数类型 | 说明
------ | ----- | -----
-scope | Number | 定位范围
-extraInfo.prompt | String | 提示信息
-
-##### 返回说明
-
-参数 | 说明
------ | -----
-province | 省份
-provinceCode | 省份编码
-city | 城市
-cityCode | 城市编码
-adCode | POI的行政区划代码
-adName | POI的行政区划名称
-distance | 获取POI距离中心点的距离
-postCode | 返回POI的邮编
-title | POI的名称
-snippet | POI的地址
-longitude | 该点经度
-latitude | 该点纬度
-
-###定位
-0.0.6
-
-```javascript
-dd.biz.map.locate({
-  onSuccess: function(data) {
-   /* data结构
-	  {
-	  "province": ""//省
-	  "provinceCode": "" //省份编码
-	  "city": "" //城市
-	  "cityCode": "" //城市编码
-	  "adCode": "" // POI的行政区划代码
-	  "adName": "" // POI的行政区划名称
-	  "distance": "" //获取POI距离中心点的距离
-	  "postCode": "" //返回POI的邮编
-	  "title": "" //POI的名称
-	  "snippet": "" //POI的地址
-	  "longitude": 11.11, //该点经度
-	  "latitude": 11.11, //该点纬度
-	  }
-  */
-  },
-  onFail : function(err) {
-  }
-})
-```
-
-##### 返回说明
-
-参数 | 说明
------ | -----
-province | 省份
-provinceCode | 省份编码
-city | 城市
-cityCode | 城市编码
-adCode | POI的行政区划代码
-adName | POI的行政区划名称
-distance | 获取POI距离中心点的距离
-postCode | 返回POI的邮编
-title | POI的名称
-snippet | POI的地址
-longitude | 该点经度
-latitude | 该点纬度
-
--->
 
 ## 加速器
 
@@ -2382,12 +2277,52 @@ emplId | 工号
 - 设置导航栏右侧单个按钮 ：dd.biz.navigation.setRight
 - 设置导航栏右侧多个按钮 ：dd.biz.navigation.setMenu
 
-
 **由于篇幅比较长，自定义的内容比较多，所以关于每个jsapi详细的调用方法放在了钉钉的Blog之中，地址如下**
 
 <a href="http://ddtalk.github.io/blog/2015/12/29/navbar/" target="_blank"><font color = red >
 钉钉微应用定制化导航栏</font></a>
 
+## 支付
+
+dd.biz
+
+### 支付接口
+
+钉钉集成了[支付宝移动支付SDK](https://doc.open.alipay.com/doc2/detail?treeId=59&articleId=103563&docType=1)并对支付SDK的接口做了JS形式的包装，开发者可以使用该接口可以唤起支付宝或者支付宝SDK内置的支付页面完成支付功能。
+
+该接口只是对支付宝移动支付SDK的支付接口做了JS形式封装，支付流程的打通还需要开发者根据[支付宝相关文档](https://doc.open.alipay.com/doc2/detail.htm?spm=a219a.7629140.0.0.QCrgZj&treeId=59&articleId=104352&docType=1)完成。
+
+```javascript
+dd.biz.alipay.pay({
+    info: 'xxxx', // 订单信息，
+    onSuccess: function (result) {
+        {
+            memo: 'xxxx', // 保留参数，一般无内容
+            result: 'xxxx', // 本次操作返回的结果数据
+            resultStatus: '' // 本次操作的状态返回值，标识本次调用的结果
+        }
+    },
+    onFail: function (err) {
+
+    }
+});
+```
+
+##### 参数说明
+
+参数 | 参数类型 | 说明
+----- | ----- | -----
+info | String | 需要构建的订单信息，参考支付宝文档：https://doc.open.alipay.com/doc2/detail.htm?spm=a219a.7629140.0.0.CKTNjZ&treeId=59&articleId=103663&docType=1
+
+##### 返回说明
+
+透传了支付宝支付接口处理订单的结果，请按支付宝文档正确处理订单信息。
+
+参数 | 说明
+------|------
+memo | 保留参数，一般无内容
+result | 本次操作返回的结果数据
+resultStatus | 本次操作的状态返回值，标识本次调用的结果，参考：https://doc.open.alipay.com/doc2/detail.htm?spm=a219a.7629140.0.0.MMxZUF&treeId=59&articleId=103671&docType=1
 
 
 ## 附录
