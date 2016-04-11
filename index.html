@@ -11512,21 +11512,20 @@ dd.biz.util.chooseImage({
 
 <p>只支持直接拍照上传，即调用这个API之后将直接调起相机界面</p>
 
-<p>比如可以应用在，需要用户上传即时照片的场景。成功上传之后回调onSuccess方法，返回图片链接
-<code class="prettyprint">javascript
-dd.biz.util.uploadImageFromCamera({
-    compression:true,//(是否压缩，默认为true)
-    onSuccess : function(result) {
-         //onSuccess将在图片上传成功之后调用
-        /*
+<p>比如可以应用在，需要用户上传即时照片的场景。成功上传之后回调onSuccess方法，返回图片链接</p>
+<pre class="highlight javascript"><code><span class="nx">dd</span><span class="p">.</span><span class="nx">biz</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">uploadImageFromCamera</span><span class="p">({</span>
+    <span class="na">compression</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="c1">//(是否压缩，默认为true)</span>
+    <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">//onSuccess将在图片上传成功之后调用</span>
+        <span class="cm">/*
         [
-          &#39;http://gtms03.alicdn.com/tps/i3/TB1VF6uGFXXXXalaXXXmh5R_VXX-237-236.png&#39;
+          'http://gtms03.alicdn.com/tps/i3/TB1VF6uGFXXXXalaXXXmh5R_VXX-237-236.png'
         ]
-        */
-    },
-    onFail : function() {}
-})
-</code></p>
+        */</span>
+    <span class="p">},</span>
+    <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
 
 <h5 id="参数说明">参数说明</h5>
 
