@@ -1140,6 +1140,7 @@ max | Number | Number为正整数，最多可选个数
 只支持直接拍照上传，即调用这个API之后将直接调起相机界面
 
 比如可以应用在，需要用户上传即时照片的场景。成功上传之后回调onSuccess方法，返回图片链接
+
 ```javascript
 dd.biz.util.uploadImageFromCamera({
     compression:true,//(是否压缩，默认为true)
@@ -1152,8 +1153,9 @@ dd.biz.util.uploadImageFromCamera({
         */
     },
     onFail : function() {}
-})
+});
 ```
+
 ##### 参数说明
 
 参数 | 参数类型 |说明
