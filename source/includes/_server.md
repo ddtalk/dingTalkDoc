@@ -97,8 +97,10 @@ b)错误的Json返回示例:
 }
 ```
 
-#### 获取微应用后台管理Token
-本接口获取的Token和上面获取的AccessToken应用场景不一样，此token只在[<font color=red>微应用后台管理免登</font>](#oa后台调用管理员免登)服务中使用。
+#### 获取微应用后台管理免登SsoToken
+
+本接口获取的SsoToken和上面获取的AccessToken应用场景不一样，SsoToken只在[<font color=red>微应用后台管理免登</font>](#微应用后台管理员免登)服务中使用。
+
 应用场景示例如下图：
 
 ![normalcorp](https://img.alicdn.com/tps/TB1iw.4KFXXXXXoXFXXXXXXXXXX-594-302.png)
