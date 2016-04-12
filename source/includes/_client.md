@@ -2248,8 +2248,8 @@ dd.biz.customContact.multipleChoose({
 参数 | 参数类型 | 说明
 ----- | ----- | -----
 corpId | String | 企业ID
-users | Array[String] | 是否多选： true多选，false单选； 默认true
-isShowCompanyName | Boolean | 默认选中的用户列表，工号；成功回调中应包含该信息
+users | Array[String] | 一组员工工号
+isShowCompanyName | Boolean | 是否显示公司名称
 title | String | 选择窗口的标题
 selectedUsers | Array[String] | 默认选中的人
 disabledUsers | Array[String] | 不能选的人
