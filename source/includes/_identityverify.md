@@ -144,21 +144,9 @@ scope | 固定为snsapi_login，必填
 
 <font color=red >注:此功能与ISV没有关系，任何外部系统都可以使用。</font>
 
-1: 获取完成免登过程中验证身份的appId及appSecret。
+1: 你的Web系统可以通过两种方式实现钉钉扫码登录，如下：
 
-暂未开放线上申请流程，请向开放平台邮件组(open-dingtalk@list.alibaba-inc.com)发送一封申请邮件：
-
-邮件标题：网站应用钉钉扫码登录申请；<br>
-邮件内容：公司名称、对接接口人的联系方式(请优先选择钉钉或者邮件)；
-
-
-2: 使用appid及appSecret访问如下接口，获取accesstoken，此处获取的token有效期为2小时，有效期内重复获取，返回相同值，并自动续期，如果在有效期外获取会获得新的token值，建议定时获取本token，不需要用户登录时再获取。
-
-[<font color=red >https://oapi.dingtalk.com/sns/gettoken?appid=APPID&appsecret=APPSECRET</font>](#获取钉钉开放应用的access_token)
-
-3: 你的Web系统可以通过两种方式实现钉钉扫码登录，如下：
-
-3.1: 第一种方式是直接使用钉钉提供的扫码登录页面，在企业Web系统里，用户点击使用钉钉扫描登录，第三方Web系统跳转到如下地址：
+1.1: 第一种方式是直接使用钉钉提供的扫码登录页面，在企业Web系统里，用户点击使用钉钉扫描登录，第三方Web系统跳转到如下地址：
 
 https://oapi.dingtalk.com/connect/qrconnect?appid=APPID&response_type=code&scope=snsapi_login&state=STATE&redirect_uri=REDIRECT_URI
 
@@ -166,7 +154,7 @@ url里的参数需要换成第三方Web系统对应的参数。
 
 在钉钉用户扫码登录并确认后，会302到你指定的redirect_uri，并向url参数中追加code及state两个参数。
 
-3.2: 第二种方式是支持网站将钉钉登录二维码内嵌到自己页面中，用户使用钉钉扫码登录后JS会将loginTmpCode返回给网站。
+1.2: 第二种方式是支持网站将钉钉登录二维码内嵌到自己页面中，用户使用钉钉扫码登录后JS会将loginTmpCode返回给网站。
 
 JS钉钉登录主要用途：网站希望用户在网站内就能完成登录，无需跳转到钉钉域下登录后再返回，提升钉钉登录的流畅性与成功率。 网站内嵌二维码钉钉登录JS实现办法：
 
@@ -213,15 +201,25 @@ https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&response_type
 
 参数 | 说明
 ---------- | ------
-appid | 需要在第1步获取,代表了你提供的服务，必填
-redirect_uri | 重定向地址(需要urlencode编码),该地址所在域名需要配置为appid对应的安全域名，必填
+appid | 参看第2步获取,代表了你提供的服务，必填
+redirect_uri | 重定向地址(如果是第一种方式需要urlencode编码，如果是第二种方式则需要将JS goto参数整体urlencode编码，不要单独对redirect_uri编码),该地址所在域名需要配置为appid对应的安全域名，必填
 state | 用于防止重放攻击，选填
 response_type | 固定为code，必填
 scope | 固定为snsapi_login，必填
 loginTmpCode | 通过js获取到的loginTmpCode，必填
 
+2: 获取完成免登过程中验证身份的appId及appSecret。
 
-4:在你的web系统获取到代表用户的code之后，使用第2步获取的AccessToken及code获取当前钉钉用户授权给你的持久授权码，此授权码目前无过期时间，可反复使用，参数code只能使用一次。
+暂未开放线上申请流程，请向开放平台邮件组(open-dingtalk@list.alibaba-inc.com)发送一封申请邮件：
+
+邮件标题：网站应用钉钉扫码登录申请；<br>
+邮件内容：公司名称、对接接口人的联系方式(请优先选择钉钉或者邮件)、接口人的钉钉手机号、CorpId等信息；
+
+3: 使用appid及appSecret访问如下接口，获取accesstoken，此处获取的token有效期为2小时，有效期内重复获取，返回相同值，并自动续期，如果在有效期外获取会获得新的token值，建议定时获取本token，不需要用户登录时再获取。
+
+[<font color=red >https://oapi.dingtalk.com/sns/gettoken?appid=APPID&appsecret=APPSECRET</font>](#获取钉钉开放应用的access_token)
+
+4:在你的web系统获取到代表用户的code之后，使用第3步获取的AccessToken及code获取当前钉钉用户授权给你的持久授权码，此授权码目前无过期时间，可反复使用，参数code只能使用一次。
 
 [<font color=red >https://oapi.dingtalk.com/sns/get_persistent_code?access_token=ACCESS_TOKEN</font>](#获取用户授权的持久授权码)
 

@@ -356,11 +356,11 @@
 </tr>
 <tr>
 <td>开发的应用类型</td>
-<td>选择&ldquo;钉钉应用&rdquo;</td>
+<td>选择&quot;钉钉应用&quot;</td>
 </tr>
 <tr>
 <td>使用的云产品</td>
-<td>选择&ldquo;容器服务&rdquo;</td>
+<td>选择&quot;容器服务&quot;</td>
 </tr>
 <tr>
 <td>入驻协议</td>
@@ -3109,20 +3109,9 @@ ISV独立部署应用系统：ISV为企业独立部署的软件系统</p>
 
 <p><font color=red >注:此功能与ISV没有关系，任何外部系统都可以使用。</font></p>
 
-<p>1: 获取完成免登过程中验证身份的appId及appSecret。</p>
+<p>1: 你的Web系统可以通过两种方式实现钉钉扫码登录，如下：</p>
 
-<p>暂未开放线上申请流程，请向开放平台邮件组(open-dingtalk@list.alibaba-inc.com)发送一封申请邮件：</p>
-
-<p>邮件标题：网站应用钉钉扫码登录申请；<br>
-邮件内容：公司名称、对接接口人的联系方式(请优先选择钉钉或者邮件)；</p>
-
-<p>2: 使用appid及appSecret访问如下接口，获取accesstoken，此处获取的token有效期为2小时，有效期内重复获取，返回相同值，并自动续期，如果在有效期外获取会获得新的token值，建议定时获取本token，不需要用户登录时再获取。</p>
-
-<p><a href="#获取钉钉开放应用的access_token"><font color=red >https://oapi.dingtalk.com/sns/gettoken?appid=APPID&amp;appsecret=APPSECRET</font></a></p>
-
-<p>3: 你的Web系统可以通过两种方式实现钉钉扫码登录，如下：</p>
-
-<p>3.1: 第一种方式是直接使用钉钉提供的扫码登录页面，在企业Web系统里，用户点击使用钉钉扫描登录，第三方Web系统跳转到如下地址：</p>
+<p>1.1: 第一种方式是直接使用钉钉提供的扫码登录页面，在企业Web系统里，用户点击使用钉钉扫描登录，第三方Web系统跳转到如下地址：</p>
 
 <p>https://oapi.dingtalk.com/connect/qrconnect?appid=APPID&amp;response_type=code&amp;scope=snsapi_login&amp;state=STATE&amp;redirect_uri=REDIRECT_URI</p>
 
@@ -3130,7 +3119,7 @@ ISV独立部署应用系统：ISV为企业独立部署的软件系统</p>
 
 <p>在钉钉用户扫码登录并确认后，会302到你指定的redirect_uri，并向url参数中追加code及state两个参数。</p>
 
-<p>3.2: 第二种方式是支持网站将钉钉登录二维码内嵌到自己页面中，用户使用钉钉扫码登录后JS会将loginTmpCode返回给网站。</p>
+<p>1.2: 第二种方式是支持网站将钉钉登录二维码内嵌到自己页面中，用户使用钉钉扫码登录后JS会将loginTmpCode返回给网站。</p>
 
 <p>JS钉钉登录主要用途：网站希望用户在网站内就能完成登录，无需跳转到钉钉域下登录后再返回，提升钉钉登录的流畅性与成功率。 网站内嵌二维码钉钉登录JS实现办法：</p>
 
@@ -3182,11 +3171,11 @@ https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_
 </thead><tbody>
 <tr>
 <td>appid</td>
-<td>需要在第1步获取,代表了你提供的服务，必填</td>
+<td>参看第2步获取,代表了你提供的服务，必填</td>
 </tr>
 <tr>
 <td>redirect_uri</td>
-<td>重定向地址(需要urlencode编码),该地址所在域名需要配置为appid对应的安全域名，必填</td>
+<td>重定向地址(如果是第一种方式需要urlencode编码，如果是第二种方式则需要将JS goto参数整体urlencode编码，不要单独对redirect_uri编码),该地址所在域名需要配置为appid对应的安全域名，必填</td>
 </tr>
 <tr>
 <td>state</td>
@@ -3206,7 +3195,18 @@ https://oapi.dingtalk.com/connect/oauth2/sns_authorize?appid=APPID&amp;response_
 </tr>
 </tbody></table>
 
-<p>4:在你的web系统获取到代表用户的code之后，使用第2步获取的AccessToken及code获取当前钉钉用户授权给你的持久授权码，此授权码目前无过期时间，可反复使用，参数code只能使用一次。</p>
+<p>2: 获取完成免登过程中验证身份的appId及appSecret。</p>
+
+<p>暂未开放线上申请流程，请向开放平台邮件组(open-dingtalk@list.alibaba-inc.com)发送一封申请邮件：</p>
+
+<p>邮件标题：网站应用钉钉扫码登录申请；<br>
+邮件内容：公司名称、对接接口人的联系方式(请优先选择钉钉或者邮件)、接口人的钉钉手机号、CorpId等信息；</p>
+
+<p>3: 使用appid及appSecret访问如下接口，获取accesstoken，此处获取的token有效期为2小时，有效期内重复获取，返回相同值，并自动续期，如果在有效期外获取会获得新的token值，建议定时获取本token，不需要用户登录时再获取。</p>
+
+<p><a href="#获取钉钉开放应用的access_token"><font color=red >https://oapi.dingtalk.com/sns/gettoken?appid=APPID&amp;appsecret=APPSECRET</font></a></p>
+
+<p>4:在你的web系统获取到代表用户的code之后，使用第3步获取的AccessToken及code获取当前钉钉用户授权给你的持久授权码，此授权码目前无过期时间，可反复使用，参数code只能使用一次。</p>
 
 <p><a href="#获取用户授权的持久授权码"><font color=red >https://oapi.dingtalk.com/sns/get_persistent_code?access_token=ACCESS_TOKEN</font></a></p>
 
