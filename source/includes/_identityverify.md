@@ -100,7 +100,7 @@ REDIRECT_URL为微应用后台地址，首先跳转到钉钉OA管理后台登录
 
 demo查看:[https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet](https://github.com/injekt/openapi-demo-java/tree/master/src/com/alibaba/dingtalk/openapi/servlet)
 
-##普通钉钉用户账号开放及免登
+## 普通钉钉用户账号开放及免登
 
 第三方web服务提供者，通过此项服务，可以使用普通钉钉用户账号登录自有的系统，并可将自有系统的账号与钉钉账号进行绑定，同时还能够获取钉钉用户的个人及企业数据，如姓名、手机号、对应企业的名称、企业是否认证过、企业的权益等级、其在企业内是否为管理人员等信息(取决于用户最终授权)。
 
@@ -138,7 +138,7 @@ scope | 固定为snsapi_login，必填
 
 [<font color=red >https://oapi.dingtalk.com/sns/getuserinfo?sns_token=SNS_TOKEN</font>](#获取用户授权的个人信息)
 
-##网站应用钉钉扫码登录开发指南
+## 网站应用钉钉扫码登录开发指南
 
 第三方web服务提供者，通过此项服务，可以使用钉钉用户扫码登录自有的系统，并可将自有系统的账号与钉钉账号进行绑定，同时还能够获取钉钉用户的个人及企业数据，如姓名、手机号、对应企业的名称、企业是否认证过、企业的权益等级、其在企业内是否为管理人员等信息(取决于用户最终授权)。
 
