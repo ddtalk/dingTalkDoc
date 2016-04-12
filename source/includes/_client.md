@@ -2182,6 +2182,7 @@ dd.biz.customContact.choose({
     users: ['10001', '10002', ...],//一组员工工号
     corpId: 'dingb4ff1079f84f8d54',//加密的企业 ID，
     isShowCompanyName: true,   //true|false，默认为 false
+    disabledUsers: ["78308"], //不能选的人
     onSuccess: function(data) {
     /* data结构
       [{
