@@ -10159,6 +10159,8 @@ jsApilist | 授权的JsApi列表
 <h3 id="读取nfc芯片内容">读取NFC芯片内容</h3>
 
 <p>支持NDEF的数据交换格式</p>
+
+<p>使用方法：首先调用此jsapi，然后再把芯片放上去，即可读取，jspai调用一次读取一次信息</p>
 <pre class="highlight javascript"><code>
 <span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">nfc</span><span class="p">.</span><span class="nx">nfcRead</span><span class="p">({</span>
 
@@ -10190,10 +10192,12 @@ jsApilist | 授权的JsApi列表
 <h3 id="写nfc芯片">写NFC芯片</h3>
 
 <p>支持NDEF的数据交换格式</p>
-<pre class="highlight javascript"><code>
-<span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">nfc</span><span class="p">.</span><span class="nx">nfcRead</span><span class="p">({</span>
 
-        <span class="na">content</span> <span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+<p>使用方法：首先调用此jsapi，然后再把芯片放上去，即可写入，jsapi调用一次写一次内容</p>
+<pre class="highlight javascript"><code>
+<span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">nfc</span><span class="p">.</span><span class="nx">nfcWrite</span><span class="p">({</span>
+
+        <span class="na">content</span> <span class="p">:</span> <span class="s2">"aaa"</span><span class="p">,</span>
         <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
         <span class="p">},</span>
         <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
