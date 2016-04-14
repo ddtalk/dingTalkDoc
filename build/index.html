@@ -10156,6 +10156,65 @@ jsApilist | 授权的JsApi列表
 </tr>
 </tbody></table>
 
+<h3 id="读取nfc芯片内容">读取NFC芯片内容</h3>
+
+<p>支持NDEF的数据交换格式</p>
+<pre class="highlight javascript"><code>
+<span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">nfc</span><span class="p">.</span><span class="nx">nfcRead</span><span class="p">({</span>
+
+        <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+         <span class="cm">/*
+        {
+            content: 'alibaba-inc',
+        }
+        */</span>
+        <span class="p">},</span>
+        <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="返回说明">返回说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content</td>
+<td>NFC芯片的内容</td>
+</tr>
+</tbody></table>
+
+<h3 id="写nfc芯片">写NFC芯片</h3>
+
+<p>支持NDEF的数据交换格式</p>
+<pre class="highlight javascript"><code>
+<span class="nx">dd</span><span class="p">.</span><span class="nx">device</span><span class="p">.</span><span class="nx">nfc</span><span class="p">.</span><span class="nx">nfcRead</span><span class="p">({</span>
+
+        <span class="na">content</span> <span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="na">onSuccess</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">},</span>
+        <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+
+<h5 id="参数说明">参数说明</h5>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content</td>
+<td>NFC芯片的内容</td>
+</tr>
+</tbody></table>
+
 <h2 id="启动器">启动器</h2>
 
 <p>dd.device</p>
@@ -10175,6 +10234,8 @@ jsApilist | 授权的JsApi列表
         */</span>
     <span class="p">},</span>
     <span class="na">onFail</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">});</span>     <span class="p">}</span>
+
 <span class="p">});</span>
 </code></pre>
 

@@ -278,6 +278,54 @@ dd.device.base.getInterface({
 ssid | 热点ssid
 macIp | 热点mac地址
 
+### 读取NFC芯片内容
+支持NDEF的数据交换格式
+
+```javascript
+
+dd.device.nfc.nfcRead({
+
+	    onSuccess : function(data) {
+	     /*
+        {
+            content: 'alibaba-inc',
+        }
+        */
+	    },
+	    onFail : function(err) {}
+});
+```
+##### 返回说明
+
+参数 | 说明
+---- | -----
+content | NFC芯片的内容
+
+### 写NFC芯片
+
+支持NDEF的数据交换格式
+
+
+```javascript
+
+dd.device.nfc.nfcRead({
+
+		content : "",
+	    onSuccess : function(data) {
+	    },
+	    onFail : function(err) {
+	    }
+});
+```
+##### 参数说明
+
+参数 | 说明
+---- | -----
+content | NFC芯片的内容
+
+
+
+
 ## 启动器
 
 dd.device
@@ -299,6 +347,8 @@ dd.device.launcher.checkInstalledApps({
         */
     },
     onFail : function(err) {}
+});	    }
+	    
 });
 ```
 
