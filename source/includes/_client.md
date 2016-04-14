@@ -281,6 +281,8 @@ macIp | 热点mac地址
 ### 读取NFC芯片内容
 支持NDEF的数据交换格式
 
+使用方法：首先调用此jsapi，然后再把芯片放上去，即可读取，jspai调用一次读取一次信息
+
 ```javascript
 
 dd.device.nfc.nfcRead({
@@ -305,12 +307,14 @@ content | NFC芯片的内容
 
 支持NDEF的数据交换格式
 
+使用方法：首先调用此jsapi，然后再把芯片放上去，即可写入，jsapi调用一次写一次内容
+
 
 ```javascript
 
-dd.device.nfc.nfcRead({
+dd.device.nfc.nfcWrite({
 
-		content : "",
+		content : "aaa",
 	    onSuccess : function(data) {
 	    },
 	    onFail : function(err) {
