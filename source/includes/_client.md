@@ -19,7 +19,7 @@
 版本：2.8.0
 
 #### Android
-[下载地址](http://mupppub.cn-hangzhou.oss.aliyun-inc.com/27348/1404342/1404342/4c17f25c462bc7902922d9148b609a5f/702553%40Rimet-dingtalk-dev-2.8.0.apk)
+[下载地址](http://mupppub.cn-hangzhou.oss.aliyun-inc.com/27409/1406036/1406036/704c40251427dc523467a2f3a17005d5/702553%40Rimet-dingtalk-dev-2.8.1.apk)
 
 启用开发者模式后即可使用chrome inspector进行调试。开发版客户端仅供微应用开发调试使用。
 
