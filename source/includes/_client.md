@@ -279,6 +279,8 @@ ssid | 热点ssid
 macIp | 热点mac地址
 
 ### 读取NFC芯片内容
+只支持有nfc功能的android手机
+
 支持NDEF的数据交换格式
 
 使用方法：首先调用此jsapi，然后再把芯片放上去，即可读取，jspai调用一次读取一次信息
@@ -304,6 +306,7 @@ dd.device.nfc.nfcRead({
 content | NFC芯片的内容
 
 ### 写NFC芯片
+只支持有nfc功能的android手机
 
 支持NDEF的数据交换格式
 
