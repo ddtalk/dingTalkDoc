@@ -45,11 +45,11 @@
 
 js文件版本在添加升级功能时地址会变化，如有需要（比如要使用新增的js-api）,请随时关注地址变更。但是旧版本js文件也将一直可用。
 
-`http://g.alicdn.com/ilw/ding/0.8.9/scripts/dingtalk.js`
+`http://g.alicdn.com/ilw/ding/0.9.2/scripts/dingtalk.js`
 
 或者
 
-`https://g.alicdn.com/ilw/ding/0.8.9/scripts/dingtalk.js`
+`https://g.alicdn.com/ilw/ding/0.9.2/scripts/dingtalk.js`
 
 ### 全局变量、命名空间
 
