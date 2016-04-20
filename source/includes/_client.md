@@ -1986,7 +1986,7 @@ text | 扫码内容
 
 dd.biz
 
-###选人
+### 选人
 0.0.6
 
 corpid必须是用户所属的企业的corpid
@@ -2041,7 +2041,7 @@ name | 姓名
 avatar | 头像图片url，可能为空
 emplId | userid，[<font color=red>获取成员详情接口</font>](#获取部门成员（详情）)
 
-###选人，选部门
+### 选人，选部门
 
 0.0.6
 
