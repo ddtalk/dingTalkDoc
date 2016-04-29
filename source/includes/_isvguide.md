@@ -1242,9 +1242,9 @@ JDK7的下载地址：[http://www.oracle.com/technetwork/java/javase/downloads/j
 demo地址：[https://github.com/injekt/openapi-demo-java/blob/master/src/com/alibaba/dingtalk/openapi/servlet](https://github.com/injekt/openapi-demo-java/blob/master/src/com/alibaba/dingtalk/openapi/servlet)
 
 #### php库和demo
-库地址：[https://github.com/injekt/openapi-demo-php/tree/master/crypto](https://github.com/injekt/openapi-demo-php/tree/master/crypto)
+库地址：[https://github.com/injekt/openapi-demo-php/tree/master/isv/crypto](https://github.com/injekt/openapi-demo-php/tree/master/isv/crypto)
 
-demo地址：[https://github.com/injekt/openapi-demo-php/blob/master/receive.php](https://github.com/injekt/openapi-demo-php/blob/master/receive.php)
+demo地址：[https://github.com/injekt/openapi-demo-php/blob/master/isv/receive.php](https://github.com/injekt/openapi-demo-php/blob/master/isv/receive.php)
 
 #### C#库和demo
 库地址：[https://github.com/ian-cuc/suite-demo-c-/tree/master/API](https://github.com/ian-cuc/suite-demo-c-/tree/master/API)

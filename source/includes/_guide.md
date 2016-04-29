@@ -102,9 +102,9 @@ CorpID是企业的唯一标识，获取CorpID和CorpSecret的步骤如下:
 
 二、选择顶部菜单 **微应用** 进入微应用页面，在左侧菜单选择 **微应用设置** 进入微应用设置页；
 
-三、在微应用设置页面底部点击 **获取** 按钮即可获取CorpID和CorpSecret。
+三、在微应用设置页面底部可看见CorpID和CorpSecret。
 
-![get_scecret_corpId](https://img.alicdn.com/tps/TB1xStVKpXXXXbjXFXXXXXXXXXX-361-640.jpg)
+![get_scecret_corpId](https://img.alicdn.com/tps/TB1iZprJFXXXXbGXpXXXXXXXXXX-1186-512.jpg)
 
 <aside class="notice">
 钉钉开放平台提供了获取和修改企业(团队)的组织结构信息、人员信息等功能，所以请妥善保管CorpID和CorpSecret，避免外泄影响企业信息安全。
