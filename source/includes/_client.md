@@ -16,10 +16,10 @@
 [<font color=red >微应用Demo地址</font>](https://github.com/outlookxie/app-todolist):[https://github.com/outlookxie/app-todolist](https://github.com/outlookxie/app-todolist)
 
 ## 开发版钉钉客户端
-版本：2.8.0
+版本：2.9.0
 
 #### Android
-[下载地址](http://mupppub.cn-hangzhou.oss.aliyun-inc.com/27409/1406036/1406036/704c40251427dc523467a2f3a17005d5/702553%40Rimet-dingtalk-dev-2.8.1.apk)
+[下载地址](http://mupppub.cn-hangzhou.oss.aliyun-inc.com/28327/1457033/1457033/1c29c909f04632e38b46a11f5d00a288/702553%40Rimet-dingtalk-dev-2.9.0.apk)
 
 启用开发者模式后即可使用chrome inspector进行调试。开发版客户端仅供微应用开发调试使用。
 
@@ -34,7 +34,7 @@
 [Remote debugging on Android with Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en#remote-debugging-on-android-with-chrome-devtools)
 
 #### iOS
-[下载地址](http://yunpan.taobao.com/s/V3wtIdt7iT) (提取码：ayGEnD)
+[下载地址](http://yunpan.taobao.com/s/EEduBR8fXj) (提取码：UMHNLb)
 
 [Remote debugging on iOS with Safari Web Inspector](https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en#remote-debugging-on-ios-with-safari-web-inspector)
 
