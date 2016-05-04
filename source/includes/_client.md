@@ -34,7 +34,7 @@
 [Remote debugging on Android with Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en#remote-debugging-on-android-with-chrome-devtools)
 
 #### iOS
-[下载地址](http://yunpan.taobao.com/s/EEduBR8fXj) (提取码：UMHNLb)
+[下载地址](http://yunpan.taobao.com/s/5xcE4SkGHM) (提取码：kWNeJL)
 
 [Remote debugging on iOS with Safari Web Inspector](https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?hl=en#remote-debugging-on-ios-with-safari-web-inspector)
 
