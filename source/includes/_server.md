@@ -3465,3 +3465,8 @@ module.exports = {
 
 [<font color=red >Demo地址：</font>](https://github.com/injekt/openapi-demo-nodejs)
 [<font color=red >https://github.com/injekt/openapi-demo-nodejs</font>](https://github.com/injekt/openapi-demo-nodejs)
+
+### Go版本
+
+1.[<font color=red >Demo地址：</font>](https://github.com/hugozhu/godingtalk)
+[<font color=red >https://github.com/hugozhu/godingtalk</font>](https://github.com/hugozhu/godingtalk)
