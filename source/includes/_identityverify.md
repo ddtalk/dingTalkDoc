@@ -25,7 +25,7 @@
 
 步骤二：[<font color=red >通过CODE换取身份</font>](#通过code换取用户身份)
 
-demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js</font>](https://github.com/injekt/openapi-demo-php/blob/master/public/javascripts/demo.js)
+demo地址:[<font color=red >https://github.com/injekt/openapi-demo-php/blob/master/corp/public/javascripts/demo.js</font>](https://github.com/injekt/openapi-demo-php/blob/master/corp/public/javascripts/demo.js)
 
 
 ## 钉钉PC版微应用中调用免登
