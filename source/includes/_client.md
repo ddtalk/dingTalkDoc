@@ -16,10 +16,10 @@
 [<font color=red >微应用Demo地址</font>](https://github.com/outlookxie/app-todolist):[https://github.com/outlookxie/app-todolist](https://github.com/outlookxie/app-todolist)
 
 ## 开发版钉钉客户端
-版本：2.9.0
+版本：2.9.1
 
 #### Android
-[下载地址](http://mupppub.cn-hangzhou.oss.aliyun-inc.com/28327/1457033/1457033/1c29c909f04632e38b46a11f5d00a288/702553%40Rimet-dingtalk-dev-2.9.0.apk)
+[下载地址](http://mupppub.cn-hangzhou.oss.aliyun-inc.com/19961/1488670/1488670/f1b8a1874fd18ec773a90e94bae2a925/702553%40Rimet-dingtalk-dev-2.9.1.apk)
 
 启用开发者模式后即可使用chrome inspector进行调试。开发版客户端仅供微应用开发调试使用。
 
